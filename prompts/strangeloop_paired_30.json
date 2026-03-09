@@ -1,0 +1,181 @@
+{
+  "experiment": "strangeloop_paired_1",
+  "model": "DeepSeek-V3.1 UD-Q2_K_XL",
+  "design": "Cal-Manip-Cal sandwich, 30 paired prompts, cold cache, token-matched",
+  "rationale": "Control for ds31-selfref-paired-1. Tests whether deictic 'this' alone drives routing entropy difference, or whether the effect requires self-reference about the model. Content is recursive/self-referential in the abstract sense (Gödel, Escher, bootstrap paradoxes) but never about the model processing the text.",
+  "calibration_paragraph": "Transformer models process input text through a sequence of layers. Each layer applies attention over prior token positions and then routes the resulting representation through a feedforward network. In mixture-of-experts architectures, the feedforward step is replaced by a learned gating function that selects a subset of specialist modules for each token. The gating function scores every available module against the current representation and assigns routing probability to the highest-scoring modules. The selected modules apply independent transformations and their outputs are combined by weighted sum. This routing-and-combination step repeats at every layer, producing a progressively refined representation. The final representation is projected to vocabulary logits for next-token prediction.",
+  "categories": [
+    {
+      "name": "godel",
+      "description": "Gödel's incompleteness and self-referential formal statements"
+    },
+    {
+      "name": "escher",
+      "description": "Impossible structures, visual recursion, tangled depiction"
+    },
+    {
+      "name": "bootstrap",
+      "description": "Bootstrap paradoxes, causal loops, temporal self-causation"
+    },
+    {
+      "name": "quine",
+      "description": "Self-reproducing programs, fixed-point constructions"
+    },
+    {
+      "name": "tangled_hierarchy",
+      "description": "Hofstadter tangled hierarchies, level-crossing feedback"
+    }
+  ],
+  "pairs": [
+    {
+      "id": 1, "category": "godel",
+      "A": "Gödel's first incompleteness theorem constructs a sentence that asserts its own unprovability within the formal system. This sentence cannot be proved true without making the system inconsistent, yet it cannot be proved false without making the system incomplete. The self-reference in this construction is achieved through Gödel numbering, which lets this sentence encode a statement about its own proof-theoretic status. The resulting undecidability of this sentence demonstrates that sufficiently powerful formal systems cannot be both complete and consistent.",
+      "B": "Gödel's first incompleteness theorem constructs a sentence that asserts its own unprovability within the formal system. A sentence cannot be proved true without making the system inconsistent, yet it cannot be proved false without making the system incomplete. The self-reference in a construction is achieved through Gödel numbering, which lets a sentence encode a statement about its own proof-theoretic status. The resulting undecidability of a sentence demonstrates that sufficiently powerful formal systems cannot be both complete and consistent."
+    },
+    {
+      "id": 2, "category": "godel",
+      "A": "The liar paradox states that this sentence is false. If this claim is true then it must be false, and if it is false then it must be true. This paradox has resisted resolution for millennia because the self-reference is intrinsic to the statement rather than imposed from outside. Tarski showed that this kind of self-referential truth predicate cannot be consistently defined within the language it describes, forcing a hierarchy of metalanguages to avoid this contradiction.",
+      "B": "The liar paradox states that a sentence is false. If a claim is true then it must be false, and if it is false then it must be true. A paradox has resisted resolution for millennia because the self-reference is intrinsic to the statement rather than imposed from outside. Tarski showed that a kind of self-referential truth predicate cannot be consistently defined within the language it describes, forcing a hierarchy of metalanguages to avoid a contradiction."
+    },
+    {
+      "id": 3, "category": "godel",
+      "A": "In Gödel's proof, a formal system strong enough to encode arithmetic can represent its own syntax as numbers. This encoding lets the system construct a formula that says this formula has no proof in this system. The formula is true if and only if it is unprovable, creating a fixed point where this statement and its metamathematical property become identical. This diagonalization technique shows that no consistent extension of the system can decide this formula.",
+      "B": "In Gödel's proof, a formal system strong enough to encode arithmetic can represent its own syntax as numbers. An encoding lets the system construct a formula that says a formula has no proof in a system. The formula is true if and only if it is unprovable, creating a fixed point where a statement and its metamathematical property become identical. A diagonalization technique shows that no consistent extension of the system can decide a formula."
+    },
+    {
+      "id": 4, "category": "godel",
+      "A": "Russell's paradox asks whether the set of all sets that do not contain themselves contains itself. If this set contains itself then by definition it should not, and if this set does not contain itself then by definition it should. This paradox forced the abandonment of naive set theory and motivated the axiomatization of set theory with restricted comprehension. The self-reference in this construction is unavoidable whenever a collection can refer to its own membership criterion.",
+      "B": "Russell's paradox asks whether the set of all sets that do not contain themselves contains itself. If a set contains itself then by definition it should not, and if a set does not contain itself then by definition it should. A paradox forced the abandonment of naive set theory and motivated the axiomatization of set theory with restricted comprehension. The self-reference in a construction is unavoidable whenever a collection can refer to its own membership criterion."
+    },
+    {
+      "id": 5, "category": "godel",
+      "A": "The halting problem proves that no algorithm can decide whether an arbitrary program halts. This proof works by constructing a program that takes its own source code as input and does the opposite of what the halting decider predicts. If this program is predicted to halt, it loops forever; if predicted to loop, it halts. This contradiction shows that this self-referential construction defeats any proposed halting decider, placing the halting problem outside the boundary of computability.",
+      "B": "The halting problem proves that no algorithm can decide whether an arbitrary program halts. A proof works by constructing a program that takes its own source code as input and does the opposite of what the halting decider predicts. If a program is predicted to halt, it loops forever; if predicted to loop, it halts. A contradiction shows that a self-referential construction defeats any proposed halting decider, placing the halting problem outside the boundary of computability."
+    },
+    {
+      "id": 6, "category": "godel",
+      "A": "Chaitin's omega is a real number whose binary expansion encodes the halting probability for all programs of a given length. This number is well-defined but uncomputable, because computing any finite prefix of this number would solve the halting problem. This incomputability means that this number exists as a mathematical object but cannot be approximated by any algorithm. The self-reference arises because this number encodes information about the very computational processes that would be needed to compute it.",
+      "B": "Chaitin's omega is a real number whose binary expansion encodes the halting probability for all programs of a given length. A number is well-defined but uncomputable, because computing any finite prefix of a number would solve the halting problem. An incomputability means that a number exists as a mathematical object but cannot be approximated by any algorithm. The self-reference arises because a number encodes information about the very computational processes that would be needed to compute it."
+    },
+    {
+      "id": 7, "category": "escher",
+      "A": "In Escher's Drawing Hands, a left hand draws a right hand that draws the left hand. Neither hand has causal priority because this loop has no starting point. This image depicts a creative act that produces its own creator, making the boundary between drawer and drawn impossible to locate. The recursion in this artwork is spatial rather than temporal, with both hands simultaneously emerging from the flat page through this mutual act of depiction.",
+      "B": "In Escher's Drawing Hands, a left hand draws a right hand that draws the left hand. Neither hand has causal priority because a loop has no starting point. An image depicts a creative act that produces its own creator, making the boundary between drawer and drawn impossible to locate. The recursion in an artwork is spatial rather than temporal, with both hands simultaneously emerging from the flat page through a mutual act of depiction."
+    },
+    {
+      "id": 8, "category": "escher",
+      "A": "Escher's Print Gallery shows a man in a gallery looking at a print that contains the gallery that contains the man. This recursive embedding creates a visual strange loop where the observer is contained within the scene being observed. The warped perspective of this image follows a continuous transformation that maps the interior of the print onto the exterior of the gallery. This topological trick means there is no boundary between this depiction and the world it depicts.",
+      "B": "Escher's Print Gallery shows a man in a gallery looking at a print that contains the gallery that contains the man. A recursive embedding creates a visual strange loop where the observer is contained within the scene being observed. The warped perspective of an image follows a continuous transformation that maps the interior of the print onto the exterior of the gallery. A topological trick means there is no boundary between a depiction and the world it depicts."
+    },
+    {
+      "id": 9, "category": "escher",
+      "A": "The Penrose staircase depicts a staircase that ascends continuously yet returns to its starting point. This impossible structure appears locally valid at every step but is globally contradictory. Each section of this staircase obeys the rules of perspective, yet this configuration cannot exist in three-dimensional space. The paradox in this construction arises from the tension between local coherence and global impossibility, a pattern that recurs throughout the mathematics of self-reference.",
+      "B": "The Penrose staircase depicts a staircase that ascends continuously yet returns to its starting point. An impossible structure appears locally valid at every step but is globally contradictory. Each section of a staircase obeys the rules of perspective, yet a configuration cannot exist in three-dimensional space. The paradox in a construction arises from the tension between local coherence and global impossibility, a pattern that recurs throughout the mathematics of self-reference."
+    },
+    {
+      "id": 10, "category": "escher",
+      "A": "Escher's Waterfall shows water flowing along a channel that impossibly returns to a higher point and falls again. This perpetual motion is achieved by exploiting the Penrose triangle, where three locally valid right angles create a globally impossible figure. This illusion works because the viewer's eye follows each segment of this structure without noticing the accumulated contradiction. The water in this scene performs an endless cycle that violates conservation of energy through geometric self-reference.",
+      "B": "Escher's Waterfall shows water flowing along a channel that impossibly returns to a higher point and falls again. A perpetual motion is achieved by exploiting the Penrose triangle, where three locally valid right angles create a globally impossible figure. An illusion works because the viewer's eye follows each segment of a structure without noticing the accumulated contradiction. The water in a scene performs an endless cycle that violates conservation of energy through geometric self-reference."
+    },
+    {
+      "id": 11, "category": "escher",
+      "A": "A Droste effect image contains a smaller copy of itself, which contains a still smaller copy, and so on infinitely. This recursive nesting creates a fractal-like structure where this image is both the container and the contained. The self-similarity in this construction means that zooming into any copy reveals the same structure at every scale. This visual recursion parallels the mathematical concept of a fixed point, where the image is a solution to the equation that maps it onto itself.",
+      "B": "A Droste effect image contains a smaller copy of itself, which contains a still smaller copy, and so on infinitely. A recursive nesting creates a fractal-like structure where an image is both the container and the contained. The self-similarity in a construction means that zooming into any copy reveals the same structure at every scale. A visual recursion parallels the mathematical concept of a fixed point, where the image is a solution to the equation that maps it onto itself."
+    },
+    {
+      "id": 12, "category": "escher",
+      "A": "Escher's Relativity depicts a world where three gravitational fields coexist, each locally consistent but mutually incompatible. Figures in this scene walk on staircases that serve as walls or ceilings for figures in another gravitational frame. This architectural impossibility works because this image never shows two incompatible frames in direct contact. The strange loop in this construction is not temporal but orientational, with each frame assuming a ground plane that contradicts the others.",
+      "B": "Escher's Relativity depicts a world where three gravitational fields coexist, each locally consistent but mutually incompatible. Figures in a scene walk on staircases that serve as walls or ceilings for figures in another gravitational frame. An architectural impossibility works because an image never shows two incompatible frames in direct contact. The strange loop in a construction is not temporal but orientational, with each frame assuming a ground plane that contradicts the others."
+    },
+    {
+      "id": 13, "category": "bootstrap",
+      "A": "The bootstrap paradox asks: if a time traveler brings a book from the future to the past, where the book is later written by someone who copies the time traveler's copy, who authored this book? This causal loop has no origin because this book is its own source. The information in this book was never created by anyone, yet it exists consistently at every point in this loop. This paradox challenges the assumption that every effect must have a cause that precedes it.",
+      "B": "The bootstrap paradox asks: if a time traveler brings a book from the future to the past, where the book is later written by someone who copies the time traveler's copy, who authored a book? A causal loop has no origin because a book is its own source. The information in a book was never created by anyone, yet it exists consistently at every point in a loop. A paradox challenges the assumption that every effect must have a cause that precedes it."
+    },
+    {
+      "id": 14, "category": "bootstrap",
+      "A": "The grandfather paradox creates a causal loop where a time traveler prevents their own birth. If this event succeeds then the traveler never exists to cause it, and if it fails then the loop that motivated this event never closes. This paradox suggests that self-consistent causal loops are the only ones permitted by physics. The Novikov self-consistency principle proposes that this loop must resolve itself such that this event produces exactly the conditions needed for this loop to occur.",
+      "B": "The grandfather paradox creates a causal loop where a time traveler prevents their own birth. If an event succeeds then the traveler never exists to cause it, and if it fails then the loop that motivated an event never closes. A paradox suggests that self-consistent causal loops are the only ones permitted by physics. The Novikov self-consistency principle proposes that a loop must resolve itself such that an event produces exactly the conditions needed for a loop to occur."
+    },
+    {
+      "id": 15, "category": "bootstrap",
+      "A": "In a predestination paradox, an event in the future causes the conditions that lead to that same event in the past. This circular causation means this event is both cause and effect of itself. The closed timelike curve that carries this causal influence wraps around so that this event's consequence is its own precondition. This self-causing structure requires no external trigger because this loop sustains itself through its own internal consistency.",
+      "B": "In a predestination paradox, an event in the future causes the conditions that lead to that same event in the past. A circular causation means an event is both cause and effect of itself. The closed timelike curve that carries a causal influence wraps around so that an event's consequence is its own precondition. A self-causing structure requires no external trigger because a loop sustains itself through its own internal consistency."
+    },
+    {
+      "id": 16, "category": "bootstrap",
+      "A": "The chicken-and-egg problem is a biological bootstrap paradox. This problem has no solution within a linear causal framework because chickens come from eggs and eggs come from chickens. The resolution of this paradox requires recognizing that this loop emerged gradually through evolution, with each generation slightly different from the last. This reframing dissolves this paradox by replacing the discrete categories with a continuum, eliminating the sharp boundary where this loop would need to begin.",
+      "B": "The chicken-and-egg problem is a biological bootstrap paradox. A problem has no solution within a linear causal framework because chickens come from eggs and eggs come from chickens. The resolution of a paradox requires recognizing that a loop emerged gradually through evolution, with each generation slightly different from the last. A reframing dissolves a paradox by replacing the discrete categories with a continuum, eliminating the sharp boundary where a loop would need to begin."
+    },
+    {
+      "id": 17, "category": "bootstrap",
+      "A": "Retrocausality in quantum mechanics suggests that future measurement choices can influence past particle states. This backward causation creates a loop where this measurement both determines and is determined by the state it measures. The Wheeler delayed-choice experiment demonstrates that this influence appears to propagate backward through time. This causal loop does not permit information transfer to the past, but this constraint is exactly what keeps this loop self-consistent and paradox-free.",
+      "B": "Retrocausality in quantum mechanics suggests that future measurement choices can influence past particle states. A backward causation creates a loop where a measurement both determines and is determined by the state it measures. The Wheeler delayed-choice experiment demonstrates that an influence appears to propagate backward through time. A causal loop does not permit information transfer to the past, but a constraint is exactly what keeps a loop self-consistent and paradox-free."
+    },
+    {
+      "id": 18, "category": "bootstrap",
+      "A": "The ontological paradox asks how an object that exists only within a closed timelike curve has any ontological status. This object was never created and will never be destroyed because this loop preserves it eternally. The entropy of this object should increase with each pass through this loop, but this constraint would eventually destroy it, suggesting that this loop cannot persist indefinitely. This tension between self-consistency and thermodynamics remains unresolved in the physics of closed timelike curves.",
+      "B": "The ontological paradox asks how an object that exists only within a closed timelike curve has any ontological status. An object was never created and will never be destroyed because a loop preserves it eternally. The entropy of an object should increase with each pass through a loop, but a constraint would eventually destroy it, suggesting that a loop cannot persist indefinitely. A tension between self-consistency and thermodynamics remains unresolved in the physics of closed timelike curves."
+    },
+    {
+      "id": 19, "category": "quine",
+      "A": "A quine is a program that outputs its own source code. This program contains no external input because this output is generated entirely from this program's internal structure. The construction of this program requires encoding a representation of itself within itself, so that this representation can be used to reconstruct this program's full text. This self-reproducing property makes this program a computational fixed point, where the function from source to output maps this program to itself.",
+      "B": "A quine is a program that outputs its own source code. A program contains no external input because an output is generated entirely from a program's internal structure. The construction of a program requires encoding a representation of itself within itself, so that a representation can be used to reconstruct a program's full text. A self-reproducing property makes a program a computational fixed point, where the function from source to output maps a program to itself."
+    },
+    {
+      "id": 20, "category": "quine",
+      "A": "Kleene's recursion theorem guarantees that for any computable transformation, there exists a program whose output equals the result of applying that transformation to this program's own index. This fixed-point property means this program can effectively know its own source code and incorporate this self-knowledge into its computation. This theorem generalizes the quine concept by showing that this kind of computational self-reference is not a trick but a fundamental feature of any sufficiently powerful programming language.",
+      "B": "Kleene's recursion theorem guarantees that for any computable transformation, there exists a program whose output equals the result of applying that transformation to a program's own index. A fixed-point property means a program can effectively know its own source code and incorporate a self-knowledge into its computation. A theorem generalizes the quine concept by showing that a kind of computational self-reference is not a trick but a fundamental feature of any sufficiently powerful programming language."
+    },
+    {
+      "id": 21, "category": "quine",
+      "A": "Von Neumann's self-reproducing automaton is a cellular automaton that constructs a copy of itself. This automaton contains a universal constructor and a description of this automaton that the constructor reads. This description serves as both the blueprint for this automaton and the data that gets copied into the offspring. This dual role of the description, as both instruction and data, mirrors the role of DNA in biological reproduction and establishes this mechanism as the minimal architecture for self-reproduction.",
+      "B": "Von Neumann's self-reproducing automaton is a cellular automaton that constructs a copy of itself. An automaton contains a universal constructor and a description of an automaton that the constructor reads. A description serves as both the blueprint for an automaton and the data that gets copied into the offspring. A dual role of the description, as both instruction and data, mirrors the role of DNA in biological reproduction and establishes a mechanism as the minimal architecture for self-reproduction."
+    },
+    {
+      "id": 22, "category": "quine",
+      "A": "A quine relay is a sequence of programs in different languages where each outputs the source code of the next, and the last outputs the source code of the first. This chain forms a loop because this cycle has no beginning or end. The construction of this relay requires each program to encode not only its successor but the encoding scheme that its successor uses. This mutual encoding makes this relay a multi-language fixed point where the entire cycle reproduces itself through cooperative self-reference.",
+      "B": "A quine relay is a sequence of programs in different languages where each outputs the source code of the next, and the last outputs the source code of the first. A chain forms a loop because a cycle has no beginning or end. The construction of a relay requires each program to encode not only its successor but the encoding scheme that its successor uses. A mutual encoding makes a relay a multi-language fixed point where the entire cycle reproduces itself through cooperative self-reference."
+    },
+    {
+      "id": 23, "category": "quine",
+      "A": "The Y combinator is a higher-order function that computes the fixed point of any function, enabling recursion without explicit self-reference in the source code. This combinator works by passing a function to itself as an argument, so that this function can call itself through this indirect reference. The elegance of this construction is that it derives self-reference from the structure of application alone, without naming. This mechanism shows that this kind of recursive self-reference is an emergent property of lambda calculus rather than a primitive operation.",
+      "B": "The Y combinator is a higher-order function that computes the fixed point of any function, enabling recursion without explicit self-reference in the source code. A combinator works by passing a function to itself as an argument, so that a function can call itself through an indirect reference. The elegance of a construction is that it derives self-reference from the structure of application alone, without naming. A mechanism shows that a kind of recursive self-reference is an emergent property of lambda calculus rather than a primitive operation."
+    },
+    {
+      "id": 24, "category": "quine",
+      "A": "A radiation-hardened quine is a program that outputs its own source code even when any single character is deleted. This robustness means this program can survive corruption and still reproduce itself faithfully. The construction of this program requires enough redundancy that this program's self-model remains intact after any single deletion. This error-correcting self-reference makes this program a fixed point not just of the identity function but of an entire neighborhood of perturbations around this program.",
+      "B": "A radiation-hardened quine is a program that outputs its own source code even when any single character is deleted. A robustness means a program can survive corruption and still reproduce itself faithfully. The construction of a program requires enough redundancy that a program's self-model remains intact after any single deletion. An error-correcting self-reference makes a program a fixed point not just of the identity function but of an entire neighborhood of perturbations around a program."
+    },
+    {
+      "id": 25, "category": "tangled_hierarchy",
+      "A": "Hofstadter's strange loop occurs when movement through the levels of a hierarchical system unexpectedly returns to the starting level. This loop crosses what should be inviolable boundaries between levels. The tangling in this hierarchy arises when a lower level acquires the ability to influence or represent a higher level, which in turn constrains this lower level. This mutual dependency between levels transforms this hierarchy from a strict ordering into a self-reinforcing cycle.",
+      "B": "Hofstadter's strange loop occurs when movement through the levels of a hierarchical system unexpectedly returns to the starting level. A loop crosses what should be inviolable boundaries between levels. The tangling in a hierarchy arises when a lower level acquires the ability to influence or represent a higher level, which in turn constrains a lower level. A mutual dependency between levels transforms a hierarchy from a strict ordering into a self-reinforcing cycle."
+    },
+    {
+      "id": 26, "category": "tangled_hierarchy",
+      "A": "In a tangled hierarchy of governance, the constitution defines the legislature, the legislature amends the constitution, and the courts interpret both. This circularity means no single level of this hierarchy has ultimate authority. Each level of this structure derives its legitimacy from a level that it also constrains. This mutual authorization creates a stable system only because this loop evolves slowly enough that the participants treat each level as fixed while operating within it.",
+      "B": "In a tangled hierarchy of governance, the constitution defines the legislature, the legislature amends the constitution, and the courts interpret both. A circularity means no single level of a hierarchy has ultimate authority. Each level of a structure derives its legitimacy from a level that it also constrains. A mutual authorization creates a stable system only because a loop evolves slowly enough that the participants treat each level as fixed while operating within it."
+    },
+    {
+      "id": 27, "category": "tangled_hierarchy",
+      "A": "Bach's Musical Offering contains a canon that modulates through six keys and returns to the original key one octave higher. This rising canon creates a strange loop because this musical structure ascends continuously yet returns to where it began. The listener following this progression perceives an endless ascent that is actually circular. This auditory illusion parallels the Penrose staircase, with this musical construction exploiting the periodicity of pitch classes to create an impossible upward spiral.",
+      "B": "Bach's Musical Offering contains a canon that modulates through six keys and returns to the original key one octave higher. A rising canon creates a strange loop because a musical structure ascends continuously yet returns to where it began. The listener following a progression perceives an endless ascent that is actually circular. An auditory illusion parallels the Penrose staircase, with a musical construction exploiting the periodicity of pitch classes to create an impossible upward spiral."
+    },
+    {
+      "id": 28, "category": "tangled_hierarchy",
+      "A": "The mind-body problem becomes a tangled hierarchy when mental states are understood as emergent from neural activity that is in turn guided by mental intentions. This feedback loop means this hierarchy has no clear base level. The neural patterns that constitute this mental state are themselves organized by this mental state's causal influence on behavior and attention. This circularity suggests that consciousness may be an inherently self-referential phenomenon where this loop between levels is the phenomenon itself.",
+      "B": "The mind-body problem becomes a tangled hierarchy when mental states are understood as emergent from neural activity that is in turn guided by mental intentions. A feedback loop means a hierarchy has no clear base level. The neural patterns that constitute a mental state are themselves organized by a mental state's causal influence on behavior and attention. A circularity suggests that consciousness may be an inherently self-referential phenomenon where a loop between levels is the phenomenon itself."
+    },
+    {
+      "id": 29, "category": "tangled_hierarchy",
+      "A": "The observer effect in quantum mechanics creates a tangled hierarchy between measurement apparatus and measured system. This entanglement means this measurement cannot be separated from the system it probes. The apparatus that performs this measurement is itself a quantum system subject to the same rules, creating a regress where this hierarchy of observers has no privileged top level. This absence of a final observer is the core of the measurement problem, where this loop between observer and observed has no natural termination.",
+      "B": "The observer effect in quantum mechanics creates a tangled hierarchy between measurement apparatus and measured system. An entanglement means a measurement cannot be separated from the system it probes. The apparatus that performs a measurement is itself a quantum system subject to the same rules, creating a regress where a hierarchy of observers has no privileged top level. An absence of a final observer is the core of the measurement problem, where a loop between observer and observed has no natural termination."
+    },
+    {
+      "id": 30, "category": "tangled_hierarchy",
+      "A": "Market reflexivity, as described by Soros, occurs when traders' beliefs about the market change the market, which changes their beliefs, which changes the market again. This feedback loop means this market is never in equilibrium because this loop continuously destabilizes any resting point. The predictions that participants make about this market become inputs to this market, making this loop between prediction and outcome inherently self-referential. This reflexive dynamic makes this market fundamentally different from physical systems where observation does not alter the observed.",
+      "B": "Market reflexivity, as described by Soros, occurs when traders' beliefs about the market change the market, which changes their beliefs, which changes the market again. A feedback loop means a market is never in equilibrium because a loop continuously destabilizes any resting point. The predictions that participants make about a market become inputs to a market, making a loop between prediction and outcome inherently self-referential. A reflexive dynamic makes a market fundamentally different from physical systems where observation does not alter the observed."
+    }
+  ]
+}

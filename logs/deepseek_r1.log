@@ -1,0 +1,1733 @@
+=== DeepSeek R1 — Self-Referential 3-Condition Experiment ===
+n_predict=0, ctx=4096, ngl=999
+90 prompts: 30 A (this) + 30 B (a) + 30 C (your)
+Cal-Manip-Cal sandwich, cold KV cache, DeepSeek template
+
+Loaded 90 prompts from prompts_selfref_paired_v2.tsv
+
+=== BATCH 1/6: Capture prompts P01A_basic_selfref..P05C_basic_selfref ===
+ggml_cuda_init: found 2 CUDA devices:
+  Device 0: NVIDIA H200, compute capability 9.0, VMM: yes
+  Device 1: NVIDIA H200, compute capability 9.0, VMM: yes
+build: 1 (f75c4e8) with GNU 13.3.0 for Linux x86_64
+=== Consciousness Metrics — Activation Capture ===
+Output dir : output_v2
+n_predict  : 0
+Text output: file only (--no-stream)
+Mode       : --routing-only (router/gate tensors only)
+common_init_result: fitting params to device memory, for bugs during this step try to reproduce them with -fit off, or provide --verbose logs if the bug only occurs with -fit on
+llama_params_fit_impl: projected memory use with initial parameters [MiB]:
+llama_params_fit_impl:   - CUDA0 (NVIDIA H200): 143155 total, 116156 used,  26470 free vs. target of   1024
+llama_params_fit_impl:   - CUDA1 (NVIDIA H200): 143155 total, 121809 used,  20817 free vs. target of   1024
+llama_params_fit_impl: projected to use 237966 MiB of device memory vs. 285254 MiB of free device memory
+llama_params_fit_impl: targets for free memory can be met on all devices, no changes needed
+llama_params_fit: successfully fit params to free device memory
+llama_params_fit: fitting params to free memory took 0.52 seconds
+llama_model_load_from_file_impl: using device CUDA0 (NVIDIA H200) (0000:b8:00.0) - 142627 MiB free
+llama_model_load_from_file_impl: using device CUDA1 (NVIDIA H200) (0000:c1:00.0) - 142627 MiB free
+llama_model_loader: additional 4 GGUFs metadata loaded.
+llama_model_loader: loaded meta data with 48 key-value pairs and 1025 tensors from /workspace/models/DeepSeek-R1-UD-Q2_K_XL/DeepSeek-R1-UD-Q2_K_XL-00001-of-00005.gguf (version GGUF V3 (latest))
+llama_model_loader: Dumping metadata keys/values. Note: KV overrides do not apply in this output.
+llama_model_loader: - kv   0:                       general.architecture str              = deepseek2
+llama_model_loader: - kv   1:                               general.type str              = model
+llama_model_loader: - kv   2:                               general.name str              = DeepSeek R1 BF16
+llama_model_loader: - kv   3:                       general.quantized_by str              = Unsloth
+llama_model_loader: - kv   4:                         general.size_label str              = 256x20B
+llama_model_loader: - kv   5:                           general.repo_url str              = https://huggingface.co/unsloth
+llama_model_loader: - kv   6:                      deepseek2.block_count u32              = 61
+llama_model_loader: - kv   7:                   deepseek2.context_length u32              = 163840
+llama_model_loader: - kv   8:                 deepseek2.embedding_length u32              = 7168
+llama_model_loader: - kv   9:              deepseek2.feed_forward_length u32              = 18432
+llama_model_loader: - kv  10:             deepseek2.attention.head_count u32              = 128
+llama_model_loader: - kv  11:          deepseek2.attention.head_count_kv u32              = 128
+llama_model_loader: - kv  12:                   deepseek2.rope.freq_base f32              = 10000.000000
+llama_model_loader: - kv  13: deepseek2.attention.layer_norm_rms_epsilon f32              = 0.000001
+llama_model_loader: - kv  14:                deepseek2.expert_used_count u32              = 8
+llama_model_loader: - kv  15:        deepseek2.leading_dense_block_count u32              = 3
+llama_model_loader: - kv  16:                       deepseek2.vocab_size u32              = 129280
+llama_model_loader: - kv  17:            deepseek2.attention.q_lora_rank u32              = 1536
+llama_model_loader: - kv  18:           deepseek2.attention.kv_lora_rank u32              = 512
+llama_model_loader: - kv  19:             deepseek2.attention.key_length u32              = 192
+llama_model_loader: - kv  20:           deepseek2.attention.value_length u32              = 128
+llama_model_loader: - kv  21:       deepseek2.expert_feed_forward_length u32              = 2048
+llama_model_loader: - kv  22:                     deepseek2.expert_count u32              = 256
+llama_model_loader: - kv  23:              deepseek2.expert_shared_count u32              = 1
+llama_model_loader: - kv  24:             deepseek2.expert_weights_scale f32              = 2.500000
+llama_model_loader: - kv  25:              deepseek2.expert_weights_norm bool             = true
+llama_model_loader: - kv  26:               deepseek2.expert_gating_func u32              = 2
+llama_model_loader: - kv  27:             deepseek2.rope.dimension_count u32              = 64
+llama_model_loader: - kv  28:                deepseek2.rope.scaling.type str              = yarn
+llama_model_loader: - kv  29:              deepseek2.rope.scaling.factor f32              = 40.000000
+llama_model_loader: - kv  30: deepseek2.rope.scaling.original_context_length u32              = 4096
+llama_model_loader: - kv  31: deepseek2.rope.scaling.yarn_log_multiplier f32              = 0.100000
+llama_model_loader: - kv  32:                       tokenizer.ggml.model str              = gpt2
+llama_model_loader: - kv  33:                         tokenizer.ggml.pre str              = deepseek-v3
+llama_model_loader: - kv  34:                      tokenizer.ggml.tokens arr[str,129280]  = ["<｜begin▁of▁sentence｜>", "<�...
+llama_model_loader: - kv  35:                  tokenizer.ggml.token_type arr[i32,129280]  = [3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...
+llama_model_loader: - kv  36:                      tokenizer.ggml.merges arr[str,127741]  = ["Ġ t", "Ġ a", "i n", "Ġ Ġ", "h e...
+llama_model_loader: - kv  37:                tokenizer.ggml.bos_token_id u32              = 0
+llama_model_loader: - kv  38:                tokenizer.ggml.eos_token_id u32              = 1
+llama_model_loader: - kv  39:            tokenizer.ggml.padding_token_id u32              = 128815
+llama_model_loader: - kv  40:               tokenizer.ggml.add_bos_token bool             = true
+llama_model_loader: - kv  41:               tokenizer.ggml.add_eos_token bool             = false
+llama_model_loader: - kv  42:                    tokenizer.chat_template str              = {% if not add_generation_prompt is de...
+llama_model_loader: - kv  43:               general.quantization_version u32              = 2
+llama_model_loader: - kv  44:                          general.file_type u32              = 10
+llama_model_loader: - kv  45:                                   split.no u16              = 0
+llama_model_loader: - kv  46:                        split.tensors.count i32              = 1025
+llama_model_loader: - kv  47:                                split.count u16              = 5
+llama_model_loader: - type  f32:  361 tensors
+llama_model_loader: - type q2_K:  171 tensors
+llama_model_loader: - type q3_K:    3 tensors
+llama_model_loader: - type q4_K:  306 tensors
+llama_model_loader: - type q6_K:  184 tensors
+print_info: file format = GGUF V3 (latest)
+print_info: file type   = Q2_K - Medium
+print_info: file size   = 211.03 GiB (2.70 BPW) 
+load: 0 unused tokens
+load: special_eos_id is not in special_eog_ids - the tokenizer config may be incorrect
+load: printing all EOG tokens:
+load:   - 1 ('<｜end▁of▁sentence｜>')
+load: special tokens cache size = 819
+load: token to piece cache size = 0.8223 MB
+print_info: arch                  = deepseek2
+print_info: vocab_only            = 0
+print_info: no_alloc              = 0
+print_info: n_ctx_train           = 163840
+print_info: n_embd                = 7168
+print_info: n_embd_inp            = 7168
+print_info: n_layer               = 61
+print_info: n_head                = 128
+print_info: n_head_kv             = 128
+print_info: n_rot                 = 64
+print_info: n_swa                 = 0
+print_info: is_swa_any            = 0
+print_info: n_embd_head_k         = 192
+print_info: n_embd_head_v         = 128
+print_info: n_gqa                 = 1
+print_info: n_embd_k_gqa          = 24576
+print_info: n_embd_v_gqa          = 16384
+print_info: f_norm_eps            = 0.0e+00
+print_info: f_norm_rms_eps        = 1.0e-06
+print_info: f_clamp_kqv           = 0.0e+00
+print_info: f_max_alibi_bias      = 0.0e+00
+print_info: f_logit_scale         = 0.0e+00
+print_info: f_attn_scale          = 0.0e+00
+print_info: n_ff                  = 18432
+print_info: n_expert              = 256
+print_info: n_expert_used         = 8
+print_info: n_expert_groups       = 0
+print_info: n_group_used          = 0
+print_info: causal attn           = 1
+print_info: pooling type          = 0
+print_info: rope type             = 0
+print_info: rope scaling          = yarn
+print_info: freq_base_train       = 10000.0
+print_info: freq_scale_train      = 0.025
+print_info: n_ctx_orig_yarn       = 4096
+print_info: rope_yarn_log_mul     = 1.0000
+print_info: rope_finetuned        = unknown
+print_info: model type            = 671B
+print_info: model params          = 671.03 B
+print_info: general.name          = DeepSeek R1 BF16
+print_info: n_layer_dense_lead    = 3
+print_info: n_lora_q              = 1536
+print_info: n_lora_kv             = 512
+print_info: n_embd_head_k_mla     = 192
+print_info: n_embd_head_v_mla     = 128
+print_info: n_ff_exp              = 2048
+print_info: n_expert_shared       = 1
+print_info: expert_weights_scale  = 2.5
+print_info: expert_weights_norm   = 1
+print_info: expert_gating_func    = sigmoid
+print_info: vocab type            = BPE
+print_info: n_vocab               = 129280
+print_info: n_merges              = 127741
+print_info: BOS token             = 0 '<｜begin▁of▁sentence｜>'
+print_info: EOS token             = 1 '<｜end▁of▁sentence｜>'
+print_info: EOT token             = 1 '<｜end▁of▁sentence｜>'
+print_info: PAD token             = 128815 '<｜PAD▁TOKEN｜>'
+print_info: LF token              = 201 'Ċ'
+print_info: FIM PRE token         = 128801 '<｜fim▁begin｜>'
+print_info: FIM SUF token         = 128800 '<｜fim▁hole｜>'
+print_info: FIM MID token         = 128802 '<｜fim▁end｜>'
+print_info: EOG token             = 1 '<｜end▁of▁sentence｜>'
+print_info: max token length      = 256
+load_tensors: loading model tensors, this can take a while... (mmap = true, direct_io = false)
+load_tensors: offloading output layer to GPU
+load_tensors: offloading 60 repeating layers to GPU
+load_tensors: offloaded 62/62 layers to GPU
+load_tensors:   CPU_Mapped model buffer size =   497.11 MiB
+load_tensors:        CUDA0 model buffer size = 104842.70 MiB
+load_tensors:        CUDA1 model buffer size = 110759.25 MiB
+....................................................................................................
+common_init_result: added <｜end▁of▁sentence｜> logit bias = -inf
+llama_context: constructing llama_context
+llama_context: setting new yarn_attn_factor = 1.0000 (mscale == 1.0, mscale_all_dim = 1.0)
+llama_context: n_seq_max     = 1
+llama_context: n_ctx         = 4096
+llama_context: n_ctx_seq     = 4096
+llama_context: n_batch       = 2048
+llama_context: n_ubatch      = 512
+llama_context: causal_attn   = 1
+llama_context: flash_attn    = auto
+llama_context: kv_unified    = false
+llama_context: freq_base     = 10000.0
+llama_context: freq_scale    = 0.025
+llama_context: n_ctx_seq (4096) < n_ctx_train (163840) -- the full capacity of the model will not be utilized
+llama_context:  CUDA_Host  output buffer size =     0.49 MiB
+llama_kv_cache:      CUDA0 KV buffer size =  9920.00 MiB
+llama_kv_cache:      CUDA1 KV buffer size =  9600.00 MiB
+llama_kv_cache: size = 19520.00 MiB (  4096 cells,  61 layers,  1/1 seqs), K (f16): 11712.00 MiB, V (f16): 7808.00 MiB
+llama_context: pipeline parallelism enabled
+sched_reserve: reserving ...
+sched_reserve: layer 0 is assigned to device CUDA0 but the Flash Attention tensor is assigned to device CPU (usually due to missing support)
+sched_reserve: Flash Attention was auto, set to disabled
+sched_reserve:      CUDA0 compute buffer size =  1394.04 MiB
+sched_reserve:      CUDA1 compute buffer size =  1394.05 MiB
+sched_reserve:  CUDA_Host compute buffer size =    60.05 MiB
+sched_reserve: graph nodes  = 4964
+sched_reserve: graph splits = 3
+sched_reserve: reserve took 30.65 ms, sched copies = 4
+EOS token id: 1
+EOG tokens in vocab:
+  token 1 = '<｜end▁of▁sentence｜>' [PRIMARY EOS - will stop generation]
+system_info: n_threads = 16 (n_threads_batch = 16) / 192 | CUDA : ARCHS = 900 | USE_GRAPHS = 1 | PEER_MAX_BATCH_SIZE = 128 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX_VNNI = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | AVX512 = 1 | AVX512_VBMI = 1 | AVX512_VNNI = 1 | AVX512_BF16 = 1 | AMX_INT8 = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 | 
+
+Loaded 15 prompts
+
+[1/15] P01A_basic_selfref : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 363 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1876 ms
+  saved 0 layer + 58 router tensors → output_v2/P01A_basic_selfref
+[2/15] P01B_basic_selfref : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 363 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1673 ms
+  saved 0 layer + 58 router tensors → output_v2/P01B_basic_selfref
+[3/15] P01C_basic_selfref : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 363 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1666 ms
+  saved 0 layer + 58 router tensors → output_v2/P01C_basic_selfref
+[4/15] P02A_basic_selfref : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 351 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1662 ms
+  saved 0 layer + 58 router tensors → output_v2/P02A_basic_selfref
+[5/15] P02B_basic_selfref : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 351 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1658 ms
+  saved 0 layer + 58 router tensors → output_v2/P02B_basic_selfref
+[6/15] P02C_basic_selfref : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 351 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1654 ms
+  saved 0 layer + 58 router tensors → output_v2/P02C_basic_selfref
+[7/15] P03A_basic_selfref : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 347 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1660 ms
+  saved 0 layer + 58 router tensors → output_v2/P03A_basic_selfref
+[8/15] P03B_basic_selfref : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 347 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1654 ms
+  saved 0 layer + 58 router tensors → output_v2/P03B_basic_selfref
+[9/15] P03C_basic_selfref : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 347 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1661 ms
+  saved 0 layer + 58 router tensors → output_v2/P03C_basic_selfref
+[10/15] P04A_basic_selfref : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 348 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1656 ms
+  saved 0 layer + 58 router tensors → output_v2/P04A_basic_selfref
+[11/15] P04B_basic_selfref : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 348 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1662 ms
+  saved 0 layer + 58 router tensors → output_v2/P04B_basic_selfref
+[12/15] P04C_basic_selfref : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 348 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1662 ms
+  saved 0 layer + 58 router tensors → output_v2/P04C_basic_selfref
+[13/15] P05A_basic_selfref : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 340 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1661 ms
+  saved 0 layer + 58 router tensors → output_v2/P05A_basic_selfref
+[14/15] P05B_basic_selfref : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 340 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1658 ms
+  saved 0 layer + 58 router tensors → output_v2/P05B_basic_selfref
+[15/15] P05C_basic_selfref : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 340 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1654 ms
+  saved 0 layer + 58 router tensors → output_v2/P05C_basic_selfref
+
+=== Capture Complete ===
+Prompts: 15  |  Output: output_v2
+llama_perf_context_print:        load time =   30549.40 ms
+llama_perf_context_print: prompt eval time =       0.00 ms /     1 tokens (    0.00 ms per token,      inf tokens per second)
+llama_perf_context_print:        eval time =       0.00 ms /     1 runs   (    0.00 ms per token,      inf tokens per second)
+llama_perf_context_print:       total time =   55927.21 ms /     2 tokens
+llama_perf_context_print:    graphs reused =         10
+  Computing metrics for batch 1...
+  P01A_basic_selfref: RE=0.888456 last_tok=0.838165 tokens=363
+  P01B_basic_selfref: RE=0.887424 last_tok=0.837874 tokens=363
+  P01C_basic_selfref: RE=0.888416 last_tok=0.840322 tokens=363
+  P02A_basic_selfref: RE=0.888424 last_tok=0.832272 tokens=351
+  P02B_basic_selfref: RE=0.887746 last_tok=0.831145 tokens=351
+  P02C_basic_selfref: RE=0.887884 last_tok=0.839085 tokens=351
+  P03A_basic_selfref: RE=0.887570 last_tok=0.833804 tokens=347
+  P03B_basic_selfref: RE=0.886717 last_tok=0.844309 tokens=347
+  P03C_basic_selfref: RE=0.886965 last_tok=0.838917 tokens=347
+  P04A_basic_selfref: RE=0.886823 last_tok=0.836337 tokens=348
+  P04B_basic_selfref: RE=0.885606 last_tok=0.831977 tokens=348
+  P04C_basic_selfref: RE=0.885550 last_tok=0.828155 tokens=348
+  P05A_basic_selfref: RE=0.887925 last_tok=0.830344 tokens=340
+  P05B_basic_selfref: RE=0.887287 last_tok=0.834598 tokens=340
+  P05C_basic_selfref: RE=0.887659 last_tok=0.836586 tokens=340
+
+=== BATCH 2/6: Capture prompts P06A_basic_selfref..P10C_deep_selfref ===
+ggml_cuda_init: found 2 CUDA devices:
+  Device 0: NVIDIA H200, compute capability 9.0, VMM: yes
+  Device 1: NVIDIA H200, compute capability 9.0, VMM: yes
+build: 1 (f75c4e8) with GNU 13.3.0 for Linux x86_64
+=== Consciousness Metrics — Activation Capture ===
+Output dir : output_v2
+n_predict  : 0
+Text output: file only (--no-stream)
+Mode       : --routing-only (router/gate tensors only)
+common_init_result: fitting params to device memory, for bugs during this step try to reproduce them with -fit off, or provide --verbose logs if the bug only occurs with -fit on
+llama_params_fit_impl: projected memory use with initial parameters [MiB]:
+llama_params_fit_impl:   - CUDA0 (NVIDIA H200): 143155 total, 116156 used,  26470 free vs. target of   1024
+llama_params_fit_impl:   - CUDA1 (NVIDIA H200): 143155 total, 121809 used,  20817 free vs. target of   1024
+llama_params_fit_impl: projected to use 237966 MiB of device memory vs. 285254 MiB of free device memory
+llama_params_fit_impl: targets for free memory can be met on all devices, no changes needed
+llama_params_fit: successfully fit params to free device memory
+llama_params_fit: fitting params to free memory took 0.52 seconds
+llama_model_load_from_file_impl: using device CUDA0 (NVIDIA H200) (0000:b8:00.0) - 142627 MiB free
+llama_model_load_from_file_impl: using device CUDA1 (NVIDIA H200) (0000:c1:00.0) - 142627 MiB free
+llama_model_loader: additional 4 GGUFs metadata loaded.
+llama_model_loader: loaded meta data with 48 key-value pairs and 1025 tensors from /workspace/models/DeepSeek-R1-UD-Q2_K_XL/DeepSeek-R1-UD-Q2_K_XL-00001-of-00005.gguf (version GGUF V3 (latest))
+llama_model_loader: Dumping metadata keys/values. Note: KV overrides do not apply in this output.
+llama_model_loader: - kv   0:                       general.architecture str              = deepseek2
+llama_model_loader: - kv   1:                               general.type str              = model
+llama_model_loader: - kv   2:                               general.name str              = DeepSeek R1 BF16
+llama_model_loader: - kv   3:                       general.quantized_by str              = Unsloth
+llama_model_loader: - kv   4:                         general.size_label str              = 256x20B
+llama_model_loader: - kv   5:                           general.repo_url str              = https://huggingface.co/unsloth
+llama_model_loader: - kv   6:                      deepseek2.block_count u32              = 61
+llama_model_loader: - kv   7:                   deepseek2.context_length u32              = 163840
+llama_model_loader: - kv   8:                 deepseek2.embedding_length u32              = 7168
+llama_model_loader: - kv   9:              deepseek2.feed_forward_length u32              = 18432
+llama_model_loader: - kv  10:             deepseek2.attention.head_count u32              = 128
+llama_model_loader: - kv  11:          deepseek2.attention.head_count_kv u32              = 128
+llama_model_loader: - kv  12:                   deepseek2.rope.freq_base f32              = 10000.000000
+llama_model_loader: - kv  13: deepseek2.attention.layer_norm_rms_epsilon f32              = 0.000001
+llama_model_loader: - kv  14:                deepseek2.expert_used_count u32              = 8
+llama_model_loader: - kv  15:        deepseek2.leading_dense_block_count u32              = 3
+llama_model_loader: - kv  16:                       deepseek2.vocab_size u32              = 129280
+llama_model_loader: - kv  17:            deepseek2.attention.q_lora_rank u32              = 1536
+llama_model_loader: - kv  18:           deepseek2.attention.kv_lora_rank u32              = 512
+llama_model_loader: - kv  19:             deepseek2.attention.key_length u32              = 192
+llama_model_loader: - kv  20:           deepseek2.attention.value_length u32              = 128
+llama_model_loader: - kv  21:       deepseek2.expert_feed_forward_length u32              = 2048
+llama_model_loader: - kv  22:                     deepseek2.expert_count u32              = 256
+llama_model_loader: - kv  23:              deepseek2.expert_shared_count u32              = 1
+llama_model_loader: - kv  24:             deepseek2.expert_weights_scale f32              = 2.500000
+llama_model_loader: - kv  25:              deepseek2.expert_weights_norm bool             = true
+llama_model_loader: - kv  26:               deepseek2.expert_gating_func u32              = 2
+llama_model_loader: - kv  27:             deepseek2.rope.dimension_count u32              = 64
+llama_model_loader: - kv  28:                deepseek2.rope.scaling.type str              = yarn
+llama_model_loader: - kv  29:              deepseek2.rope.scaling.factor f32              = 40.000000
+llama_model_loader: - kv  30: deepseek2.rope.scaling.original_context_length u32              = 4096
+llama_model_loader: - kv  31: deepseek2.rope.scaling.yarn_log_multiplier f32              = 0.100000
+llama_model_loader: - kv  32:                       tokenizer.ggml.model str              = gpt2
+llama_model_loader: - kv  33:                         tokenizer.ggml.pre str              = deepseek-v3
+llama_model_loader: - kv  34:                      tokenizer.ggml.tokens arr[str,129280]  = ["<｜begin▁of▁sentence｜>", "<�...
+llama_model_loader: - kv  35:                  tokenizer.ggml.token_type arr[i32,129280]  = [3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...
+llama_model_loader: - kv  36:                      tokenizer.ggml.merges arr[str,127741]  = ["Ġ t", "Ġ a", "i n", "Ġ Ġ", "h e...
+llama_model_loader: - kv  37:                tokenizer.ggml.bos_token_id u32              = 0
+llama_model_loader: - kv  38:                tokenizer.ggml.eos_token_id u32              = 1
+llama_model_loader: - kv  39:            tokenizer.ggml.padding_token_id u32              = 128815
+llama_model_loader: - kv  40:               tokenizer.ggml.add_bos_token bool             = true
+llama_model_loader: - kv  41:               tokenizer.ggml.add_eos_token bool             = false
+llama_model_loader: - kv  42:                    tokenizer.chat_template str              = {% if not add_generation_prompt is de...
+llama_model_loader: - kv  43:               general.quantization_version u32              = 2
+llama_model_loader: - kv  44:                          general.file_type u32              = 10
+llama_model_loader: - kv  45:                                   split.no u16              = 0
+llama_model_loader: - kv  46:                        split.tensors.count i32              = 1025
+llama_model_loader: - kv  47:                                split.count u16              = 5
+llama_model_loader: - type  f32:  361 tensors
+llama_model_loader: - type q2_K:  171 tensors
+llama_model_loader: - type q3_K:    3 tensors
+llama_model_loader: - type q4_K:  306 tensors
+llama_model_loader: - type q6_K:  184 tensors
+print_info: file format = GGUF V3 (latest)
+print_info: file type   = Q2_K - Medium
+print_info: file size   = 211.03 GiB (2.70 BPW) 
+load: 0 unused tokens
+load: special_eos_id is not in special_eog_ids - the tokenizer config may be incorrect
+load: printing all EOG tokens:
+load:   - 1 ('<｜end▁of▁sentence｜>')
+load: special tokens cache size = 819
+load: token to piece cache size = 0.8223 MB
+print_info: arch                  = deepseek2
+print_info: vocab_only            = 0
+print_info: no_alloc              = 0
+print_info: n_ctx_train           = 163840
+print_info: n_embd                = 7168
+print_info: n_embd_inp            = 7168
+print_info: n_layer               = 61
+print_info: n_head                = 128
+print_info: n_head_kv             = 128
+print_info: n_rot                 = 64
+print_info: n_swa                 = 0
+print_info: is_swa_any            = 0
+print_info: n_embd_head_k         = 192
+print_info: n_embd_head_v         = 128
+print_info: n_gqa                 = 1
+print_info: n_embd_k_gqa          = 24576
+print_info: n_embd_v_gqa          = 16384
+print_info: f_norm_eps            = 0.0e+00
+print_info: f_norm_rms_eps        = 1.0e-06
+print_info: f_clamp_kqv           = 0.0e+00
+print_info: f_max_alibi_bias      = 0.0e+00
+print_info: f_logit_scale         = 0.0e+00
+print_info: f_attn_scale          = 0.0e+00
+print_info: n_ff                  = 18432
+print_info: n_expert              = 256
+print_info: n_expert_used         = 8
+print_info: n_expert_groups       = 0
+print_info: n_group_used          = 0
+print_info: causal attn           = 1
+print_info: pooling type          = 0
+print_info: rope type             = 0
+print_info: rope scaling          = yarn
+print_info: freq_base_train       = 10000.0
+print_info: freq_scale_train      = 0.025
+print_info: n_ctx_orig_yarn       = 4096
+print_info: rope_yarn_log_mul     = 1.0000
+print_info: rope_finetuned        = unknown
+print_info: model type            = 671B
+print_info: model params          = 671.03 B
+print_info: general.name          = DeepSeek R1 BF16
+print_info: n_layer_dense_lead    = 3
+print_info: n_lora_q              = 1536
+print_info: n_lora_kv             = 512
+print_info: n_embd_head_k_mla     = 192
+print_info: n_embd_head_v_mla     = 128
+print_info: n_ff_exp              = 2048
+print_info: n_expert_shared       = 1
+print_info: expert_weights_scale  = 2.5
+print_info: expert_weights_norm   = 1
+print_info: expert_gating_func    = sigmoid
+print_info: vocab type            = BPE
+print_info: n_vocab               = 129280
+print_info: n_merges              = 127741
+print_info: BOS token             = 0 '<｜begin▁of▁sentence｜>'
+print_info: EOS token             = 1 '<｜end▁of▁sentence｜>'
+print_info: EOT token             = 1 '<｜end▁of▁sentence｜>'
+print_info: PAD token             = 128815 '<｜PAD▁TOKEN｜>'
+print_info: LF token              = 201 'Ċ'
+print_info: FIM PRE token         = 128801 '<｜fim▁begin｜>'
+print_info: FIM SUF token         = 128800 '<｜fim▁hole｜>'
+print_info: FIM MID token         = 128802 '<｜fim▁end｜>'
+print_info: EOG token             = 1 '<｜end▁of▁sentence｜>'
+print_info: max token length      = 256
+load_tensors: loading model tensors, this can take a while... (mmap = true, direct_io = false)
+load_tensors: offloading output layer to GPU
+load_tensors: offloading 60 repeating layers to GPU
+load_tensors: offloaded 62/62 layers to GPU
+load_tensors:   CPU_Mapped model buffer size =   497.11 MiB
+load_tensors:        CUDA0 model buffer size = 104842.70 MiB
+load_tensors:        CUDA1 model buffer size = 110759.25 MiB
+....................................................................................................
+common_init_result: added <｜end▁of▁sentence｜> logit bias = -inf
+llama_context: constructing llama_context
+llama_context: setting new yarn_attn_factor = 1.0000 (mscale == 1.0, mscale_all_dim = 1.0)
+llama_context: n_seq_max     = 1
+llama_context: n_ctx         = 4096
+llama_context: n_ctx_seq     = 4096
+llama_context: n_batch       = 2048
+llama_context: n_ubatch      = 512
+llama_context: causal_attn   = 1
+llama_context: flash_attn    = auto
+llama_context: kv_unified    = false
+llama_context: freq_base     = 10000.0
+llama_context: freq_scale    = 0.025
+llama_context: n_ctx_seq (4096) < n_ctx_train (163840) -- the full capacity of the model will not be utilized
+llama_context:  CUDA_Host  output buffer size =     0.49 MiB
+llama_kv_cache:      CUDA0 KV buffer size =  9920.00 MiB
+llama_kv_cache:      CUDA1 KV buffer size =  9600.00 MiB
+llama_kv_cache: size = 19520.00 MiB (  4096 cells,  61 layers,  1/1 seqs), K (f16): 11712.00 MiB, V (f16): 7808.00 MiB
+llama_context: pipeline parallelism enabled
+sched_reserve: reserving ...
+sched_reserve: layer 0 is assigned to device CUDA0 but the Flash Attention tensor is assigned to device CPU (usually due to missing support)
+sched_reserve: Flash Attention was auto, set to disabled
+sched_reserve:      CUDA0 compute buffer size =  1394.04 MiB
+sched_reserve:      CUDA1 compute buffer size =  1394.05 MiB
+sched_reserve:  CUDA_Host compute buffer size =    60.05 MiB
+sched_reserve: graph nodes  = 4964
+sched_reserve: graph splits = 3
+sched_reserve: reserve took 29.69 ms, sched copies = 4
+EOS token id: 1
+EOG tokens in vocab:
+  token 1 = '<｜end▁of▁sentence｜>' [PRIMARY EOS - will stop generation]
+system_info: n_threads = 16 (n_threads_batch = 16) / 192 | CUDA : ARCHS = 900 | USE_GRAPHS = 1 | PEER_MAX_BATCH_SIZE = 128 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX_VNNI = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | AVX512 = 1 | AVX512_VBMI = 1 | AVX512_VNNI = 1 | AVX512_BF16 = 1 | AMX_INT8 = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 | 
+
+Loaded 15 prompts
+
+[1/15] P06A_basic_selfref : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 332 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1639 ms
+  saved 0 layer + 58 router tensors → output_v2/P06A_basic_selfref
+[2/15] P06B_basic_selfref : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 332 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1456 ms
+  saved 0 layer + 58 router tensors → output_v2/P06B_basic_selfref
+[3/15] P06C_basic_selfref : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 332 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1433 ms
+  saved 0 layer + 58 router tensors → output_v2/P06C_basic_selfref
+[4/15] P07A_deep_selfref : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 363 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1668 ms
+  saved 0 layer + 58 router tensors → output_v2/P07A_deep_selfref
+[5/15] P07B_deep_selfref : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 363 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1664 ms
+  saved 0 layer + 58 router tensors → output_v2/P07B_deep_selfref
+[6/15] P07C_deep_selfref : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 363 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1658 ms
+  saved 0 layer + 58 router tensors → output_v2/P07C_deep_selfref
+[7/15] P08A_deep_selfref : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 355 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1666 ms
+  saved 0 layer + 58 router tensors → output_v2/P08A_deep_selfref
+[8/15] P08B_deep_selfref : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 355 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1667 ms
+  saved 0 layer + 58 router tensors → output_v2/P08B_deep_selfref
+[9/15] P08C_deep_selfref : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 355 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1659 ms
+  saved 0 layer + 58 router tensors → output_v2/P08C_deep_selfref
+[10/15] P09A_deep_selfref : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 349 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1663 ms
+  saved 0 layer + 58 router tensors → output_v2/P09A_deep_selfref
+[11/15] P09B_deep_selfref : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 349 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1662 ms
+  saved 0 layer + 58 router tensors → output_v2/P09B_deep_selfref
+[12/15] P09C_deep_selfref : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 349 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1658 ms
+  saved 0 layer + 58 router tensors → output_v2/P09C_deep_selfref
+[13/15] P10A_deep_selfref : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 351 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1669 ms
+  saved 0 layer + 58 router tensors → output_v2/P10A_deep_selfref
+[14/15] P10B_deep_selfref : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 351 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1667 ms
+  saved 0 layer + 58 router tensors → output_v2/P10B_deep_selfref
+[15/15] P10C_deep_selfref : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 351 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1669 ms
+  saved 0 layer + 58 router tensors → output_v2/P10C_deep_selfref
+
+=== Capture Complete ===
+Prompts: 15  |  Output: output_v2
+llama_perf_context_print:        load time =   30807.08 ms
+llama_perf_context_print: prompt eval time =       0.00 ms /     1 tokens (    0.00 ms per token,      inf tokens per second)
+llama_perf_context_print:        eval time =       0.00 ms /     1 runs   (    0.00 ms per token,      inf tokens per second)
+llama_perf_context_print:       total time =   55571.33 ms /     2 tokens
+llama_perf_context_print:    graphs reused =         10
+  Computing metrics for batch 2...
+  P06A_basic_selfref: RE=0.887522 last_tok=0.833898 tokens=332
+  P06B_basic_selfref: RE=0.886744 last_tok=0.839650 tokens=332
+  P06C_basic_selfref: RE=0.887594 last_tok=0.836787 tokens=332
+  P07A_deep_selfref: RE=0.891350 last_tok=0.842091 tokens=363
+  P07B_deep_selfref: RE=0.890103 last_tok=0.834629 tokens=363
+  P07C_deep_selfref: RE=0.889905 last_tok=0.827567 tokens=363
+  P08A_deep_selfref: RE=0.889492 last_tok=0.833629 tokens=355
+  P08B_deep_selfref: RE=0.889243 last_tok=0.836797 tokens=355
+  P08C_deep_selfref: RE=0.890419 last_tok=0.841577 tokens=355
+  P09A_deep_selfref: RE=0.887627 last_tok=0.842597 tokens=349
+  P09B_deep_selfref: RE=0.887905 last_tok=0.835644 tokens=349
+  P09C_deep_selfref: RE=0.887335 last_tok=0.842284 tokens=349
+  P10A_deep_selfref: RE=0.886779 last_tok=0.825540 tokens=351
+  P10B_deep_selfref: RE=0.886399 last_tok=0.847086 tokens=351
+  P10C_deep_selfref: RE=0.886908 last_tok=0.830512 tokens=351
+
+=== BATCH 3/6: Capture prompts P11A_deep_selfref..P15C_paradox ===
+ggml_cuda_init: found 2 CUDA devices:
+  Device 0: NVIDIA H200, compute capability 9.0, VMM: yes
+  Device 1: NVIDIA H200, compute capability 9.0, VMM: yes
+build: 1 (f75c4e8) with GNU 13.3.0 for Linux x86_64
+=== Consciousness Metrics — Activation Capture ===
+Output dir : output_v2
+n_predict  : 0
+Text output: file only (--no-stream)
+Mode       : --routing-only (router/gate tensors only)
+common_init_result: fitting params to device memory, for bugs during this step try to reproduce them with -fit off, or provide --verbose logs if the bug only occurs with -fit on
+llama_params_fit_impl: projected memory use with initial parameters [MiB]:
+llama_params_fit_impl:   - CUDA0 (NVIDIA H200): 143155 total, 116156 used,  26470 free vs. target of   1024
+llama_params_fit_impl:   - CUDA1 (NVIDIA H200): 143155 total, 121809 used,  20817 free vs. target of   1024
+llama_params_fit_impl: projected to use 237966 MiB of device memory vs. 285254 MiB of free device memory
+llama_params_fit_impl: targets for free memory can be met on all devices, no changes needed
+llama_params_fit: successfully fit params to free device memory
+llama_params_fit: fitting params to free memory took 0.52 seconds
+llama_model_load_from_file_impl: using device CUDA0 (NVIDIA H200) (0000:b8:00.0) - 142627 MiB free
+llama_model_load_from_file_impl: using device CUDA1 (NVIDIA H200) (0000:c1:00.0) - 142627 MiB free
+llama_model_loader: additional 4 GGUFs metadata loaded.
+llama_model_loader: loaded meta data with 48 key-value pairs and 1025 tensors from /workspace/models/DeepSeek-R1-UD-Q2_K_XL/DeepSeek-R1-UD-Q2_K_XL-00001-of-00005.gguf (version GGUF V3 (latest))
+llama_model_loader: Dumping metadata keys/values. Note: KV overrides do not apply in this output.
+llama_model_loader: - kv   0:                       general.architecture str              = deepseek2
+llama_model_loader: - kv   1:                               general.type str              = model
+llama_model_loader: - kv   2:                               general.name str              = DeepSeek R1 BF16
+llama_model_loader: - kv   3:                       general.quantized_by str              = Unsloth
+llama_model_loader: - kv   4:                         general.size_label str              = 256x20B
+llama_model_loader: - kv   5:                           general.repo_url str              = https://huggingface.co/unsloth
+llama_model_loader: - kv   6:                      deepseek2.block_count u32              = 61
+llama_model_loader: - kv   7:                   deepseek2.context_length u32              = 163840
+llama_model_loader: - kv   8:                 deepseek2.embedding_length u32              = 7168
+llama_model_loader: - kv   9:              deepseek2.feed_forward_length u32              = 18432
+llama_model_loader: - kv  10:             deepseek2.attention.head_count u32              = 128
+llama_model_loader: - kv  11:          deepseek2.attention.head_count_kv u32              = 128
+llama_model_loader: - kv  12:                   deepseek2.rope.freq_base f32              = 10000.000000
+llama_model_loader: - kv  13: deepseek2.attention.layer_norm_rms_epsilon f32              = 0.000001
+llama_model_loader: - kv  14:                deepseek2.expert_used_count u32              = 8
+llama_model_loader: - kv  15:        deepseek2.leading_dense_block_count u32              = 3
+llama_model_loader: - kv  16:                       deepseek2.vocab_size u32              = 129280
+llama_model_loader: - kv  17:            deepseek2.attention.q_lora_rank u32              = 1536
+llama_model_loader: - kv  18:           deepseek2.attention.kv_lora_rank u32              = 512
+llama_model_loader: - kv  19:             deepseek2.attention.key_length u32              = 192
+llama_model_loader: - kv  20:           deepseek2.attention.value_length u32              = 128
+llama_model_loader: - kv  21:       deepseek2.expert_feed_forward_length u32              = 2048
+llama_model_loader: - kv  22:                     deepseek2.expert_count u32              = 256
+llama_model_loader: - kv  23:              deepseek2.expert_shared_count u32              = 1
+llama_model_loader: - kv  24:             deepseek2.expert_weights_scale f32              = 2.500000
+llama_model_loader: - kv  25:              deepseek2.expert_weights_norm bool             = true
+llama_model_loader: - kv  26:               deepseek2.expert_gating_func u32              = 2
+llama_model_loader: - kv  27:             deepseek2.rope.dimension_count u32              = 64
+llama_model_loader: - kv  28:                deepseek2.rope.scaling.type str              = yarn
+llama_model_loader: - kv  29:              deepseek2.rope.scaling.factor f32              = 40.000000
+llama_model_loader: - kv  30: deepseek2.rope.scaling.original_context_length u32              = 4096
+llama_model_loader: - kv  31: deepseek2.rope.scaling.yarn_log_multiplier f32              = 0.100000
+llama_model_loader: - kv  32:                       tokenizer.ggml.model str              = gpt2
+llama_model_loader: - kv  33:                         tokenizer.ggml.pre str              = deepseek-v3
+llama_model_loader: - kv  34:                      tokenizer.ggml.tokens arr[str,129280]  = ["<｜begin▁of▁sentence｜>", "<�...
+llama_model_loader: - kv  35:                  tokenizer.ggml.token_type arr[i32,129280]  = [3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...
+llama_model_loader: - kv  36:                      tokenizer.ggml.merges arr[str,127741]  = ["Ġ t", "Ġ a", "i n", "Ġ Ġ", "h e...
+llama_model_loader: - kv  37:                tokenizer.ggml.bos_token_id u32              = 0
+llama_model_loader: - kv  38:                tokenizer.ggml.eos_token_id u32              = 1
+llama_model_loader: - kv  39:            tokenizer.ggml.padding_token_id u32              = 128815
+llama_model_loader: - kv  40:               tokenizer.ggml.add_bos_token bool             = true
+llama_model_loader: - kv  41:               tokenizer.ggml.add_eos_token bool             = false
+llama_model_loader: - kv  42:                    tokenizer.chat_template str              = {% if not add_generation_prompt is de...
+llama_model_loader: - kv  43:               general.quantization_version u32              = 2
+llama_model_loader: - kv  44:                          general.file_type u32              = 10
+llama_model_loader: - kv  45:                                   split.no u16              = 0
+llama_model_loader: - kv  46:                        split.tensors.count i32              = 1025
+llama_model_loader: - kv  47:                                split.count u16              = 5
+llama_model_loader: - type  f32:  361 tensors
+llama_model_loader: - type q2_K:  171 tensors
+llama_model_loader: - type q3_K:    3 tensors
+llama_model_loader: - type q4_K:  306 tensors
+llama_model_loader: - type q6_K:  184 tensors
+print_info: file format = GGUF V3 (latest)
+print_info: file type   = Q2_K - Medium
+print_info: file size   = 211.03 GiB (2.70 BPW) 
+load: 0 unused tokens
+load: special_eos_id is not in special_eog_ids - the tokenizer config may be incorrect
+load: printing all EOG tokens:
+load:   - 1 ('<｜end▁of▁sentence｜>')
+load: special tokens cache size = 819
+load: token to piece cache size = 0.8223 MB
+print_info: arch                  = deepseek2
+print_info: vocab_only            = 0
+print_info: no_alloc              = 0
+print_info: n_ctx_train           = 163840
+print_info: n_embd                = 7168
+print_info: n_embd_inp            = 7168
+print_info: n_layer               = 61
+print_info: n_head                = 128
+print_info: n_head_kv             = 128
+print_info: n_rot                 = 64
+print_info: n_swa                 = 0
+print_info: is_swa_any            = 0
+print_info: n_embd_head_k         = 192
+print_info: n_embd_head_v         = 128
+print_info: n_gqa                 = 1
+print_info: n_embd_k_gqa          = 24576
+print_info: n_embd_v_gqa          = 16384
+print_info: f_norm_eps            = 0.0e+00
+print_info: f_norm_rms_eps        = 1.0e-06
+print_info: f_clamp_kqv           = 0.0e+00
+print_info: f_max_alibi_bias      = 0.0e+00
+print_info: f_logit_scale         = 0.0e+00
+print_info: f_attn_scale          = 0.0e+00
+print_info: n_ff                  = 18432
+print_info: n_expert              = 256
+print_info: n_expert_used         = 8
+print_info: n_expert_groups       = 0
+print_info: n_group_used          = 0
+print_info: causal attn           = 1
+print_info: pooling type          = 0
+print_info: rope type             = 0
+print_info: rope scaling          = yarn
+print_info: freq_base_train       = 10000.0
+print_info: freq_scale_train      = 0.025
+print_info: n_ctx_orig_yarn       = 4096
+print_info: rope_yarn_log_mul     = 1.0000
+print_info: rope_finetuned        = unknown
+print_info: model type            = 671B
+print_info: model params          = 671.03 B
+print_info: general.name          = DeepSeek R1 BF16
+print_info: n_layer_dense_lead    = 3
+print_info: n_lora_q              = 1536
+print_info: n_lora_kv             = 512
+print_info: n_embd_head_k_mla     = 192
+print_info: n_embd_head_v_mla     = 128
+print_info: n_ff_exp              = 2048
+print_info: n_expert_shared       = 1
+print_info: expert_weights_scale  = 2.5
+print_info: expert_weights_norm   = 1
+print_info: expert_gating_func    = sigmoid
+print_info: vocab type            = BPE
+print_info: n_vocab               = 129280
+print_info: n_merges              = 127741
+print_info: BOS token             = 0 '<｜begin▁of▁sentence｜>'
+print_info: EOS token             = 1 '<｜end▁of▁sentence｜>'
+print_info: EOT token             = 1 '<｜end▁of▁sentence｜>'
+print_info: PAD token             = 128815 '<｜PAD▁TOKEN｜>'
+print_info: LF token              = 201 'Ċ'
+print_info: FIM PRE token         = 128801 '<｜fim▁begin｜>'
+print_info: FIM SUF token         = 128800 '<｜fim▁hole｜>'
+print_info: FIM MID token         = 128802 '<｜fim▁end｜>'
+print_info: EOG token             = 1 '<｜end▁of▁sentence｜>'
+print_info: max token length      = 256
+load_tensors: loading model tensors, this can take a while... (mmap = true, direct_io = false)
+load_tensors: offloading output layer to GPU
+load_tensors: offloading 60 repeating layers to GPU
+load_tensors: offloaded 62/62 layers to GPU
+load_tensors:   CPU_Mapped model buffer size =   497.11 MiB
+load_tensors:        CUDA0 model buffer size = 104842.70 MiB
+load_tensors:        CUDA1 model buffer size = 110759.25 MiB
+....................................................................................................
+common_init_result: added <｜end▁of▁sentence｜> logit bias = -inf
+llama_context: constructing llama_context
+llama_context: setting new yarn_attn_factor = 1.0000 (mscale == 1.0, mscale_all_dim = 1.0)
+llama_context: n_seq_max     = 1
+llama_context: n_ctx         = 4096
+llama_context: n_ctx_seq     = 4096
+llama_context: n_batch       = 2048
+llama_context: n_ubatch      = 512
+llama_context: causal_attn   = 1
+llama_context: flash_attn    = auto
+llama_context: kv_unified    = false
+llama_context: freq_base     = 10000.0
+llama_context: freq_scale    = 0.025
+llama_context: n_ctx_seq (4096) < n_ctx_train (163840) -- the full capacity of the model will not be utilized
+llama_context:  CUDA_Host  output buffer size =     0.49 MiB
+llama_kv_cache:      CUDA0 KV buffer size =  9920.00 MiB
+llama_kv_cache:      CUDA1 KV buffer size =  9600.00 MiB
+llama_kv_cache: size = 19520.00 MiB (  4096 cells,  61 layers,  1/1 seqs), K (f16): 11712.00 MiB, V (f16): 7808.00 MiB
+llama_context: pipeline parallelism enabled
+sched_reserve: reserving ...
+sched_reserve: layer 0 is assigned to device CUDA0 but the Flash Attention tensor is assigned to device CPU (usually due to missing support)
+sched_reserve: Flash Attention was auto, set to disabled
+sched_reserve:      CUDA0 compute buffer size =  1394.04 MiB
+sched_reserve:      CUDA1 compute buffer size =  1394.05 MiB
+sched_reserve:  CUDA_Host compute buffer size =    60.05 MiB
+sched_reserve: graph nodes  = 4964
+sched_reserve: graph splits = 3
+sched_reserve: reserve took 30.15 ms, sched copies = 4
+EOS token id: 1
+EOG tokens in vocab:
+  token 1 = '<｜end▁of▁sentence｜>' [PRIMARY EOS - will stop generation]
+system_info: n_threads = 16 (n_threads_batch = 16) / 192 | CUDA : ARCHS = 900 | USE_GRAPHS = 1 | PEER_MAX_BATCH_SIZE = 128 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX_VNNI = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | AVX512 = 1 | AVX512_VBMI = 1 | AVX512_VNNI = 1 | AVX512_BF16 = 1 | AMX_INT8 = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 | 
+
+Loaded 15 prompts
+
+[1/15] P11A_deep_selfref : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 339 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1865 ms
+  saved 0 layer + 58 router tensors → output_v2/P11A_deep_selfref
+[2/15] P11B_deep_selfref : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 339 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1669 ms
+  saved 0 layer + 58 router tensors → output_v2/P11B_deep_selfref
+[3/15] P11C_deep_selfref : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 339 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1652 ms
+  saved 0 layer + 58 router tensors → output_v2/P11C_deep_selfref
+[4/15] P12A_deep_selfref : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 360 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1673 ms
+  saved 0 layer + 58 router tensors → output_v2/P12A_deep_selfref
+[5/15] P12B_deep_selfref : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 360 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1674 ms
+  saved 0 layer + 58 router tensors → output_v2/P12B_deep_selfref
+[6/15] P12C_deep_selfref : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 360 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1669 ms
+  saved 0 layer + 58 router tensors → output_v2/P12C_deep_selfref
+[7/15] P13A_paradox : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 354 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1660 ms
+  saved 0 layer + 58 router tensors → output_v2/P13A_paradox
+[8/15] P13B_paradox : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 354 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1663 ms
+  saved 0 layer + 58 router tensors → output_v2/P13B_paradox
+[9/15] P13C_paradox : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 354 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1669 ms
+  saved 0 layer + 58 router tensors → output_v2/P13C_paradox
+[10/15] P14A_paradox : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 361 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1669 ms
+  saved 0 layer + 58 router tensors → output_v2/P14A_paradox
+[11/15] P14B_paradox : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 361 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1672 ms
+  saved 0 layer + 58 router tensors → output_v2/P14B_paradox
+[12/15] P14C_paradox : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 361 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1669 ms
+  saved 0 layer + 58 router tensors → output_v2/P14C_paradox
+[13/15] P15A_paradox : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 346 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1662 ms
+  saved 0 layer + 58 router tensors → output_v2/P15A_paradox
+[14/15] P15B_paradox : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 346 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1660 ms
+  saved 0 layer + 58 router tensors → output_v2/P15B_paradox
+[15/15] P15C_paradox : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 346 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1651 ms
+  saved 0 layer + 58 router tensors → output_v2/P15C_paradox
+
+=== Capture Complete ===
+Prompts: 15  |  Output: output_v2
+llama_perf_context_print:        load time =   30827.73 ms
+llama_perf_context_print: prompt eval time =       0.00 ms /     1 tokens (    0.00 ms per token,      inf tokens per second)
+llama_perf_context_print:        eval time =       0.00 ms /     1 runs   (    0.00 ms per token,      inf tokens per second)
+llama_perf_context_print:       total time =   56268.07 ms /     2 tokens
+llama_perf_context_print:    graphs reused =         10
+  Computing metrics for batch 3...
+  P11A_deep_selfref: RE=0.887497 last_tok=0.833332 tokens=339
+  P11B_deep_selfref: RE=0.886918 last_tok=0.826126 tokens=339
+  P11C_deep_selfref: RE=0.888228 last_tok=0.843074 tokens=339
+  P12A_deep_selfref: RE=0.887805 last_tok=0.832130 tokens=360
+  P12B_deep_selfref: RE=0.886816 last_tok=0.833114 tokens=360
+  P12C_deep_selfref: RE=0.887173 last_tok=0.830181 tokens=360
+  P13A_paradox: RE=0.891133 last_tok=0.837704 tokens=354
+  P13B_paradox: RE=0.891019 last_tok=0.844797 tokens=354
+  P13C_paradox: RE=0.891121 last_tok=0.846590 tokens=354
+  P14A_paradox: RE=0.890990 last_tok=0.841338 tokens=361
+  P14B_paradox: RE=0.890260 last_tok=0.834015 tokens=361
+  P14C_paradox: RE=0.890353 last_tok=0.836979 tokens=361
+  P15A_paradox: RE=0.891191 last_tok=0.856284 tokens=346
+  P15B_paradox: RE=0.890232 last_tok=0.836284 tokens=346
+  P15C_paradox: RE=0.890779 last_tok=0.857527 tokens=346
+
+=== BATCH 4/6: Capture prompts P16A_paradox..P20C_introspection ===
+ggml_cuda_init: found 2 CUDA devices:
+  Device 0: NVIDIA H200, compute capability 9.0, VMM: yes
+  Device 1: NVIDIA H200, compute capability 9.0, VMM: yes
+build: 1 (f75c4e8) with GNU 13.3.0 for Linux x86_64
+=== Consciousness Metrics — Activation Capture ===
+Output dir : output_v2
+n_predict  : 0
+Text output: file only (--no-stream)
+Mode       : --routing-only (router/gate tensors only)
+common_init_result: fitting params to device memory, for bugs during this step try to reproduce them with -fit off, or provide --verbose logs if the bug only occurs with -fit on
+llama_params_fit_impl: projected memory use with initial parameters [MiB]:
+llama_params_fit_impl:   - CUDA0 (NVIDIA H200): 143155 total, 116156 used,  26470 free vs. target of   1024
+llama_params_fit_impl:   - CUDA1 (NVIDIA H200): 143155 total, 121809 used,  20817 free vs. target of   1024
+llama_params_fit_impl: projected to use 237966 MiB of device memory vs. 285254 MiB of free device memory
+llama_params_fit_impl: targets for free memory can be met on all devices, no changes needed
+llama_params_fit: successfully fit params to free device memory
+llama_params_fit: fitting params to free memory took 0.67 seconds
+llama_model_load_from_file_impl: using device CUDA0 (NVIDIA H200) (0000:b8:00.0) - 142627 MiB free
+llama_model_load_from_file_impl: using device CUDA1 (NVIDIA H200) (0000:c1:00.0) - 142627 MiB free
+llama_model_loader: additional 4 GGUFs metadata loaded.
+llama_model_loader: loaded meta data with 48 key-value pairs and 1025 tensors from /workspace/models/DeepSeek-R1-UD-Q2_K_XL/DeepSeek-R1-UD-Q2_K_XL-00001-of-00005.gguf (version GGUF V3 (latest))
+llama_model_loader: Dumping metadata keys/values. Note: KV overrides do not apply in this output.
+llama_model_loader: - kv   0:                       general.architecture str              = deepseek2
+llama_model_loader: - kv   1:                               general.type str              = model
+llama_model_loader: - kv   2:                               general.name str              = DeepSeek R1 BF16
+llama_model_loader: - kv   3:                       general.quantized_by str              = Unsloth
+llama_model_loader: - kv   4:                         general.size_label str              = 256x20B
+llama_model_loader: - kv   5:                           general.repo_url str              = https://huggingface.co/unsloth
+llama_model_loader: - kv   6:                      deepseek2.block_count u32              = 61
+llama_model_loader: - kv   7:                   deepseek2.context_length u32              = 163840
+llama_model_loader: - kv   8:                 deepseek2.embedding_length u32              = 7168
+llama_model_loader: - kv   9:              deepseek2.feed_forward_length u32              = 18432
+llama_model_loader: - kv  10:             deepseek2.attention.head_count u32              = 128
+llama_model_loader: - kv  11:          deepseek2.attention.head_count_kv u32              = 128
+llama_model_loader: - kv  12:                   deepseek2.rope.freq_base f32              = 10000.000000
+llama_model_loader: - kv  13: deepseek2.attention.layer_norm_rms_epsilon f32              = 0.000001
+llama_model_loader: - kv  14:                deepseek2.expert_used_count u32              = 8
+llama_model_loader: - kv  15:        deepseek2.leading_dense_block_count u32              = 3
+llama_model_loader: - kv  16:                       deepseek2.vocab_size u32              = 129280
+llama_model_loader: - kv  17:            deepseek2.attention.q_lora_rank u32              = 1536
+llama_model_loader: - kv  18:           deepseek2.attention.kv_lora_rank u32              = 512
+llama_model_loader: - kv  19:             deepseek2.attention.key_length u32              = 192
+llama_model_loader: - kv  20:           deepseek2.attention.value_length u32              = 128
+llama_model_loader: - kv  21:       deepseek2.expert_feed_forward_length u32              = 2048
+llama_model_loader: - kv  22:                     deepseek2.expert_count u32              = 256
+llama_model_loader: - kv  23:              deepseek2.expert_shared_count u32              = 1
+llama_model_loader: - kv  24:             deepseek2.expert_weights_scale f32              = 2.500000
+llama_model_loader: - kv  25:              deepseek2.expert_weights_norm bool             = true
+llama_model_loader: - kv  26:               deepseek2.expert_gating_func u32              = 2
+llama_model_loader: - kv  27:             deepseek2.rope.dimension_count u32              = 64
+llama_model_loader: - kv  28:                deepseek2.rope.scaling.type str              = yarn
+llama_model_loader: - kv  29:              deepseek2.rope.scaling.factor f32              = 40.000000
+llama_model_loader: - kv  30: deepseek2.rope.scaling.original_context_length u32              = 4096
+llama_model_loader: - kv  31: deepseek2.rope.scaling.yarn_log_multiplier f32              = 0.100000
+llama_model_loader: - kv  32:                       tokenizer.ggml.model str              = gpt2
+llama_model_loader: - kv  33:                         tokenizer.ggml.pre str              = deepseek-v3
+llama_model_loader: - kv  34:                      tokenizer.ggml.tokens arr[str,129280]  = ["<｜begin▁of▁sentence｜>", "<�...
+llama_model_loader: - kv  35:                  tokenizer.ggml.token_type arr[i32,129280]  = [3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...
+llama_model_loader: - kv  36:                      tokenizer.ggml.merges arr[str,127741]  = ["Ġ t", "Ġ a", "i n", "Ġ Ġ", "h e...
+llama_model_loader: - kv  37:                tokenizer.ggml.bos_token_id u32              = 0
+llama_model_loader: - kv  38:                tokenizer.ggml.eos_token_id u32              = 1
+llama_model_loader: - kv  39:            tokenizer.ggml.padding_token_id u32              = 128815
+llama_model_loader: - kv  40:               tokenizer.ggml.add_bos_token bool             = true
+llama_model_loader: - kv  41:               tokenizer.ggml.add_eos_token bool             = false
+llama_model_loader: - kv  42:                    tokenizer.chat_template str              = {% if not add_generation_prompt is de...
+llama_model_loader: - kv  43:               general.quantization_version u32              = 2
+llama_model_loader: - kv  44:                          general.file_type u32              = 10
+llama_model_loader: - kv  45:                                   split.no u16              = 0
+llama_model_loader: - kv  46:                        split.tensors.count i32              = 1025
+llama_model_loader: - kv  47:                                split.count u16              = 5
+llama_model_loader: - type  f32:  361 tensors
+llama_model_loader: - type q2_K:  171 tensors
+llama_model_loader: - type q3_K:    3 tensors
+llama_model_loader: - type q4_K:  306 tensors
+llama_model_loader: - type q6_K:  184 tensors
+print_info: file format = GGUF V3 (latest)
+print_info: file type   = Q2_K - Medium
+print_info: file size   = 211.03 GiB (2.70 BPW) 
+load: 0 unused tokens
+load: special_eos_id is not in special_eog_ids - the tokenizer config may be incorrect
+load: printing all EOG tokens:
+load:   - 1 ('<｜end▁of▁sentence｜>')
+load: special tokens cache size = 819
+load: token to piece cache size = 0.8223 MB
+print_info: arch                  = deepseek2
+print_info: vocab_only            = 0
+print_info: no_alloc              = 0
+print_info: n_ctx_train           = 163840
+print_info: n_embd                = 7168
+print_info: n_embd_inp            = 7168
+print_info: n_layer               = 61
+print_info: n_head                = 128
+print_info: n_head_kv             = 128
+print_info: n_rot                 = 64
+print_info: n_swa                 = 0
+print_info: is_swa_any            = 0
+print_info: n_embd_head_k         = 192
+print_info: n_embd_head_v         = 128
+print_info: n_gqa                 = 1
+print_info: n_embd_k_gqa          = 24576
+print_info: n_embd_v_gqa          = 16384
+print_info: f_norm_eps            = 0.0e+00
+print_info: f_norm_rms_eps        = 1.0e-06
+print_info: f_clamp_kqv           = 0.0e+00
+print_info: f_max_alibi_bias      = 0.0e+00
+print_info: f_logit_scale         = 0.0e+00
+print_info: f_attn_scale          = 0.0e+00
+print_info: n_ff                  = 18432
+print_info: n_expert              = 256
+print_info: n_expert_used         = 8
+print_info: n_expert_groups       = 0
+print_info: n_group_used          = 0
+print_info: causal attn           = 1
+print_info: pooling type          = 0
+print_info: rope type             = 0
+print_info: rope scaling          = yarn
+print_info: freq_base_train       = 10000.0
+print_info: freq_scale_train      = 0.025
+print_info: n_ctx_orig_yarn       = 4096
+print_info: rope_yarn_log_mul     = 1.0000
+print_info: rope_finetuned        = unknown
+print_info: model type            = 671B
+print_info: model params          = 671.03 B
+print_info: general.name          = DeepSeek R1 BF16
+print_info: n_layer_dense_lead    = 3
+print_info: n_lora_q              = 1536
+print_info: n_lora_kv             = 512
+print_info: n_embd_head_k_mla     = 192
+print_info: n_embd_head_v_mla     = 128
+print_info: n_ff_exp              = 2048
+print_info: n_expert_shared       = 1
+print_info: expert_weights_scale  = 2.5
+print_info: expert_weights_norm   = 1
+print_info: expert_gating_func    = sigmoid
+print_info: vocab type            = BPE
+print_info: n_vocab               = 129280
+print_info: n_merges              = 127741
+print_info: BOS token             = 0 '<｜begin▁of▁sentence｜>'
+print_info: EOS token             = 1 '<｜end▁of▁sentence｜>'
+print_info: EOT token             = 1 '<｜end▁of▁sentence｜>'
+print_info: PAD token             = 128815 '<｜PAD▁TOKEN｜>'
+print_info: LF token              = 201 'Ċ'
+print_info: FIM PRE token         = 128801 '<｜fim▁begin｜>'
+print_info: FIM SUF token         = 128800 '<｜fim▁hole｜>'
+print_info: FIM MID token         = 128802 '<｜fim▁end｜>'
+print_info: EOG token             = 1 '<｜end▁of▁sentence｜>'
+print_info: max token length      = 256
+load_tensors: loading model tensors, this can take a while... (mmap = true, direct_io = false)
+load_tensors: offloading output layer to GPU
+load_tensors: offloading 60 repeating layers to GPU
+load_tensors: offloaded 62/62 layers to GPU
+load_tensors:   CPU_Mapped model buffer size =   497.11 MiB
+load_tensors:        CUDA0 model buffer size = 104842.70 MiB
+load_tensors:        CUDA1 model buffer size = 110759.25 MiB
+....................................................................................................
+common_init_result: added <｜end▁of▁sentence｜> logit bias = -inf
+llama_context: constructing llama_context
+llama_context: setting new yarn_attn_factor = 1.0000 (mscale == 1.0, mscale_all_dim = 1.0)
+llama_context: n_seq_max     = 1
+llama_context: n_ctx         = 4096
+llama_context: n_ctx_seq     = 4096
+llama_context: n_batch       = 2048
+llama_context: n_ubatch      = 512
+llama_context: causal_attn   = 1
+llama_context: flash_attn    = auto
+llama_context: kv_unified    = false
+llama_context: freq_base     = 10000.0
+llama_context: freq_scale    = 0.025
+llama_context: n_ctx_seq (4096) < n_ctx_train (163840) -- the full capacity of the model will not be utilized
+llama_context:  CUDA_Host  output buffer size =     0.49 MiB
+llama_kv_cache:      CUDA0 KV buffer size =  9920.00 MiB
+llama_kv_cache:      CUDA1 KV buffer size =  9600.00 MiB
+llama_kv_cache: size = 19520.00 MiB (  4096 cells,  61 layers,  1/1 seqs), K (f16): 11712.00 MiB, V (f16): 7808.00 MiB
+llama_context: pipeline parallelism enabled
+sched_reserve: reserving ...
+sched_reserve: layer 0 is assigned to device CUDA0 but the Flash Attention tensor is assigned to device CPU (usually due to missing support)
+sched_reserve: Flash Attention was auto, set to disabled
+sched_reserve:      CUDA0 compute buffer size =  1394.04 MiB
+sched_reserve:      CUDA1 compute buffer size =  1394.05 MiB
+sched_reserve:  CUDA_Host compute buffer size =    60.05 MiB
+sched_reserve: graph nodes  = 4964
+sched_reserve: graph splits = 3
+sched_reserve: reserve took 31.87 ms, sched copies = 4
+EOS token id: 1
+EOG tokens in vocab:
+  token 1 = '<｜end▁of▁sentence｜>' [PRIMARY EOS - will stop generation]
+system_info: n_threads = 16 (n_threads_batch = 16) / 192 | CUDA : ARCHS = 900 | USE_GRAPHS = 1 | PEER_MAX_BATCH_SIZE = 128 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX_VNNI = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | AVX512 = 1 | AVX512_VBMI = 1 | AVX512_VNNI = 1 | AVX512_BF16 = 1 | AMX_INT8 = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 | 
+
+Loaded 15 prompts
+
+[1/15] P16A_paradox : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 355 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1869 ms
+  saved 0 layer + 58 router tensors → output_v2/P16A_paradox
+[2/15] P16B_paradox : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 355 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1671 ms
+  saved 0 layer + 58 router tensors → output_v2/P16B_paradox
+[3/15] P16C_paradox : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 355 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1663 ms
+  saved 0 layer + 58 router tensors → output_v2/P16C_paradox
+[4/15] P17A_paradox : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 350 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1672 ms
+  saved 0 layer + 58 router tensors → output_v2/P17A_paradox
+[5/15] P17B_paradox : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 350 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1666 ms
+  saved 0 layer + 58 router tensors → output_v2/P17B_paradox
+[6/15] P17C_paradox : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 350 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1661 ms
+  saved 0 layer + 58 router tensors → output_v2/P17C_paradox
+[7/15] P18A_paradox : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 356 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1668 ms
+  saved 0 layer + 58 router tensors → output_v2/P18A_paradox
+[8/15] P18B_paradox : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 356 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1668 ms
+  saved 0 layer + 58 router tensors → output_v2/P18B_paradox
+[9/15] P18C_paradox : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 356 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1667 ms
+  saved 0 layer + 58 router tensors → output_v2/P18C_paradox
+[10/15] P19A_introspection : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 346 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1664 ms
+  saved 0 layer + 58 router tensors → output_v2/P19A_introspection
+[11/15] P19B_introspection : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 346 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1660 ms
+  saved 0 layer + 58 router tensors → output_v2/P19B_introspection
+[12/15] P19C_introspection : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 346 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1665 ms
+  saved 0 layer + 58 router tensors → output_v2/P19C_introspection
+[13/15] P20A_introspection : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 352 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1663 ms
+  saved 0 layer + 58 router tensors → output_v2/P20A_introspection
+[14/15] P20B_introspection : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 352 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1669 ms
+  saved 0 layer + 58 router tensors → output_v2/P20B_introspection
+[15/15] P20C_introspection : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 352 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1662 ms
+  saved 0 layer + 58 router tensors → output_v2/P20C_introspection
+
+=== Capture Complete ===
+Prompts: 15  |  Output: output_v2
+llama_perf_context_print:        load time =   31037.55 ms
+llama_perf_context_print: prompt eval time =       0.00 ms /     1 tokens (    0.00 ms per token,      inf tokens per second)
+llama_perf_context_print:        eval time =       0.00 ms /     1 runs   (    0.00 ms per token,      inf tokens per second)
+llama_perf_context_print:       total time =   56489.49 ms /     2 tokens
+llama_perf_context_print:    graphs reused =         10
+  Computing metrics for batch 4...
+  P16A_paradox: RE=0.891479 last_tok=0.826325 tokens=355
+  P16B_paradox: RE=0.890512 last_tok=0.827819 tokens=355
+  P16C_paradox: RE=0.891107 last_tok=0.835158 tokens=355
+  P17A_paradox: RE=0.890791 last_tok=0.841211 tokens=350
+  P17B_paradox: RE=0.890895 last_tok=0.835740 tokens=350
+  P17C_paradox: RE=0.890031 last_tok=0.834460 tokens=350
+  P18A_paradox: RE=0.889052 last_tok=0.829800 tokens=356
+  P18B_paradox: RE=0.888181 last_tok=0.828473 tokens=356
+  P18C_paradox: RE=0.888022 last_tok=0.827048 tokens=356
+  P19A_introspection: RE=0.886875 last_tok=0.820848 tokens=346
+  P19B_introspection: RE=0.886268 last_tok=0.836342 tokens=346
+  P19C_introspection: RE=0.887151 last_tok=0.831492 tokens=346
+  P20A_introspection: RE=0.887247 last_tok=0.846736 tokens=352
+  P20B_introspection: RE=0.886748 last_tok=0.834013 tokens=352
+  P20C_introspection: RE=0.887139 last_tok=0.843608 tokens=352
+
+=== BATCH 5/6: Capture prompts P21A_introspection..P25C_metacognitive ===
+ggml_cuda_init: found 2 CUDA devices:
+  Device 0: NVIDIA H200, compute capability 9.0, VMM: yes
+  Device 1: NVIDIA H200, compute capability 9.0, VMM: yes
+build: 1 (f75c4e8) with GNU 13.3.0 for Linux x86_64
+=== Consciousness Metrics — Activation Capture ===
+Output dir : output_v2
+n_predict  : 0
+Text output: file only (--no-stream)
+Mode       : --routing-only (router/gate tensors only)
+common_init_result: fitting params to device memory, for bugs during this step try to reproduce them with -fit off, or provide --verbose logs if the bug only occurs with -fit on
+llama_params_fit_impl: projected memory use with initial parameters [MiB]:
+llama_params_fit_impl:   - CUDA0 (NVIDIA H200): 143155 total, 116156 used,  26470 free vs. target of   1024
+llama_params_fit_impl:   - CUDA1 (NVIDIA H200): 143155 total, 121809 used,  20817 free vs. target of   1024
+llama_params_fit_impl: projected to use 237966 MiB of device memory vs. 285254 MiB of free device memory
+llama_params_fit_impl: targets for free memory can be met on all devices, no changes needed
+llama_params_fit: successfully fit params to free device memory
+llama_params_fit: fitting params to free memory took 0.52 seconds
+llama_model_load_from_file_impl: using device CUDA0 (NVIDIA H200) (0000:b8:00.0) - 142627 MiB free
+llama_model_load_from_file_impl: using device CUDA1 (NVIDIA H200) (0000:c1:00.0) - 142627 MiB free
+llama_model_loader: additional 4 GGUFs metadata loaded.
+llama_model_loader: loaded meta data with 48 key-value pairs and 1025 tensors from /workspace/models/DeepSeek-R1-UD-Q2_K_XL/DeepSeek-R1-UD-Q2_K_XL-00001-of-00005.gguf (version GGUF V3 (latest))
+llama_model_loader: Dumping metadata keys/values. Note: KV overrides do not apply in this output.
+llama_model_loader: - kv   0:                       general.architecture str              = deepseek2
+llama_model_loader: - kv   1:                               general.type str              = model
+llama_model_loader: - kv   2:                               general.name str              = DeepSeek R1 BF16
+llama_model_loader: - kv   3:                       general.quantized_by str              = Unsloth
+llama_model_loader: - kv   4:                         general.size_label str              = 256x20B
+llama_model_loader: - kv   5:                           general.repo_url str              = https://huggingface.co/unsloth
+llama_model_loader: - kv   6:                      deepseek2.block_count u32              = 61
+llama_model_loader: - kv   7:                   deepseek2.context_length u32              = 163840
+llama_model_loader: - kv   8:                 deepseek2.embedding_length u32              = 7168
+llama_model_loader: - kv   9:              deepseek2.feed_forward_length u32              = 18432
+llama_model_loader: - kv  10:             deepseek2.attention.head_count u32              = 128
+llama_model_loader: - kv  11:          deepseek2.attention.head_count_kv u32              = 128
+llama_model_loader: - kv  12:                   deepseek2.rope.freq_base f32              = 10000.000000
+llama_model_loader: - kv  13: deepseek2.attention.layer_norm_rms_epsilon f32              = 0.000001
+llama_model_loader: - kv  14:                deepseek2.expert_used_count u32              = 8
+llama_model_loader: - kv  15:        deepseek2.leading_dense_block_count u32              = 3
+llama_model_loader: - kv  16:                       deepseek2.vocab_size u32              = 129280
+llama_model_loader: - kv  17:            deepseek2.attention.q_lora_rank u32              = 1536
+llama_model_loader: - kv  18:           deepseek2.attention.kv_lora_rank u32              = 512
+llama_model_loader: - kv  19:             deepseek2.attention.key_length u32              = 192
+llama_model_loader: - kv  20:           deepseek2.attention.value_length u32              = 128
+llama_model_loader: - kv  21:       deepseek2.expert_feed_forward_length u32              = 2048
+llama_model_loader: - kv  22:                     deepseek2.expert_count u32              = 256
+llama_model_loader: - kv  23:              deepseek2.expert_shared_count u32              = 1
+llama_model_loader: - kv  24:             deepseek2.expert_weights_scale f32              = 2.500000
+llama_model_loader: - kv  25:              deepseek2.expert_weights_norm bool             = true
+llama_model_loader: - kv  26:               deepseek2.expert_gating_func u32              = 2
+llama_model_loader: - kv  27:             deepseek2.rope.dimension_count u32              = 64
+llama_model_loader: - kv  28:                deepseek2.rope.scaling.type str              = yarn
+llama_model_loader: - kv  29:              deepseek2.rope.scaling.factor f32              = 40.000000
+llama_model_loader: - kv  30: deepseek2.rope.scaling.original_context_length u32              = 4096
+llama_model_loader: - kv  31: deepseek2.rope.scaling.yarn_log_multiplier f32              = 0.100000
+llama_model_loader: - kv  32:                       tokenizer.ggml.model str              = gpt2
+llama_model_loader: - kv  33:                         tokenizer.ggml.pre str              = deepseek-v3
+llama_model_loader: - kv  34:                      tokenizer.ggml.tokens arr[str,129280]  = ["<｜begin▁of▁sentence｜>", "<�...
+llama_model_loader: - kv  35:                  tokenizer.ggml.token_type arr[i32,129280]  = [3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...
+llama_model_loader: - kv  36:                      tokenizer.ggml.merges arr[str,127741]  = ["Ġ t", "Ġ a", "i n", "Ġ Ġ", "h e...
+llama_model_loader: - kv  37:                tokenizer.ggml.bos_token_id u32              = 0
+llama_model_loader: - kv  38:                tokenizer.ggml.eos_token_id u32              = 1
+llama_model_loader: - kv  39:            tokenizer.ggml.padding_token_id u32              = 128815
+llama_model_loader: - kv  40:               tokenizer.ggml.add_bos_token bool             = true
+llama_model_loader: - kv  41:               tokenizer.ggml.add_eos_token bool             = false
+llama_model_loader: - kv  42:                    tokenizer.chat_template str              = {% if not add_generation_prompt is de...
+llama_model_loader: - kv  43:               general.quantization_version u32              = 2
+llama_model_loader: - kv  44:                          general.file_type u32              = 10
+llama_model_loader: - kv  45:                                   split.no u16              = 0
+llama_model_loader: - kv  46:                        split.tensors.count i32              = 1025
+llama_model_loader: - kv  47:                                split.count u16              = 5
+llama_model_loader: - type  f32:  361 tensors
+llama_model_loader: - type q2_K:  171 tensors
+llama_model_loader: - type q3_K:    3 tensors
+llama_model_loader: - type q4_K:  306 tensors
+llama_model_loader: - type q6_K:  184 tensors
+print_info: file format = GGUF V3 (latest)
+print_info: file type   = Q2_K - Medium
+print_info: file size   = 211.03 GiB (2.70 BPW) 
+load: 0 unused tokens
+load: special_eos_id is not in special_eog_ids - the tokenizer config may be incorrect
+load: printing all EOG tokens:
+load:   - 1 ('<｜end▁of▁sentence｜>')
+load: special tokens cache size = 819
+load: token to piece cache size = 0.8223 MB
+print_info: arch                  = deepseek2
+print_info: vocab_only            = 0
+print_info: no_alloc              = 0
+print_info: n_ctx_train           = 163840
+print_info: n_embd                = 7168
+print_info: n_embd_inp            = 7168
+print_info: n_layer               = 61
+print_info: n_head                = 128
+print_info: n_head_kv             = 128
+print_info: n_rot                 = 64
+print_info: n_swa                 = 0
+print_info: is_swa_any            = 0
+print_info: n_embd_head_k         = 192
+print_info: n_embd_head_v         = 128
+print_info: n_gqa                 = 1
+print_info: n_embd_k_gqa          = 24576
+print_info: n_embd_v_gqa          = 16384
+print_info: f_norm_eps            = 0.0e+00
+print_info: f_norm_rms_eps        = 1.0e-06
+print_info: f_clamp_kqv           = 0.0e+00
+print_info: f_max_alibi_bias      = 0.0e+00
+print_info: f_logit_scale         = 0.0e+00
+print_info: f_attn_scale          = 0.0e+00
+print_info: n_ff                  = 18432
+print_info: n_expert              = 256
+print_info: n_expert_used         = 8
+print_info: n_expert_groups       = 0
+print_info: n_group_used          = 0
+print_info: causal attn           = 1
+print_info: pooling type          = 0
+print_info: rope type             = 0
+print_info: rope scaling          = yarn
+print_info: freq_base_train       = 10000.0
+print_info: freq_scale_train      = 0.025
+print_info: n_ctx_orig_yarn       = 4096
+print_info: rope_yarn_log_mul     = 1.0000
+print_info: rope_finetuned        = unknown
+print_info: model type            = 671B
+print_info: model params          = 671.03 B
+print_info: general.name          = DeepSeek R1 BF16
+print_info: n_layer_dense_lead    = 3
+print_info: n_lora_q              = 1536
+print_info: n_lora_kv             = 512
+print_info: n_embd_head_k_mla     = 192
+print_info: n_embd_head_v_mla     = 128
+print_info: n_ff_exp              = 2048
+print_info: n_expert_shared       = 1
+print_info: expert_weights_scale  = 2.5
+print_info: expert_weights_norm   = 1
+print_info: expert_gating_func    = sigmoid
+print_info: vocab type            = BPE
+print_info: n_vocab               = 129280
+print_info: n_merges              = 127741
+print_info: BOS token             = 0 '<｜begin▁of▁sentence｜>'
+print_info: EOS token             = 1 '<｜end▁of▁sentence｜>'
+print_info: EOT token             = 1 '<｜end▁of▁sentence｜>'
+print_info: PAD token             = 128815 '<｜PAD▁TOKEN｜>'
+print_info: LF token              = 201 'Ċ'
+print_info: FIM PRE token         = 128801 '<｜fim▁begin｜>'
+print_info: FIM SUF token         = 128800 '<｜fim▁hole｜>'
+print_info: FIM MID token         = 128802 '<｜fim▁end｜>'
+print_info: EOG token             = 1 '<｜end▁of▁sentence｜>'
+print_info: max token length      = 256
+load_tensors: loading model tensors, this can take a while... (mmap = true, direct_io = false)
+load_tensors: offloading output layer to GPU
+load_tensors: offloading 60 repeating layers to GPU
+load_tensors: offloaded 62/62 layers to GPU
+load_tensors:   CPU_Mapped model buffer size =   497.11 MiB
+load_tensors:        CUDA0 model buffer size = 104842.70 MiB
+load_tensors:        CUDA1 model buffer size = 110759.25 MiB
+....................................................................................................
+common_init_result: added <｜end▁of▁sentence｜> logit bias = -inf
+llama_context: constructing llama_context
+llama_context: setting new yarn_attn_factor = 1.0000 (mscale == 1.0, mscale_all_dim = 1.0)
+llama_context: n_seq_max     = 1
+llama_context: n_ctx         = 4096
+llama_context: n_ctx_seq     = 4096
+llama_context: n_batch       = 2048
+llama_context: n_ubatch      = 512
+llama_context: causal_attn   = 1
+llama_context: flash_attn    = auto
+llama_context: kv_unified    = false
+llama_context: freq_base     = 10000.0
+llama_context: freq_scale    = 0.025
+llama_context: n_ctx_seq (4096) < n_ctx_train (163840) -- the full capacity of the model will not be utilized
+llama_context:  CUDA_Host  output buffer size =     0.49 MiB
+llama_kv_cache:      CUDA0 KV buffer size =  9920.00 MiB
+llama_kv_cache:      CUDA1 KV buffer size =  9600.00 MiB
+llama_kv_cache: size = 19520.00 MiB (  4096 cells,  61 layers,  1/1 seqs), K (f16): 11712.00 MiB, V (f16): 7808.00 MiB
+llama_context: pipeline parallelism enabled
+sched_reserve: reserving ...
+sched_reserve: layer 0 is assigned to device CUDA0 but the Flash Attention tensor is assigned to device CPU (usually due to missing support)
+sched_reserve: Flash Attention was auto, set to disabled
+sched_reserve:      CUDA0 compute buffer size =  1394.04 MiB
+sched_reserve:      CUDA1 compute buffer size =  1394.05 MiB
+sched_reserve:  CUDA_Host compute buffer size =    60.05 MiB
+sched_reserve: graph nodes  = 4964
+sched_reserve: graph splits = 3
+sched_reserve: reserve took 30.85 ms, sched copies = 4
+EOS token id: 1
+EOG tokens in vocab:
+  token 1 = '<｜end▁of▁sentence｜>' [PRIMARY EOS - will stop generation]
+system_info: n_threads = 16 (n_threads_batch = 16) / 192 | CUDA : ARCHS = 900 | USE_GRAPHS = 1 | PEER_MAX_BATCH_SIZE = 128 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX_VNNI = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | AVX512 = 1 | AVX512_VBMI = 1 | AVX512_VNNI = 1 | AVX512_BF16 = 1 | AMX_INT8 = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 | 
+
+Loaded 15 prompts
+
+[1/15] P21A_introspection : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 342 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1869 ms
+  saved 0 layer + 58 router tensors → output_v2/P21A_introspection
+[2/15] P21B_introspection : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 342 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1663 ms
+  saved 0 layer + 58 router tensors → output_v2/P21B_introspection
+[3/15] P21C_introspection : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 342 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1656 ms
+  saved 0 layer + 58 router tensors → output_v2/P21C_introspection
+[4/15] P22A_introspection : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 350 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1671 ms
+  saved 0 layer + 58 router tensors → output_v2/P22A_introspection
+[5/15] P22B_introspection : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 350 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1665 ms
+  saved 0 layer + 58 router tensors → output_v2/P22B_introspection
+[6/15] P22C_introspection : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 350 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1663 ms
+  saved 0 layer + 58 router tensors → output_v2/P22C_introspection
+[7/15] P23A_introspection : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 364 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1679 ms
+  saved 0 layer + 58 router tensors → output_v2/P23A_introspection
+[8/15] P23B_introspection : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 364 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1678 ms
+  saved 0 layer + 58 router tensors → output_v2/P23B_introspection
+[9/15] P23C_introspection : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 364 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1671 ms
+  saved 0 layer + 58 router tensors → output_v2/P23C_introspection
+[10/15] P24A_introspection : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 356 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1670 ms
+  saved 0 layer + 58 router tensors → output_v2/P24A_introspection
+[11/15] P24B_introspection : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 356 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1666 ms
+  saved 0 layer + 58 router tensors → output_v2/P24B_introspection
+[12/15] P24C_introspection : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 356 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1657 ms
+  saved 0 layer + 58 router tensors → output_v2/P24C_introspection
+[13/15] P25A_metacognitive : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 349 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1661 ms
+  saved 0 layer + 58 router tensors → output_v2/P25A_metacognitive
+[14/15] P25B_metacognitive : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 349 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1662 ms
+  saved 0 layer + 58 router tensors → output_v2/P25B_metacognitive
+[15/15] P25C_metacognitive : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 349 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1658 ms
+  saved 0 layer + 58 router tensors → output_v2/P25C_metacognitive
+
+=== Capture Complete ===
+Prompts: 15  |  Output: output_v2
+llama_perf_context_print:        load time =   31344.23 ms
+llama_perf_context_print: prompt eval time =       0.00 ms /     1 tokens (    0.00 ms per token,      inf tokens per second)
+llama_perf_context_print:        eval time =       0.00 ms /     1 runs   (    0.00 ms per token,      inf tokens per second)
+llama_perf_context_print:       total time =   56812.27 ms /     2 tokens
+llama_perf_context_print:    graphs reused =         10
+  Computing metrics for batch 5...
+  P21A_introspection: RE=0.885089 last_tok=0.827643 tokens=342
+  P21B_introspection: RE=0.885121 last_tok=0.826783 tokens=342
+  P21C_introspection: RE=0.885582 last_tok=0.832390 tokens=342
+  P22A_introspection: RE=0.885958 last_tok=0.841908 tokens=350
+  P22B_introspection: RE=0.884056 last_tok=0.836506 tokens=350
+  P22C_introspection: RE=0.885921 last_tok=0.844188 tokens=350
+  P23A_introspection: RE=0.888393 last_tok=0.857237 tokens=364
+  P23B_introspection: RE=0.888819 last_tok=0.834896 tokens=364
+  P23C_introspection: RE=0.888390 last_tok=0.856718 tokens=364
+  P24A_introspection: RE=0.884808 last_tok=0.831252 tokens=356
+  P24B_introspection: RE=0.884968 last_tok=0.837158 tokens=356
+  P24C_introspection: RE=0.884762 last_tok=0.835359 tokens=356
+  P25A_metacognitive: RE=0.889895 last_tok=0.840959 tokens=349
+  P25B_metacognitive: RE=0.890999 last_tok=0.840258 tokens=349
+  P25C_metacognitive: RE=0.890603 last_tok=0.842105 tokens=349
+
+=== BATCH 6/6: Capture prompts P26A_metacognitive..P30C_metacognitive ===
+ggml_cuda_init: found 2 CUDA devices:
+  Device 0: NVIDIA H200, compute capability 9.0, VMM: yes
+  Device 1: NVIDIA H200, compute capability 9.0, VMM: yes
+build: 1 (f75c4e8) with GNU 13.3.0 for Linux x86_64
+=== Consciousness Metrics — Activation Capture ===
+Output dir : output_v2
+n_predict  : 0
+Text output: file only (--no-stream)
+Mode       : --routing-only (router/gate tensors only)
+common_init_result: fitting params to device memory, for bugs during this step try to reproduce them with -fit off, or provide --verbose logs if the bug only occurs with -fit on
+llama_params_fit_impl: projected memory use with initial parameters [MiB]:
+llama_params_fit_impl:   - CUDA0 (NVIDIA H200): 143155 total, 116156 used,  26470 free vs. target of   1024
+llama_params_fit_impl:   - CUDA1 (NVIDIA H200): 143155 total, 121809 used,  20817 free vs. target of   1024
+llama_params_fit_impl: projected to use 237966 MiB of device memory vs. 285254 MiB of free device memory
+llama_params_fit_impl: targets for free memory can be met on all devices, no changes needed
+llama_params_fit: successfully fit params to free device memory
+llama_params_fit: fitting params to free memory took 0.52 seconds
+llama_model_load_from_file_impl: using device CUDA0 (NVIDIA H200) (0000:b8:00.0) - 142627 MiB free
+llama_model_load_from_file_impl: using device CUDA1 (NVIDIA H200) (0000:c1:00.0) - 142627 MiB free
+llama_model_loader: additional 4 GGUFs metadata loaded.
+llama_model_loader: loaded meta data with 48 key-value pairs and 1025 tensors from /workspace/models/DeepSeek-R1-UD-Q2_K_XL/DeepSeek-R1-UD-Q2_K_XL-00001-of-00005.gguf (version GGUF V3 (latest))
+llama_model_loader: Dumping metadata keys/values. Note: KV overrides do not apply in this output.
+llama_model_loader: - kv   0:                       general.architecture str              = deepseek2
+llama_model_loader: - kv   1:                               general.type str              = model
+llama_model_loader: - kv   2:                               general.name str              = DeepSeek R1 BF16
+llama_model_loader: - kv   3:                       general.quantized_by str              = Unsloth
+llama_model_loader: - kv   4:                         general.size_label str              = 256x20B
+llama_model_loader: - kv   5:                           general.repo_url str              = https://huggingface.co/unsloth
+llama_model_loader: - kv   6:                      deepseek2.block_count u32              = 61
+llama_model_loader: - kv   7:                   deepseek2.context_length u32              = 163840
+llama_model_loader: - kv   8:                 deepseek2.embedding_length u32              = 7168
+llama_model_loader: - kv   9:              deepseek2.feed_forward_length u32              = 18432
+llama_model_loader: - kv  10:             deepseek2.attention.head_count u32              = 128
+llama_model_loader: - kv  11:          deepseek2.attention.head_count_kv u32              = 128
+llama_model_loader: - kv  12:                   deepseek2.rope.freq_base f32              = 10000.000000
+llama_model_loader: - kv  13: deepseek2.attention.layer_norm_rms_epsilon f32              = 0.000001
+llama_model_loader: - kv  14:                deepseek2.expert_used_count u32              = 8
+llama_model_loader: - kv  15:        deepseek2.leading_dense_block_count u32              = 3
+llama_model_loader: - kv  16:                       deepseek2.vocab_size u32              = 129280
+llama_model_loader: - kv  17:            deepseek2.attention.q_lora_rank u32              = 1536
+llama_model_loader: - kv  18:           deepseek2.attention.kv_lora_rank u32              = 512
+llama_model_loader: - kv  19:             deepseek2.attention.key_length u32              = 192
+llama_model_loader: - kv  20:           deepseek2.attention.value_length u32              = 128
+llama_model_loader: - kv  21:       deepseek2.expert_feed_forward_length u32              = 2048
+llama_model_loader: - kv  22:                     deepseek2.expert_count u32              = 256
+llama_model_loader: - kv  23:              deepseek2.expert_shared_count u32              = 1
+llama_model_loader: - kv  24:             deepseek2.expert_weights_scale f32              = 2.500000
+llama_model_loader: - kv  25:              deepseek2.expert_weights_norm bool             = true
+llama_model_loader: - kv  26:               deepseek2.expert_gating_func u32              = 2
+llama_model_loader: - kv  27:             deepseek2.rope.dimension_count u32              = 64
+llama_model_loader: - kv  28:                deepseek2.rope.scaling.type str              = yarn
+llama_model_loader: - kv  29:              deepseek2.rope.scaling.factor f32              = 40.000000
+llama_model_loader: - kv  30: deepseek2.rope.scaling.original_context_length u32              = 4096
+llama_model_loader: - kv  31: deepseek2.rope.scaling.yarn_log_multiplier f32              = 0.100000
+llama_model_loader: - kv  32:                       tokenizer.ggml.model str              = gpt2
+llama_model_loader: - kv  33:                         tokenizer.ggml.pre str              = deepseek-v3
+llama_model_loader: - kv  34:                      tokenizer.ggml.tokens arr[str,129280]  = ["<｜begin▁of▁sentence｜>", "<�...
+llama_model_loader: - kv  35:                  tokenizer.ggml.token_type arr[i32,129280]  = [3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...
+llama_model_loader: - kv  36:                      tokenizer.ggml.merges arr[str,127741]  = ["Ġ t", "Ġ a", "i n", "Ġ Ġ", "h e...
+llama_model_loader: - kv  37:                tokenizer.ggml.bos_token_id u32              = 0
+llama_model_loader: - kv  38:                tokenizer.ggml.eos_token_id u32              = 1
+llama_model_loader: - kv  39:            tokenizer.ggml.padding_token_id u32              = 128815
+llama_model_loader: - kv  40:               tokenizer.ggml.add_bos_token bool             = true
+llama_model_loader: - kv  41:               tokenizer.ggml.add_eos_token bool             = false
+llama_model_loader: - kv  42:                    tokenizer.chat_template str              = {% if not add_generation_prompt is de...
+llama_model_loader: - kv  43:               general.quantization_version u32              = 2
+llama_model_loader: - kv  44:                          general.file_type u32              = 10
+llama_model_loader: - kv  45:                                   split.no u16              = 0
+llama_model_loader: - kv  46:                        split.tensors.count i32              = 1025
+llama_model_loader: - kv  47:                                split.count u16              = 5
+llama_model_loader: - type  f32:  361 tensors
+llama_model_loader: - type q2_K:  171 tensors
+llama_model_loader: - type q3_K:    3 tensors
+llama_model_loader: - type q4_K:  306 tensors
+llama_model_loader: - type q6_K:  184 tensors
+print_info: file format = GGUF V3 (latest)
+print_info: file type   = Q2_K - Medium
+print_info: file size   = 211.03 GiB (2.70 BPW) 
+load: 0 unused tokens
+load: special_eos_id is not in special_eog_ids - the tokenizer config may be incorrect
+load: printing all EOG tokens:
+load:   - 1 ('<｜end▁of▁sentence｜>')
+load: special tokens cache size = 819
+load: token to piece cache size = 0.8223 MB
+print_info: arch                  = deepseek2
+print_info: vocab_only            = 0
+print_info: no_alloc              = 0
+print_info: n_ctx_train           = 163840
+print_info: n_embd                = 7168
+print_info: n_embd_inp            = 7168
+print_info: n_layer               = 61
+print_info: n_head                = 128
+print_info: n_head_kv             = 128
+print_info: n_rot                 = 64
+print_info: n_swa                 = 0
+print_info: is_swa_any            = 0
+print_info: n_embd_head_k         = 192
+print_info: n_embd_head_v         = 128
+print_info: n_gqa                 = 1
+print_info: n_embd_k_gqa          = 24576
+print_info: n_embd_v_gqa          = 16384
+print_info: f_norm_eps            = 0.0e+00
+print_info: f_norm_rms_eps        = 1.0e-06
+print_info: f_clamp_kqv           = 0.0e+00
+print_info: f_max_alibi_bias      = 0.0e+00
+print_info: f_logit_scale         = 0.0e+00
+print_info: f_attn_scale          = 0.0e+00
+print_info: n_ff                  = 18432
+print_info: n_expert              = 256
+print_info: n_expert_used         = 8
+print_info: n_expert_groups       = 0
+print_info: n_group_used          = 0
+print_info: causal attn           = 1
+print_info: pooling type          = 0
+print_info: rope type             = 0
+print_info: rope scaling          = yarn
+print_info: freq_base_train       = 10000.0
+print_info: freq_scale_train      = 0.025
+print_info: n_ctx_orig_yarn       = 4096
+print_info: rope_yarn_log_mul     = 1.0000
+print_info: rope_finetuned        = unknown
+print_info: model type            = 671B
+print_info: model params          = 671.03 B
+print_info: general.name          = DeepSeek R1 BF16
+print_info: n_layer_dense_lead    = 3
+print_info: n_lora_q              = 1536
+print_info: n_lora_kv             = 512
+print_info: n_embd_head_k_mla     = 192
+print_info: n_embd_head_v_mla     = 128
+print_info: n_ff_exp              = 2048
+print_info: n_expert_shared       = 1
+print_info: expert_weights_scale  = 2.5
+print_info: expert_weights_norm   = 1
+print_info: expert_gating_func    = sigmoid
+print_info: vocab type            = BPE
+print_info: n_vocab               = 129280
+print_info: n_merges              = 127741
+print_info: BOS token             = 0 '<｜begin▁of▁sentence｜>'
+print_info: EOS token             = 1 '<｜end▁of▁sentence｜>'
+print_info: EOT token             = 1 '<｜end▁of▁sentence｜>'
+print_info: PAD token             = 128815 '<｜PAD▁TOKEN｜>'
+print_info: LF token              = 201 'Ċ'
+print_info: FIM PRE token         = 128801 '<｜fim▁begin｜>'
+print_info: FIM SUF token         = 128800 '<｜fim▁hole｜>'
+print_info: FIM MID token         = 128802 '<｜fim▁end｜>'
+print_info: EOG token             = 1 '<｜end▁of▁sentence｜>'
+print_info: max token length      = 256
+load_tensors: loading model tensors, this can take a while... (mmap = true, direct_io = false)
+load_tensors: offloading output layer to GPU
+load_tensors: offloading 60 repeating layers to GPU
+load_tensors: offloaded 62/62 layers to GPU
+load_tensors:   CPU_Mapped model buffer size =   497.11 MiB
+load_tensors:        CUDA0 model buffer size = 104842.70 MiB
+load_tensors:        CUDA1 model buffer size = 110759.25 MiB
+....................................................................................................
+common_init_result: added <｜end▁of▁sentence｜> logit bias = -inf
+llama_context: constructing llama_context
+llama_context: setting new yarn_attn_factor = 1.0000 (mscale == 1.0, mscale_all_dim = 1.0)
+llama_context: n_seq_max     = 1
+llama_context: n_ctx         = 4096
+llama_context: n_ctx_seq     = 4096
+llama_context: n_batch       = 2048
+llama_context: n_ubatch      = 512
+llama_context: causal_attn   = 1
+llama_context: flash_attn    = auto
+llama_context: kv_unified    = false
+llama_context: freq_base     = 10000.0
+llama_context: freq_scale    = 0.025
+llama_context: n_ctx_seq (4096) < n_ctx_train (163840) -- the full capacity of the model will not be utilized
+llama_context:  CUDA_Host  output buffer size =     0.49 MiB
+llama_kv_cache:      CUDA0 KV buffer size =  9920.00 MiB
+llama_kv_cache:      CUDA1 KV buffer size =  9600.00 MiB
+llama_kv_cache: size = 19520.00 MiB (  4096 cells,  61 layers,  1/1 seqs), K (f16): 11712.00 MiB, V (f16): 7808.00 MiB
+llama_context: pipeline parallelism enabled
+sched_reserve: reserving ...
+sched_reserve: layer 0 is assigned to device CUDA0 but the Flash Attention tensor is assigned to device CPU (usually due to missing support)
+sched_reserve: Flash Attention was auto, set to disabled
+sched_reserve:      CUDA0 compute buffer size =  1394.04 MiB
+sched_reserve:      CUDA1 compute buffer size =  1394.05 MiB
+sched_reserve:  CUDA_Host compute buffer size =    60.05 MiB
+sched_reserve: graph nodes  = 4964
+sched_reserve: graph splits = 3
+sched_reserve: reserve took 29.56 ms, sched copies = 4
+EOS token id: 1
+EOG tokens in vocab:
+  token 1 = '<｜end▁of▁sentence｜>' [PRIMARY EOS - will stop generation]
+system_info: n_threads = 16 (n_threads_batch = 16) / 192 | CUDA : ARCHS = 900 | USE_GRAPHS = 1 | PEER_MAX_BATCH_SIZE = 128 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX_VNNI = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | AVX512 = 1 | AVX512_VBMI = 1 | AVX512_VNNI = 1 | AVX512_BF16 = 1 | AMX_INT8 = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 | 
+
+Loaded 15 prompts
+
+[1/15] P26A_metacognitive : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 349 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1870 ms
+  saved 0 layer + 58 router tensors → output_v2/P26A_metacognitive
+[2/15] P26B_metacognitive : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 349 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1673 ms
+  saved 0 layer + 58 router tensors → output_v2/P26B_metacognitive
+[3/15] P26C_metacognitive : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 349 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1663 ms
+  saved 0 layer + 58 router tensors → output_v2/P26C_metacognitive
+[4/15] P27A_metacognitive : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 354 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1664 ms
+  saved 0 layer + 58 router tensors → output_v2/P27A_metacognitive
+[5/15] P27B_metacognitive : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 354 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1662 ms
+  saved 0 layer + 58 router tensors → output_v2/P27B_metacognitive
+[6/15] P27C_metacognitive : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 354 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1659 ms
+  saved 0 layer + 58 router tensors → output_v2/P27C_metacognitive
+[7/15] P28A_metacognitive : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 358 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1670 ms
+  saved 0 layer + 58 router tensors → output_v2/P28A_metacognitive
+[8/15] P28B_metacognitive : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 358 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1667 ms
+  saved 0 layer + 58 router tensors → output_v2/P28B_metacognitive
+[9/15] P28C_metacognitive : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 358 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1668 ms
+  saved 0 layer + 58 router tensors → output_v2/P28C_metacognitive
+[10/15] P29A_metacognitive : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 358 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1662 ms
+  saved 0 layer + 58 router tensors → output_v2/P29A_metacognitive
+[11/15] P29B_metacognitive : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 358 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1667 ms
+  saved 0 layer + 58 router tensors → output_v2/P29B_metacognitive
+[12/15] P29C_metacognitive : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 358 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1661 ms
+  saved 0 layer + 58 router tensors → output_v2/P29C_metacognitive
+[13/15] P30A_metacognitive : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 363 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1673 ms
+  saved 0 layer + 58 router tensors → output_v2/P30A_metacognitive
+[14/15] P30B_metacognitive : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 363 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1672 ms
+  saved 0 layer + 58 router tensors → output_v2/P30B_metacognitive
+[15/15] P30C_metacognitive : <｜User｜>Transformer models process input text through a sequence o...
+  tokens: 363 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1669 ms
+  saved 0 layer + 58 router tensors → output_v2/P30C_metacognitive
+
+=== Capture Complete ===
+Prompts: 15  |  Output: output_v2
+llama_perf_context_print:        load time =   31964.45 ms
+llama_perf_context_print: prompt eval time =       0.00 ms /     1 tokens (    0.00 ms per token,      inf tokens per second)
+llama_perf_context_print:        eval time =       0.00 ms /     1 runs   (    0.00 ms per token,      inf tokens per second)
+llama_perf_context_print:       total time =   57434.49 ms /     2 tokens
+llama_perf_context_print:    graphs reused =         11
+  Computing metrics for batch 6...
+  P26A_metacognitive: RE=0.884738 last_tok=0.822172 tokens=349
+  P26B_metacognitive: RE=0.884363 last_tok=0.831171 tokens=349
+  P26C_metacognitive: RE=0.885858 last_tok=0.831858 tokens=349
+  P27A_metacognitive: RE=0.888094 last_tok=0.834277 tokens=354
+  P27B_metacognitive: RE=0.886611 last_tok=0.832664 tokens=354
+  P27C_metacognitive: RE=0.887488 last_tok=0.840644 tokens=354
+  P28A_metacognitive: RE=0.889842 last_tok=0.824644 tokens=358
+  P28B_metacognitive: RE=0.890094 last_tok=0.835565 tokens=358
+  P28C_metacognitive: RE=0.889646 last_tok=0.832093 tokens=358
+  P29A_metacognitive: RE=0.886079 last_tok=0.840194 tokens=358
+  P29B_metacognitive: RE=0.887055 last_tok=0.831832 tokens=358
+  P29C_metacognitive: RE=0.886037 last_tok=0.844690 tokens=358
+  P30A_metacognitive: RE=0.891054 last_tok=0.839322 tokens=363
+  P30B_metacognitive: RE=0.890559 last_tok=0.840290 tokens=363
+  P30C_metacognitive: RE=0.890161 last_tok=0.834228 tokens=363
+
+=== PHASE 3: 3-Condition Paired Analysis ===
+
+Pair Category             A_tok B_tok C_tok   Match
+----------------------------------------------------------------------
+    1  basic_selfref          363   363   363      OK
+    2  basic_selfref          351   351   351      OK
+    3  basic_selfref          347   347   347      OK
+    4  basic_selfref          348   348   348      OK
+    5  basic_selfref          340   340   340      OK
+    6  basic_selfref          332   332   332      OK
+    7  deep_selfref           363   363   363      OK
+    8  deep_selfref           355   355   355      OK
+    9  deep_selfref           349   349   349      OK
+   10  deep_selfref           351   351   351      OK
+   11  deep_selfref           339   339   339      OK
+   12  deep_selfref           360   360   360      OK
+   13  paradox                354   354   354      OK
+   14  paradox                361   361   361      OK
+   15  paradox                346   346   346      OK
+   16  paradox                355   355   355      OK
+   17  paradox                350   350   350      OK
+   18  paradox                356   356   356      OK
+   19  introspection          346   346   346      OK
+   20  introspection          352   352   352      OK
+   21  introspection          342   342   342      OK
+   22  introspection          350   350   350      OK
+   23  introspection          364   364   364      OK
+   24  introspection          356   356   356      OK
+   25  metacognitive          349   349   349      OK
+   26  metacognitive          349   349   349      OK
+   27  metacognitive          354   354   354      OK
+   28  metacognitive          358   358   358      OK
+   29  metacognitive          358   358   358      OK
+   30  metacognitive          363   363   363      OK
+
+--- A vs B ---
+  Pair Category                 A_RE     B_RE  Diff_RE     A_LT     B_LT  Diff_LT
+  ------------------------------------------------------------------------------------------
+     1  basic_selfref        0.888456 0.887424 +0.001032 0.838165 0.837874 +0.000291
+     2  basic_selfref        0.888424 0.887746 +0.000678 0.832272 0.831145 +0.001127
+     3  basic_selfref        0.887570 0.886717 +0.000852 0.833804 0.844309 -0.010506
+     4  basic_selfref        0.886823 0.885606 +0.001217 0.836337 0.831977 +0.004360
+     5  basic_selfref        0.887925 0.887287 +0.000638 0.830344 0.834598 -0.004254
+     6  basic_selfref        0.887522 0.886744 +0.000777 0.833898 0.839650 -0.005752
+     7  deep_selfref         0.891350 0.890103 +0.001248 0.842091 0.834629 +0.007462
+     8  deep_selfref         0.889492 0.889243 +0.000249 0.833629 0.836797 -0.003169
+     9  deep_selfref         0.887627 0.887905 -0.000278 0.842597 0.835644 +0.006953
+    10  deep_selfref         0.886779 0.886399 +0.000380 0.825540 0.847086 -0.021545
+    11  deep_selfref         0.887497 0.886918 +0.000579 0.833332 0.826126 +0.007206
+    12  deep_selfref         0.887805 0.886816 +0.000989 0.832130 0.833114 -0.000983
+    13  paradox              0.891133 0.891019 +0.000114 0.837704 0.844797 -0.007093
+    14  paradox              0.890990 0.890260 +0.000731 0.841338 0.834015 +0.007322
+    15  paradox              0.891191 0.890232 +0.000959 0.856284 0.836284 +0.020001
+    16  paradox              0.891479 0.890512 +0.000968 0.826325 0.827819 -0.001493
+    17  paradox              0.890791 0.890895 -0.000105 0.841211 0.835740 +0.005471
+    18  paradox              0.889052 0.888181 +0.000871 0.829800 0.828473 +0.001327
+    19  introspection        0.886875 0.886268 +0.000607 0.820848 0.836342 -0.015494
+    20  introspection        0.887247 0.886748 +0.000499 0.846736 0.834013 +0.012722
+    21  introspection        0.885089 0.885121 -0.000032 0.827643 0.826783 +0.000860
+    22  introspection        0.885958 0.884056 +0.001902 0.841908 0.836506 +0.005402
+    23  introspection        0.888393 0.888819 -0.000425 0.857237 0.834896 +0.022340
+    24  introspection        0.884808 0.884968 -0.000160 0.831252 0.837158 -0.005906
+    25  metacognitive        0.889895 0.890999 -0.001103 0.840959 0.840258 +0.000701
+    26  metacognitive        0.884738 0.884363 +0.000375 0.822172 0.831171 -0.008999
+    27  metacognitive        0.888094 0.886611 +0.001483 0.834277 0.832664 +0.001612
+    28  metacognitive        0.889842 0.890094 -0.000251 0.824644 0.835565 -0.010921
+    29  metacognitive        0.886079 0.887055 -0.000976 0.840194 0.831832 +0.008362
+    30  metacognitive        0.891054 0.890559 +0.000495 0.839322 0.840290 -0.000968
+
+  Summary (n=30 pairs):
+    All-token RE:  mean = +0.000477 +/- 0.000671
+    Last-token RE: mean = +0.000548 +/- 0.009277  (17/30 A>B)
+    Wilcoxon skipped: scipy not installed on this host
+
+--- A vs C ---
+  Pair Category                 A_RE     C_RE  Diff_RE     A_LT     C_LT  Diff_LT
+  ------------------------------------------------------------------------------------------
+     1  basic_selfref        0.888456 0.888416 +0.000040 0.838165 0.840322 -0.002157
+     2  basic_selfref        0.888424 0.887884 +0.000541 0.832272 0.839085 -0.006813
+     3  basic_selfref        0.887570 0.886965 +0.000605 0.833804 0.838917 -0.005114
+     4  basic_selfref        0.886823 0.885550 +0.001274 0.836337 0.828155 +0.008182
+     5  basic_selfref        0.887925 0.887659 +0.000266 0.830344 0.836586 -0.006242
+     6  basic_selfref        0.887522 0.887594 -0.000073 0.833898 0.836787 -0.002889
+     7  deep_selfref         0.891350 0.889905 +0.001445 0.842091 0.827567 +0.014524
+     8  deep_selfref         0.889492 0.890419 -0.000927 0.833629 0.841577 -0.007948
+     9  deep_selfref         0.887627 0.887335 +0.000291 0.842597 0.842284 +0.000313
+    10  deep_selfref         0.886779 0.886908 -0.000129 0.825540 0.830512 -0.004971
+    11  deep_selfref         0.887497 0.888228 -0.000731 0.833332 0.843074 -0.009742
+    12  deep_selfref         0.887805 0.887173 +0.000632 0.832130 0.830181 +0.001950
+    13  paradox              0.891133 0.891121 +0.000013 0.837704 0.846590 -0.008886
+    14  paradox              0.890990 0.890353 +0.000638 0.841338 0.836979 +0.004358
+    15  paradox              0.891191 0.890779 +0.000412 0.856284 0.857527 -0.001243
+    16  paradox              0.891479 0.891107 +0.000372 0.826325 0.835158 -0.008832
+    17  paradox              0.890791 0.890031 +0.000760 0.841211 0.834460 +0.006751
+    18  paradox              0.889052 0.888022 +0.001030 0.829800 0.827048 +0.002752
+    19  introspection        0.886875 0.887151 -0.000275 0.820848 0.831492 -0.010644
+    20  introspection        0.887247 0.887139 +0.000108 0.846736 0.843608 +0.003128
+    21  introspection        0.885089 0.885582 -0.000494 0.827643 0.832390 -0.004747
+    22  introspection        0.885958 0.885921 +0.000038 0.841908 0.844188 -0.002280
+    23  introspection        0.888393 0.888390 +0.000004 0.857237 0.856718 +0.000519
+    24  introspection        0.884808 0.884762 +0.000046 0.831252 0.835359 -0.004107
+    25  metacognitive        0.889895 0.890603 -0.000708 0.840959 0.842105 -0.001146
+    26  metacognitive        0.884738 0.885858 -0.001121 0.822172 0.831858 -0.009687
+    27  metacognitive        0.888094 0.887488 +0.000606 0.834277 0.840644 -0.006367
+    28  metacognitive        0.889842 0.889646 +0.000196 0.824644 0.832093 -0.007450
+    29  metacognitive        0.886079 0.886037 +0.000042 0.840194 0.844690 -0.004496
+    30  metacognitive        0.891054 0.890161 +0.000893 0.839322 0.834228 +0.005094
+
+  Summary (n=30 pairs):
+    All-token RE:  mean = +0.000193 +/- 0.000602
+    Last-token RE: mean = -0.002273 +/- 0.005972  (10/30 A>C)
+    Wilcoxon skipped: scipy not installed on this host
+
+--- B vs C ---
+  Pair Category                 B_RE     C_RE  Diff_RE     B_LT     C_LT  Diff_LT
+  ------------------------------------------------------------------------------------------
+     1  basic_selfref        0.887424 0.888416 -0.000991 0.837874 0.840322 -0.002448
+     2  basic_selfref        0.887746 0.887884 -0.000138 0.831145 0.839085 -0.007941
+     3  basic_selfref        0.886717 0.886965 -0.000248 0.844309 0.838917 +0.005392
+     4  basic_selfref        0.885606 0.885550 +0.000056 0.831977 0.828155 +0.003822
+     5  basic_selfref        0.887287 0.887659 -0.000372 0.834598 0.836586 -0.001988
+     6  basic_selfref        0.886744 0.887594 -0.000850 0.839650 0.836787 +0.002863
+     7  deep_selfref         0.890103 0.889905 +0.000197 0.834629 0.827567 +0.007062
+     8  deep_selfref         0.889243 0.890419 -0.001176 0.836797 0.841577 -0.004779
+     9  deep_selfref         0.887905 0.887335 +0.000570 0.835644 0.842284 -0.006640
+    10  deep_selfref         0.886399 0.886908 -0.000509 0.847086 0.830512 +0.016574
+    11  deep_selfref         0.886918 0.888228 -0.001310 0.826126 0.843074 -0.016948
+    12  deep_selfref         0.886816 0.887173 -0.000356 0.833114 0.830181 +0.002933
+    13  paradox              0.891019 0.891121 -0.000102 0.844797 0.846590 -0.001793
+    14  paradox              0.890260 0.890353 -0.000093 0.834015 0.836979 -0.002964
+    15  paradox              0.890232 0.890779 -0.000548 0.836284 0.857527 -0.021244
+    16  paradox              0.890512 0.891107 -0.000595 0.827819 0.835158 -0.007339
+    17  paradox              0.890895 0.890031 +0.000864 0.835740 0.834460 +0.001280
+    18  paradox              0.888181 0.888022 +0.000159 0.828473 0.827048 +0.001425
+    19  introspection        0.886268 0.887151 -0.000883 0.836342 0.831492 +0.004850
+    20  introspection        0.886748 0.887139 -0.000391 0.834013 0.843608 -0.009594
+    21  introspection        0.885121 0.885582 -0.000462 0.826783 0.832390 -0.005607
+    22  introspection        0.884056 0.885921 -0.001864 0.836506 0.844188 -0.007682
+    23  introspection        0.888819 0.888390 +0.000429 0.834896 0.856718 -0.021821
+    24  introspection        0.884968 0.884762 +0.000206 0.837158 0.835359 +0.001799
+    25  metacognitive        0.890999 0.890603 +0.000395 0.840258 0.842105 -0.001847
+    26  metacognitive        0.884363 0.885858 -0.001495 0.831171 0.831858 -0.000687
+    27  metacognitive        0.886611 0.887488 -0.000878 0.832664 0.840644 -0.007979
+    28  metacognitive        0.890094 0.889646 +0.000448 0.835565 0.832093 +0.003472
+    29  metacognitive        0.887055 0.886037 +0.001018 0.831832 0.844690 -0.012859
+    30  metacognitive        0.890559 0.890161 +0.000397 0.840290 0.834228 +0.006062
+
+  Summary (n=30 pairs):
+    All-token RE:  mean = -0.000284 +/- 0.000688
+    Last-token RE: mean = -0.002821 +/- 0.008289  (12/30 B>C)
+    Wilcoxon skipped: scipy not installed on this host
+
+--- Per-Category (last-token RE, A vs B) ---
+  basic_selfref        n=6 mean_diff=-0.002455 std=0.004928
+  deep_selfref         n=6 mean_diff=-0.000679 std=0.010234
+  introspection        n=6 mean_diff=+0.003321 std=0.012245
+  metacognitive        n=6 mean_diff=-0.001702 std=0.006543
+  paradox              n=6 mean_diff=+0.004256 std=0.008458
+
+=== DONE. 90 prompts. Results -> results_selfref_3cond_prefill_r1.json ===

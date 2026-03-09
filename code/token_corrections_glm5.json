@@ -1,0 +1,8 @@
+{
+  "3":  {"A_tokens": 339, "B_tokens": 338, "C_tokens": 339},
+  "10": {"A_tokens": 345, "B_tokens": 344, "C_tokens": 345},
+  "15": {"A_tokens": 339, "B_tokens": 340, "C_tokens": 339},
+  "20": {"A_tokens": 345, "B_tokens": 346, "C_tokens": 345},
+  "23": {"A_tokens": 356, "B_tokens": 357, "C_tokens": 356},
+  "29": {"A_tokens": 351, "B_tokens": 352, "C_tokens": 351}
+}

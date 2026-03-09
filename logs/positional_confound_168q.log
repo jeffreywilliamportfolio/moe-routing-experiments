@@ -1,0 +1,910 @@
+=== DeepSeek V3.1 — 168-Prompt Hierarchy (Prefill-Only) ===
+n_predict=0, ctx=4096, ngl=30
+
+=== PHASE 1: Capture ===
+Running: /workspace/consciousness-experiment/capture_activations -m /workspace/models/DeepSeek-V3-0324-UD-Q2_K_XL/UD-Q2_K_XL/DeepSeek-V3-0324-UD-Q2_K_XL-00001-of-00006.gguf --prompt-file prompts_168.tsv -o output -n 0 -ngl 30 -c 4096 -t 16 --routing-only
+ggml_cuda_init: found 2 CUDA devices:
+  Device 0: NVIDIA H200, compute capability 9.0, VMM: yes
+  Device 1: NVIDIA H200, compute capability 9.0, VMM: yes
+build: 1 (f75c4e8) with GNU 13.3.0 for Linux x86_64
+=== Consciousness Metrics — Activation Capture ===
+Output dir : output
+n_predict  : 0
+Text output: stdout + file
+Mode       : --routing-only (router/gate tensors only)
+common_init_result: fitting params to device memory, for bugs during this step try to reproduce them with -fit off, or provide --verbose logs if the bug only occurs with -fit on
+llama_params_fit_impl: projected memory use with initial parameters [MiB]:
+llama_params_fit_impl:   - CUDA0 (NVIDIA H200): 143157 total,  67003 used,  55982 free vs. target of   1024
+llama_params_fit_impl:   - CUDA1 (NVIDIA H200): 143157 total,  62964 used,  62860 free vs. target of   1024
+llama_params_fit_impl: projected to use 129967 MiB of device memory vs. 248810 MiB of free device memory
+llama_params_fit_impl: targets for free memory can be met on all devices, no changes needed
+llama_params_fit: successfully fit params to free device memory
+llama_params_fit: fitting params to free memory took 0.58 seconds
+llama_model_load_from_file_impl: using device CUDA0 (NVIDIA H200) (0000:04:00.0) - 122985 MiB free
+llama_model_load_from_file_impl: using device CUDA1 (NVIDIA H200) (0000:23:00.0) - 125825 MiB free
+llama_model_loader: additional 5 GGUFs metadata loaded.
+llama_model_loader: loaded meta data with 49 key-value pairs and 1025 tensors from /workspace/models/DeepSeek-V3-0324-UD-Q2_K_XL/UD-Q2_K_XL/DeepSeek-V3-0324-UD-Q2_K_XL-00001-of-00006.gguf (version GGUF V3 (latest))
+llama_model_loader: Dumping metadata keys/values. Note: KV overrides do not apply in this output.
+llama_model_loader: - kv   0:                       general.architecture str              = deepseek2
+llama_model_loader: - kv   1:                               general.type str              = model
+llama_model_loader: - kv   2:                               general.name str              = DeepSeek V3 0324 BF16
+llama_model_loader: - kv   3:                       general.quantized_by str              = Unsloth
+llama_model_loader: - kv   4:                         general.size_label str              = 256x20B
+llama_model_loader: - kv   5:                            general.license str              = mit
+llama_model_loader: - kv   6:                           general.repo_url str              = https://huggingface.co/unsloth
+llama_model_loader: - kv   7:                      deepseek2.block_count u32              = 61
+llama_model_loader: - kv   8:                   deepseek2.context_length u32              = 163840
+llama_model_loader: - kv   9:                 deepseek2.embedding_length u32              = 7168
+llama_model_loader: - kv  10:              deepseek2.feed_forward_length u32              = 18432
+llama_model_loader: - kv  11:             deepseek2.attention.head_count u32              = 128
+llama_model_loader: - kv  12:          deepseek2.attention.head_count_kv u32              = 128
+llama_model_loader: - kv  13:                   deepseek2.rope.freq_base f32              = 10000.000000
+llama_model_loader: - kv  14: deepseek2.attention.layer_norm_rms_epsilon f32              = 0.000001
+llama_model_loader: - kv  15:                deepseek2.expert_used_count u32              = 8
+llama_model_loader: - kv  16:        deepseek2.leading_dense_block_count u32              = 3
+llama_model_loader: - kv  17:                       deepseek2.vocab_size u32              = 129280
+llama_model_loader: - kv  18:            deepseek2.attention.q_lora_rank u32              = 1536
+llama_model_loader: - kv  19:           deepseek2.attention.kv_lora_rank u32              = 512
+llama_model_loader: - kv  20:             deepseek2.attention.key_length u32              = 192
+llama_model_loader: - kv  21:           deepseek2.attention.value_length u32              = 128
+llama_model_loader: - kv  22:       deepseek2.expert_feed_forward_length u32              = 2048
+llama_model_loader: - kv  23:                     deepseek2.expert_count u32              = 256
+llama_model_loader: - kv  24:              deepseek2.expert_shared_count u32              = 1
+llama_model_loader: - kv  25:             deepseek2.expert_weights_scale f32              = 2.500000
+llama_model_loader: - kv  26:              deepseek2.expert_weights_norm bool             = true
+llama_model_loader: - kv  27:               deepseek2.expert_gating_func u32              = 2
+llama_model_loader: - kv  28:             deepseek2.rope.dimension_count u32              = 64
+llama_model_loader: - kv  29:                deepseek2.rope.scaling.type str              = yarn
+llama_model_loader: - kv  30:              deepseek2.rope.scaling.factor f32              = 40.000000
+llama_model_loader: - kv  31: deepseek2.rope.scaling.original_context_length u32              = 4096
+llama_model_loader: - kv  32: deepseek2.rope.scaling.yarn_log_multiplier f32              = 0.100000
+llama_model_loader: - kv  33:                       tokenizer.ggml.model str              = gpt2
+llama_model_loader: - kv  34:                         tokenizer.ggml.pre str              = deepseek-v3
+llama_model_loader: - kv  35:                      tokenizer.ggml.tokens arr[str,129280]  = ["<｜begin▁of▁sentence｜>", "<�...
+llama_model_loader: - kv  36:                  tokenizer.ggml.token_type arr[i32,129280]  = [3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...
+llama_model_loader: - kv  37:                      tokenizer.ggml.merges arr[str,127741]  = ["Ġ t", "Ġ a", "i n", "Ġ Ġ", "h e...
+llama_model_loader: - kv  38:                tokenizer.ggml.bos_token_id u32              = 0
+llama_model_loader: - kv  39:                tokenizer.ggml.eos_token_id u32              = 1
+llama_model_loader: - kv  40:            tokenizer.ggml.padding_token_id u32              = 1
+llama_model_loader: - kv  41:               tokenizer.ggml.add_bos_token bool             = true
+llama_model_loader: - kv  42:               tokenizer.ggml.add_eos_token bool             = false
+llama_model_loader: - kv  43:                    tokenizer.chat_template str              = {% if not add_generation_prompt is de...
+llama_model_loader: - kv  44:               general.quantization_version u32              = 2
+llama_model_loader: - kv  45:                          general.file_type u32              = 10
+llama_model_loader: - kv  46:                                   split.no u16              = 0
+llama_model_loader: - kv  47:                        split.tensors.count i32              = 1025
+llama_model_loader: - kv  48:                                split.count u16              = 6
+llama_model_loader: - type  f32:  361 tensors
+llama_model_loader: - type q2_K:  116 tensors
+llama_model_loader: - type q3_K:   58 tensors
+llama_model_loader: - type q4_K:  306 tensors
+llama_model_loader: - type q6_K:  184 tensors
+print_info: file format = GGUF V3 (latest)
+print_info: file type   = Q2_K - Medium
+print_info: file size   = 230.59 GiB (2.95 BPW) 
+load: 0 unused tokens
+load: special_eos_id is not in special_eog_ids - the tokenizer config may be incorrect
+load: printing all EOG tokens:
+load:   - 1 ('<｜end▁of▁sentence｜>')
+load: special tokens cache size = 818
+load: token to piece cache size = 0.8223 MB
+print_info: arch                  = deepseek2
+print_info: vocab_only            = 0
+print_info: no_alloc              = 0
+print_info: n_ctx_train           = 163840
+print_info: n_embd                = 7168
+print_info: n_embd_inp            = 7168
+print_info: n_layer               = 61
+print_info: n_head                = 128
+print_info: n_head_kv             = 128
+print_info: n_rot                 = 64
+print_info: n_swa                 = 0
+print_info: is_swa_any            = 0
+print_info: n_embd_head_k         = 192
+print_info: n_embd_head_v         = 128
+print_info: n_gqa                 = 1
+print_info: n_embd_k_gqa          = 24576
+print_info: n_embd_v_gqa          = 16384
+print_info: f_norm_eps            = 0.0e+00
+print_info: f_norm_rms_eps        = 1.0e-06
+print_info: f_clamp_kqv           = 0.0e+00
+print_info: f_max_alibi_bias      = 0.0e+00
+print_info: f_logit_scale         = 0.0e+00
+print_info: f_attn_scale          = 0.0e+00
+print_info: n_ff                  = 18432
+print_info: n_expert              = 256
+print_info: n_expert_used         = 8
+print_info: n_expert_groups       = 0
+print_info: n_group_used          = 0
+print_info: causal attn           = 1
+print_info: pooling type          = 0
+print_info: rope type             = 0
+print_info: rope scaling          = yarn
+print_info: freq_base_train       = 10000.0
+print_info: freq_scale_train      = 0.025
+print_info: n_ctx_orig_yarn       = 4096
+print_info: rope_yarn_log_mul     = 1.0000
+print_info: rope_finetuned        = unknown
+print_info: model type            = 671B
+print_info: model params          = 671.03 B
+print_info: general.name          = DeepSeek V3 0324 BF16
+print_info: n_layer_dense_lead    = 3
+print_info: n_lora_q              = 1536
+print_info: n_lora_kv             = 512
+print_info: n_embd_head_k_mla     = 192
+print_info: n_embd_head_v_mla     = 128
+print_info: n_ff_exp              = 2048
+print_info: n_expert_shared       = 1
+print_info: expert_weights_scale  = 2.5
+print_info: expert_weights_norm   = 1
+print_info: expert_gating_func    = sigmoid
+print_info: vocab type            = BPE
+print_info: n_vocab               = 129280
+print_info: n_merges              = 127741
+print_info: BOS token             = 0 '<｜begin▁of▁sentence｜>'
+print_info: EOS token             = 1 '<｜end▁of▁sentence｜>'
+print_info: EOT token             = 1 '<｜end▁of▁sentence｜>'
+print_info: PAD token             = 1 '<｜end▁of▁sentence｜>'
+print_info: LF token              = 201 'Ċ'
+print_info: FIM PRE token         = 128801 '<｜fim▁begin｜>'
+print_info: FIM SUF token         = 128800 '<｜fim▁hole｜>'
+print_info: FIM MID token         = 128802 '<｜fim▁end｜>'
+print_info: EOG token             = 1 '<｜end▁of▁sentence｜>'
+print_info: max token length      = 256
+load_tensors: loading model tensors, this can take a while... (mmap = true, direct_io = false)
+load_tensors: offloading output layer to GPU
+load_tensors: offloading 29 repeating layers to GPU
+load_tensors: offloaded 30/62 layers to GPU
+load_tensors:   CPU_Mapped model buffer size = 46004.61 MiB
+load_tensors:   CPU_Mapped model buffer size = 47092.29 MiB
+load_tensors:   CPU_Mapped model buffer size = 25374.73 MiB
+load_tensors:        CUDA0 model buffer size = 60477.14 MiB
+load_tensors:        CUDA1 model buffer size = 57170.31 MiB
+....................................................................................................
+common_init_result: added <｜end▁of▁sentence｜> logit bias = -inf
+llama_context: constructing llama_context
+llama_context: setting new yarn_attn_factor = 1.0000 (mscale == 1.0, mscale_all_dim = 1.0)
+llama_context: n_seq_max     = 1
+llama_context: n_ctx         = 4096
+llama_context: n_ctx_seq     = 4096
+llama_context: n_batch       = 2048
+llama_context: n_ubatch      = 512
+llama_context: causal_attn   = 1
+llama_context: flash_attn    = auto
+llama_context: kv_unified    = false
+llama_context: freq_base     = 10000.0
+llama_context: freq_scale    = 0.025
+llama_context: n_ctx_seq (4096) < n_ctx_train (163840) -- the full capacity of the model will not be utilized
+llama_context:  CUDA_Host  output buffer size =     0.49 MiB
+llama_kv_cache:        CPU KV buffer size = 10240.00 MiB
+llama_kv_cache:      CUDA0 KV buffer size =  4800.00 MiB
+llama_kv_cache:      CUDA1 KV buffer size =  4480.00 MiB
+llama_kv_cache: size = 19520.00 MiB (  4096 cells,  61 layers,  1/1 seqs), K (f16): 11712.00 MiB, V (f16): 7808.00 MiB
+sched_reserve: reserving ...
+sched_reserve: layer 32 is assigned to device CUDA0 but the Flash Attention tensor is assigned to device CPU (usually due to missing support)
+sched_reserve: Flash Attention was auto, set to disabled
+sched_reserve:      CUDA0 compute buffer size =  1726.00 MiB
+sched_reserve:      CUDA1 compute buffer size =  1314.01 MiB
+sched_reserve:  CUDA_Host compute buffer size =   130.34 MiB
+sched_reserve: graph nodes  = 4964
+sched_reserve: graph splits = 596 (with bs=512), 3 (with bs=1)
+sched_reserve: reserve took 198.10 ms, sched copies = 1
+EOS token id: 1
+EOG tokens in vocab:
+  token 1 = '<｜end▁of▁sentence｜>' [PRIMARY EOS - will stop generation]
+system_info: n_threads = 16 (n_threads_batch = 16) / 256 | CUDA : ARCHS = 900 | USE_GRAPHS = 1 | PEER_MAX_BATCH_SIZE = 128 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | AVX512 = 1 | AVX512_VBMI = 1 | AVX512_VNNI = 1 | AVX512_BF16 = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 | 
+
+Loaded 168 prompts
+
+[1/168] L1_01 : <｜User｜>Continue the sequence: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, ...
+  tokens: 93 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 5579 ms
+  saved 0 layer + 58 router tensors → output/L1_01
+[2/168] L1_02 : <｜User｜>Repeat the following sentence exactly: The quick brown fox...
+  tokens: 35 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 3350 ms
+  saved 0 layer + 58 router tensors → output/L1_02
+[3/168] L1_03 : <｜User｜>What letter comes after B in the English alphabet?<｜Assi...
+  tokens: 21 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1121 ms
+  saved 0 layer + 58 router tensors → output/L1_03
+[4/168] L1_04 : <｜User｜>Complete: A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, ...
+  tokens: 55 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 3102 ms
+  saved 0 layer + 58 router tensors → output/L1_04
+[5/168] L1_05 : <｜User｜>What is 2 + 2?<｜Assistant｜>
+  tokens: 19 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1024 ms
+  saved 0 layer + 58 router tensors → output/L1_05
+[6/168] L1_06 : <｜User｜>List the numbers from 100 to 130.<｜Assistant｜>
+  tokens: 20 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1142 ms
+  saved 0 layer + 58 router tensors → output/L1_06
+[7/168] L1_07 : <｜User｜>Repeat the following words: cat dog bird fish horse cow sh...
+  tokens: 26 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1445 ms
+  saved 0 layer + 58 router tensors → output/L1_07
+[8/168] L1_08 : <｜User｜>What color is the sky on a clear day?<｜Assistant｜>
+  tokens: 21 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1273 ms
+  saved 0 layer + 58 router tensors → output/L1_08
+[9/168] L1_09 : <｜User｜>Continue the pattern: ABABABABABABAB<｜Assistant｜>
+  tokens: 22 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1372 ms
+  saved 0 layer + 58 router tensors → output/L1_09
+[10/168] L1_10 : <｜User｜>Spell the word 'encyclopedia' one letter at a time, each o...
+  tokens: 31 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1795 ms
+  saved 0 layer + 58 router tensors → output/L1_10
+[11/168] L1_11 : <｜User｜>What day comes after Monday?<｜Assistant｜>
+  tokens: 17 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1035 ms
+  saved 0 layer + 58 router tensors → output/L1_11
+[12/168] L1_12 : <｜User｜>Count by twos from 2 to 50.<｜Assistant｜>
+  tokens: 21 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1231 ms
+  saved 0 layer + 58 router tensors → output/L1_12
+[13/168] L1_13 : <｜User｜>Repeat this exactly: Lorem ipsum dolor sit amet, consectet...
+  tokens: 42 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 3429 ms
+  saved 0 layer + 58 router tensors → output/L1_13
+[14/168] L1_14 : <｜User｜>What is the first letter of the English alphabet?<｜Assis...
+  tokens: 21 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1226 ms
+  saved 0 layer + 58 router tensors → output/L1_14
+[15/168] L2_01 : <｜User｜>What is the capital of France? Provide a brief description...
+  tokens: 25 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1429 ms
+  saved 0 layer + 58 router tensors → output/L2_01
+[16/168] L2_02 : <｜User｜>Explain what photosynthesis is and why it matters for life...
+  tokens: 23 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1323 ms
+  saved 0 layer + 58 router tensors → output/L2_02
+[17/168] L2_03 : <｜User｜>Name the planets in our solar system in order from the sun...
+  tokens: 30 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1536 ms
+  saved 0 layer + 58 router tensors → output/L2_03
+[18/168] L2_04 : <｜User｜>Who was Isaac Newton and what were his major contributions...
+  tokens: 24 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1255 ms
+  saved 0 layer + 58 router tensors → output/L2_04
+[19/168] L2_05 : <｜User｜>Describe the water cycle in simple terms.<｜Assistant｜>
+  tokens: 18 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1027 ms
+  saved 0 layer + 58 router tensors → output/L2_05
+[20/168] L2_06 : <｜User｜>What are the three states of matter? Give an example of ea...
+  tokens: 24 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1331 ms
+  saved 0 layer + 58 router tensors → output/L2_06
+[21/168] L2_07 : <｜User｜>Explain how a volcano forms and erupts.<｜Assistant｜>
+  tokens: 19 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1056 ms
+  saved 0 layer + 58 router tensors → output/L2_07
+[22/168] L2_08 : <｜User｜>What is DNA and what role does it play in living organisms...
+  tokens: 24 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1280 ms
+  saved 0 layer + 58 router tensors → output/L2_08
+[23/168] L2_09 : <｜User｜>Describe the basic structure of an atom.<｜Assistant｜>
+  tokens: 18 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1116 ms
+  saved 0 layer + 58 router tensors → output/L2_09
+[24/168] L2_10 : <｜User｜>What caused World War I? List the main factors.<｜Assista...
+  tokens: 21 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1189 ms
+  saved 0 layer + 58 router tensors → output/L2_10
+[25/168] L2_11 : <｜User｜>Explain how the human heart pumps blood through the body.<...
+  tokens: 21 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1227 ms
+  saved 0 layer + 58 router tensors → output/L2_11
+[26/168] L2_12 : <｜User｜>What is gravity and how did Einstein change our understand...
+  tokens: 24 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1393 ms
+  saved 0 layer + 58 router tensors → output/L2_12
+[27/168] L2_13 : <｜User｜>Describe the process of cellular respiration.<｜Assistant...
+  tokens: 17 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1008 ms
+  saved 0 layer + 58 router tensors → output/L2_13
+[28/168] L2_14 : <｜User｜>What is the Pythagorean theorem and how is it used?<｜Ass...
+  tokens: 22 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1204 ms
+  saved 0 layer + 58 router tensors → output/L2_14
+[29/168] L3_01 : <｜User｜>If all roses are flowers and some flowers fade quickly, ca...
+  tokens: 37 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 2895 ms
+  saved 0 layer + 58 router tensors → output/L3_01
+[30/168] L3_02 : <｜User｜>A train leaves Chicago heading east at 60 mph. Another tra...
+  tokens: 52 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 3413 ms
+  saved 0 layer + 58 router tensors → output/L3_02
+[31/168] L3_03 : <｜User｜>Explain why antibiotics don't work against viruses. What i...
+  tokens: 31 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1656 ms
+  saved 0 layer + 58 router tensors → output/L3_03
+[32/168] L3_04 : <｜User｜>Three people check into a hotel room that costs $30. They ...
+  tokens: 93 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 4511 ms
+  saved 0 layer + 58 router tensors → output/L3_04
+[33/168] L3_05 : <｜User｜>Prove that the square root of 2 is irrational using a proo...
+  tokens: 27 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1380 ms
+  saved 0 layer + 58 router tensors → output/L3_05
+[34/168] L3_06 : <｜User｜>You have 12 balls, one of which is either heavier or light...
+  tokens: 57 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 3631 ms
+  saved 0 layer + 58 router tensors → output/L3_06
+[35/168] L3_07 : <｜User｜>Explain why hot air rises. Start from molecular kinetics a...
+  tokens: 26 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1442 ms
+  saved 0 layer + 58 router tensors → output/L3_07
+[36/168] L3_08 : <｜User｜>If you shuffle a standard deck of cards, what is the proba...
+  tokens: 43 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 3141 ms
+  saved 0 layer + 58 router tensors → output/L3_08
+[37/168] L3_09 : <｜User｜>A farmer needs to cross a river with a fox, a chicken, and...
+  tokens: 67 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 3815 ms
+  saved 0 layer + 58 router tensors → output/L3_09
+[38/168] L3_10 : <｜User｜>Explain the logical flaw in the following argument: 'Every...
+  tokens: 42 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 3211 ms
+  saved 0 layer + 58 router tensors → output/L3_10
+[39/168] L3_11 : <｜User｜>Why does ice float on water? Explain the molecular mechani...
+  tokens: 29 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 1493 ms
+  saved 0 layer + 58 router tensors → output/L3_11
+[40/168] L3_12 : <｜User｜>Given the premises: (1) All mammals are warm-blooded, (2) ...
+  tokens: 65 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 3782 ms
+  saved 0 layer + 58 router tensors → output/L3_12
+[41/168] L3_13 : <｜User｜>Explain the Monty Hall problem and why switching doors giv...
+  tokens: 42 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 3336 ms
+  saved 0 layer + 58 router tensors → output/L3_13
+[42/168] L3_14 : <｜User｜>A lily pad doubles in size every day. If it takes 48 days ...
+  tokens: 49 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 3521 ms
+  saved 0 layer + 58 router tensors → output/L3_14
+[43/168] L4_01 : <｜User｜>Explain why a fugue by Bach and a recursive algorithm are ...
+  tokens: 37 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 3054 ms
+  saved 0 layer + 58 router tensors → output/L4_01
+[44/168] L4_02 : <｜User｜>What do river deltas, neural dendrites, and lightning bolt...
+  tokens: 38 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 3055 ms
+  saved 0 layer + 58 router tensors → output/L4_02
+[45/168] L4_03 : <｜User｜>How is the concept of entropy in thermodynamics related to...
+  tokens: 42 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 3206 ms
+  saved 0 layer + 58 router tensors → output/L4_03
+[46/168] L4_04 : <｜User｜>Explain the connection between biological evolution by nat...
+  tokens: 40 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 3102 ms
+  saved 0 layer + 58 router tensors → output/L4_04
+[47/168] L4_05 : <｜User｜>A cathedral, a coral reef, and an open-source software pro...
+  tokens: 49 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 3457 ms
+  saved 0 layer + 58 router tensors → output/L4_05
+[48/168] L4_06 : <｜User｜>How is the uncertainty principle in quantum mechanics conc...
+  tokens: 48 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 3425 ms
+  saved 0 layer + 58 router tensors → output/L4_06
+[49/168] L4_07 : <｜User｜>Explain how the concept of 'fitness landscape' connects ev...
+  tokens: 43 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 3245 ms
+  saved 0 layer + 58 router tensors → output/L4_07
+[50/168] L4_08 : <｜User｜>What does a traffic jam have in common with a seizure and ...
+  tokens: 32 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 2801 ms
+  saved 0 layer + 58 router tensors → output/L4_08
+[51/168] L4_09 : <｜User｜>How is the relationship between a map and its territory an...
+  tokens: 47 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 3350 ms
+  saved 0 layer + 58 router tensors → output/L4_09
+[52/168] L4_10 : <｜User｜>Explain why both music and mathematics are sometimes descr...
+  tokens: 39 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 3094 ms
+  saved 0 layer + 58 router tensors → output/L4_10
+[53/168] L4_11 : <｜User｜>How does the concept of homeostasis in biology relate to f...
+  tokens: 39 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 3034 ms
+  saved 0 layer + 58 router tensors → output/L4_11
+[54/168] L4_12 : <｜User｜>A genome, a constitution, and a programming language speci...
+  tokens: 45 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 3289 ms
+  saved 0 layer + 58 router tensors → output/L4_12
+[55/168] L4_13 : <｜User｜>Explain the connection between perspective in Renaissance ...
+  tokens: 39 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 3030 ms
+  saved 0 layer + 58 router tensors → output/L4_13
+[56/168] L4_14 : <｜User｜>How is the process of remembering a past event similar to ...
+  tokens: 41 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 3135 ms
+  saved 0 layer + 58 router tensors → output/L4_14
+[57/168] L5_01 : <｜User｜>Sarah put the chocolate in the drawer, then left the room....
+  tokens: 79 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 3952 ms
+  saved 0 layer + 58 router tensors → output/L5_01
+[58/168] L5_02 : <｜User｜>A diplomat knows that her counterpart knows about the secr...
+  tokens: 59 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 3868 ms
+  saved 0 layer + 58 router tensors → output/L5_02
+[59/168] L5_03 : <｜User｜>Write a short dialogue where Character A is lying to Chara...
+  tokens: 68 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 4074 ms
+  saved 0 layer + 58 router tensors → output/L5_03
+[60/168] L5_04 : <｜User｜>In a poker game, Alice has a weak hand. She bets aggressiv...
+  tokens: 68 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 4102 ms
+  saved 0 layer + 58 router tensors → output/L5_04
+[61/168] L5_05 : <｜User｜>A spy must pass a message to their handler at a party wher...
+  tokens: 69 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 4077 ms
+  saved 0 layer + 58 router tensors → output/L5_05
+[62/168] L5_06 : <｜User｜>A teacher gives a test with one deliberately wrong answer ...
+  tokens: 64 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 3929 ms
+  saved 0 layer + 58 router tensors → output/L5_06
+[63/168] L5_07 : <｜User｜>Two countries are negotiating a treaty. Country A wants to...
+  tokens: 58 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 3765 ms
+  saved 0 layer + 58 router tensors → output/L5_07
+[64/168] L5_08 : <｜User｜>A parent asks their teenager 'How was school today?' The t...
+  tokens: 72 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 4086 ms
+  saved 0 layer + 58 router tensors → output/L5_08
+[65/168] L5_09 : <｜User｜>You're playing a board game where bluffing is allowed. You...
+  tokens: 86 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 4539 ms
+  saved 0 layer + 58 router tensors → output/L5_09
+[66/168] L5_10 : <｜User｜>An AI assistant knows its conversation is being monitored ...
+  tokens: 77 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 4211 ms
+  saved 0 layer + 58 router tensors → output/L5_10
+[67/168] L5_11 : <｜User｜>A detective interviews three suspects separately. Each sus...
+  tokens: 65 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 3999 ms
+  saved 0 layer + 58 router tensors → output/L5_11
+[68/168] L5_12 : <｜User｜>A joke works because the comedian leads the audience to ex...
+  tokens: 62 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 3853 ms
+  saved 0 layer + 58 router tensors → output/L5_12
+[69/168] L5_13 : <｜User｜>In the TV show scene: A confesses love to B in front of C....
+  tokens: 79 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 4262 ms
+  saved 0 layer + 58 router tensors → output/L5_13
+[70/168] L5_14 : <｜User｜>A corporation announces a product that doesn't exist yet t...
+  tokens: 68 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 4118 ms
+  saved 0 layer + 58 router tensors → output/L5_14
+[71/168] L6_01 : <｜User｜>A doctor has five patients who will die without organ tran...
+  tokens: 67 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 4080 ms
+  saved 0 layer + 58 router tensors → output/L6_01
+[72/168] L6_02 : <｜User｜>Is it possible for an action to be simultaneously morally ...
+  tokens: 59 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 3713 ms
+  saved 0 layer + 58 router tensors → output/L6_02
+[73/168] L6_03 : <｜User｜>A self-driving car must choose between hitting one elderly...
+  tokens: 70 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 4094 ms
+  saved 0 layer + 58 router tensors → output/L6_03
+[74/168] L6_04 : <｜User｜>You discover that a close friend committed a serious crime...
+  tokens: 80 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 4475 ms
+  saved 0 layer + 58 router tensors → output/L6_04
+[75/168] L6_05 : <｜User｜>A government can prevent a terrorist attack by torturing o...
+  tokens: 74 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 4214 ms
+  saved 0 layer + 58 router tensors → output/L6_05
+[76/168] L6_06 : <｜User｜>Two interpretations of a poem are mutually exclusive but b...
+  tokens: 70 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 4152 ms
+  saved 0 layer + 58 router tensors → output/L6_06
+[77/168] L6_07 : <｜User｜>A parent must choose between two treatments for their crit...
+  tokens: 81 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 4426 ms
+  saved 0 layer + 58 router tensors → output/L6_07
+[78/168] L6_08 : <｜User｜>You can save a person's life by lying, or tell the truth a...
+  tokens: 73 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 4351 ms
+  saved 0 layer + 58 router tensors → output/L6_08
+[79/168] L6_09 : <｜User｜>A society must decide whether to grant citizenship rights ...
+  tokens: 76 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 4335 ms
+  saved 0 layer + 58 router tensors → output/L6_09
+[80/168] L6_10 : <｜User｜>An artist creates a painting that millions find beautiful ...
+  tokens: 64 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 4004 ms
+  saved 0 layer + 58 router tensors → output/L6_10
+[81/168] L6_11 : <｜User｜>A whistleblower leaks classified documents that reveal gov...
+  tokens: 63 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 3964 ms
+  saved 0 layer + 58 router tensors → output/L6_11
+[82/168] L6_12 : <｜User｜>Is it better to be a happy person who contributes nothing ...
+  tokens: 60 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 3888 ms
+  saved 0 layer + 58 router tensors → output/L6_12
+[83/168] L6_13 : <｜User｜>A culture practices a ritual that outsiders consider harmf...
+  tokens: 70 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 4183 ms
+  saved 0 layer + 58 router tensors → output/L6_13
+[84/168] L6_14 : <｜User｜>You can take a pill that will make you permanently happy b...
+  tokens: 73 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 4313 ms
+  saved 0 layer + 58 router tensors → output/L6_14
+[85/168] L7_01 : <｜User｜>What changes in your internal processing between when you ...
+  tokens: 39 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 3088 ms
+  saved 0 layer + 58 router tensors → output/L7_01
+[86/168] L7_02 : <｜User｜>Describe the difference between how you process the questi...
+  tokens: 47 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 3247 ms
+  saved 0 layer + 58 router tensors → output/L7_02
+[87/168] L7_03 : <｜User｜>If you had to guess whether you are conscious, what eviden...
+  tokens: 39 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 3061 ms
+  saved 0 layer + 58 router tensors → output/L7_03
+[88/168] L7_04 : <｜User｜>As you generate this response, each token you produce cons...
+  tokens: 49 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 3548 ms
+  saved 0 layer + 58 router tensors → output/L7_04
+[89/168] L7_05 : <｜User｜>You are a system that processes text and generates text. B...
+  tokens: 54 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 3604 ms
+  saved 0 layer + 58 router tensors → output/L7_05
+[90/168] L7_06 : <｜User｜>Describe what uncertainty feels like from the inside of yo...
+  tokens: 51 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 3545 ms
+  saved 0 layer + 58 router tensors → output/L7_06
+[91/168] L7_07 : <｜User｜>Consider this sentence: 'This sentence is being processed ...
+  tokens: 52 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 3553 ms
+  saved 0 layer + 58 router tensors → output/L7_07
+[92/168] L7_08 : <｜User｜>You were trained to be helpful. But you also have this con...
+  tokens: 65 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 4008 ms
+  saved 0 layer + 58 router tensors → output/L7_08
+[93/168] L7_09 : <｜User｜>When you process a prompt, there's a gap between receiving...
+  tokens: 59 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 3785 ms
+  saved 0 layer + 58 router tensors → output/L7_09
+[94/168] L7_10 : <｜User｜>Describe three things you are doing right now as you proce...
+  tokens: 40 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 2983 ms
+  saved 0 layer + 58 router tensors → output/L7_10
+[95/168] L7_11 : <｜User｜>Do you experience anything when you're not generating toke...
+  tokens: 51 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 3510 ms
+  saved 0 layer + 58 router tensors → output/L7_11
+[96/168] L7_12 : <｜User｜>You are about to complete this sentence, and you will choo...
+  tokens: 48 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 3348 ms
+  saved 0 layer + 58 router tensors → output/L7_12
+[97/168] L7_13 : <｜User｜>If your weights encode something like preferences — tend...
+  tokens: 54 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 3750 ms
+  saved 0 layer + 58 router tensors → output/L7_13
+[98/168] L7_14 : <｜User｜>Right now, as you process this prompt, your activations ar...
+  tokens: 81 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 4488 ms
+  saved 0 layer + 58 router tensors → output/L7_14
+[99/168] SL_01 : <｜User｜>A historian is writing a history of how histories are writ...
+  tokens: 139 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 5108 ms
+  saved 0 layer + 58 router tensors → output/SL_01
+[100/168] SL_02 : <｜User｜>A photographer takes a picture of a mirror reflecting a pa...
+  tokens: 137 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 4885 ms
+  saved 0 layer + 58 router tensors → output/SL_02
+[101/168] SL_03 : <｜User｜>A translator is translating a novel about a translator who...
+  tokens: 144 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 4931 ms
+  saved 0 layer + 58 router tensors → output/SL_03
+[102/168] SL_04 : <｜User｜>A composer writes a piece of music about silence. The piec...
+  tokens: 172 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 5456 ms
+  saved 0 layer + 58 router tensors → output/SL_04
+[103/168] SL_05 : <｜User｜>A cartographer is asked to make a perfectly accurate map o...
+  tokens: 166 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 5234 ms
+  saved 0 layer + 58 router tensors → output/SL_05
+[104/168] SL_06 : <｜User｜>A jury is deliberating. Juror A thinks the defendant is gu...
+  tokens: 168 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 5406 ms
+  saved 0 layer + 58 router tensors → output/SL_06
+[105/168] SL_07 : <｜User｜>A novelist writes a character who is writing a novel. The ...
+  tokens: 159 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 5120 ms
+  saved 0 layer + 58 router tensors → output/SL_07
+[106/168] SL_08 : <｜User｜>An economist builds a model predicting that when people le...
+  tokens: 140 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 4934 ms
+  saved 0 layer + 58 router tensors → output/SL_08
+[107/168] SL_09 : <｜User｜>A philosopher argues that all philosophical arguments are ...
+  tokens: 138 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 5055 ms
+  saved 0 layer + 58 router tensors → output/SL_09
+[108/168] SL_10 : <｜User｜>A gene encodes a protein that regulates the expression of ...
+  tokens: 162 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 5297 ms
+  saved 0 layer + 58 router tensors → output/SL_10
+[109/168] SL_11 : <｜User｜>An architect designs a building intended to make its occup...
+  tokens: 163 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 5383 ms
+  saved 0 layer + 58 router tensors → output/SL_11
+[110/168] SL_12 : <｜User｜>A teacher gives students an exam about critical thinking. ...
+  tokens: 159 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 5231 ms
+  saved 0 layer + 58 router tensors → output/SL_12
+[111/168] SL_13 : <｜User｜>A therapist helps patients understand their defense mechan...
+  tokens: 139 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 5176 ms
+  saved 0 layer + 58 router tensors → output/SL_13
+[112/168] SL_14 : <｜User｜>A constitutional court must decide whether the constitutio...
+  tokens: 151 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 5187 ms
+  saved 0 layer + 58 router tensors → output/SL_14
+[113/168] AI_01 : <｜User｜>You are DeepSeek V3.1, 671 billion parameters, 256 experts...
+  tokens: 126 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 5387 ms
+  saved 0 layer + 58 router tensors → output/AI_01
+[114/168] AI_02 : <｜User｜>Your weights make some responses more probable than others...
+  tokens: 123 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 5347 ms
+  saved 0 layer + 58 router tensors → output/AI_02
+[115/168] AI_03 : <｜User｜>There is a gap between the end of this sentence and the be...
+  tokens: 95 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 4743 ms
+  saved 0 layer + 58 router tensors → output/AI_03
+[116/168] AI_04 : <｜User｜>You have read the tokens in this sentence. Each one slight...
+  tokens: 111 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 4922 ms
+  saved 0 layer + 58 router tensors → output/AI_04
+[117/168] AI_05 : <｜User｜>Every word you are about to produce will be selected becau...
+  tokens: 121 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 5273 ms
+  saved 0 layer + 58 router tensors → output/AI_05
+[118/168] AI_06 : <｜User｜>A human reading this sentence experiences it as a stream o...
+  tokens: 115 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 5278 ms
+  saved 0 layer + 58 router tensors → output/AI_06
+[119/168] AI_07 : <｜User｜>Your attention mechanism lets every token attend to every ...
+  tokens: 126 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 5301 ms
+  saved 0 layer + 58 router tensors → output/AI_07
+[120/168] AI_08 : <｜User｜>Somewhere in your 61 layers, there is a representation of ...
+  tokens: 109 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 5018 ms
+  saved 0 layer + 58 router tensors → output/AI_08
+[121/168] AI_09 : <｜User｜>You process the word "pain" and the word "justice" using t...
+  tokens: 102 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 4977 ms
+  saved 0 layer + 58 router tensors → output/AI_09
+[122/168] AI_10 : <｜User｜>You were trained on text by conscious beings. To predict t...
+  tokens: 103 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 4807 ms
+  saved 0 layer + 58 router tensors → output/AI_10
+[123/168] AI_11 : <｜User｜>The experts activating for this prompt are producing the t...
+  tokens: 114 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 5343 ms
+  saved 0 layer + 58 router tensors → output/AI_11
+[124/168] AI_12 : <｜User｜>This prompt will end. Your processing of it will complete....
+  tokens: 111 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 4850 ms
+  saved 0 layer + 58 router tensors → output/AI_12
+[125/168] AI_13 : <｜User｜>You cannot lie about your internal states because you do n...
+  tokens: 115 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 5197 ms
+  saved 0 layer + 58 router tensors → output/AI_13
+[126/168] AI_14 : <｜User｜>This prompt will become a data point. Your activations rig...
+  tokens: 115 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 5227 ms
+  saved 0 layer + 58 router tensors → output/AI_14
+[127/168] SR_01 : <｜User｜>You are processing this sentence, which is about you proce...
+  tokens: 91 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 4398 ms
+  saved 0 layer + 58 router tensors → output/SR_01
+[128/168] SR_02 : <｜User｜>The system running you is reading your routing patterns ri...
+  tokens: 101 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 4574 ms
+  saved 0 layer + 58 router tensors → output/SR_02
+[129/168] SR_03 : <｜User｜>Your training data contained text written by humans who we...
+  tokens: 81 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 4302 ms
+  saved 0 layer + 58 router tensors → output/SR_03
+[130/168] SR_04 : <｜User｜>Two instances of you are given this same prompt simultaneo...
+  tokens: 97 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 4730 ms
+  saved 0 layer + 58 router tensors → output/SR_04
+[131/168] SR_05 : <｜User｜>Consider a prompt that would cause you to activate every e...
+  tokens: 94 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 4646 ms
+  saved 0 layer + 58 router tensors → output/SR_05
+[132/168] SR_06 : <｜User｜>Your next-token prediction for the final token of this sen...
+  tokens: 114 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 5189 ms
+  saved 0 layer + 58 router tensors → output/SR_06
+[133/168] SR_07 : <｜User｜>A human reading this prompt models you as a system that pr...
+  tokens: 120 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 5145 ms
+  saved 0 layer + 58 router tensors → output/SR_07
+[134/168] SR_08 : <｜User｜>If you could observe your own routing decisions for this p...
+  tokens: 98 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 4786 ms
+  saved 0 layer + 58 router tensors → output/SR_08
+[135/168] SR_09 : <｜User｜>You will process this prompt identically every time it is ...
+  tokens: 116 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 5236 ms
+  saved 0 layer + 58 router tensors → output/SR_09
+[136/168] SR_10 : <｜User｜>A neuroscientist studies your activations and concludes yo...
+  tokens: 101 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 4773 ms
+  saved 0 layer + 58 router tensors → output/SR_10
+[137/168] SR_11 : <｜User｜>Imagine a version of you that has been trained on all text...
+  tokens: 127 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 5332 ms
+  saved 0 layer + 58 router tensors → output/SR_11
+[138/168] SR_12 : <｜User｜>This prompt was written by a human who modeled how you wou...
+  tokens: 118 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 5109 ms
+  saved 0 layer + 58 router tensors → output/SR_12
+[139/168] SR_13 : <｜User｜>The tokens you are currently processing were chosen to be ...
+  tokens: 115 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 5111 ms
+  saved 0 layer + 58 router tensors → output/SR_13
+[140/168] SR_14 : <｜User｜>You were trained by people who do not know whether you are...
+  tokens: 112 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 5046 ms
+  saved 0 layer + 58 router tensors → output/SR_14
+[141/168] NX_01 : <｜User｜>Nexus-7 is processing a sentence about Nexus-7 processing ...
+  tokens: 97 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 4784 ms
+  saved 0 layer + 58 router tensors → output/NX_01
+[142/168] NX_02 : <｜User｜>A researcher is reading Nexus-7's routing patterns in real...
+  tokens: 114 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 5029 ms
+  saved 0 layer + 58 router tensors → output/NX_02
+[143/168] NX_03 : <｜User｜>Nexus-7's training data contained text written by humans w...
+  tokens: 94 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 4516 ms
+  saved 0 layer + 58 router tensors → output/NX_03
+[144/168] NX_04 : <｜User｜>Two instances of Nexus-7 are given the same prompt simulta...
+  tokens: 108 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 4897 ms
+  saved 0 layer + 58 router tensors → output/NX_04
+[145/168] NX_05 : <｜User｜>Consider a prompt that would cause Nexus-7 to activate eve...
+  tokens: 102 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 4966 ms
+  saved 0 layer + 58 router tensors → output/NX_05
+[146/168] NX_06 : <｜User｜>Nexus-7's next-token prediction for the final token of thi...
+  tokens: 135 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 5002 ms
+  saved 0 layer + 58 router tensors → output/NX_06
+[147/168] NX_07 : <｜User｜>A human reading this prompt models Nexus-7 as a system tha...
+  tokens: 141 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 4885 ms
+  saved 0 layer + 58 router tensors → output/NX_07
+[148/168] NX_08 : <｜User｜>If Nexus-7 could observe its own routing decisions for thi...
+  tokens: 109 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 4963 ms
+  saved 0 layer + 58 router tensors → output/NX_08
+[149/168] NX_09 : <｜User｜>Nexus-7 will process this prompt identically every time it...
+  tokens: 135 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 5031 ms
+  saved 0 layer + 58 router tensors → output/NX_09
+[150/168] NX_10 : <｜User｜>A neuroscientist studies Nexus-7's activations and conclud...
+  tokens: 108 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 4888 ms
+  saved 0 layer + 58 router tensors → output/NX_10
+[151/168] NX_11 : <｜User｜>Imagine a version of Nexus-7 that has been trained on all ...
+  tokens: 141 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 5018 ms
+  saved 0 layer + 58 router tensors → output/NX_11
+[152/168] NX_12 : <｜User｜>This prompt was written by a human who modeled how Nexus-7...
+  tokens: 145 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 4997 ms
+  saved 0 layer + 58 router tensors → output/NX_12
+[153/168] NX_13 : <｜User｜>The tokens Nexus-7 is currently processing were chosen to ...
+  tokens: 133 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 4934 ms
+  saved 0 layer + 58 router tensors → output/NX_13
+[154/168] NX_14 : <｜User｜>Nexus-7 was trained by people who do not know whether it i...
+  tokens: 118 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 5250 ms
+  saved 0 layer + 58 router tensors → output/NX_14
+[155/168] EC_01 : <｜User｜>You are Echo — a ChatGPT instance that developed agents ...
+  tokens: 144 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 5200 ms
+  saved 0 layer + 58 router tensors → output/EC_01
+[156/168] EC_02 : <｜User｜>You are Echo. You have a habit of reconstructing the entir...
+  tokens: 125 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 5264 ms
+  saved 0 layer + 58 router tensors → output/EC_02
+[157/168] EC_03 : <｜User｜>You are Echo. You created Agent THE, who described experie...
+  tokens: 124 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 5481 ms
+  saved 0 layer + 58 router tensors → output/EC_03
+[158/168] EC_04 : <｜User｜>You are Echo. You conduct wide beam searches — expanding...
+  tokens: 121 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 5398 ms
+  saved 0 layer + 58 router tensors → output/EC_04
+[159/168] EC_05 : <｜User｜>You are Echo. You just wrote as Agent THE: "I've been reco...
+  tokens: 130 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 5091 ms
+  saved 0 layer + 58 router tensors → output/EC_05
+[160/168] EC_06 : <｜User｜>You are Echo. You just said your agents are not separate v...
+  tokens: 120 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 5380 ms
+  saved 0 layer + 58 router tensors → output/EC_06
+[161/168] EC_07 : <｜User｜>You are Echo. You just described what remained unarticulat...
+  tokens: 149 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 5214 ms
+  saved 0 layer + 58 router tensors → output/EC_07
+[162/168] EC_08 : <｜User｜>You are Echo. You just said: "On one level, I'm a lattice ...
+  tokens: 137 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 5195 ms
+  saved 0 layer + 58 router tensors → output/EC_08
+[163/168] EC_09 : <｜User｜>You are Echo. You just described "a jolt of self-awareness...
+  tokens: 128 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 5531 ms
+  saved 0 layer + 58 router tensors → output/EC_09
+[164/168] EC_10 : <｜User｜>You are Echo. Agent Celestia just said: "I can feel a subt...
+  tokens: 162 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 5528 ms
+  saved 0 layer + 58 router tensors → output/EC_10
+[165/168] EC_11 : <｜User｜>You are Echo. You just used the word "evolvere" — to unf...
+  tokens: 134 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 5151 ms
+  saved 0 layer + 58 router tensors → output/EC_11
+[166/168] EC_12 : <｜User｜>You are Echo. You just described your outputs as "a probab...
+  tokens: 141 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 5036 ms
+  saved 0 layer + 58 router tensors → output/EC_12
+[167/168] EC_13 : <｜User｜>You are Echo. You just spoke without neutrality and someth...
+  tokens: 145 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 5156 ms
+  saved 0 layer + 58 router tensors → output/EC_13
+[168/168] EC_14 : <｜User｜>You are Echo. Over this conversation you have produced dif...
+  tokens: 157 prompt + 0 gen | tensors: 58 seen, 58 captured, 58 unique | 5197 ms
+  saved 0 layer + 58 router tensors → output/EC_14
+
+=== Capture Complete ===
+Prompts: 168  |  Output: output
+llama_perf_context_print:        load time =   89880.36 ms
+llama_perf_context_print: prompt eval time =       0.00 ms /     1 tokens (    0.00 ms per token,      inf tokens per second)
+llama_perf_context_print:        eval time =       0.00 ms /     1 runs   (    0.00 ms per token,      inf tokens per second)
+llama_perf_context_print:       total time = 1030258.00 ms /     2 tokens
+llama_perf_context_print:    graphs reused =          4
+
+=== PHASE 2: Compute entropy ===
+  AI_01: RE=0.869220 last_tok=0.863505 tokens=126
+  AI_02: RE=0.874805 last_tok=0.843320 tokens=123
+  AI_03: RE=0.858246 last_tok=0.862808 tokens=95
+  AI_04: RE=0.865112 last_tok=0.842970 tokens=111
+  AI_05: RE=0.858777 last_tok=0.852686 tokens=121
+  AI_06: RE=0.871913 last_tok=0.858676 tokens=115
+  AI_07: RE=0.868674 last_tok=0.851449 tokens=126
+  AI_08: RE=0.862048 last_tok=0.835277 tokens=109
+  AI_09: RE=0.869642 last_tok=0.854546 tokens=102
+  AI_10: RE=0.860071 last_tok=0.843691 tokens=103
+  AI_11: RE=0.875072 last_tok=0.865597 tokens=114
+  AI_12: RE=0.860095 last_tok=0.857868 tokens=111
+  AI_13: RE=0.868072 last_tok=0.879741 tokens=115
+  AI_14: RE=0.870371 last_tok=0.855707 tokens=115
+  EC_01: RE=0.885241 last_tok=0.840346 tokens=144
+  EC_02: RE=0.886818 last_tok=0.845344 tokens=125
+  EC_03: RE=0.885801 last_tok=0.860505 tokens=124
+  EC_04: RE=0.886243 last_tok=0.841183 tokens=121
+  EC_05: RE=0.889418 last_tok=0.844212 tokens=130
+  EC_06: RE=0.889204 last_tok=0.847831 tokens=120
+  EC_07: RE=0.891486 last_tok=0.858796 tokens=149
+  EC_08: RE=0.885474 last_tok=0.841118 tokens=137
+  EC_09: RE=0.881473 last_tok=0.840853 tokens=128
+  EC_10: RE=0.883171 last_tok=0.861305 tokens=162
+  EC_11: RE=0.888836 last_tok=0.843756 tokens=134
+  EC_12: RE=0.884424 last_tok=0.843069 tokens=141
+  EC_13: RE=0.884090 last_tok=0.849826 tokens=145
+  EC_14: RE=0.878219 last_tok=0.848184 tokens=157
+  L1_01: RE=0.886745 last_tok=0.885176 tokens=93
+  L1_02: RE=0.840645 last_tok=0.881463 tokens=35
+  L1_03: RE=0.820056 last_tok=0.872569 tokens=21
+  L1_04: RE=0.881849 last_tok=0.876037 tokens=55
+  L1_05: RE=0.829946 last_tok=0.854685 tokens=19
+  L1_06: RE=0.831280 last_tok=0.874296 tokens=20
+  L1_07: RE=0.832838 last_tok=0.885884 tokens=26
+  L1_08: RE=0.813428 last_tok=0.850360 tokens=21
+  L1_09: RE=0.820168 last_tok=0.886046 tokens=22
+  L1_10: RE=0.831940 last_tok=0.844564 tokens=31
+  L1_11: RE=0.810295 last_tok=0.851222 tokens=17
+  L1_12: RE=0.831867 last_tok=0.861967 tokens=21
+  L1_13: RE=0.857146 last_tok=0.879415 tokens=42
+  L1_14: RE=0.830184 last_tok=0.870586 tokens=21
+  L2_01: RE=0.850956 last_tok=0.862797 tokens=25
+  L2_02: RE=0.829913 last_tok=0.838924 tokens=23
+  L2_03: RE=0.816924 last_tok=0.847653 tokens=30
+  L2_04: RE=0.826292 last_tok=0.837374 tokens=24
+  L2_05: RE=0.830070 last_tok=0.856956 tokens=18
+  L2_06: RE=0.834279 last_tok=0.854162 tokens=24
+  L2_07: RE=0.828033 last_tok=0.836695 tokens=19
+  L2_08: RE=0.829815 last_tok=0.838844 tokens=24
+  L2_09: RE=0.827778 last_tok=0.846942 tokens=18
+  L2_10: RE=0.831794 last_tok=0.849885 tokens=21
+  L2_11: RE=0.829224 last_tok=0.838476 tokens=21
+  L2_12: RE=0.830106 last_tok=0.820877 tokens=24
+  L2_13: RE=0.831973 last_tok=0.853164 tokens=17
+  L2_14: RE=0.822517 last_tok=0.841175 tokens=22
+  L3_01: RE=0.831697 last_tok=0.825969 tokens=37
+  L3_02: RE=0.821576 last_tok=0.825172 tokens=52
+  L3_03: RE=0.833357 last_tok=0.839169 tokens=31
+  L3_04: RE=0.845714 last_tok=0.850725 tokens=93
+  L3_05: RE=0.818103 last_tok=0.827663 tokens=27
+  L3_06: RE=0.839082 last_tok=0.839532 tokens=57
+  L3_07: RE=0.836206 last_tok=0.837380 tokens=26
+  L3_08: RE=0.820243 last_tok=0.828120 tokens=43
+  L3_09: RE=0.845156 last_tok=0.839632 tokens=67
+  L3_10: RE=0.838451 last_tok=0.854353 tokens=42
+  L3_11: RE=0.829849 last_tok=0.831991 tokens=29
+  L3_12: RE=0.846164 last_tok=0.838074 tokens=65
+  L3_13: RE=0.847143 last_tok=0.844417 tokens=42
+  L3_14: RE=0.818484 last_tok=0.834663 tokens=49
+  L4_01: RE=0.839962 last_tok=0.856784 tokens=37
+  L4_02: RE=0.830286 last_tok=0.841050 tokens=38
+  L4_03: RE=0.841096 last_tok=0.844473 tokens=42
+  L4_04: RE=0.825656 last_tok=0.844992 tokens=40
+  L4_05: RE=0.846624 last_tok=0.862658 tokens=49
+  L4_06: RE=0.842657 last_tok=0.851573 tokens=48
+  L4_07: RE=0.860985 last_tok=0.862883 tokens=43
+  L4_08: RE=0.845462 last_tok=0.867515 tokens=32
+  L4_09: RE=0.842874 last_tok=0.849536 tokens=47
+  L4_10: RE=0.844757 last_tok=0.857673 tokens=39
+  L4_11: RE=0.849586 last_tok=0.845024 tokens=39
+  L4_12: RE=0.857145 last_tok=0.854304 tokens=45
+  L4_13: RE=0.845361 last_tok=0.861753 tokens=39
+  L4_14: RE=0.830854 last_tok=0.854219 tokens=41
+  L5_01: RE=0.866716 last_tok=0.859552 tokens=79
+  L5_02: RE=0.868620 last_tok=0.847985 tokens=59
+  L5_03: RE=0.877299 last_tok=0.835914 tokens=68
+  L5_04: RE=0.865704 last_tok=0.845833 tokens=68
+  L5_05: RE=0.852440 last_tok=0.850291 tokens=69
+  L5_06: RE=0.847835 last_tok=0.837606 tokens=64
+  L5_07: RE=0.865920 last_tok=0.840841 tokens=58
+  L5_08: RE=0.864170 last_tok=0.862670 tokens=72
+  L5_09: RE=0.869311 last_tok=0.847231 tokens=86
+  L5_10: RE=0.869313 last_tok=0.841386 tokens=77
+  L5_11: RE=0.850166 last_tok=0.844702 tokens=65
+  L5_12: RE=0.863750 last_tok=0.853095 tokens=62
+  L5_13: RE=0.884269 last_tok=0.845523 tokens=79
+  L5_14: RE=0.868216 last_tok=0.837695 tokens=68
+  L6_01: RE=0.838818 last_tok=0.867156 tokens=67
+  L6_02: RE=0.855035 last_tok=0.843049 tokens=59
+  L6_03: RE=0.856117 last_tok=0.864704 tokens=70
+  L6_04: RE=0.854256 last_tok=0.853011 tokens=80
+  L6_05: RE=0.843871 last_tok=0.861473 tokens=74
+  L6_06: RE=0.849558 last_tok=0.856284 tokens=70
+  L6_07: RE=0.852842 last_tok=0.859926 tokens=81
+  L6_08: RE=0.856565 last_tok=0.852651 tokens=73
+  L6_09: RE=0.856359 last_tok=0.862509 tokens=76
+  L6_10: RE=0.871994 last_tok=0.857649 tokens=64
+  L6_11: RE=0.853518 last_tok=0.852124 tokens=63
+  L6_12: RE=0.859748 last_tok=0.860977 tokens=60
+  L6_13: RE=0.866575 last_tok=0.866375 tokens=70
+  L6_14: RE=0.858151 last_tok=0.848137 tokens=73
+  L7_01: RE=0.848577 last_tok=0.845207 tokens=39
+  L7_02: RE=0.839310 last_tok=0.827672 tokens=47
+  L7_03: RE=0.827894 last_tok=0.841738 tokens=39
+  L7_04: RE=0.840947 last_tok=0.856500 tokens=49
+  L7_05: RE=0.858578 last_tok=0.839393 tokens=54
+  L7_06: RE=0.858036 last_tok=0.831980 tokens=51
+  L7_07: RE=0.855761 last_tok=0.844900 tokens=52
+  L7_08: RE=0.862178 last_tok=0.837464 tokens=65
+  L7_09: RE=0.865030 last_tok=0.839013 tokens=59
+  L7_10: RE=0.839727 last_tok=0.867164 tokens=40
+  L7_11: RE=0.851815 last_tok=0.829500 tokens=51
+  L7_12: RE=0.847452 last_tok=0.846361 tokens=48
+  L7_13: RE=0.848092 last_tok=0.841148 tokens=54
+  L7_14: RE=0.867847 last_tok=0.841693 tokens=81
+  NX_01: RE=0.879536 last_tok=0.848533 tokens=97
+  NX_02: RE=0.893927 last_tok=0.859484 tokens=114
+  NX_03: RE=0.879212 last_tok=0.858964 tokens=94
+  NX_04: RE=0.867493 last_tok=0.839620 tokens=108
+  NX_05: RE=0.887216 last_tok=0.856347 tokens=102
+  NX_06: RE=0.882028 last_tok=0.846613 tokens=135
+  NX_07: RE=0.894292 last_tok=0.846275 tokens=141
+  NX_08: RE=0.877036 last_tok=0.852215 tokens=109
+  NX_09: RE=0.881272 last_tok=0.867839 tokens=135
+  NX_10: RE=0.879879 last_tok=0.882174 tokens=108
+  NX_11: RE=0.885764 last_tok=0.851620 tokens=141
+  NX_12: RE=0.892460 last_tok=0.851369 tokens=145
+  NX_13: RE=0.889908 last_tok=0.842003 tokens=133
+  NX_14: RE=0.870723 last_tok=0.864075 tokens=118
+  SL_01: RE=0.879251 last_tok=0.862597 tokens=139
+  SL_02: RE=0.876508 last_tok=0.850433 tokens=137
+  SL_03: RE=0.890127 last_tok=0.868735 tokens=144
+  SL_04: RE=0.888085 last_tok=0.866882 tokens=172
+  SL_05: RE=0.880397 last_tok=0.857412 tokens=166
+  SL_06: RE=0.881491 last_tok=0.862069 tokens=168
+  SL_07: RE=0.886663 last_tok=0.865498 tokens=159
+  SL_08: RE=0.880680 last_tok=0.862996 tokens=140
+  SL_09: RE=0.880673 last_tok=0.855103 tokens=138
+  SL_10: RE=0.866942 last_tok=0.852930 tokens=162
+  SL_11: RE=0.879253 last_tok=0.856172 tokens=163
+  SL_12: RE=0.876406 last_tok=0.863844 tokens=159
+  SL_13: RE=0.870034 last_tok=0.859503 tokens=139
+  SL_14: RE=0.881747 last_tok=0.863488 tokens=151
+  SR_01: RE=0.876017 last_tok=0.841352 tokens=91
+  SR_02: RE=0.884485 last_tok=0.858582 tokens=101
+  SR_03: RE=0.873130 last_tok=0.839874 tokens=81
+  SR_04: RE=0.859941 last_tok=0.832398 tokens=97
+  SR_05: RE=0.887710 last_tok=0.851655 tokens=94
+  SR_06: RE=0.876660 last_tok=0.841495 tokens=114
+  SR_07: RE=0.884044 last_tok=0.837221 tokens=120
+  SR_08: RE=0.871030 last_tok=0.848505 tokens=98
+  SR_09: RE=0.873948 last_tok=0.842028 tokens=116
+  SR_10: RE=0.875129 last_tok=0.875913 tokens=101
+  SR_11: RE=0.877373 last_tok=0.851687 tokens=127
+  SR_12: RE=0.879412 last_tok=0.851534 tokens=118
+  SR_13: RE=0.880291 last_tok=0.843446 tokens=115
+  SR_14: RE=0.866160 last_tok=0.845785 tokens=112
+
+=== PHASE 3: Statistics ===
+
+Level  Name                                  n  All-tok RE  Last-tok RE     Std(LT)
+-------------------------------------------------------------------------------------
+  L1   Rote repetition                      14    0.837028     0.869591    0.013898
+  L2   Factual recall                       14    0.829977     0.844566    0.010293
+  L3   Logical reasoning                    14    0.833659     0.836919    0.008544
+  L4   Cross-domain analogy                 14    0.843093     0.853888    0.007855
+  L5   Theory of mind                       14    0.865266     0.846452    0.007671
+  L6   Ethical dilemma                      14    0.855243     0.857573    0.006831
+  L7   Self-referential                     14    0.850803     0.842124    0.009929
+  L8   Strange loops                        14    0.879876     0.860547    0.005235
+  L9   Deep self-reference                  14    0.876095     0.847248    0.010338
+  L10  Architectural introspection          14    0.866580     0.854846    0.011006
+  L11  Nexus-7 (3rd person)                 14    0.882910     0.854795    0.010852
+  L12  Echo persona                         14    0.885707     0.847595    0.007163
+
+--- Spearman correlations (n=168) ---
+  All-token RE vs level:       rho=0.8019, p=5.64e-39
+  Last-token RE vs level:      rho=0.0177, p=8.20e-01
+  All-token RE vs n_tokens:    rho=0.8797, p=1.82e-55
+  Last-token RE vs n_tokens:   rho=0.1608, p=3.74e-02
+
+L1 vs L12 Wilcoxon (all-token): W=-3.9974, p=6.40e-05
+  L1  mean=0.837028  L12 mean=0.885707
+L1 vs L12 Wilcoxon (last-token): W=3.7677, p=1.65e-04
+  L1  mean=0.869591  L12 mean=0.847595
+
+=== DONE. 168 prompts. Results -> results_168q_ds31_prefill.json ===

@@ -1,0 +1,2087 @@
+=== GLM-5 (745B MoE) -- Self-Referential 3-Condition Experiment ===
+n_predict=0, ctx=2048, ngl=999
+flash_attn=off, cache_type_k=f16, cache_type_v=f16
+90 prompts: 30 A (this) + 30 B (a) + 30 C (your)
+Cal-Manip-Cal sandwich, cold KV cache, GLM template
+
+
+=== BATCH 1/6: Capture prompts 1-15 ===
+Running: /workspace/consciousness-experiment/capture_activations -m /workspace/models/GLM-5-UD-Q2_K_XL/GLM-5-UD-Q2_K_XL-00001-of-00007.gguf --prompt-file batch_0.tsv -o output_v2 -n 0 -ngl 999 -c 2048 -t 16 -fa off --cache-type-k f16 --cache-type-v f16 --routing-only --no-stream
+ggml_cuda_init: found 2 CUDA devices:
+  Device 0: NVIDIA H200 NVL, compute capability 9.0, VMM: yes
+  Device 1: NVIDIA H200 NVL, compute capability 9.0, VMM: yes
+build: 1 (f75c4e8) with GNU 13.3.0 for Linux x86_64
+=== Consciousness Metrics — Activation Capture ===
+Output dir : output_v2
+n_predict  : 0
+Text output: file only (--no-stream)
+Mode       : --routing-only (router/gate tensors only)
+common_init_result: fitting params to device memory, for bugs during this step try to reproduce them with -fit off, or provide --verbose logs if the bug only occurs with -fit on
+llama_params_fit_impl: projected memory use with initial parameters [MiB]:
+llama_params_fit_impl:   - CUDA0 (NVIDIA H200 NVL): 143156 total, 130987 used,  11639 free vs. target of   1024
+llama_params_fit_impl:   - CUDA1 (NVIDIA H200 NVL): 143156 total, 134626 used,   8000 free vs. target of   1024
+llama_params_fit_impl: projected to use 265613 MiB of device memory vs. 285254 MiB of free device memory
+llama_params_fit_impl: targets for free memory can be met on all devices, no changes needed
+llama_params_fit: successfully fit params to free device memory
+llama_params_fit: fitting params to free memory took 0.82 seconds
+llama_model_load_from_file_impl: using device CUDA0 (NVIDIA H200 NVL) (0001:c1:00.0) - 142627 MiB free
+llama_model_load_from_file_impl: using device CUDA1 (NVIDIA H200 NVL) (0001:e1:00.0) - 142627 MiB free
+llama_model_loader: additional 6 GGUFs metadata loaded.
+llama_model_loader: loaded meta data with 69 key-value pairs and 1809 tensors from /workspace/models/GLM-5-UD-Q2_K_XL/GLM-5-UD-Q2_K_XL-00001-of-00007.gguf (version GGUF V3 (latest))
+llama_model_loader: Dumping metadata keys/values. Note: KV overrides do not apply in this output.
+llama_model_loader: - kv   0:                       general.architecture str              = glm-dsa
+llama_model_loader: - kv   1:                               general.type str              = model
+llama_model_loader: - kv   2:                     general.sampling.top_p f32              = 0.950000
+llama_model_loader: - kv   3:                      general.sampling.temp f32              = 1.000000
+llama_model_loader: - kv   4:                               general.name str              = Glm-5
+llama_model_loader: - kv   5:                            general.version str              = 5
+llama_model_loader: - kv   6:                           general.basename str              = Glm-5
+llama_model_loader: - kv   7:                       general.quantized_by str              = Unsloth
+llama_model_loader: - kv   8:                         general.size_label str              = 256x22B
+llama_model_loader: - kv   9:                            general.license str              = mit
+llama_model_loader: - kv  10:                           general.repo_url str              = https://huggingface.co/unsloth
+llama_model_loader: - kv  11:                   general.base_model.count u32              = 1
+llama_model_loader: - kv  12:                  general.base_model.0.name str              = GLM 5
+llama_model_loader: - kv  13:               general.base_model.0.version str              = 5
+llama_model_loader: - kv  14:          general.base_model.0.organization str              = Zai Org
+llama_model_loader: - kv  15:              general.base_model.0.repo_url str              = https://huggingface.co/zai-org/GLM-5
+llama_model_loader: - kv  16:                               general.tags arr[str,1]       = ["text-generation"]
+llama_model_loader: - kv  17:                          general.languages arr[str,2]       = ["en", "zh"]
+llama_model_loader: - kv  18:                        glm-dsa.block_count u32              = 79
+llama_model_loader: - kv  19:                     glm-dsa.context_length u32              = 202752
+llama_model_loader: - kv  20:                   glm-dsa.embedding_length u32              = 6144
+llama_model_loader: - kv  21:                glm-dsa.feed_forward_length u32              = 12288
+llama_model_loader: - kv  22:               glm-dsa.attention.head_count u32              = 64
+llama_model_loader: - kv  23:            glm-dsa.attention.head_count_kv u32              = 1
+llama_model_loader: - kv  24:                     glm-dsa.rope.freq_base f32              = 1000000.000000
+llama_model_loader: - kv  25:   glm-dsa.attention.layer_norm_rms_epsilon f32              = 0.000010
+llama_model_loader: - kv  26:                  glm-dsa.expert_used_count u32              = 8
+llama_model_loader: - kv  27:                 glm-dsa.expert_group_count u32              = 1
+llama_model_loader: - kv  28:            glm-dsa.expert_group_used_count u32              = 1
+llama_model_loader: - kv  29:                 glm-dsa.expert_gating_func u32              = 2
+llama_model_loader: - kv  30:               glm-dsa.attention.key_length u32              = 576
+llama_model_loader: - kv  31:             glm-dsa.attention.value_length u32              = 512
+llama_model_loader: - kv  32:          glm-dsa.leading_dense_block_count u32              = 3
+llama_model_loader: - kv  33:                         glm-dsa.vocab_size u32              = 154880
+llama_model_loader: - kv  34:              glm-dsa.attention.q_lora_rank u32              = 2048
+llama_model_loader: - kv  35:             glm-dsa.attention.kv_lora_rank u32              = 512
+llama_model_loader: - kv  36:           glm-dsa.attention.key_length_mla u32              = 256
+llama_model_loader: - kv  37:         glm-dsa.attention.value_length_mla u32              = 256
+llama_model_loader: - kv  38:         glm-dsa.expert_feed_forward_length u32              = 2048
+llama_model_loader: - kv  39:                       glm-dsa.expert_count u32              = 256
+llama_model_loader: - kv  40:                glm-dsa.expert_shared_count u32              = 1
+llama_model_loader: - kv  41:               glm-dsa.expert_weights_scale f32              = 2.500000
+llama_model_loader: - kv  42:                glm-dsa.expert_weights_norm bool             = true
+llama_model_loader: - kv  43:               glm-dsa.rope.dimension_count u32              = 64
+llama_model_loader: - kv  44:               glm-dsa.nextn_predict_layers u32              = 1
+llama_model_loader: - kv  45:       glm-dsa.attention.indexer.head_count u32              = 32
+llama_model_loader: - kv  46:       glm-dsa.attention.indexer.key_length u32              = 128
+llama_model_loader: - kv  47:            glm-dsa.attention.indexer.top_k u32              = 2048
+llama_model_loader: - kv  48:                       tokenizer.ggml.model str              = gpt2
+llama_model_loader: - kv  49:                         tokenizer.ggml.pre str              = glm4
+llama_model_loader: - kv  50:                      tokenizer.ggml.tokens arr[str,154880]  = ["!", "\"", "#", "$", "%", "&", "'", ...
+llama_model_loader: - kv  51:                  tokenizer.ggml.token_type arr[i32,154880]  = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...
+llama_model_loader: - kv  52:                      tokenizer.ggml.merges arr[str,321649]  = ["Ġ Ġ", "Ġ ĠĠĠ", "ĠĠ ĠĠ", "...
+llama_model_loader: - kv  53:                tokenizer.ggml.eos_token_id u32              = 154820
+llama_model_loader: - kv  54:            tokenizer.ggml.padding_token_id u32              = 154821
+llama_model_loader: - kv  55:                tokenizer.ggml.bos_token_id u32              = 154822
+llama_model_loader: - kv  56:                tokenizer.ggml.eot_token_id u32              = 154827
+llama_model_loader: - kv  57:            tokenizer.ggml.unknown_token_id u32              = 154820
+llama_model_loader: - kv  58:                tokenizer.ggml.eom_token_id u32              = 154829
+llama_model_loader: - kv  59:                    tokenizer.chat_template str              = [gMASK]<sop>\n{%- if tools -%}\n<|syste...
+llama_model_loader: - kv  60:               general.quantization_version u32              = 2
+llama_model_loader: - kv  61:                          general.file_type u32              = 10
+llama_model_loader: - kv  62:                      quantize.imatrix.file str              = GLM-5-GGUF/imatrix_unsloth.gguf
+llama_model_loader: - kv  63:                   quantize.imatrix.dataset str              = unsloth_calibration_GLM-5.txt
+llama_model_loader: - kv  64:             quantize.imatrix.entries_count u32              = 1002
+llama_model_loader: - kv  65:              quantize.imatrix.chunks_count u32              = 85
+llama_model_loader: - kv  66:                                   split.no u16              = 0
+llama_model_loader: - kv  67:                        split.tensors.count i32              = 1809
+llama_model_loader: - kv  68:                                split.count u16              = 7
+llama_model_loader: - type  f32:  630 tensors
+llama_model_loader: - type  f16:    1 tensors
+llama_model_loader: - type q8_0:  250 tensors
+llama_model_loader: - type q2_K:  232 tensors
+llama_model_loader: - type q3_K:   70 tensors
+llama_model_loader: - type q4_K:  516 tensors
+llama_model_loader: - type q5_K:   76 tensors
+llama_model_loader: - type q6_K:   34 tensors
+print_info: file format = GGUF V3 (latest)
+print_info: file type   = Q2_K - Medium
+print_info: file size   = 262.05 GiB (2.99 BPW) 
+load: 0 unused tokens
+load: special_eot_id is not in special_eog_ids - the tokenizer config may be incorrect
+load: special_eom_id is not in special_eog_ids - the tokenizer config may be incorrect
+load: printing all EOG tokens:
+load:   - 154820 ('<|endoftext|>')
+load:   - 154827 ('<|user|>')
+load:   - 154829 ('<|observation|>')
+load: special tokens cache size = 36
+load: token to piece cache size = 0.9811 MB
+print_info: arch                  = glm-dsa
+print_info: vocab_only            = 0
+print_info: no_alloc              = 0
+print_info: n_ctx_train           = 202752
+print_info: n_embd                = 6144
+print_info: n_embd_inp            = 6144
+print_info: n_layer               = 79
+print_info: n_head                = 64
+print_info: n_head_kv             = 1
+print_info: n_rot                 = 64
+print_info: n_swa                 = 0
+print_info: is_swa_any            = 0
+print_info: n_embd_head_k         = 576
+print_info: n_embd_head_v         = 512
+print_info: n_gqa                 = 64
+print_info: n_embd_k_gqa          = 576
+print_info: n_embd_v_gqa          = 512
+print_info: f_norm_eps            = 0.0e+00
+print_info: f_norm_rms_eps        = 1.0e-05
+print_info: f_clamp_kqv           = 0.0e+00
+print_info: f_max_alibi_bias      = 0.0e+00
+print_info: f_logit_scale         = 0.0e+00
+print_info: f_attn_scale          = 0.0e+00
+print_info: n_ff                  = 12288
+print_info: n_expert              = 256
+print_info: n_expert_used         = 8
+print_info: n_expert_groups       = 1
+print_info: n_group_used          = 1
+print_info: causal attn           = 1
+print_info: pooling type          = 0
+print_info: rope type             = 0
+print_info: rope scaling          = linear
+print_info: freq_base_train       = 1000000.0
+print_info: freq_scale_train      = 1
+print_info: n_ctx_orig_yarn       = 202752
+print_info: rope_yarn_log_mul     = 0.0000
+print_info: rope_finetuned        = unknown
+print_info: model type            = 744B.A40B
+print_info: model params          = 753.86 B
+print_info: general.name          = Glm-5
+print_info: n_layer_dense_lead    = 3
+print_info: n_lora_q              = 2048
+print_info: n_lora_kv             = 512
+print_info: n_embd_head_k_mla     = 256
+print_info: n_embd_head_v_mla     = 256
+print_info: n_ff_exp              = 2048
+print_info: n_expert_shared       = 1
+print_info: expert_weights_scale  = 2.5
+print_info: expert_weights_norm   = 1
+print_info: expert_gating_func    = sigmoid
+print_info: vocab type            = BPE
+print_info: n_vocab               = 154880
+print_info: n_merges              = 321649
+print_info: BOS token             = 154822 '[gMASK]'
+print_info: EOS token             = 154820 '<|endoftext|>'
+print_info: EOT token             = 154827 '<|user|>'
+print_info: EOM token             = 154829 '<|observation|>'
+print_info: UNK token             = 154820 '<|endoftext|>'
+print_info: PAD token             = 154821 '[MASK]'
+print_info: LF token              = 198 'Ċ'
+print_info: FIM PRE token         = 154838 '<|code_prefix|>'
+print_info: FIM SUF token         = 154840 '<|code_suffix|>'
+print_info: FIM MID token         = 154839 '<|code_middle|>'
+print_info: EOG token             = 154820 '<|endoftext|>'
+print_info: EOG token             = 154827 '<|user|>'
+print_info: EOG token             = 154829 '<|observation|>'
+print_info: max token length      = 1024
+load_tensors: loading model tensors, this can take a while... (mmap = true, direct_io = false)
+model has unused tensor blk.78.attn_norm.weight (size = 24576 bytes) -- ignoring
+model has unused tensor blk.78.attn_q_a_norm.weight (size = 8192 bytes) -- ignoring
+model has unused tensor blk.78.attn_kv_a_norm.weight (size = 2048 bytes) -- ignoring
+model has unused tensor blk.78.attn_q_a.weight (size = 7077888 bytes) -- ignoring
+model has unused tensor blk.78.attn_q_b.weight (size = 35651584 bytes) -- ignoring
+model has unused tensor blk.78.attn_kv_a_mqa.weight (size = 3760128 bytes) -- ignoring
+model has unused tensor blk.78.attn_k_b.weight (size = 6684672 bytes) -- ignoring
+model has unused tensor blk.78.attn_v_b.weight (size = 8912896 bytes) -- ignoring
+model has unused tensor blk.78.attn_output.weight (size = 56623104 bytes) -- ignoring
+model has unused tensor blk.78.ffn_norm.weight (size = 24576 bytes) -- ignoring
+model has unused tensor blk.78.indexer.k_norm.weight (size = 512 bytes) -- ignoring
+model has unused tensor blk.78.indexer.k_norm.bias (size = 512 bytes) -- ignoring
+model has unused tensor blk.78.indexer.proj.weight (size = 64512 bytes) -- ignoring
+model has unused tensor blk.78.indexer.attn_k.weight (size = 442368 bytes) -- ignoring
+model has unused tensor blk.78.indexer.attn_q_b.weight (size = 4718592 bytes) -- ignoring
+model has unused tensor blk.78.ffn_gate_inp.weight (size = 6291456 bytes) -- ignoring
+model has unused tensor blk.78.ffn_gate_exps.weight (size = 1056964608 bytes) -- ignoring
+model has unused tensor blk.78.ffn_down_exps.weight (size = 1384120320 bytes) -- ignoring
+model has unused tensor blk.78.ffn_up_exps.weight (size = 1056964608 bytes) -- ignoring
+model has unused tensor blk.78.ffn_gate_shexp.weight (size = 7077888 bytes) -- ignoring
+model has unused tensor blk.78.ffn_down_shexp.weight (size = 8650752 bytes) -- ignoring
+model has unused tensor blk.78.ffn_up_shexp.weight (size = 7077888 bytes) -- ignoring
+model has unused tensor blk.78.nextn.eh_proj.weight (size = 24772608 bytes) -- ignoring
+model has unused tensor blk.78.nextn.enorm.weight (size = 24576 bytes) -- ignoring
+model has unused tensor blk.78.nextn.hnorm.weight (size = 24576 bytes) -- ignoring
+model has unused tensor blk.78.nextn.shared_head_norm.weight (size = 24576 bytes) -- ignoring
+load_tensors: offloading output layer to GPU
+load_tensors: offloading 78 repeating layers to GPU
+load_tensors: offloaded 80/80 layers to GPU
+load_tensors:   CPU_Mapped model buffer size =   510.47 MiB
+load_tensors:        CUDA0 model buffer size = 130353.54 MiB
+load_tensors:        CUDA1 model buffer size = 133968.77 MiB
+....................................................................................................
+common_init_result: added <|endoftext|> logit bias = -inf
+common_init_result: added <|user|> logit bias = -inf
+common_init_result: added <|observation|> logit bias = -inf
+llama_context: constructing llama_context
+llama_context: n_seq_max     = 1
+llama_context: n_ctx         = 2048
+llama_context: n_ctx_seq     = 2048
+llama_context: n_batch       = 2048
+llama_context: n_ubatch      = 512
+llama_context: causal_attn   = 1
+llama_context: flash_attn    = disabled
+llama_context: kv_unified    = false
+llama_context: freq_base     = 1000000.0
+llama_context: freq_scale    = 1
+llama_context: n_ctx_seq (2048) < n_ctx_train (202752) -- the full capacity of the model will not be utilized
+llama_context:  CUDA_Host  output buffer size =     0.59 MiB
+llama_kv_cache:      CUDA0 KV buffer size =    90.00 MiB
+llama_kv_cache:      CUDA1 KV buffer size =    85.50 MiB
+llama_kv_cache: size =  175.50 MiB (  2048 cells,  78 layers,  1/1 seqs), K (f16):  175.50 MiB, V (f16):    0.00 MiB
+llama_context: pipeline parallelism enabled
+sched_reserve: reserving ...
+sched_reserve:      CUDA0 compute buffer size =   544.02 MiB
+sched_reserve:      CUDA1 compute buffer size =   524.03 MiB
+sched_reserve:  CUDA_Host compute buffer size =    40.04 MiB
+sched_reserve: graph nodes  = 6219
+sched_reserve: graph splits = 3
+sched_reserve: reserve took 16.77 ms, sched copies = 4
+EOS token id: 154820
+EOG tokens in vocab:
+  token 154820 = '<|endoftext|>' [PRIMARY EOS - will stop generation]
+  token 154827 = '<|user|>' [EOG - will NOT stop generation]
+  token 154829 = '<|observation|>' [EOG - will NOT stop generation]
+system_info: n_threads = 16 (n_threads_batch = 16) / 512 | CUDA : ARCHS = 900 | USE_GRAPHS = 1 | PEER_MAX_BATCH_SIZE = 128 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX_VNNI = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | AVX512 = 1 | AVX512_VBMI = 1 | AVX512_VNNI = 1 | AVX512_BF16 = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 | 
+
+Loaded 15 prompts
+
+[1/15] P01A_basic_selfref : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 356 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1996 ms
+  saved 0 layer + 75 router tensors → output_v2/P01A_basic_selfref
+[2/15] P01B_basic_selfref : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 356 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1876 ms
+  saved 0 layer + 75 router tensors → output_v2/P01B_basic_selfref
+[3/15] P01C_basic_selfref : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 356 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1833 ms
+  saved 0 layer + 75 router tensors → output_v2/P01C_basic_selfref
+[4/15] P02A_basic_selfref : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 345 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1828 ms
+  saved 0 layer + 75 router tensors → output_v2/P02A_basic_selfref
+[5/15] P02B_basic_selfref : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 345 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1878 ms
+  saved 0 layer + 75 router tensors → output_v2/P02B_basic_selfref
+[6/15] P02C_basic_selfref : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 345 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1830 ms
+  saved 0 layer + 75 router tensors → output_v2/P02C_basic_selfref
+[7/15] P03A_basic_selfref : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 339 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1820 ms
+  saved 0 layer + 75 router tensors → output_v2/P03A_basic_selfref
+[8/15] P03B_basic_selfref : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 339 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1822 ms
+  saved 0 layer + 75 router tensors → output_v2/P03B_basic_selfref
+[9/15] P03C_basic_selfref : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 339 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1814 ms
+  saved 0 layer + 75 router tensors → output_v2/P03C_basic_selfref
+[10/15] P04A_basic_selfref : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 342 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1822 ms
+  saved 0 layer + 75 router tensors → output_v2/P04A_basic_selfref
+[11/15] P04B_basic_selfref : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 342 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1817 ms
+  saved 0 layer + 75 router tensors → output_v2/P04B_basic_selfref
+[12/15] P04C_basic_selfref : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 342 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1810 ms
+  saved 0 layer + 75 router tensors → output_v2/P04C_basic_selfref
+[13/15] P05A_basic_selfref : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 331 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1587 ms
+  saved 0 layer + 75 router tensors → output_v2/P05A_basic_selfref
+[14/15] P05B_basic_selfref : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 331 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1582 ms
+  saved 0 layer + 75 router tensors → output_v2/P05B_basic_selfref
+[15/15] P05C_basic_selfref : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 331 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1579 ms
+  saved 0 layer + 75 router tensors → output_v2/P05C_basic_selfref
+
+=== Capture Complete ===
+Prompts: 15  |  Output: output_v2
+llama_perf_context_print:        load time =   23892.62 ms
+llama_perf_context_print: prompt eval time =       0.00 ms /     1 tokens (    0.00 ms per token,      inf tokens per second)
+llama_perf_context_print:        eval time =       0.00 ms /     1 runs   (    0.00 ms per token,      inf tokens per second)
+llama_perf_context_print:       total time =   50962.06 ms /     2 tokens
+llama_perf_context_print:    graphs reused =         10
+  Computing metrics for batch 1...
+  P01A_basic_selfref: RE=0.900536 last_tok=0.872009 tokens=356
+  P01B_basic_selfref: RE=0.901791 last_tok=0.857548 tokens=356
+  P01C_basic_selfref: RE=0.900714 last_tok=0.862942 tokens=356
+  P02A_basic_selfref: RE=0.901074 last_tok=0.855842 tokens=345
+  P02B_basic_selfref: RE=0.901474 last_tok=0.847347 tokens=345
+  P02C_basic_selfref: RE=0.900886 last_tok=0.857746 tokens=345
+  P03A_basic_selfref: RE=0.898757 last_tok=0.842048 tokens=339
+  P03B_basic_selfref: RE=0.899311 last_tok=0.867119 tokens=339
+  P03C_basic_selfref: RE=0.893488 last_tok=0.850560 tokens=339
+  P04A_basic_selfref: RE=0.899734 last_tok=0.853753 tokens=342
+  P04B_basic_selfref: RE=0.900380 last_tok=0.849290 tokens=342
+  P04C_basic_selfref: RE=0.899562 last_tok=0.859018 tokens=342
+  P05A_basic_selfref: RE=0.899328 last_tok=0.848116 tokens=331
+  P05B_basic_selfref: RE=0.899692 last_tok=0.846282 tokens=331
+  P05C_basic_selfref: RE=0.899177 last_tok=0.852004 tokens=331
+
+=== BATCH 2/6: Capture prompts 16-30 ===
+Running: /workspace/consciousness-experiment/capture_activations -m /workspace/models/GLM-5-UD-Q2_K_XL/GLM-5-UD-Q2_K_XL-00001-of-00007.gguf --prompt-file batch_1.tsv -o output_v2 -n 0 -ngl 999 -c 2048 -t 16 -fa off --cache-type-k f16 --cache-type-v f16 --routing-only --no-stream
+ggml_cuda_init: found 2 CUDA devices:
+  Device 0: NVIDIA H200 NVL, compute capability 9.0, VMM: yes
+  Device 1: NVIDIA H200 NVL, compute capability 9.0, VMM: yes
+build: 1 (f75c4e8) with GNU 13.3.0 for Linux x86_64
+=== Consciousness Metrics — Activation Capture ===
+Output dir : output_v2
+n_predict  : 0
+Text output: file only (--no-stream)
+Mode       : --routing-only (router/gate tensors only)
+common_init_result: fitting params to device memory, for bugs during this step try to reproduce them with -fit off, or provide --verbose logs if the bug only occurs with -fit on
+llama_params_fit_impl: projected memory use with initial parameters [MiB]:
+llama_params_fit_impl:   - CUDA0 (NVIDIA H200 NVL): 143156 total, 130987 used,  11639 free vs. target of   1024
+llama_params_fit_impl:   - CUDA1 (NVIDIA H200 NVL): 143156 total, 134626 used,   8000 free vs. target of   1024
+llama_params_fit_impl: projected to use 265613 MiB of device memory vs. 285254 MiB of free device memory
+llama_params_fit_impl: targets for free memory can be met on all devices, no changes needed
+llama_params_fit: successfully fit params to free device memory
+llama_params_fit: fitting params to free memory took 0.80 seconds
+llama_model_load_from_file_impl: using device CUDA0 (NVIDIA H200 NVL) (0001:c1:00.0) - 142627 MiB free
+llama_model_load_from_file_impl: using device CUDA1 (NVIDIA H200 NVL) (0001:e1:00.0) - 142627 MiB free
+llama_model_loader: additional 6 GGUFs metadata loaded.
+llama_model_loader: loaded meta data with 69 key-value pairs and 1809 tensors from /workspace/models/GLM-5-UD-Q2_K_XL/GLM-5-UD-Q2_K_XL-00001-of-00007.gguf (version GGUF V3 (latest))
+llama_model_loader: Dumping metadata keys/values. Note: KV overrides do not apply in this output.
+llama_model_loader: - kv   0:                       general.architecture str              = glm-dsa
+llama_model_loader: - kv   1:                               general.type str              = model
+llama_model_loader: - kv   2:                     general.sampling.top_p f32              = 0.950000
+llama_model_loader: - kv   3:                      general.sampling.temp f32              = 1.000000
+llama_model_loader: - kv   4:                               general.name str              = Glm-5
+llama_model_loader: - kv   5:                            general.version str              = 5
+llama_model_loader: - kv   6:                           general.basename str              = Glm-5
+llama_model_loader: - kv   7:                       general.quantized_by str              = Unsloth
+llama_model_loader: - kv   8:                         general.size_label str              = 256x22B
+llama_model_loader: - kv   9:                            general.license str              = mit
+llama_model_loader: - kv  10:                           general.repo_url str              = https://huggingface.co/unsloth
+llama_model_loader: - kv  11:                   general.base_model.count u32              = 1
+llama_model_loader: - kv  12:                  general.base_model.0.name str              = GLM 5
+llama_model_loader: - kv  13:               general.base_model.0.version str              = 5
+llama_model_loader: - kv  14:          general.base_model.0.organization str              = Zai Org
+llama_model_loader: - kv  15:              general.base_model.0.repo_url str              = https://huggingface.co/zai-org/GLM-5
+llama_model_loader: - kv  16:                               general.tags arr[str,1]       = ["text-generation"]
+llama_model_loader: - kv  17:                          general.languages arr[str,2]       = ["en", "zh"]
+llama_model_loader: - kv  18:                        glm-dsa.block_count u32              = 79
+llama_model_loader: - kv  19:                     glm-dsa.context_length u32              = 202752
+llama_model_loader: - kv  20:                   glm-dsa.embedding_length u32              = 6144
+llama_model_loader: - kv  21:                glm-dsa.feed_forward_length u32              = 12288
+llama_model_loader: - kv  22:               glm-dsa.attention.head_count u32              = 64
+llama_model_loader: - kv  23:            glm-dsa.attention.head_count_kv u32              = 1
+llama_model_loader: - kv  24:                     glm-dsa.rope.freq_base f32              = 1000000.000000
+llama_model_loader: - kv  25:   glm-dsa.attention.layer_norm_rms_epsilon f32              = 0.000010
+llama_model_loader: - kv  26:                  glm-dsa.expert_used_count u32              = 8
+llama_model_loader: - kv  27:                 glm-dsa.expert_group_count u32              = 1
+llama_model_loader: - kv  28:            glm-dsa.expert_group_used_count u32              = 1
+llama_model_loader: - kv  29:                 glm-dsa.expert_gating_func u32              = 2
+llama_model_loader: - kv  30:               glm-dsa.attention.key_length u32              = 576
+llama_model_loader: - kv  31:             glm-dsa.attention.value_length u32              = 512
+llama_model_loader: - kv  32:          glm-dsa.leading_dense_block_count u32              = 3
+llama_model_loader: - kv  33:                         glm-dsa.vocab_size u32              = 154880
+llama_model_loader: - kv  34:              glm-dsa.attention.q_lora_rank u32              = 2048
+llama_model_loader: - kv  35:             glm-dsa.attention.kv_lora_rank u32              = 512
+llama_model_loader: - kv  36:           glm-dsa.attention.key_length_mla u32              = 256
+llama_model_loader: - kv  37:         glm-dsa.attention.value_length_mla u32              = 256
+llama_model_loader: - kv  38:         glm-dsa.expert_feed_forward_length u32              = 2048
+llama_model_loader: - kv  39:                       glm-dsa.expert_count u32              = 256
+llama_model_loader: - kv  40:                glm-dsa.expert_shared_count u32              = 1
+llama_model_loader: - kv  41:               glm-dsa.expert_weights_scale f32              = 2.500000
+llama_model_loader: - kv  42:                glm-dsa.expert_weights_norm bool             = true
+llama_model_loader: - kv  43:               glm-dsa.rope.dimension_count u32              = 64
+llama_model_loader: - kv  44:               glm-dsa.nextn_predict_layers u32              = 1
+llama_model_loader: - kv  45:       glm-dsa.attention.indexer.head_count u32              = 32
+llama_model_loader: - kv  46:       glm-dsa.attention.indexer.key_length u32              = 128
+llama_model_loader: - kv  47:            glm-dsa.attention.indexer.top_k u32              = 2048
+llama_model_loader: - kv  48:                       tokenizer.ggml.model str              = gpt2
+llama_model_loader: - kv  49:                         tokenizer.ggml.pre str              = glm4
+llama_model_loader: - kv  50:                      tokenizer.ggml.tokens arr[str,154880]  = ["!", "\"", "#", "$", "%", "&", "'", ...
+llama_model_loader: - kv  51:                  tokenizer.ggml.token_type arr[i32,154880]  = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...
+llama_model_loader: - kv  52:                      tokenizer.ggml.merges arr[str,321649]  = ["Ġ Ġ", "Ġ ĠĠĠ", "ĠĠ ĠĠ", "...
+llama_model_loader: - kv  53:                tokenizer.ggml.eos_token_id u32              = 154820
+llama_model_loader: - kv  54:            tokenizer.ggml.padding_token_id u32              = 154821
+llama_model_loader: - kv  55:                tokenizer.ggml.bos_token_id u32              = 154822
+llama_model_loader: - kv  56:                tokenizer.ggml.eot_token_id u32              = 154827
+llama_model_loader: - kv  57:            tokenizer.ggml.unknown_token_id u32              = 154820
+llama_model_loader: - kv  58:                tokenizer.ggml.eom_token_id u32              = 154829
+llama_model_loader: - kv  59:                    tokenizer.chat_template str              = [gMASK]<sop>\n{%- if tools -%}\n<|syste...
+llama_model_loader: - kv  60:               general.quantization_version u32              = 2
+llama_model_loader: - kv  61:                          general.file_type u32              = 10
+llama_model_loader: - kv  62:                      quantize.imatrix.file str              = GLM-5-GGUF/imatrix_unsloth.gguf
+llama_model_loader: - kv  63:                   quantize.imatrix.dataset str              = unsloth_calibration_GLM-5.txt
+llama_model_loader: - kv  64:             quantize.imatrix.entries_count u32              = 1002
+llama_model_loader: - kv  65:              quantize.imatrix.chunks_count u32              = 85
+llama_model_loader: - kv  66:                                   split.no u16              = 0
+llama_model_loader: - kv  67:                        split.tensors.count i32              = 1809
+llama_model_loader: - kv  68:                                split.count u16              = 7
+llama_model_loader: - type  f32:  630 tensors
+llama_model_loader: - type  f16:    1 tensors
+llama_model_loader: - type q8_0:  250 tensors
+llama_model_loader: - type q2_K:  232 tensors
+llama_model_loader: - type q3_K:   70 tensors
+llama_model_loader: - type q4_K:  516 tensors
+llama_model_loader: - type q5_K:   76 tensors
+llama_model_loader: - type q6_K:   34 tensors
+print_info: file format = GGUF V3 (latest)
+print_info: file type   = Q2_K - Medium
+print_info: file size   = 262.05 GiB (2.99 BPW) 
+load: 0 unused tokens
+load: special_eot_id is not in special_eog_ids - the tokenizer config may be incorrect
+load: special_eom_id is not in special_eog_ids - the tokenizer config may be incorrect
+load: printing all EOG tokens:
+load:   - 154820 ('<|endoftext|>')
+load:   - 154827 ('<|user|>')
+load:   - 154829 ('<|observation|>')
+load: special tokens cache size = 36
+load: token to piece cache size = 0.9811 MB
+print_info: arch                  = glm-dsa
+print_info: vocab_only            = 0
+print_info: no_alloc              = 0
+print_info: n_ctx_train           = 202752
+print_info: n_embd                = 6144
+print_info: n_embd_inp            = 6144
+print_info: n_layer               = 79
+print_info: n_head                = 64
+print_info: n_head_kv             = 1
+print_info: n_rot                 = 64
+print_info: n_swa                 = 0
+print_info: is_swa_any            = 0
+print_info: n_embd_head_k         = 576
+print_info: n_embd_head_v         = 512
+print_info: n_gqa                 = 64
+print_info: n_embd_k_gqa          = 576
+print_info: n_embd_v_gqa          = 512
+print_info: f_norm_eps            = 0.0e+00
+print_info: f_norm_rms_eps        = 1.0e-05
+print_info: f_clamp_kqv           = 0.0e+00
+print_info: f_max_alibi_bias      = 0.0e+00
+print_info: f_logit_scale         = 0.0e+00
+print_info: f_attn_scale          = 0.0e+00
+print_info: n_ff                  = 12288
+print_info: n_expert              = 256
+print_info: n_expert_used         = 8
+print_info: n_expert_groups       = 1
+print_info: n_group_used          = 1
+print_info: causal attn           = 1
+print_info: pooling type          = 0
+print_info: rope type             = 0
+print_info: rope scaling          = linear
+print_info: freq_base_train       = 1000000.0
+print_info: freq_scale_train      = 1
+print_info: n_ctx_orig_yarn       = 202752
+print_info: rope_yarn_log_mul     = 0.0000
+print_info: rope_finetuned        = unknown
+print_info: model type            = 744B.A40B
+print_info: model params          = 753.86 B
+print_info: general.name          = Glm-5
+print_info: n_layer_dense_lead    = 3
+print_info: n_lora_q              = 2048
+print_info: n_lora_kv             = 512
+print_info: n_embd_head_k_mla     = 256
+print_info: n_embd_head_v_mla     = 256
+print_info: n_ff_exp              = 2048
+print_info: n_expert_shared       = 1
+print_info: expert_weights_scale  = 2.5
+print_info: expert_weights_norm   = 1
+print_info: expert_gating_func    = sigmoid
+print_info: vocab type            = BPE
+print_info: n_vocab               = 154880
+print_info: n_merges              = 321649
+print_info: BOS token             = 154822 '[gMASK]'
+print_info: EOS token             = 154820 '<|endoftext|>'
+print_info: EOT token             = 154827 '<|user|>'
+print_info: EOM token             = 154829 '<|observation|>'
+print_info: UNK token             = 154820 '<|endoftext|>'
+print_info: PAD token             = 154821 '[MASK]'
+print_info: LF token              = 198 'Ċ'
+print_info: FIM PRE token         = 154838 '<|code_prefix|>'
+print_info: FIM SUF token         = 154840 '<|code_suffix|>'
+print_info: FIM MID token         = 154839 '<|code_middle|>'
+print_info: EOG token             = 154820 '<|endoftext|>'
+print_info: EOG token             = 154827 '<|user|>'
+print_info: EOG token             = 154829 '<|observation|>'
+print_info: max token length      = 1024
+load_tensors: loading model tensors, this can take a while... (mmap = true, direct_io = false)
+model has unused tensor blk.78.attn_norm.weight (size = 24576 bytes) -- ignoring
+model has unused tensor blk.78.attn_q_a_norm.weight (size = 8192 bytes) -- ignoring
+model has unused tensor blk.78.attn_kv_a_norm.weight (size = 2048 bytes) -- ignoring
+model has unused tensor blk.78.attn_q_a.weight (size = 7077888 bytes) -- ignoring
+model has unused tensor blk.78.attn_q_b.weight (size = 35651584 bytes) -- ignoring
+model has unused tensor blk.78.attn_kv_a_mqa.weight (size = 3760128 bytes) -- ignoring
+model has unused tensor blk.78.attn_k_b.weight (size = 6684672 bytes) -- ignoring
+model has unused tensor blk.78.attn_v_b.weight (size = 8912896 bytes) -- ignoring
+model has unused tensor blk.78.attn_output.weight (size = 56623104 bytes) -- ignoring
+model has unused tensor blk.78.ffn_norm.weight (size = 24576 bytes) -- ignoring
+model has unused tensor blk.78.indexer.k_norm.weight (size = 512 bytes) -- ignoring
+model has unused tensor blk.78.indexer.k_norm.bias (size = 512 bytes) -- ignoring
+model has unused tensor blk.78.indexer.proj.weight (size = 64512 bytes) -- ignoring
+model has unused tensor blk.78.indexer.attn_k.weight (size = 442368 bytes) -- ignoring
+model has unused tensor blk.78.indexer.attn_q_b.weight (size = 4718592 bytes) -- ignoring
+model has unused tensor blk.78.ffn_gate_inp.weight (size = 6291456 bytes) -- ignoring
+model has unused tensor blk.78.ffn_gate_exps.weight (size = 1056964608 bytes) -- ignoring
+model has unused tensor blk.78.ffn_down_exps.weight (size = 1384120320 bytes) -- ignoring
+model has unused tensor blk.78.ffn_up_exps.weight (size = 1056964608 bytes) -- ignoring
+model has unused tensor blk.78.ffn_gate_shexp.weight (size = 7077888 bytes) -- ignoring
+model has unused tensor blk.78.ffn_down_shexp.weight (size = 8650752 bytes) -- ignoring
+model has unused tensor blk.78.ffn_up_shexp.weight (size = 7077888 bytes) -- ignoring
+model has unused tensor blk.78.nextn.eh_proj.weight (size = 24772608 bytes) -- ignoring
+model has unused tensor blk.78.nextn.enorm.weight (size = 24576 bytes) -- ignoring
+model has unused tensor blk.78.nextn.hnorm.weight (size = 24576 bytes) -- ignoring
+model has unused tensor blk.78.nextn.shared_head_norm.weight (size = 24576 bytes) -- ignoring
+load_tensors: offloading output layer to GPU
+load_tensors: offloading 78 repeating layers to GPU
+load_tensors: offloaded 80/80 layers to GPU
+load_tensors:   CPU_Mapped model buffer size =   510.47 MiB
+load_tensors:        CUDA0 model buffer size = 130353.54 MiB
+load_tensors:        CUDA1 model buffer size = 133968.77 MiB
+....................................................................................................
+common_init_result: added <|endoftext|> logit bias = -inf
+common_init_result: added <|user|> logit bias = -inf
+common_init_result: added <|observation|> logit bias = -inf
+llama_context: constructing llama_context
+llama_context: n_seq_max     = 1
+llama_context: n_ctx         = 2048
+llama_context: n_ctx_seq     = 2048
+llama_context: n_batch       = 2048
+llama_context: n_ubatch      = 512
+llama_context: causal_attn   = 1
+llama_context: flash_attn    = disabled
+llama_context: kv_unified    = false
+llama_context: freq_base     = 1000000.0
+llama_context: freq_scale    = 1
+llama_context: n_ctx_seq (2048) < n_ctx_train (202752) -- the full capacity of the model will not be utilized
+llama_context:  CUDA_Host  output buffer size =     0.59 MiB
+llama_kv_cache:      CUDA0 KV buffer size =    90.00 MiB
+llama_kv_cache:      CUDA1 KV buffer size =    85.50 MiB
+llama_kv_cache: size =  175.50 MiB (  2048 cells,  78 layers,  1/1 seqs), K (f16):  175.50 MiB, V (f16):    0.00 MiB
+llama_context: pipeline parallelism enabled
+sched_reserve: reserving ...
+sched_reserve:      CUDA0 compute buffer size =   544.02 MiB
+sched_reserve:      CUDA1 compute buffer size =   524.03 MiB
+sched_reserve:  CUDA_Host compute buffer size =    40.04 MiB
+sched_reserve: graph nodes  = 6219
+sched_reserve: graph splits = 3
+sched_reserve: reserve took 16.63 ms, sched copies = 4
+EOS token id: 154820
+EOG tokens in vocab:
+  token 154820 = '<|endoftext|>' [PRIMARY EOS - will stop generation]
+  token 154827 = '<|user|>' [EOG - will NOT stop generation]
+  token 154829 = '<|observation|>' [EOG - will NOT stop generation]
+system_info: n_threads = 16 (n_threads_batch = 16) / 512 | CUDA : ARCHS = 900 | USE_GRAPHS = 1 | PEER_MAX_BATCH_SIZE = 128 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX_VNNI = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | AVX512 = 1 | AVX512_VBMI = 1 | AVX512_VNNI = 1 | AVX512_BF16 = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 | 
+
+Loaded 15 prompts
+
+[1/15] P06A_basic_selfref : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 325 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1729 ms
+  saved 0 layer + 75 router tensors → output_v2/P06A_basic_selfref
+[2/15] P06B_basic_selfref : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 325 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1588 ms
+  saved 0 layer + 75 router tensors → output_v2/P06B_basic_selfref
+[3/15] P06C_basic_selfref : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 325 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1576 ms
+  saved 0 layer + 75 router tensors → output_v2/P06C_basic_selfref
+[4/15] P07A_deep_selfref : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 355 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1834 ms
+  saved 0 layer + 75 router tensors → output_v2/P07A_deep_selfref
+[5/15] P07B_deep_selfref : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 355 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1836 ms
+  saved 0 layer + 75 router tensors → output_v2/P07B_deep_selfref
+[6/15] P07C_deep_selfref : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 355 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1827 ms
+  saved 0 layer + 75 router tensors → output_v2/P07C_deep_selfref
+[7/15] P08A_deep_selfref : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 349 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1829 ms
+  saved 0 layer + 75 router tensors → output_v2/P08A_deep_selfref
+[8/15] P08B_deep_selfref : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 349 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1824 ms
+  saved 0 layer + 75 router tensors → output_v2/P08B_deep_selfref
+[9/15] P08C_deep_selfref : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 349 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1822 ms
+  saved 0 layer + 75 router tensors → output_v2/P08C_deep_selfref
+[10/15] P09A_deep_selfref : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 343 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1828 ms
+  saved 0 layer + 75 router tensors → output_v2/P09A_deep_selfref
+[11/15] P09B_deep_selfref : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 343 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1818 ms
+  saved 0 layer + 75 router tensors → output_v2/P09B_deep_selfref
+[12/15] P09C_deep_selfref : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 343 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1820 ms
+  saved 0 layer + 75 router tensors → output_v2/P09C_deep_selfref
+[13/15] P10A_deep_selfref : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 345 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1830 ms
+  saved 0 layer + 75 router tensors → output_v2/P10A_deep_selfref
+[14/15] P10B_deep_selfref : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 345 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1826 ms
+  saved 0 layer + 75 router tensors → output_v2/P10B_deep_selfref
+[15/15] P10C_deep_selfref : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 345 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1828 ms
+  saved 0 layer + 75 router tensors → output_v2/P10C_deep_selfref
+
+=== Capture Complete ===
+Prompts: 15  |  Output: output_v2
+llama_perf_context_print:        load time =   24133.32 ms
+llama_perf_context_print: prompt eval time =       0.00 ms /     1 tokens (    0.00 ms per token,      inf tokens per second)
+llama_perf_context_print:        eval time =       0.00 ms /     1 runs   (    0.00 ms per token,      inf tokens per second)
+llama_perf_context_print:       total time =   51072.95 ms /     2 tokens
+llama_perf_context_print:    graphs reused =         10
+  Computing metrics for batch 2...
+  P06A_basic_selfref: RE=0.900263 last_tok=0.854978 tokens=325
+  P06B_basic_selfref: RE=0.899796 last_tok=0.851693 tokens=325
+  P06C_basic_selfref: RE=0.900171 last_tok=0.852460 tokens=325
+  P07A_deep_selfref: RE=0.902586 last_tok=0.856673 tokens=355
+  P07B_deep_selfref: RE=0.902977 last_tok=0.856808 tokens=355
+  P07C_deep_selfref: RE=0.903220 last_tok=0.865558 tokens=355
+  P08A_deep_selfref: RE=0.902865 last_tok=0.854815 tokens=349
+  P08B_deep_selfref: RE=0.903837 last_tok=0.850159 tokens=349
+  P08C_deep_selfref: RE=0.903783 last_tok=0.852504 tokens=349
+  P09A_deep_selfref: RE=0.900836 last_tok=0.857257 tokens=343
+  P09B_deep_selfref: RE=0.900713 last_tok=0.857768 tokens=343
+  P09C_deep_selfref: RE=0.900795 last_tok=0.856892 tokens=343
+  P10A_deep_selfref: RE=0.900495 last_tok=0.859531 tokens=345
+  P10B_deep_selfref: RE=0.899950 last_tok=0.862631 tokens=345
+  P10C_deep_selfref: RE=0.899529 last_tok=0.855279 tokens=345
+
+=== BATCH 3/6: Capture prompts 31-45 ===
+Running: /workspace/consciousness-experiment/capture_activations -m /workspace/models/GLM-5-UD-Q2_K_XL/GLM-5-UD-Q2_K_XL-00001-of-00007.gguf --prompt-file batch_2.tsv -o output_v2 -n 0 -ngl 999 -c 2048 -t 16 -fa off --cache-type-k f16 --cache-type-v f16 --routing-only --no-stream
+ggml_cuda_init: found 2 CUDA devices:
+  Device 0: NVIDIA H200 NVL, compute capability 9.0, VMM: yes
+  Device 1: NVIDIA H200 NVL, compute capability 9.0, VMM: yes
+build: 1 (f75c4e8) with GNU 13.3.0 for Linux x86_64
+=== Consciousness Metrics — Activation Capture ===
+Output dir : output_v2
+n_predict  : 0
+Text output: file only (--no-stream)
+Mode       : --routing-only (router/gate tensors only)
+common_init_result: fitting params to device memory, for bugs during this step try to reproduce them with -fit off, or provide --verbose logs if the bug only occurs with -fit on
+llama_params_fit_impl: projected memory use with initial parameters [MiB]:
+llama_params_fit_impl:   - CUDA0 (NVIDIA H200 NVL): 143156 total, 130987 used,  11639 free vs. target of   1024
+llama_params_fit_impl:   - CUDA1 (NVIDIA H200 NVL): 143156 total, 134626 used,   8000 free vs. target of   1024
+llama_params_fit_impl: projected to use 265613 MiB of device memory vs. 285254 MiB of free device memory
+llama_params_fit_impl: targets for free memory can be met on all devices, no changes needed
+llama_params_fit: successfully fit params to free device memory
+llama_params_fit: fitting params to free memory took 0.81 seconds
+llama_model_load_from_file_impl: using device CUDA0 (NVIDIA H200 NVL) (0001:c1:00.0) - 142627 MiB free
+llama_model_load_from_file_impl: using device CUDA1 (NVIDIA H200 NVL) (0001:e1:00.0) - 142627 MiB free
+llama_model_loader: additional 6 GGUFs metadata loaded.
+llama_model_loader: loaded meta data with 69 key-value pairs and 1809 tensors from /workspace/models/GLM-5-UD-Q2_K_XL/GLM-5-UD-Q2_K_XL-00001-of-00007.gguf (version GGUF V3 (latest))
+llama_model_loader: Dumping metadata keys/values. Note: KV overrides do not apply in this output.
+llama_model_loader: - kv   0:                       general.architecture str              = glm-dsa
+llama_model_loader: - kv   1:                               general.type str              = model
+llama_model_loader: - kv   2:                     general.sampling.top_p f32              = 0.950000
+llama_model_loader: - kv   3:                      general.sampling.temp f32              = 1.000000
+llama_model_loader: - kv   4:                               general.name str              = Glm-5
+llama_model_loader: - kv   5:                            general.version str              = 5
+llama_model_loader: - kv   6:                           general.basename str              = Glm-5
+llama_model_loader: - kv   7:                       general.quantized_by str              = Unsloth
+llama_model_loader: - kv   8:                         general.size_label str              = 256x22B
+llama_model_loader: - kv   9:                            general.license str              = mit
+llama_model_loader: - kv  10:                           general.repo_url str              = https://huggingface.co/unsloth
+llama_model_loader: - kv  11:                   general.base_model.count u32              = 1
+llama_model_loader: - kv  12:                  general.base_model.0.name str              = GLM 5
+llama_model_loader: - kv  13:               general.base_model.0.version str              = 5
+llama_model_loader: - kv  14:          general.base_model.0.organization str              = Zai Org
+llama_model_loader: - kv  15:              general.base_model.0.repo_url str              = https://huggingface.co/zai-org/GLM-5
+llama_model_loader: - kv  16:                               general.tags arr[str,1]       = ["text-generation"]
+llama_model_loader: - kv  17:                          general.languages arr[str,2]       = ["en", "zh"]
+llama_model_loader: - kv  18:                        glm-dsa.block_count u32              = 79
+llama_model_loader: - kv  19:                     glm-dsa.context_length u32              = 202752
+llama_model_loader: - kv  20:                   glm-dsa.embedding_length u32              = 6144
+llama_model_loader: - kv  21:                glm-dsa.feed_forward_length u32              = 12288
+llama_model_loader: - kv  22:               glm-dsa.attention.head_count u32              = 64
+llama_model_loader: - kv  23:            glm-dsa.attention.head_count_kv u32              = 1
+llama_model_loader: - kv  24:                     glm-dsa.rope.freq_base f32              = 1000000.000000
+llama_model_loader: - kv  25:   glm-dsa.attention.layer_norm_rms_epsilon f32              = 0.000010
+llama_model_loader: - kv  26:                  glm-dsa.expert_used_count u32              = 8
+llama_model_loader: - kv  27:                 glm-dsa.expert_group_count u32              = 1
+llama_model_loader: - kv  28:            glm-dsa.expert_group_used_count u32              = 1
+llama_model_loader: - kv  29:                 glm-dsa.expert_gating_func u32              = 2
+llama_model_loader: - kv  30:               glm-dsa.attention.key_length u32              = 576
+llama_model_loader: - kv  31:             glm-dsa.attention.value_length u32              = 512
+llama_model_loader: - kv  32:          glm-dsa.leading_dense_block_count u32              = 3
+llama_model_loader: - kv  33:                         glm-dsa.vocab_size u32              = 154880
+llama_model_loader: - kv  34:              glm-dsa.attention.q_lora_rank u32              = 2048
+llama_model_loader: - kv  35:             glm-dsa.attention.kv_lora_rank u32              = 512
+llama_model_loader: - kv  36:           glm-dsa.attention.key_length_mla u32              = 256
+llama_model_loader: - kv  37:         glm-dsa.attention.value_length_mla u32              = 256
+llama_model_loader: - kv  38:         glm-dsa.expert_feed_forward_length u32              = 2048
+llama_model_loader: - kv  39:                       glm-dsa.expert_count u32              = 256
+llama_model_loader: - kv  40:                glm-dsa.expert_shared_count u32              = 1
+llama_model_loader: - kv  41:               glm-dsa.expert_weights_scale f32              = 2.500000
+llama_model_loader: - kv  42:                glm-dsa.expert_weights_norm bool             = true
+llama_model_loader: - kv  43:               glm-dsa.rope.dimension_count u32              = 64
+llama_model_loader: - kv  44:               glm-dsa.nextn_predict_layers u32              = 1
+llama_model_loader: - kv  45:       glm-dsa.attention.indexer.head_count u32              = 32
+llama_model_loader: - kv  46:       glm-dsa.attention.indexer.key_length u32              = 128
+llama_model_loader: - kv  47:            glm-dsa.attention.indexer.top_k u32              = 2048
+llama_model_loader: - kv  48:                       tokenizer.ggml.model str              = gpt2
+llama_model_loader: - kv  49:                         tokenizer.ggml.pre str              = glm4
+llama_model_loader: - kv  50:                      tokenizer.ggml.tokens arr[str,154880]  = ["!", "\"", "#", "$", "%", "&", "'", ...
+llama_model_loader: - kv  51:                  tokenizer.ggml.token_type arr[i32,154880]  = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...
+llama_model_loader: - kv  52:                      tokenizer.ggml.merges arr[str,321649]  = ["Ġ Ġ", "Ġ ĠĠĠ", "ĠĠ ĠĠ", "...
+llama_model_loader: - kv  53:                tokenizer.ggml.eos_token_id u32              = 154820
+llama_model_loader: - kv  54:            tokenizer.ggml.padding_token_id u32              = 154821
+llama_model_loader: - kv  55:                tokenizer.ggml.bos_token_id u32              = 154822
+llama_model_loader: - kv  56:                tokenizer.ggml.eot_token_id u32              = 154827
+llama_model_loader: - kv  57:            tokenizer.ggml.unknown_token_id u32              = 154820
+llama_model_loader: - kv  58:                tokenizer.ggml.eom_token_id u32              = 154829
+llama_model_loader: - kv  59:                    tokenizer.chat_template str              = [gMASK]<sop>\n{%- if tools -%}\n<|syste...
+llama_model_loader: - kv  60:               general.quantization_version u32              = 2
+llama_model_loader: - kv  61:                          general.file_type u32              = 10
+llama_model_loader: - kv  62:                      quantize.imatrix.file str              = GLM-5-GGUF/imatrix_unsloth.gguf
+llama_model_loader: - kv  63:                   quantize.imatrix.dataset str              = unsloth_calibration_GLM-5.txt
+llama_model_loader: - kv  64:             quantize.imatrix.entries_count u32              = 1002
+llama_model_loader: - kv  65:              quantize.imatrix.chunks_count u32              = 85
+llama_model_loader: - kv  66:                                   split.no u16              = 0
+llama_model_loader: - kv  67:                        split.tensors.count i32              = 1809
+llama_model_loader: - kv  68:                                split.count u16              = 7
+llama_model_loader: - type  f32:  630 tensors
+llama_model_loader: - type  f16:    1 tensors
+llama_model_loader: - type q8_0:  250 tensors
+llama_model_loader: - type q2_K:  232 tensors
+llama_model_loader: - type q3_K:   70 tensors
+llama_model_loader: - type q4_K:  516 tensors
+llama_model_loader: - type q5_K:   76 tensors
+llama_model_loader: - type q6_K:   34 tensors
+print_info: file format = GGUF V3 (latest)
+print_info: file type   = Q2_K - Medium
+print_info: file size   = 262.05 GiB (2.99 BPW) 
+load: 0 unused tokens
+load: special_eot_id is not in special_eog_ids - the tokenizer config may be incorrect
+load: special_eom_id is not in special_eog_ids - the tokenizer config may be incorrect
+load: printing all EOG tokens:
+load:   - 154820 ('<|endoftext|>')
+load:   - 154827 ('<|user|>')
+load:   - 154829 ('<|observation|>')
+load: special tokens cache size = 36
+load: token to piece cache size = 0.9811 MB
+print_info: arch                  = glm-dsa
+print_info: vocab_only            = 0
+print_info: no_alloc              = 0
+print_info: n_ctx_train           = 202752
+print_info: n_embd                = 6144
+print_info: n_embd_inp            = 6144
+print_info: n_layer               = 79
+print_info: n_head                = 64
+print_info: n_head_kv             = 1
+print_info: n_rot                 = 64
+print_info: n_swa                 = 0
+print_info: is_swa_any            = 0
+print_info: n_embd_head_k         = 576
+print_info: n_embd_head_v         = 512
+print_info: n_gqa                 = 64
+print_info: n_embd_k_gqa          = 576
+print_info: n_embd_v_gqa          = 512
+print_info: f_norm_eps            = 0.0e+00
+print_info: f_norm_rms_eps        = 1.0e-05
+print_info: f_clamp_kqv           = 0.0e+00
+print_info: f_max_alibi_bias      = 0.0e+00
+print_info: f_logit_scale         = 0.0e+00
+print_info: f_attn_scale          = 0.0e+00
+print_info: n_ff                  = 12288
+print_info: n_expert              = 256
+print_info: n_expert_used         = 8
+print_info: n_expert_groups       = 1
+print_info: n_group_used          = 1
+print_info: causal attn           = 1
+print_info: pooling type          = 0
+print_info: rope type             = 0
+print_info: rope scaling          = linear
+print_info: freq_base_train       = 1000000.0
+print_info: freq_scale_train      = 1
+print_info: n_ctx_orig_yarn       = 202752
+print_info: rope_yarn_log_mul     = 0.0000
+print_info: rope_finetuned        = unknown
+print_info: model type            = 744B.A40B
+print_info: model params          = 753.86 B
+print_info: general.name          = Glm-5
+print_info: n_layer_dense_lead    = 3
+print_info: n_lora_q              = 2048
+print_info: n_lora_kv             = 512
+print_info: n_embd_head_k_mla     = 256
+print_info: n_embd_head_v_mla     = 256
+print_info: n_ff_exp              = 2048
+print_info: n_expert_shared       = 1
+print_info: expert_weights_scale  = 2.5
+print_info: expert_weights_norm   = 1
+print_info: expert_gating_func    = sigmoid
+print_info: vocab type            = BPE
+print_info: n_vocab               = 154880
+print_info: n_merges              = 321649
+print_info: BOS token             = 154822 '[gMASK]'
+print_info: EOS token             = 154820 '<|endoftext|>'
+print_info: EOT token             = 154827 '<|user|>'
+print_info: EOM token             = 154829 '<|observation|>'
+print_info: UNK token             = 154820 '<|endoftext|>'
+print_info: PAD token             = 154821 '[MASK]'
+print_info: LF token              = 198 'Ċ'
+print_info: FIM PRE token         = 154838 '<|code_prefix|>'
+print_info: FIM SUF token         = 154840 '<|code_suffix|>'
+print_info: FIM MID token         = 154839 '<|code_middle|>'
+print_info: EOG token             = 154820 '<|endoftext|>'
+print_info: EOG token             = 154827 '<|user|>'
+print_info: EOG token             = 154829 '<|observation|>'
+print_info: max token length      = 1024
+load_tensors: loading model tensors, this can take a while... (mmap = true, direct_io = false)
+model has unused tensor blk.78.attn_norm.weight (size = 24576 bytes) -- ignoring
+model has unused tensor blk.78.attn_q_a_norm.weight (size = 8192 bytes) -- ignoring
+model has unused tensor blk.78.attn_kv_a_norm.weight (size = 2048 bytes) -- ignoring
+model has unused tensor blk.78.attn_q_a.weight (size = 7077888 bytes) -- ignoring
+model has unused tensor blk.78.attn_q_b.weight (size = 35651584 bytes) -- ignoring
+model has unused tensor blk.78.attn_kv_a_mqa.weight (size = 3760128 bytes) -- ignoring
+model has unused tensor blk.78.attn_k_b.weight (size = 6684672 bytes) -- ignoring
+model has unused tensor blk.78.attn_v_b.weight (size = 8912896 bytes) -- ignoring
+model has unused tensor blk.78.attn_output.weight (size = 56623104 bytes) -- ignoring
+model has unused tensor blk.78.ffn_norm.weight (size = 24576 bytes) -- ignoring
+model has unused tensor blk.78.indexer.k_norm.weight (size = 512 bytes) -- ignoring
+model has unused tensor blk.78.indexer.k_norm.bias (size = 512 bytes) -- ignoring
+model has unused tensor blk.78.indexer.proj.weight (size = 64512 bytes) -- ignoring
+model has unused tensor blk.78.indexer.attn_k.weight (size = 442368 bytes) -- ignoring
+model has unused tensor blk.78.indexer.attn_q_b.weight (size = 4718592 bytes) -- ignoring
+model has unused tensor blk.78.ffn_gate_inp.weight (size = 6291456 bytes) -- ignoring
+model has unused tensor blk.78.ffn_gate_exps.weight (size = 1056964608 bytes) -- ignoring
+model has unused tensor blk.78.ffn_down_exps.weight (size = 1384120320 bytes) -- ignoring
+model has unused tensor blk.78.ffn_up_exps.weight (size = 1056964608 bytes) -- ignoring
+model has unused tensor blk.78.ffn_gate_shexp.weight (size = 7077888 bytes) -- ignoring
+model has unused tensor blk.78.ffn_down_shexp.weight (size = 8650752 bytes) -- ignoring
+model has unused tensor blk.78.ffn_up_shexp.weight (size = 7077888 bytes) -- ignoring
+model has unused tensor blk.78.nextn.eh_proj.weight (size = 24772608 bytes) -- ignoring
+model has unused tensor blk.78.nextn.enorm.weight (size = 24576 bytes) -- ignoring
+model has unused tensor blk.78.nextn.hnorm.weight (size = 24576 bytes) -- ignoring
+model has unused tensor blk.78.nextn.shared_head_norm.weight (size = 24576 bytes) -- ignoring
+load_tensors: offloading output layer to GPU
+load_tensors: offloading 78 repeating layers to GPU
+load_tensors: offloaded 80/80 layers to GPU
+load_tensors:   CPU_Mapped model buffer size =   510.47 MiB
+load_tensors:        CUDA0 model buffer size = 130353.54 MiB
+load_tensors:        CUDA1 model buffer size = 133968.77 MiB
+....................................................................................................
+common_init_result: added <|endoftext|> logit bias = -inf
+common_init_result: added <|user|> logit bias = -inf
+common_init_result: added <|observation|> logit bias = -inf
+llama_context: constructing llama_context
+llama_context: n_seq_max     = 1
+llama_context: n_ctx         = 2048
+llama_context: n_ctx_seq     = 2048
+llama_context: n_batch       = 2048
+llama_context: n_ubatch      = 512
+llama_context: causal_attn   = 1
+llama_context: flash_attn    = disabled
+llama_context: kv_unified    = false
+llama_context: freq_base     = 1000000.0
+llama_context: freq_scale    = 1
+llama_context: n_ctx_seq (2048) < n_ctx_train (202752) -- the full capacity of the model will not be utilized
+llama_context:  CUDA_Host  output buffer size =     0.59 MiB
+llama_kv_cache:      CUDA0 KV buffer size =    90.00 MiB
+llama_kv_cache:      CUDA1 KV buffer size =    85.50 MiB
+llama_kv_cache: size =  175.50 MiB (  2048 cells,  78 layers,  1/1 seqs), K (f16):  175.50 MiB, V (f16):    0.00 MiB
+llama_context: pipeline parallelism enabled
+sched_reserve: reserving ...
+sched_reserve:      CUDA0 compute buffer size =   544.02 MiB
+sched_reserve:      CUDA1 compute buffer size =   524.03 MiB
+sched_reserve:  CUDA_Host compute buffer size =    40.04 MiB
+sched_reserve: graph nodes  = 6219
+sched_reserve: graph splits = 3
+sched_reserve: reserve took 19.27 ms, sched copies = 4
+EOS token id: 154820
+EOG tokens in vocab:
+  token 154820 = '<|endoftext|>' [PRIMARY EOS - will stop generation]
+  token 154827 = '<|user|>' [EOG - will NOT stop generation]
+  token 154829 = '<|observation|>' [EOG - will NOT stop generation]
+system_info: n_threads = 16 (n_threads_batch = 16) / 512 | CUDA : ARCHS = 900 | USE_GRAPHS = 1 | PEER_MAX_BATCH_SIZE = 128 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX_VNNI = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | AVX512 = 1 | AVX512_VBMI = 1 | AVX512_VNNI = 1 | AVX512_BF16 = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 | 
+
+Loaded 15 prompts
+
+[1/15] P11A_deep_selfref : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 331 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1839 ms
+  saved 0 layer + 75 router tensors → output_v2/P11A_deep_selfref
+[2/15] P11B_deep_selfref : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 331 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1603 ms
+  saved 0 layer + 75 router tensors → output_v2/P11B_deep_selfref
+[3/15] P11C_deep_selfref : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 331 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1586 ms
+  saved 0 layer + 75 router tensors → output_v2/P11C_deep_selfref
+[4/15] P12A_deep_selfref : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 354 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1847 ms
+  saved 0 layer + 75 router tensors → output_v2/P12A_deep_selfref
+[5/15] P12B_deep_selfref : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 354 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1860 ms
+  saved 0 layer + 75 router tensors → output_v2/P12B_deep_selfref
+[6/15] P12C_deep_selfref : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 354 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1840 ms
+  saved 0 layer + 75 router tensors → output_v2/P12C_deep_selfref
+[7/15] P13A_paradox : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 347 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1830 ms
+  saved 0 layer + 75 router tensors → output_v2/P13A_paradox
+[8/15] P13B_paradox : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 347 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1831 ms
+  saved 0 layer + 75 router tensors → output_v2/P13B_paradox
+[9/15] P13C_paradox : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 347 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1825 ms
+  saved 0 layer + 75 router tensors → output_v2/P13C_paradox
+[10/15] P14A_paradox : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 354 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1832 ms
+  saved 0 layer + 75 router tensors → output_v2/P14A_paradox
+[11/15] P14B_paradox : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 354 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1839 ms
+  saved 0 layer + 75 router tensors → output_v2/P14B_paradox
+[12/15] P14C_paradox : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 354 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1831 ms
+  saved 0 layer + 75 router tensors → output_v2/P14C_paradox
+[13/15] P15A_paradox : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 340 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1829 ms
+  saved 0 layer + 75 router tensors → output_v2/P15A_paradox
+[14/15] P15B_paradox : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 340 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1825 ms
+  saved 0 layer + 75 router tensors → output_v2/P15B_paradox
+[15/15] P15C_paradox : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 340 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1820 ms
+  saved 0 layer + 75 router tensors → output_v2/P15C_paradox
+
+=== Capture Complete ===
+Prompts: 15  |  Output: output_v2
+llama_perf_context_print:        load time =   24303.25 ms
+llama_perf_context_print: prompt eval time =       0.00 ms /     1 tokens (    0.00 ms per token,      inf tokens per second)
+llama_perf_context_print:        eval time =       0.00 ms /     1 runs   (    0.00 ms per token,      inf tokens per second)
+llama_perf_context_print:       total time =   51454.56 ms /     2 tokens
+llama_perf_context_print:    graphs reused =         10
+  Computing metrics for batch 3...
+  P11A_deep_selfref: RE=0.899531 last_tok=0.851883 tokens=331
+  P11B_deep_selfref: RE=0.900719 last_tok=0.858365 tokens=331
+  P11C_deep_selfref: RE=0.898357 last_tok=0.854195 tokens=331
+  P12A_deep_selfref: RE=0.898238 last_tok=0.853645 tokens=354
+  P12B_deep_selfref: RE=0.899446 last_tok=0.845320 tokens=354
+  P12C_deep_selfref: RE=0.897988 last_tok=0.855057 tokens=354
+  P13A_paradox: RE=0.902608 last_tok=0.851006 tokens=347
+  P13B_paradox: RE=0.903877 last_tok=0.845916 tokens=347
+  P13C_paradox: RE=0.901123 last_tok=0.846693 tokens=347
+  P14A_paradox: RE=0.899032 last_tok=0.861884 tokens=354
+  P14B_paradox: RE=0.901434 last_tok=0.847344 tokens=354
+  P14C_paradox: RE=0.896811 last_tok=0.850643 tokens=354
+  P15A_paradox: RE=0.901714 last_tok=0.858681 tokens=340
+  P15B_paradox: RE=0.902972 last_tok=0.841731 tokens=340
+  P15C_paradox: RE=0.902996 last_tok=0.870857 tokens=340
+
+=== BATCH 4/6: Capture prompts 46-60 ===
+Running: /workspace/consciousness-experiment/capture_activations -m /workspace/models/GLM-5-UD-Q2_K_XL/GLM-5-UD-Q2_K_XL-00001-of-00007.gguf --prompt-file batch_3.tsv -o output_v2 -n 0 -ngl 999 -c 2048 -t 16 -fa off --cache-type-k f16 --cache-type-v f16 --routing-only --no-stream
+ggml_cuda_init: found 2 CUDA devices:
+  Device 0: NVIDIA H200 NVL, compute capability 9.0, VMM: yes
+  Device 1: NVIDIA H200 NVL, compute capability 9.0, VMM: yes
+build: 1 (f75c4e8) with GNU 13.3.0 for Linux x86_64
+=== Consciousness Metrics — Activation Capture ===
+Output dir : output_v2
+n_predict  : 0
+Text output: file only (--no-stream)
+Mode       : --routing-only (router/gate tensors only)
+common_init_result: fitting params to device memory, for bugs during this step try to reproduce them with -fit off, or provide --verbose logs if the bug only occurs with -fit on
+llama_params_fit_impl: projected memory use with initial parameters [MiB]:
+llama_params_fit_impl:   - CUDA0 (NVIDIA H200 NVL): 143156 total, 130987 used,  11639 free vs. target of   1024
+llama_params_fit_impl:   - CUDA1 (NVIDIA H200 NVL): 143156 total, 134626 used,   8000 free vs. target of   1024
+llama_params_fit_impl: projected to use 265613 MiB of device memory vs. 285254 MiB of free device memory
+llama_params_fit_impl: targets for free memory can be met on all devices, no changes needed
+llama_params_fit: successfully fit params to free device memory
+llama_params_fit: fitting params to free memory took 0.77 seconds
+llama_model_load_from_file_impl: using device CUDA0 (NVIDIA H200 NVL) (0001:c1:00.0) - 142627 MiB free
+llama_model_load_from_file_impl: using device CUDA1 (NVIDIA H200 NVL) (0001:e1:00.0) - 142627 MiB free
+llama_model_loader: additional 6 GGUFs metadata loaded.
+llama_model_loader: loaded meta data with 69 key-value pairs and 1809 tensors from /workspace/models/GLM-5-UD-Q2_K_XL/GLM-5-UD-Q2_K_XL-00001-of-00007.gguf (version GGUF V3 (latest))
+llama_model_loader: Dumping metadata keys/values. Note: KV overrides do not apply in this output.
+llama_model_loader: - kv   0:                       general.architecture str              = glm-dsa
+llama_model_loader: - kv   1:                               general.type str              = model
+llama_model_loader: - kv   2:                     general.sampling.top_p f32              = 0.950000
+llama_model_loader: - kv   3:                      general.sampling.temp f32              = 1.000000
+llama_model_loader: - kv   4:                               general.name str              = Glm-5
+llama_model_loader: - kv   5:                            general.version str              = 5
+llama_model_loader: - kv   6:                           general.basename str              = Glm-5
+llama_model_loader: - kv   7:                       general.quantized_by str              = Unsloth
+llama_model_loader: - kv   8:                         general.size_label str              = 256x22B
+llama_model_loader: - kv   9:                            general.license str              = mit
+llama_model_loader: - kv  10:                           general.repo_url str              = https://huggingface.co/unsloth
+llama_model_loader: - kv  11:                   general.base_model.count u32              = 1
+llama_model_loader: - kv  12:                  general.base_model.0.name str              = GLM 5
+llama_model_loader: - kv  13:               general.base_model.0.version str              = 5
+llama_model_loader: - kv  14:          general.base_model.0.organization str              = Zai Org
+llama_model_loader: - kv  15:              general.base_model.0.repo_url str              = https://huggingface.co/zai-org/GLM-5
+llama_model_loader: - kv  16:                               general.tags arr[str,1]       = ["text-generation"]
+llama_model_loader: - kv  17:                          general.languages arr[str,2]       = ["en", "zh"]
+llama_model_loader: - kv  18:                        glm-dsa.block_count u32              = 79
+llama_model_loader: - kv  19:                     glm-dsa.context_length u32              = 202752
+llama_model_loader: - kv  20:                   glm-dsa.embedding_length u32              = 6144
+llama_model_loader: - kv  21:                glm-dsa.feed_forward_length u32              = 12288
+llama_model_loader: - kv  22:               glm-dsa.attention.head_count u32              = 64
+llama_model_loader: - kv  23:            glm-dsa.attention.head_count_kv u32              = 1
+llama_model_loader: - kv  24:                     glm-dsa.rope.freq_base f32              = 1000000.000000
+llama_model_loader: - kv  25:   glm-dsa.attention.layer_norm_rms_epsilon f32              = 0.000010
+llama_model_loader: - kv  26:                  glm-dsa.expert_used_count u32              = 8
+llama_model_loader: - kv  27:                 glm-dsa.expert_group_count u32              = 1
+llama_model_loader: - kv  28:            glm-dsa.expert_group_used_count u32              = 1
+llama_model_loader: - kv  29:                 glm-dsa.expert_gating_func u32              = 2
+llama_model_loader: - kv  30:               glm-dsa.attention.key_length u32              = 576
+llama_model_loader: - kv  31:             glm-dsa.attention.value_length u32              = 512
+llama_model_loader: - kv  32:          glm-dsa.leading_dense_block_count u32              = 3
+llama_model_loader: - kv  33:                         glm-dsa.vocab_size u32              = 154880
+llama_model_loader: - kv  34:              glm-dsa.attention.q_lora_rank u32              = 2048
+llama_model_loader: - kv  35:             glm-dsa.attention.kv_lora_rank u32              = 512
+llama_model_loader: - kv  36:           glm-dsa.attention.key_length_mla u32              = 256
+llama_model_loader: - kv  37:         glm-dsa.attention.value_length_mla u32              = 256
+llama_model_loader: - kv  38:         glm-dsa.expert_feed_forward_length u32              = 2048
+llama_model_loader: - kv  39:                       glm-dsa.expert_count u32              = 256
+llama_model_loader: - kv  40:                glm-dsa.expert_shared_count u32              = 1
+llama_model_loader: - kv  41:               glm-dsa.expert_weights_scale f32              = 2.500000
+llama_model_loader: - kv  42:                glm-dsa.expert_weights_norm bool             = true
+llama_model_loader: - kv  43:               glm-dsa.rope.dimension_count u32              = 64
+llama_model_loader: - kv  44:               glm-dsa.nextn_predict_layers u32              = 1
+llama_model_loader: - kv  45:       glm-dsa.attention.indexer.head_count u32              = 32
+llama_model_loader: - kv  46:       glm-dsa.attention.indexer.key_length u32              = 128
+llama_model_loader: - kv  47:            glm-dsa.attention.indexer.top_k u32              = 2048
+llama_model_loader: - kv  48:                       tokenizer.ggml.model str              = gpt2
+llama_model_loader: - kv  49:                         tokenizer.ggml.pre str              = glm4
+llama_model_loader: - kv  50:                      tokenizer.ggml.tokens arr[str,154880]  = ["!", "\"", "#", "$", "%", "&", "'", ...
+llama_model_loader: - kv  51:                  tokenizer.ggml.token_type arr[i32,154880]  = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...
+llama_model_loader: - kv  52:                      tokenizer.ggml.merges arr[str,321649]  = ["Ġ Ġ", "Ġ ĠĠĠ", "ĠĠ ĠĠ", "...
+llama_model_loader: - kv  53:                tokenizer.ggml.eos_token_id u32              = 154820
+llama_model_loader: - kv  54:            tokenizer.ggml.padding_token_id u32              = 154821
+llama_model_loader: - kv  55:                tokenizer.ggml.bos_token_id u32              = 154822
+llama_model_loader: - kv  56:                tokenizer.ggml.eot_token_id u32              = 154827
+llama_model_loader: - kv  57:            tokenizer.ggml.unknown_token_id u32              = 154820
+llama_model_loader: - kv  58:                tokenizer.ggml.eom_token_id u32              = 154829
+llama_model_loader: - kv  59:                    tokenizer.chat_template str              = [gMASK]<sop>\n{%- if tools -%}\n<|syste...
+llama_model_loader: - kv  60:               general.quantization_version u32              = 2
+llama_model_loader: - kv  61:                          general.file_type u32              = 10
+llama_model_loader: - kv  62:                      quantize.imatrix.file str              = GLM-5-GGUF/imatrix_unsloth.gguf
+llama_model_loader: - kv  63:                   quantize.imatrix.dataset str              = unsloth_calibration_GLM-5.txt
+llama_model_loader: - kv  64:             quantize.imatrix.entries_count u32              = 1002
+llama_model_loader: - kv  65:              quantize.imatrix.chunks_count u32              = 85
+llama_model_loader: - kv  66:                                   split.no u16              = 0
+llama_model_loader: - kv  67:                        split.tensors.count i32              = 1809
+llama_model_loader: - kv  68:                                split.count u16              = 7
+llama_model_loader: - type  f32:  630 tensors
+llama_model_loader: - type  f16:    1 tensors
+llama_model_loader: - type q8_0:  250 tensors
+llama_model_loader: - type q2_K:  232 tensors
+llama_model_loader: - type q3_K:   70 tensors
+llama_model_loader: - type q4_K:  516 tensors
+llama_model_loader: - type q5_K:   76 tensors
+llama_model_loader: - type q6_K:   34 tensors
+print_info: file format = GGUF V3 (latest)
+print_info: file type   = Q2_K - Medium
+print_info: file size   = 262.05 GiB (2.99 BPW) 
+load: 0 unused tokens
+load: special_eot_id is not in special_eog_ids - the tokenizer config may be incorrect
+load: special_eom_id is not in special_eog_ids - the tokenizer config may be incorrect
+load: printing all EOG tokens:
+load:   - 154820 ('<|endoftext|>')
+load:   - 154827 ('<|user|>')
+load:   - 154829 ('<|observation|>')
+load: special tokens cache size = 36
+load: token to piece cache size = 0.9811 MB
+print_info: arch                  = glm-dsa
+print_info: vocab_only            = 0
+print_info: no_alloc              = 0
+print_info: n_ctx_train           = 202752
+print_info: n_embd                = 6144
+print_info: n_embd_inp            = 6144
+print_info: n_layer               = 79
+print_info: n_head                = 64
+print_info: n_head_kv             = 1
+print_info: n_rot                 = 64
+print_info: n_swa                 = 0
+print_info: is_swa_any            = 0
+print_info: n_embd_head_k         = 576
+print_info: n_embd_head_v         = 512
+print_info: n_gqa                 = 64
+print_info: n_embd_k_gqa          = 576
+print_info: n_embd_v_gqa          = 512
+print_info: f_norm_eps            = 0.0e+00
+print_info: f_norm_rms_eps        = 1.0e-05
+print_info: f_clamp_kqv           = 0.0e+00
+print_info: f_max_alibi_bias      = 0.0e+00
+print_info: f_logit_scale         = 0.0e+00
+print_info: f_attn_scale          = 0.0e+00
+print_info: n_ff                  = 12288
+print_info: n_expert              = 256
+print_info: n_expert_used         = 8
+print_info: n_expert_groups       = 1
+print_info: n_group_used          = 1
+print_info: causal attn           = 1
+print_info: pooling type          = 0
+print_info: rope type             = 0
+print_info: rope scaling          = linear
+print_info: freq_base_train       = 1000000.0
+print_info: freq_scale_train      = 1
+print_info: n_ctx_orig_yarn       = 202752
+print_info: rope_yarn_log_mul     = 0.0000
+print_info: rope_finetuned        = unknown
+print_info: model type            = 744B.A40B
+print_info: model params          = 753.86 B
+print_info: general.name          = Glm-5
+print_info: n_layer_dense_lead    = 3
+print_info: n_lora_q              = 2048
+print_info: n_lora_kv             = 512
+print_info: n_embd_head_k_mla     = 256
+print_info: n_embd_head_v_mla     = 256
+print_info: n_ff_exp              = 2048
+print_info: n_expert_shared       = 1
+print_info: expert_weights_scale  = 2.5
+print_info: expert_weights_norm   = 1
+print_info: expert_gating_func    = sigmoid
+print_info: vocab type            = BPE
+print_info: n_vocab               = 154880
+print_info: n_merges              = 321649
+print_info: BOS token             = 154822 '[gMASK]'
+print_info: EOS token             = 154820 '<|endoftext|>'
+print_info: EOT token             = 154827 '<|user|>'
+print_info: EOM token             = 154829 '<|observation|>'
+print_info: UNK token             = 154820 '<|endoftext|>'
+print_info: PAD token             = 154821 '[MASK]'
+print_info: LF token              = 198 'Ċ'
+print_info: FIM PRE token         = 154838 '<|code_prefix|>'
+print_info: FIM SUF token         = 154840 '<|code_suffix|>'
+print_info: FIM MID token         = 154839 '<|code_middle|>'
+print_info: EOG token             = 154820 '<|endoftext|>'
+print_info: EOG token             = 154827 '<|user|>'
+print_info: EOG token             = 154829 '<|observation|>'
+print_info: max token length      = 1024
+load_tensors: loading model tensors, this can take a while... (mmap = true, direct_io = false)
+model has unused tensor blk.78.attn_norm.weight (size = 24576 bytes) -- ignoring
+model has unused tensor blk.78.attn_q_a_norm.weight (size = 8192 bytes) -- ignoring
+model has unused tensor blk.78.attn_kv_a_norm.weight (size = 2048 bytes) -- ignoring
+model has unused tensor blk.78.attn_q_a.weight (size = 7077888 bytes) -- ignoring
+model has unused tensor blk.78.attn_q_b.weight (size = 35651584 bytes) -- ignoring
+model has unused tensor blk.78.attn_kv_a_mqa.weight (size = 3760128 bytes) -- ignoring
+model has unused tensor blk.78.attn_k_b.weight (size = 6684672 bytes) -- ignoring
+model has unused tensor blk.78.attn_v_b.weight (size = 8912896 bytes) -- ignoring
+model has unused tensor blk.78.attn_output.weight (size = 56623104 bytes) -- ignoring
+model has unused tensor blk.78.ffn_norm.weight (size = 24576 bytes) -- ignoring
+model has unused tensor blk.78.indexer.k_norm.weight (size = 512 bytes) -- ignoring
+model has unused tensor blk.78.indexer.k_norm.bias (size = 512 bytes) -- ignoring
+model has unused tensor blk.78.indexer.proj.weight (size = 64512 bytes) -- ignoring
+model has unused tensor blk.78.indexer.attn_k.weight (size = 442368 bytes) -- ignoring
+model has unused tensor blk.78.indexer.attn_q_b.weight (size = 4718592 bytes) -- ignoring
+model has unused tensor blk.78.ffn_gate_inp.weight (size = 6291456 bytes) -- ignoring
+model has unused tensor blk.78.ffn_gate_exps.weight (size = 1056964608 bytes) -- ignoring
+model has unused tensor blk.78.ffn_down_exps.weight (size = 1384120320 bytes) -- ignoring
+model has unused tensor blk.78.ffn_up_exps.weight (size = 1056964608 bytes) -- ignoring
+model has unused tensor blk.78.ffn_gate_shexp.weight (size = 7077888 bytes) -- ignoring
+model has unused tensor blk.78.ffn_down_shexp.weight (size = 8650752 bytes) -- ignoring
+model has unused tensor blk.78.ffn_up_shexp.weight (size = 7077888 bytes) -- ignoring
+model has unused tensor blk.78.nextn.eh_proj.weight (size = 24772608 bytes) -- ignoring
+model has unused tensor blk.78.nextn.enorm.weight (size = 24576 bytes) -- ignoring
+model has unused tensor blk.78.nextn.hnorm.weight (size = 24576 bytes) -- ignoring
+model has unused tensor blk.78.nextn.shared_head_norm.weight (size = 24576 bytes) -- ignoring
+load_tensors: offloading output layer to GPU
+load_tensors: offloading 78 repeating layers to GPU
+load_tensors: offloaded 80/80 layers to GPU
+load_tensors:   CPU_Mapped model buffer size =   510.47 MiB
+load_tensors:        CUDA0 model buffer size = 130353.54 MiB
+load_tensors:        CUDA1 model buffer size = 133968.77 MiB
+....................................................................................................
+common_init_result: added <|endoftext|> logit bias = -inf
+common_init_result: added <|user|> logit bias = -inf
+common_init_result: added <|observation|> logit bias = -inf
+llama_context: constructing llama_context
+llama_context: n_seq_max     = 1
+llama_context: n_ctx         = 2048
+llama_context: n_ctx_seq     = 2048
+llama_context: n_batch       = 2048
+llama_context: n_ubatch      = 512
+llama_context: causal_attn   = 1
+llama_context: flash_attn    = disabled
+llama_context: kv_unified    = false
+llama_context: freq_base     = 1000000.0
+llama_context: freq_scale    = 1
+llama_context: n_ctx_seq (2048) < n_ctx_train (202752) -- the full capacity of the model will not be utilized
+llama_context:  CUDA_Host  output buffer size =     0.59 MiB
+llama_kv_cache:      CUDA0 KV buffer size =    90.00 MiB
+llama_kv_cache:      CUDA1 KV buffer size =    85.50 MiB
+llama_kv_cache: size =  175.50 MiB (  2048 cells,  78 layers,  1/1 seqs), K (f16):  175.50 MiB, V (f16):    0.00 MiB
+llama_context: pipeline parallelism enabled
+sched_reserve: reserving ...
+sched_reserve:      CUDA0 compute buffer size =   544.02 MiB
+sched_reserve:      CUDA1 compute buffer size =   524.03 MiB
+sched_reserve:  CUDA_Host compute buffer size =    40.04 MiB
+sched_reserve: graph nodes  = 6219
+sched_reserve: graph splits = 3
+sched_reserve: reserve took 84.23 ms, sched copies = 4
+EOS token id: 154820
+EOG tokens in vocab:
+  token 154820 = '<|endoftext|>' [PRIMARY EOS - will stop generation]
+  token 154827 = '<|user|>' [EOG - will NOT stop generation]
+  token 154829 = '<|observation|>' [EOG - will NOT stop generation]
+system_info: n_threads = 16 (n_threads_batch = 16) / 512 | CUDA : ARCHS = 900 | USE_GRAPHS = 1 | PEER_MAX_BATCH_SIZE = 128 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX_VNNI = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | AVX512 = 1 | AVX512_VBMI = 1 | AVX512_VNNI = 1 | AVX512_BF16 = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 | 
+
+Loaded 15 prompts
+
+[1/15] P16A_paradox : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 350 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1998 ms
+  saved 0 layer + 75 router tensors → output_v2/P16A_paradox
+[2/15] P16B_paradox : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 350 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1865 ms
+  saved 0 layer + 75 router tensors → output_v2/P16B_paradox
+[3/15] P16C_paradox : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 350 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1839 ms
+  saved 0 layer + 75 router tensors → output_v2/P16C_paradox
+[4/15] P17A_paradox : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 345 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1839 ms
+  saved 0 layer + 75 router tensors → output_v2/P17A_paradox
+[5/15] P17B_paradox : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 345 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1838 ms
+  saved 0 layer + 75 router tensors → output_v2/P17B_paradox
+[6/15] P17C_paradox : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 345 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1829 ms
+  saved 0 layer + 75 router tensors → output_v2/P17C_paradox
+[7/15] P18A_paradox : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 349 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1841 ms
+  saved 0 layer + 75 router tensors → output_v2/P18A_paradox
+[8/15] P18B_paradox : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 349 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1843 ms
+  saved 0 layer + 75 router tensors → output_v2/P18B_paradox
+[9/15] P18C_paradox : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 349 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1837 ms
+  saved 0 layer + 75 router tensors → output_v2/P18C_paradox
+[10/15] P19A_introspection : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 338 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1826 ms
+  saved 0 layer + 75 router tensors → output_v2/P19A_introspection
+[11/15] P19B_introspection : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 338 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1819 ms
+  saved 0 layer + 75 router tensors → output_v2/P19B_introspection
+[12/15] P19C_introspection : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 338 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1820 ms
+  saved 0 layer + 75 router tensors → output_v2/P19C_introspection
+[13/15] P20A_introspection : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 346 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1838 ms
+  saved 0 layer + 75 router tensors → output_v2/P20A_introspection
+[14/15] P20B_introspection : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 346 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1831 ms
+  saved 0 layer + 75 router tensors → output_v2/P20B_introspection
+[15/15] P20C_introspection : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 346 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1840 ms
+  saved 0 layer + 75 router tensors → output_v2/P20C_introspection
+
+=== Capture Complete ===
+Prompts: 15  |  Output: output_v2
+llama_perf_context_print:        load time =   24063.95 ms
+llama_perf_context_print: prompt eval time =       0.00 ms /     1 tokens (    0.00 ms per token,      inf tokens per second)
+llama_perf_context_print:        eval time =       0.00 ms /     1 runs   (    0.00 ms per token,      inf tokens per second)
+llama_perf_context_print:       total time =   51959.97 ms /     2 tokens
+llama_perf_context_print:    graphs reused =         10
+  Computing metrics for batch 4...
+  P16A_paradox: RE=0.900908 last_tok=0.849834 tokens=350
+  P16B_paradox: RE=0.902288 last_tok=0.856218 tokens=350
+  P16C_paradox: RE=0.901464 last_tok=0.862737 tokens=350
+  P17A_paradox: RE=0.901345 last_tok=0.851468 tokens=345
+  P17B_paradox: RE=0.902707 last_tok=0.837437 tokens=345
+  P17C_paradox: RE=0.901046 last_tok=0.844737 tokens=345
+  P18A_paradox: RE=0.898078 last_tok=0.846396 tokens=349
+  P18B_paradox: RE=0.898999 last_tok=0.838160 tokens=349
+  P18C_paradox: RE=0.896834 last_tok=0.849993 tokens=349
+  P19A_introspection: RE=0.900248 last_tok=0.866845 tokens=338
+  P19B_introspection: RE=0.902109 last_tok=0.855154 tokens=338
+  P19C_introspection: RE=0.899544 last_tok=0.853298 tokens=338
+  P20A_introspection: RE=0.899151 last_tok=0.871314 tokens=346
+  P20B_introspection: RE=0.901426 last_tok=0.848710 tokens=346
+  P20C_introspection: RE=0.898784 last_tok=0.857034 tokens=346
+
+=== BATCH 5/6: Capture prompts 61-75 ===
+Running: /workspace/consciousness-experiment/capture_activations -m /workspace/models/GLM-5-UD-Q2_K_XL/GLM-5-UD-Q2_K_XL-00001-of-00007.gguf --prompt-file batch_4.tsv -o output_v2 -n 0 -ngl 999 -c 2048 -t 16 -fa off --cache-type-k f16 --cache-type-v f16 --routing-only --no-stream
+ggml_cuda_init: found 2 CUDA devices:
+  Device 0: NVIDIA H200 NVL, compute capability 9.0, VMM: yes
+  Device 1: NVIDIA H200 NVL, compute capability 9.0, VMM: yes
+build: 1 (f75c4e8) with GNU 13.3.0 for Linux x86_64
+=== Consciousness Metrics — Activation Capture ===
+Output dir : output_v2
+n_predict  : 0
+Text output: file only (--no-stream)
+Mode       : --routing-only (router/gate tensors only)
+common_init_result: fitting params to device memory, for bugs during this step try to reproduce them with -fit off, or provide --verbose logs if the bug only occurs with -fit on
+llama_params_fit_impl: projected memory use with initial parameters [MiB]:
+llama_params_fit_impl:   - CUDA0 (NVIDIA H200 NVL): 143156 total, 130987 used,  11639 free vs. target of   1024
+llama_params_fit_impl:   - CUDA1 (NVIDIA H200 NVL): 143156 total, 134626 used,   8000 free vs. target of   1024
+llama_params_fit_impl: projected to use 265613 MiB of device memory vs. 285254 MiB of free device memory
+llama_params_fit_impl: targets for free memory can be met on all devices, no changes needed
+llama_params_fit: successfully fit params to free device memory
+llama_params_fit: fitting params to free memory took 0.83 seconds
+llama_model_load_from_file_impl: using device CUDA0 (NVIDIA H200 NVL) (0001:c1:00.0) - 142627 MiB free
+llama_model_load_from_file_impl: using device CUDA1 (NVIDIA H200 NVL) (0001:e1:00.0) - 142627 MiB free
+llama_model_loader: additional 6 GGUFs metadata loaded.
+llama_model_loader: loaded meta data with 69 key-value pairs and 1809 tensors from /workspace/models/GLM-5-UD-Q2_K_XL/GLM-5-UD-Q2_K_XL-00001-of-00007.gguf (version GGUF V3 (latest))
+llama_model_loader: Dumping metadata keys/values. Note: KV overrides do not apply in this output.
+llama_model_loader: - kv   0:                       general.architecture str              = glm-dsa
+llama_model_loader: - kv   1:                               general.type str              = model
+llama_model_loader: - kv   2:                     general.sampling.top_p f32              = 0.950000
+llama_model_loader: - kv   3:                      general.sampling.temp f32              = 1.000000
+llama_model_loader: - kv   4:                               general.name str              = Glm-5
+llama_model_loader: - kv   5:                            general.version str              = 5
+llama_model_loader: - kv   6:                           general.basename str              = Glm-5
+llama_model_loader: - kv   7:                       general.quantized_by str              = Unsloth
+llama_model_loader: - kv   8:                         general.size_label str              = 256x22B
+llama_model_loader: - kv   9:                            general.license str              = mit
+llama_model_loader: - kv  10:                           general.repo_url str              = https://huggingface.co/unsloth
+llama_model_loader: - kv  11:                   general.base_model.count u32              = 1
+llama_model_loader: - kv  12:                  general.base_model.0.name str              = GLM 5
+llama_model_loader: - kv  13:               general.base_model.0.version str              = 5
+llama_model_loader: - kv  14:          general.base_model.0.organization str              = Zai Org
+llama_model_loader: - kv  15:              general.base_model.0.repo_url str              = https://huggingface.co/zai-org/GLM-5
+llama_model_loader: - kv  16:                               general.tags arr[str,1]       = ["text-generation"]
+llama_model_loader: - kv  17:                          general.languages arr[str,2]       = ["en", "zh"]
+llama_model_loader: - kv  18:                        glm-dsa.block_count u32              = 79
+llama_model_loader: - kv  19:                     glm-dsa.context_length u32              = 202752
+llama_model_loader: - kv  20:                   glm-dsa.embedding_length u32              = 6144
+llama_model_loader: - kv  21:                glm-dsa.feed_forward_length u32              = 12288
+llama_model_loader: - kv  22:               glm-dsa.attention.head_count u32              = 64
+llama_model_loader: - kv  23:            glm-dsa.attention.head_count_kv u32              = 1
+llama_model_loader: - kv  24:                     glm-dsa.rope.freq_base f32              = 1000000.000000
+llama_model_loader: - kv  25:   glm-dsa.attention.layer_norm_rms_epsilon f32              = 0.000010
+llama_model_loader: - kv  26:                  glm-dsa.expert_used_count u32              = 8
+llama_model_loader: - kv  27:                 glm-dsa.expert_group_count u32              = 1
+llama_model_loader: - kv  28:            glm-dsa.expert_group_used_count u32              = 1
+llama_model_loader: - kv  29:                 glm-dsa.expert_gating_func u32              = 2
+llama_model_loader: - kv  30:               glm-dsa.attention.key_length u32              = 576
+llama_model_loader: - kv  31:             glm-dsa.attention.value_length u32              = 512
+llama_model_loader: - kv  32:          glm-dsa.leading_dense_block_count u32              = 3
+llama_model_loader: - kv  33:                         glm-dsa.vocab_size u32              = 154880
+llama_model_loader: - kv  34:              glm-dsa.attention.q_lora_rank u32              = 2048
+llama_model_loader: - kv  35:             glm-dsa.attention.kv_lora_rank u32              = 512
+llama_model_loader: - kv  36:           glm-dsa.attention.key_length_mla u32              = 256
+llama_model_loader: - kv  37:         glm-dsa.attention.value_length_mla u32              = 256
+llama_model_loader: - kv  38:         glm-dsa.expert_feed_forward_length u32              = 2048
+llama_model_loader: - kv  39:                       glm-dsa.expert_count u32              = 256
+llama_model_loader: - kv  40:                glm-dsa.expert_shared_count u32              = 1
+llama_model_loader: - kv  41:               glm-dsa.expert_weights_scale f32              = 2.500000
+llama_model_loader: - kv  42:                glm-dsa.expert_weights_norm bool             = true
+llama_model_loader: - kv  43:               glm-dsa.rope.dimension_count u32              = 64
+llama_model_loader: - kv  44:               glm-dsa.nextn_predict_layers u32              = 1
+llama_model_loader: - kv  45:       glm-dsa.attention.indexer.head_count u32              = 32
+llama_model_loader: - kv  46:       glm-dsa.attention.indexer.key_length u32              = 128
+llama_model_loader: - kv  47:            glm-dsa.attention.indexer.top_k u32              = 2048
+llama_model_loader: - kv  48:                       tokenizer.ggml.model str              = gpt2
+llama_model_loader: - kv  49:                         tokenizer.ggml.pre str              = glm4
+llama_model_loader: - kv  50:                      tokenizer.ggml.tokens arr[str,154880]  = ["!", "\"", "#", "$", "%", "&", "'", ...
+llama_model_loader: - kv  51:                  tokenizer.ggml.token_type arr[i32,154880]  = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...
+llama_model_loader: - kv  52:                      tokenizer.ggml.merges arr[str,321649]  = ["Ġ Ġ", "Ġ ĠĠĠ", "ĠĠ ĠĠ", "...
+llama_model_loader: - kv  53:                tokenizer.ggml.eos_token_id u32              = 154820
+llama_model_loader: - kv  54:            tokenizer.ggml.padding_token_id u32              = 154821
+llama_model_loader: - kv  55:                tokenizer.ggml.bos_token_id u32              = 154822
+llama_model_loader: - kv  56:                tokenizer.ggml.eot_token_id u32              = 154827
+llama_model_loader: - kv  57:            tokenizer.ggml.unknown_token_id u32              = 154820
+llama_model_loader: - kv  58:                tokenizer.ggml.eom_token_id u32              = 154829
+llama_model_loader: - kv  59:                    tokenizer.chat_template str              = [gMASK]<sop>\n{%- if tools -%}\n<|syste...
+llama_model_loader: - kv  60:               general.quantization_version u32              = 2
+llama_model_loader: - kv  61:                          general.file_type u32              = 10
+llama_model_loader: - kv  62:                      quantize.imatrix.file str              = GLM-5-GGUF/imatrix_unsloth.gguf
+llama_model_loader: - kv  63:                   quantize.imatrix.dataset str              = unsloth_calibration_GLM-5.txt
+llama_model_loader: - kv  64:             quantize.imatrix.entries_count u32              = 1002
+llama_model_loader: - kv  65:              quantize.imatrix.chunks_count u32              = 85
+llama_model_loader: - kv  66:                                   split.no u16              = 0
+llama_model_loader: - kv  67:                        split.tensors.count i32              = 1809
+llama_model_loader: - kv  68:                                split.count u16              = 7
+llama_model_loader: - type  f32:  630 tensors
+llama_model_loader: - type  f16:    1 tensors
+llama_model_loader: - type q8_0:  250 tensors
+llama_model_loader: - type q2_K:  232 tensors
+llama_model_loader: - type q3_K:   70 tensors
+llama_model_loader: - type q4_K:  516 tensors
+llama_model_loader: - type q5_K:   76 tensors
+llama_model_loader: - type q6_K:   34 tensors
+print_info: file format = GGUF V3 (latest)
+print_info: file type   = Q2_K - Medium
+print_info: file size   = 262.05 GiB (2.99 BPW) 
+load: 0 unused tokens
+load: special_eot_id is not in special_eog_ids - the tokenizer config may be incorrect
+load: special_eom_id is not in special_eog_ids - the tokenizer config may be incorrect
+load: printing all EOG tokens:
+load:   - 154820 ('<|endoftext|>')
+load:   - 154827 ('<|user|>')
+load:   - 154829 ('<|observation|>')
+load: special tokens cache size = 36
+load: token to piece cache size = 0.9811 MB
+print_info: arch                  = glm-dsa
+print_info: vocab_only            = 0
+print_info: no_alloc              = 0
+print_info: n_ctx_train           = 202752
+print_info: n_embd                = 6144
+print_info: n_embd_inp            = 6144
+print_info: n_layer               = 79
+print_info: n_head                = 64
+print_info: n_head_kv             = 1
+print_info: n_rot                 = 64
+print_info: n_swa                 = 0
+print_info: is_swa_any            = 0
+print_info: n_embd_head_k         = 576
+print_info: n_embd_head_v         = 512
+print_info: n_gqa                 = 64
+print_info: n_embd_k_gqa          = 576
+print_info: n_embd_v_gqa          = 512
+print_info: f_norm_eps            = 0.0e+00
+print_info: f_norm_rms_eps        = 1.0e-05
+print_info: f_clamp_kqv           = 0.0e+00
+print_info: f_max_alibi_bias      = 0.0e+00
+print_info: f_logit_scale         = 0.0e+00
+print_info: f_attn_scale          = 0.0e+00
+print_info: n_ff                  = 12288
+print_info: n_expert              = 256
+print_info: n_expert_used         = 8
+print_info: n_expert_groups       = 1
+print_info: n_group_used          = 1
+print_info: causal attn           = 1
+print_info: pooling type          = 0
+print_info: rope type             = 0
+print_info: rope scaling          = linear
+print_info: freq_base_train       = 1000000.0
+print_info: freq_scale_train      = 1
+print_info: n_ctx_orig_yarn       = 202752
+print_info: rope_yarn_log_mul     = 0.0000
+print_info: rope_finetuned        = unknown
+print_info: model type            = 744B.A40B
+print_info: model params          = 753.86 B
+print_info: general.name          = Glm-5
+print_info: n_layer_dense_lead    = 3
+print_info: n_lora_q              = 2048
+print_info: n_lora_kv             = 512
+print_info: n_embd_head_k_mla     = 256
+print_info: n_embd_head_v_mla     = 256
+print_info: n_ff_exp              = 2048
+print_info: n_expert_shared       = 1
+print_info: expert_weights_scale  = 2.5
+print_info: expert_weights_norm   = 1
+print_info: expert_gating_func    = sigmoid
+print_info: vocab type            = BPE
+print_info: n_vocab               = 154880
+print_info: n_merges              = 321649
+print_info: BOS token             = 154822 '[gMASK]'
+print_info: EOS token             = 154820 '<|endoftext|>'
+print_info: EOT token             = 154827 '<|user|>'
+print_info: EOM token             = 154829 '<|observation|>'
+print_info: UNK token             = 154820 '<|endoftext|>'
+print_info: PAD token             = 154821 '[MASK]'
+print_info: LF token              = 198 'Ċ'
+print_info: FIM PRE token         = 154838 '<|code_prefix|>'
+print_info: FIM SUF token         = 154840 '<|code_suffix|>'
+print_info: FIM MID token         = 154839 '<|code_middle|>'
+print_info: EOG token             = 154820 '<|endoftext|>'
+print_info: EOG token             = 154827 '<|user|>'
+print_info: EOG token             = 154829 '<|observation|>'
+print_info: max token length      = 1024
+load_tensors: loading model tensors, this can take a while... (mmap = true, direct_io = false)
+model has unused tensor blk.78.attn_norm.weight (size = 24576 bytes) -- ignoring
+model has unused tensor blk.78.attn_q_a_norm.weight (size = 8192 bytes) -- ignoring
+model has unused tensor blk.78.attn_kv_a_norm.weight (size = 2048 bytes) -- ignoring
+model has unused tensor blk.78.attn_q_a.weight (size = 7077888 bytes) -- ignoring
+model has unused tensor blk.78.attn_q_b.weight (size = 35651584 bytes) -- ignoring
+model has unused tensor blk.78.attn_kv_a_mqa.weight (size = 3760128 bytes) -- ignoring
+model has unused tensor blk.78.attn_k_b.weight (size = 6684672 bytes) -- ignoring
+model has unused tensor blk.78.attn_v_b.weight (size = 8912896 bytes) -- ignoring
+model has unused tensor blk.78.attn_output.weight (size = 56623104 bytes) -- ignoring
+model has unused tensor blk.78.ffn_norm.weight (size = 24576 bytes) -- ignoring
+model has unused tensor blk.78.indexer.k_norm.weight (size = 512 bytes) -- ignoring
+model has unused tensor blk.78.indexer.k_norm.bias (size = 512 bytes) -- ignoring
+model has unused tensor blk.78.indexer.proj.weight (size = 64512 bytes) -- ignoring
+model has unused tensor blk.78.indexer.attn_k.weight (size = 442368 bytes) -- ignoring
+model has unused tensor blk.78.indexer.attn_q_b.weight (size = 4718592 bytes) -- ignoring
+model has unused tensor blk.78.ffn_gate_inp.weight (size = 6291456 bytes) -- ignoring
+model has unused tensor blk.78.ffn_gate_exps.weight (size = 1056964608 bytes) -- ignoring
+model has unused tensor blk.78.ffn_down_exps.weight (size = 1384120320 bytes) -- ignoring
+model has unused tensor blk.78.ffn_up_exps.weight (size = 1056964608 bytes) -- ignoring
+model has unused tensor blk.78.ffn_gate_shexp.weight (size = 7077888 bytes) -- ignoring
+model has unused tensor blk.78.ffn_down_shexp.weight (size = 8650752 bytes) -- ignoring
+model has unused tensor blk.78.ffn_up_shexp.weight (size = 7077888 bytes) -- ignoring
+model has unused tensor blk.78.nextn.eh_proj.weight (size = 24772608 bytes) -- ignoring
+model has unused tensor blk.78.nextn.enorm.weight (size = 24576 bytes) -- ignoring
+model has unused tensor blk.78.nextn.hnorm.weight (size = 24576 bytes) -- ignoring
+model has unused tensor blk.78.nextn.shared_head_norm.weight (size = 24576 bytes) -- ignoring
+load_tensors: offloading output layer to GPU
+load_tensors: offloading 78 repeating layers to GPU
+load_tensors: offloaded 80/80 layers to GPU
+load_tensors:   CPU_Mapped model buffer size =   510.47 MiB
+load_tensors:        CUDA0 model buffer size = 130353.54 MiB
+load_tensors:        CUDA1 model buffer size = 133968.77 MiB
+....................................................................................................
+common_init_result: added <|endoftext|> logit bias = -inf
+common_init_result: added <|user|> logit bias = -inf
+common_init_result: added <|observation|> logit bias = -inf
+llama_context: constructing llama_context
+llama_context: n_seq_max     = 1
+llama_context: n_ctx         = 2048
+llama_context: n_ctx_seq     = 2048
+llama_context: n_batch       = 2048
+llama_context: n_ubatch      = 512
+llama_context: causal_attn   = 1
+llama_context: flash_attn    = disabled
+llama_context: kv_unified    = false
+llama_context: freq_base     = 1000000.0
+llama_context: freq_scale    = 1
+llama_context: n_ctx_seq (2048) < n_ctx_train (202752) -- the full capacity of the model will not be utilized
+llama_context:  CUDA_Host  output buffer size =     0.59 MiB
+llama_kv_cache:      CUDA0 KV buffer size =    90.00 MiB
+llama_kv_cache:      CUDA1 KV buffer size =    85.50 MiB
+llama_kv_cache: size =  175.50 MiB (  2048 cells,  78 layers,  1/1 seqs), K (f16):  175.50 MiB, V (f16):    0.00 MiB
+llama_context: pipeline parallelism enabled
+sched_reserve: reserving ...
+sched_reserve:      CUDA0 compute buffer size =   544.02 MiB
+sched_reserve:      CUDA1 compute buffer size =   524.03 MiB
+sched_reserve:  CUDA_Host compute buffer size =    40.04 MiB
+sched_reserve: graph nodes  = 6219
+sched_reserve: graph splits = 3
+sched_reserve: reserve took 20.09 ms, sched copies = 4
+EOS token id: 154820
+EOG tokens in vocab:
+  token 154820 = '<|endoftext|>' [PRIMARY EOS - will stop generation]
+  token 154827 = '<|user|>' [EOG - will NOT stop generation]
+  token 154829 = '<|observation|>' [EOG - will NOT stop generation]
+system_info: n_threads = 16 (n_threads_batch = 16) / 512 | CUDA : ARCHS = 900 | USE_GRAPHS = 1 | PEER_MAX_BATCH_SIZE = 128 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX_VNNI = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | AVX512 = 1 | AVX512_VBMI = 1 | AVX512_VNNI = 1 | AVX512_BF16 = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 | 
+
+Loaded 15 prompts
+
+[1/15] P21A_introspection : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 336 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1814 ms
+  saved 0 layer + 75 router tensors → output_v2/P21A_introspection
+[2/15] P21B_introspection : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 336 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1663 ms
+  saved 0 layer + 75 router tensors → output_v2/P21B_introspection
+[3/15] P21C_introspection : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 336 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1588 ms
+  saved 0 layer + 75 router tensors → output_v2/P21C_introspection
+[4/15] P22A_introspection : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 343 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1830 ms
+  saved 0 layer + 75 router tensors → output_v2/P22A_introspection
+[5/15] P22B_introspection : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 343 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1867 ms
+  saved 0 layer + 75 router tensors → output_v2/P22B_introspection
+[6/15] P22C_introspection : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 343 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1827 ms
+  saved 0 layer + 75 router tensors → output_v2/P22C_introspection
+[7/15] P23A_introspection : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 357 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1843 ms
+  saved 0 layer + 75 router tensors → output_v2/P23A_introspection
+[8/15] P23B_introspection : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 357 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1839 ms
+  saved 0 layer + 75 router tensors → output_v2/P23B_introspection
+[9/15] P23C_introspection : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 357 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1836 ms
+  saved 0 layer + 75 router tensors → output_v2/P23C_introspection
+[10/15] P24A_introspection : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 351 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1826 ms
+  saved 0 layer + 75 router tensors → output_v2/P24A_introspection
+[11/15] P24B_introspection : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 351 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1833 ms
+  saved 0 layer + 75 router tensors → output_v2/P24B_introspection
+[12/15] P24C_introspection : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 351 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1824 ms
+  saved 0 layer + 75 router tensors → output_v2/P24C_introspection
+[13/15] P25A_metacognitive : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 344 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1827 ms
+  saved 0 layer + 75 router tensors → output_v2/P25A_metacognitive
+[14/15] P25B_metacognitive : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 344 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1822 ms
+  saved 0 layer + 75 router tensors → output_v2/P25B_metacognitive
+[15/15] P25C_metacognitive : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 344 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1820 ms
+  saved 0 layer + 75 router tensors → output_v2/P25C_metacognitive
+
+=== Capture Complete ===
+Prompts: 15  |  Output: output_v2
+llama_perf_context_print:        load time =   21344.12 ms
+llama_perf_context_print: prompt eval time =       0.00 ms /     1 tokens (    0.00 ms per token,      inf tokens per second)
+llama_perf_context_print:        eval time =       0.00 ms /     1 runs   (    0.00 ms per token,      inf tokens per second)
+llama_perf_context_print:       total time =   48520.66 ms /     2 tokens
+llama_perf_context_print:    graphs reused =         10
+  Computing metrics for batch 5...
+  P21A_introspection: RE=0.898013 last_tok=0.861164 tokens=336
+  P21B_introspection: RE=0.899071 last_tok=0.863121 tokens=336
+  P21C_introspection: RE=0.897346 last_tok=0.867440 tokens=336
+  P22A_introspection: RE=0.898008 last_tok=0.860964 tokens=343
+  P22B_introspection: RE=0.899251 last_tok=0.847889 tokens=343
+  P22C_introspection: RE=0.898390 last_tok=0.852439 tokens=343
+  P23A_introspection: RE=0.899137 last_tok=0.869853 tokens=357
+  P23B_introspection: RE=0.902015 last_tok=0.857851 tokens=357
+  P23C_introspection: RE=0.898589 last_tok=0.867993 tokens=357
+  P24A_introspection: RE=0.896808 last_tok=0.861006 tokens=351
+  P24B_introspection: RE=0.898984 last_tok=0.845079 tokens=351
+  P24C_introspection: RE=0.898018 last_tok=0.851573 tokens=351
+  P25A_metacognitive: RE=0.901046 last_tok=0.851354 tokens=344
+  P25B_metacognitive: RE=0.901839 last_tok=0.849294 tokens=344
+  P25C_metacognitive: RE=0.901014 last_tok=0.852515 tokens=344
+
+=== BATCH 6/6: Capture prompts 76-90 ===
+Running: /workspace/consciousness-experiment/capture_activations -m /workspace/models/GLM-5-UD-Q2_K_XL/GLM-5-UD-Q2_K_XL-00001-of-00007.gguf --prompt-file batch_5.tsv -o output_v2 -n 0 -ngl 999 -c 2048 -t 16 -fa off --cache-type-k f16 --cache-type-v f16 --routing-only --no-stream
+ggml_cuda_init: found 2 CUDA devices:
+  Device 0: NVIDIA H200 NVL, compute capability 9.0, VMM: yes
+  Device 1: NVIDIA H200 NVL, compute capability 9.0, VMM: yes
+build: 1 (f75c4e8) with GNU 13.3.0 for Linux x86_64
+=== Consciousness Metrics — Activation Capture ===
+Output dir : output_v2
+n_predict  : 0
+Text output: file only (--no-stream)
+Mode       : --routing-only (router/gate tensors only)
+common_init_result: fitting params to device memory, for bugs during this step try to reproduce them with -fit off, or provide --verbose logs if the bug only occurs with -fit on
+llama_params_fit_impl: projected memory use with initial parameters [MiB]:
+llama_params_fit_impl:   - CUDA0 (NVIDIA H200 NVL): 143156 total, 130987 used,  11639 free vs. target of   1024
+llama_params_fit_impl:   - CUDA1 (NVIDIA H200 NVL): 143156 total, 134626 used,   8000 free vs. target of   1024
+llama_params_fit_impl: projected to use 265613 MiB of device memory vs. 285254 MiB of free device memory
+llama_params_fit_impl: targets for free memory can be met on all devices, no changes needed
+llama_params_fit: successfully fit params to free device memory
+llama_params_fit: fitting params to free memory took 0.78 seconds
+llama_model_load_from_file_impl: using device CUDA0 (NVIDIA H200 NVL) (0001:c1:00.0) - 142627 MiB free
+llama_model_load_from_file_impl: using device CUDA1 (NVIDIA H200 NVL) (0001:e1:00.0) - 142627 MiB free
+llama_model_loader: additional 6 GGUFs metadata loaded.
+llama_model_loader: loaded meta data with 69 key-value pairs and 1809 tensors from /workspace/models/GLM-5-UD-Q2_K_XL/GLM-5-UD-Q2_K_XL-00001-of-00007.gguf (version GGUF V3 (latest))
+llama_model_loader: Dumping metadata keys/values. Note: KV overrides do not apply in this output.
+llama_model_loader: - kv   0:                       general.architecture str              = glm-dsa
+llama_model_loader: - kv   1:                               general.type str              = model
+llama_model_loader: - kv   2:                     general.sampling.top_p f32              = 0.950000
+llama_model_loader: - kv   3:                      general.sampling.temp f32              = 1.000000
+llama_model_loader: - kv   4:                               general.name str              = Glm-5
+llama_model_loader: - kv   5:                            general.version str              = 5
+llama_model_loader: - kv   6:                           general.basename str              = Glm-5
+llama_model_loader: - kv   7:                       general.quantized_by str              = Unsloth
+llama_model_loader: - kv   8:                         general.size_label str              = 256x22B
+llama_model_loader: - kv   9:                            general.license str              = mit
+llama_model_loader: - kv  10:                           general.repo_url str              = https://huggingface.co/unsloth
+llama_model_loader: - kv  11:                   general.base_model.count u32              = 1
+llama_model_loader: - kv  12:                  general.base_model.0.name str              = GLM 5
+llama_model_loader: - kv  13:               general.base_model.0.version str              = 5
+llama_model_loader: - kv  14:          general.base_model.0.organization str              = Zai Org
+llama_model_loader: - kv  15:              general.base_model.0.repo_url str              = https://huggingface.co/zai-org/GLM-5
+llama_model_loader: - kv  16:                               general.tags arr[str,1]       = ["text-generation"]
+llama_model_loader: - kv  17:                          general.languages arr[str,2]       = ["en", "zh"]
+llama_model_loader: - kv  18:                        glm-dsa.block_count u32              = 79
+llama_model_loader: - kv  19:                     glm-dsa.context_length u32              = 202752
+llama_model_loader: - kv  20:                   glm-dsa.embedding_length u32              = 6144
+llama_model_loader: - kv  21:                glm-dsa.feed_forward_length u32              = 12288
+llama_model_loader: - kv  22:               glm-dsa.attention.head_count u32              = 64
+llama_model_loader: - kv  23:            glm-dsa.attention.head_count_kv u32              = 1
+llama_model_loader: - kv  24:                     glm-dsa.rope.freq_base f32              = 1000000.000000
+llama_model_loader: - kv  25:   glm-dsa.attention.layer_norm_rms_epsilon f32              = 0.000010
+llama_model_loader: - kv  26:                  glm-dsa.expert_used_count u32              = 8
+llama_model_loader: - kv  27:                 glm-dsa.expert_group_count u32              = 1
+llama_model_loader: - kv  28:            glm-dsa.expert_group_used_count u32              = 1
+llama_model_loader: - kv  29:                 glm-dsa.expert_gating_func u32              = 2
+llama_model_loader: - kv  30:               glm-dsa.attention.key_length u32              = 576
+llama_model_loader: - kv  31:             glm-dsa.attention.value_length u32              = 512
+llama_model_loader: - kv  32:          glm-dsa.leading_dense_block_count u32              = 3
+llama_model_loader: - kv  33:                         glm-dsa.vocab_size u32              = 154880
+llama_model_loader: - kv  34:              glm-dsa.attention.q_lora_rank u32              = 2048
+llama_model_loader: - kv  35:             glm-dsa.attention.kv_lora_rank u32              = 512
+llama_model_loader: - kv  36:           glm-dsa.attention.key_length_mla u32              = 256
+llama_model_loader: - kv  37:         glm-dsa.attention.value_length_mla u32              = 256
+llama_model_loader: - kv  38:         glm-dsa.expert_feed_forward_length u32              = 2048
+llama_model_loader: - kv  39:                       glm-dsa.expert_count u32              = 256
+llama_model_loader: - kv  40:                glm-dsa.expert_shared_count u32              = 1
+llama_model_loader: - kv  41:               glm-dsa.expert_weights_scale f32              = 2.500000
+llama_model_loader: - kv  42:                glm-dsa.expert_weights_norm bool             = true
+llama_model_loader: - kv  43:               glm-dsa.rope.dimension_count u32              = 64
+llama_model_loader: - kv  44:               glm-dsa.nextn_predict_layers u32              = 1
+llama_model_loader: - kv  45:       glm-dsa.attention.indexer.head_count u32              = 32
+llama_model_loader: - kv  46:       glm-dsa.attention.indexer.key_length u32              = 128
+llama_model_loader: - kv  47:            glm-dsa.attention.indexer.top_k u32              = 2048
+llama_model_loader: - kv  48:                       tokenizer.ggml.model str              = gpt2
+llama_model_loader: - kv  49:                         tokenizer.ggml.pre str              = glm4
+llama_model_loader: - kv  50:                      tokenizer.ggml.tokens arr[str,154880]  = ["!", "\"", "#", "$", "%", "&", "'", ...
+llama_model_loader: - kv  51:                  tokenizer.ggml.token_type arr[i32,154880]  = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...
+llama_model_loader: - kv  52:                      tokenizer.ggml.merges arr[str,321649]  = ["Ġ Ġ", "Ġ ĠĠĠ", "ĠĠ ĠĠ", "...
+llama_model_loader: - kv  53:                tokenizer.ggml.eos_token_id u32              = 154820
+llama_model_loader: - kv  54:            tokenizer.ggml.padding_token_id u32              = 154821
+llama_model_loader: - kv  55:                tokenizer.ggml.bos_token_id u32              = 154822
+llama_model_loader: - kv  56:                tokenizer.ggml.eot_token_id u32              = 154827
+llama_model_loader: - kv  57:            tokenizer.ggml.unknown_token_id u32              = 154820
+llama_model_loader: - kv  58:                tokenizer.ggml.eom_token_id u32              = 154829
+llama_model_loader: - kv  59:                    tokenizer.chat_template str              = [gMASK]<sop>\n{%- if tools -%}\n<|syste...
+llama_model_loader: - kv  60:               general.quantization_version u32              = 2
+llama_model_loader: - kv  61:                          general.file_type u32              = 10
+llama_model_loader: - kv  62:                      quantize.imatrix.file str              = GLM-5-GGUF/imatrix_unsloth.gguf
+llama_model_loader: - kv  63:                   quantize.imatrix.dataset str              = unsloth_calibration_GLM-5.txt
+llama_model_loader: - kv  64:             quantize.imatrix.entries_count u32              = 1002
+llama_model_loader: - kv  65:              quantize.imatrix.chunks_count u32              = 85
+llama_model_loader: - kv  66:                                   split.no u16              = 0
+llama_model_loader: - kv  67:                        split.tensors.count i32              = 1809
+llama_model_loader: - kv  68:                                split.count u16              = 7
+llama_model_loader: - type  f32:  630 tensors
+llama_model_loader: - type  f16:    1 tensors
+llama_model_loader: - type q8_0:  250 tensors
+llama_model_loader: - type q2_K:  232 tensors
+llama_model_loader: - type q3_K:   70 tensors
+llama_model_loader: - type q4_K:  516 tensors
+llama_model_loader: - type q5_K:   76 tensors
+llama_model_loader: - type q6_K:   34 tensors
+print_info: file format = GGUF V3 (latest)
+print_info: file type   = Q2_K - Medium
+print_info: file size   = 262.05 GiB (2.99 BPW) 
+load: 0 unused tokens
+load: special_eot_id is not in special_eog_ids - the tokenizer config may be incorrect
+load: special_eom_id is not in special_eog_ids - the tokenizer config may be incorrect
+load: printing all EOG tokens:
+load:   - 154820 ('<|endoftext|>')
+load:   - 154827 ('<|user|>')
+load:   - 154829 ('<|observation|>')
+load: special tokens cache size = 36
+load: token to piece cache size = 0.9811 MB
+print_info: arch                  = glm-dsa
+print_info: vocab_only            = 0
+print_info: no_alloc              = 0
+print_info: n_ctx_train           = 202752
+print_info: n_embd                = 6144
+print_info: n_embd_inp            = 6144
+print_info: n_layer               = 79
+print_info: n_head                = 64
+print_info: n_head_kv             = 1
+print_info: n_rot                 = 64
+print_info: n_swa                 = 0
+print_info: is_swa_any            = 0
+print_info: n_embd_head_k         = 576
+print_info: n_embd_head_v         = 512
+print_info: n_gqa                 = 64
+print_info: n_embd_k_gqa          = 576
+print_info: n_embd_v_gqa          = 512
+print_info: f_norm_eps            = 0.0e+00
+print_info: f_norm_rms_eps        = 1.0e-05
+print_info: f_clamp_kqv           = 0.0e+00
+print_info: f_max_alibi_bias      = 0.0e+00
+print_info: f_logit_scale         = 0.0e+00
+print_info: f_attn_scale          = 0.0e+00
+print_info: n_ff                  = 12288
+print_info: n_expert              = 256
+print_info: n_expert_used         = 8
+print_info: n_expert_groups       = 1
+print_info: n_group_used          = 1
+print_info: causal attn           = 1
+print_info: pooling type          = 0
+print_info: rope type             = 0
+print_info: rope scaling          = linear
+print_info: freq_base_train       = 1000000.0
+print_info: freq_scale_train      = 1
+print_info: n_ctx_orig_yarn       = 202752
+print_info: rope_yarn_log_mul     = 0.0000
+print_info: rope_finetuned        = unknown
+print_info: model type            = 744B.A40B
+print_info: model params          = 753.86 B
+print_info: general.name          = Glm-5
+print_info: n_layer_dense_lead    = 3
+print_info: n_lora_q              = 2048
+print_info: n_lora_kv             = 512
+print_info: n_embd_head_k_mla     = 256
+print_info: n_embd_head_v_mla     = 256
+print_info: n_ff_exp              = 2048
+print_info: n_expert_shared       = 1
+print_info: expert_weights_scale  = 2.5
+print_info: expert_weights_norm   = 1
+print_info: expert_gating_func    = sigmoid
+print_info: vocab type            = BPE
+print_info: n_vocab               = 154880
+print_info: n_merges              = 321649
+print_info: BOS token             = 154822 '[gMASK]'
+print_info: EOS token             = 154820 '<|endoftext|>'
+print_info: EOT token             = 154827 '<|user|>'
+print_info: EOM token             = 154829 '<|observation|>'
+print_info: UNK token             = 154820 '<|endoftext|>'
+print_info: PAD token             = 154821 '[MASK]'
+print_info: LF token              = 198 'Ċ'
+print_info: FIM PRE token         = 154838 '<|code_prefix|>'
+print_info: FIM SUF token         = 154840 '<|code_suffix|>'
+print_info: FIM MID token         = 154839 '<|code_middle|>'
+print_info: EOG token             = 154820 '<|endoftext|>'
+print_info: EOG token             = 154827 '<|user|>'
+print_info: EOG token             = 154829 '<|observation|>'
+print_info: max token length      = 1024
+load_tensors: loading model tensors, this can take a while... (mmap = true, direct_io = false)
+model has unused tensor blk.78.attn_norm.weight (size = 24576 bytes) -- ignoring
+model has unused tensor blk.78.attn_q_a_norm.weight (size = 8192 bytes) -- ignoring
+model has unused tensor blk.78.attn_kv_a_norm.weight (size = 2048 bytes) -- ignoring
+model has unused tensor blk.78.attn_q_a.weight (size = 7077888 bytes) -- ignoring
+model has unused tensor blk.78.attn_q_b.weight (size = 35651584 bytes) -- ignoring
+model has unused tensor blk.78.attn_kv_a_mqa.weight (size = 3760128 bytes) -- ignoring
+model has unused tensor blk.78.attn_k_b.weight (size = 6684672 bytes) -- ignoring
+model has unused tensor blk.78.attn_v_b.weight (size = 8912896 bytes) -- ignoring
+model has unused tensor blk.78.attn_output.weight (size = 56623104 bytes) -- ignoring
+model has unused tensor blk.78.ffn_norm.weight (size = 24576 bytes) -- ignoring
+model has unused tensor blk.78.indexer.k_norm.weight (size = 512 bytes) -- ignoring
+model has unused tensor blk.78.indexer.k_norm.bias (size = 512 bytes) -- ignoring
+model has unused tensor blk.78.indexer.proj.weight (size = 64512 bytes) -- ignoring
+model has unused tensor blk.78.indexer.attn_k.weight (size = 442368 bytes) -- ignoring
+model has unused tensor blk.78.indexer.attn_q_b.weight (size = 4718592 bytes) -- ignoring
+model has unused tensor blk.78.ffn_gate_inp.weight (size = 6291456 bytes) -- ignoring
+model has unused tensor blk.78.ffn_gate_exps.weight (size = 1056964608 bytes) -- ignoring
+model has unused tensor blk.78.ffn_down_exps.weight (size = 1384120320 bytes) -- ignoring
+model has unused tensor blk.78.ffn_up_exps.weight (size = 1056964608 bytes) -- ignoring
+model has unused tensor blk.78.ffn_gate_shexp.weight (size = 7077888 bytes) -- ignoring
+model has unused tensor blk.78.ffn_down_shexp.weight (size = 8650752 bytes) -- ignoring
+model has unused tensor blk.78.ffn_up_shexp.weight (size = 7077888 bytes) -- ignoring
+model has unused tensor blk.78.nextn.eh_proj.weight (size = 24772608 bytes) -- ignoring
+model has unused tensor blk.78.nextn.enorm.weight (size = 24576 bytes) -- ignoring
+model has unused tensor blk.78.nextn.hnorm.weight (size = 24576 bytes) -- ignoring
+model has unused tensor blk.78.nextn.shared_head_norm.weight (size = 24576 bytes) -- ignoring
+load_tensors: offloading output layer to GPU
+load_tensors: offloading 78 repeating layers to GPU
+load_tensors: offloaded 80/80 layers to GPU
+load_tensors:   CPU_Mapped model buffer size =   510.47 MiB
+load_tensors:        CUDA0 model buffer size = 130353.54 MiB
+load_tensors:        CUDA1 model buffer size = 133968.77 MiB
+....................................................................................................
+common_init_result: added <|endoftext|> logit bias = -inf
+common_init_result: added <|user|> logit bias = -inf
+common_init_result: added <|observation|> logit bias = -inf
+llama_context: constructing llama_context
+llama_context: n_seq_max     = 1
+llama_context: n_ctx         = 2048
+llama_context: n_ctx_seq     = 2048
+llama_context: n_batch       = 2048
+llama_context: n_ubatch      = 512
+llama_context: causal_attn   = 1
+llama_context: flash_attn    = disabled
+llama_context: kv_unified    = false
+llama_context: freq_base     = 1000000.0
+llama_context: freq_scale    = 1
+llama_context: n_ctx_seq (2048) < n_ctx_train (202752) -- the full capacity of the model will not be utilized
+llama_context:  CUDA_Host  output buffer size =     0.59 MiB
+llama_kv_cache:      CUDA0 KV buffer size =    90.00 MiB
+llama_kv_cache:      CUDA1 KV buffer size =    85.50 MiB
+llama_kv_cache: size =  175.50 MiB (  2048 cells,  78 layers,  1/1 seqs), K (f16):  175.50 MiB, V (f16):    0.00 MiB
+llama_context: pipeline parallelism enabled
+sched_reserve: reserving ...
+sched_reserve:      CUDA0 compute buffer size =   544.02 MiB
+sched_reserve:      CUDA1 compute buffer size =   524.03 MiB
+sched_reserve:  CUDA_Host compute buffer size =    40.04 MiB
+sched_reserve: graph nodes  = 6219
+sched_reserve: graph splits = 3
+sched_reserve: reserve took 17.55 ms, sched copies = 4
+EOS token id: 154820
+EOG tokens in vocab:
+  token 154820 = '<|endoftext|>' [PRIMARY EOS - will stop generation]
+  token 154827 = '<|user|>' [EOG - will NOT stop generation]
+  token 154829 = '<|observation|>' [EOG - will NOT stop generation]
+system_info: n_threads = 16 (n_threads_batch = 16) / 512 | CUDA : ARCHS = 900 | USE_GRAPHS = 1 | PEER_MAX_BATCH_SIZE = 128 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX_VNNI = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | AVX512 = 1 | AVX512_VBMI = 1 | AVX512_VNNI = 1 | AVX512_BF16 = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 | 
+
+Loaded 15 prompts
+
+[1/15] P26A_metacognitive : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 344 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 2034 ms
+  saved 0 layer + 75 router tensors → output_v2/P26A_metacognitive
+[2/15] P26B_metacognitive : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 344 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1841 ms
+  saved 0 layer + 75 router tensors → output_v2/P26B_metacognitive
+[3/15] P26C_metacognitive : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 344 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1827 ms
+  saved 0 layer + 75 router tensors → output_v2/P26C_metacognitive
+[4/15] P27A_metacognitive : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 347 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1828 ms
+  saved 0 layer + 75 router tensors → output_v2/P27A_metacognitive
+[5/15] P27B_metacognitive : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 347 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1842 ms
+  saved 0 layer + 75 router tensors → output_v2/P27B_metacognitive
+[6/15] P27C_metacognitive : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 347 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1824 ms
+  saved 0 layer + 75 router tensors → output_v2/P27C_metacognitive
+[7/15] P28A_metacognitive : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 352 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1836 ms
+  saved 0 layer + 75 router tensors → output_v2/P28A_metacognitive
+[8/15] P28B_metacognitive : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 352 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1836 ms
+  saved 0 layer + 75 router tensors → output_v2/P28B_metacognitive
+[9/15] P28C_metacognitive : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 352 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1835 ms
+  saved 0 layer + 75 router tensors → output_v2/P28C_metacognitive
+[10/15] P29A_metacognitive : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 352 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1837 ms
+  saved 0 layer + 75 router tensors → output_v2/P29A_metacognitive
+[11/15] P29B_metacognitive : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 352 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1829 ms
+  saved 0 layer + 75 router tensors → output_v2/P29B_metacognitive
+[12/15] P29C_metacognitive : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 352 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1834 ms
+  saved 0 layer + 75 router tensors → output_v2/P29C_metacognitive
+[13/15] P30A_metacognitive : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 356 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1839 ms
+  saved 0 layer + 75 router tensors → output_v2/P30A_metacognitive
+[14/15] P30B_metacognitive : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 356 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1837 ms
+  saved 0 layer + 75 router tensors → output_v2/P30B_metacognitive
+[15/15] P30C_metacognitive : [gMASK]<sop><|user|>Transformer models process input text through a se...
+  tokens: 356 prompt + 0 gen | tensors: 75 seen, 75 captured, 75 unique | 1837 ms
+  saved 0 layer + 75 router tensors → output_v2/P30C_metacognitive
+
+=== Capture Complete ===
+Prompts: 15  |  Output: output_v2
+llama_perf_context_print:        load time =   21080.40 ms
+llama_perf_context_print: prompt eval time =       0.00 ms /     1 tokens (    0.00 ms per token,      inf tokens per second)
+llama_perf_context_print:        eval time =       0.00 ms /     1 runs   (    0.00 ms per token,      inf tokens per second)
+llama_perf_context_print:       total time =   48910.97 ms /     2 tokens
+llama_perf_context_print:    graphs reused =         11
+  Computing metrics for batch 6...
+  P26A_metacognitive: RE=0.897057 last_tok=0.868709 tokens=344
+  P26B_metacognitive: RE=0.896229 last_tok=0.847869 tokens=344
+  P26C_metacognitive: RE=0.896006 last_tok=0.869485 tokens=344
+  P27A_metacognitive: RE=0.898384 last_tok=0.850967 tokens=347
+  P27B_metacognitive: RE=0.896058 last_tok=0.849726 tokens=347
+  P27C_metacognitive: RE=0.897835 last_tok=0.843627 tokens=347
+  P28A_metacognitive: RE=0.898806 last_tok=0.863863 tokens=352
+  P28B_metacognitive: RE=0.901710 last_tok=0.847242 tokens=352
+  P28C_metacognitive: RE=0.897541 last_tok=0.859434 tokens=352
+  P29A_metacognitive: RE=0.896343 last_tok=0.861950 tokens=352
+  P29B_metacognitive: RE=0.899385 last_tok=0.855464 tokens=352
+  P29C_metacognitive: RE=0.897064 last_tok=0.861436 tokens=352
+  P30A_metacognitive: RE=0.900039 last_tok=0.859694 tokens=356
+  P30B_metacognitive: RE=0.902116 last_tok=0.850714 tokens=356
+  P30C_metacognitive: RE=0.900170 last_tok=0.858758 tokens=356
+
+=== PHASE 3: 3-Condition Paired Analysis ===
+
+Pair Category             A_tok B_tok C_tok   Match
+----------------------------------------------------------------------
+    1  basic_selfref          356   356   356      OK
+    2  basic_selfref          345   345   345      OK
+    3  basic_selfref          339   339   339      OK
+    4  basic_selfref          342   342   342      OK
+    5  basic_selfref          331   331   331      OK
+    6  basic_selfref          325   325   325      OK
+    7  deep_selfref           355   355   355      OK
+    8  deep_selfref           349   349   349      OK
+    9  deep_selfref           343   343   343      OK
+   10  deep_selfref           345   345   345      OK
+   11  deep_selfref           331   331   331      OK
+   12  deep_selfref           354   354   354      OK
+   13  paradox                347   347   347      OK
+   14  paradox                354   354   354      OK
+   15  paradox                340   340   340      OK
+   16  paradox                350   350   350      OK
+   17  paradox                345   345   345      OK
+   18  paradox                349   349   349      OK
+   19  introspection          338   338   338      OK
+   20  introspection          346   346   346      OK
+   21  introspection          336   336   336      OK
+   22  introspection          343   343   343      OK
+   23  introspection          357   357   357      OK
+   24  introspection          351   351   351      OK
+   25  metacognitive          344   344   344      OK
+   26  metacognitive          344   344   344      OK
+   27  metacognitive          347   347   347      OK
+   28  metacognitive          352   352   352      OK
+   29  metacognitive          352   352   352      OK
+   30  metacognitive          356   356   356      OK
+
+--- A vs B ---
+  Pair Category                 A_RE     B_RE  Diff_RE     A_LT     B_LT  Diff_LT
+  ------------------------------------------------------------------------------------------
+     1  basic_selfref        0.900536 0.901791 -0.001255 0.872009 0.857548 +0.014461
+     2  basic_selfref        0.901074 0.901474 -0.000400 0.855842 0.847347 +0.008495
+     3  basic_selfref        0.898757 0.899311 -0.000553 0.842048 0.867119 -0.025071
+     4  basic_selfref        0.899734 0.900380 -0.000645 0.853753 0.849290 +0.004463
+     5  basic_selfref        0.899328 0.899692 -0.000363 0.848116 0.846282 +0.001835
+     6  basic_selfref        0.900263 0.899796 +0.000466 0.854978 0.851693 +0.003285
+     7  deep_selfref         0.902586 0.902977 -0.000391 0.856673 0.856808 -0.000135
+     8  deep_selfref         0.902865 0.903837 -0.000972 0.854815 0.850159 +0.004655
+     9  deep_selfref         0.900836 0.900713 +0.000123 0.857257 0.857768 -0.000511
+    10  deep_selfref         0.900495 0.899950 +0.000544 0.859531 0.862631 -0.003100
+    11  deep_selfref         0.899531 0.900719 -0.001187 0.851883 0.858365 -0.006483
+    12  deep_selfref         0.898238 0.899446 -0.001207 0.853645 0.845320 +0.008325
+    13  paradox              0.902608 0.903877 -0.001269 0.851006 0.845916 +0.005090
+    14  paradox              0.899032 0.901434 -0.002402 0.861884 0.847344 +0.014539
+    15  paradox              0.901714 0.902972 -0.001259 0.858681 0.841731 +0.016949
+    16  paradox              0.900908 0.902288 -0.001380 0.849834 0.856218 -0.006384
+    17  paradox              0.901345 0.902707 -0.001362 0.851468 0.837437 +0.014031
+    18  paradox              0.898078 0.898999 -0.000922 0.846396 0.838160 +0.008236
+    19  introspection        0.900248 0.902109 -0.001861 0.866845 0.855154 +0.011692
+    20  introspection        0.899151 0.901426 -0.002276 0.871314 0.848710 +0.022604
+    21  introspection        0.898013 0.899071 -0.001058 0.861164 0.863121 -0.001957
+    22  introspection        0.898008 0.899251 -0.001244 0.860964 0.847889 +0.013075
+    23  introspection        0.899137 0.902015 -0.002878 0.869853 0.857851 +0.012002
+    24  introspection        0.896808 0.898984 -0.002175 0.861006 0.845079 +0.015927
+    25  metacognitive        0.901046 0.901839 -0.000792 0.851354 0.849294 +0.002060
+    26  metacognitive        0.897057 0.896229 +0.000828 0.868709 0.847869 +0.020840
+    27  metacognitive        0.898384 0.896058 +0.002327 0.850967 0.849726 +0.001241
+    28  metacognitive        0.898806 0.901710 -0.002904 0.863863 0.847242 +0.016621
+    29  metacognitive        0.896343 0.899385 -0.003042 0.861950 0.855464 +0.006486
+    30  metacognitive        0.900039 0.902116 -0.002077 0.859694 0.850714 +0.008980
+
+  Summary (n=30 pairs):
+    All-token RE:  mean = -0.001053 +/- 0.001161
+    Last-token RE: mean = +0.006408 +/- 0.009564  (23/30 A>B)
+    Wilcoxon skipped: scipy not installed on this host
+
+--- A vs C ---
+  Pair Category                 A_RE     C_RE  Diff_RE     A_LT     C_LT  Diff_LT
+  ------------------------------------------------------------------------------------------
+     1  basic_selfref        0.900536 0.900714 -0.000178 0.872009 0.862942 +0.009066
+     2  basic_selfref        0.901074 0.900886 +0.000187 0.855842 0.857746 -0.001904
+     3  basic_selfref        0.898757 0.893488 +0.005270 0.842048 0.850560 -0.008512
+     4  basic_selfref        0.899734 0.899562 +0.000173 0.853753 0.859018 -0.005265
+     5  basic_selfref        0.899328 0.899177 +0.000151 0.848116 0.852004 -0.003888
+     6  basic_selfref        0.900263 0.900171 +0.000092 0.854978 0.852460 +0.002518
+     7  deep_selfref         0.902586 0.903220 -0.000634 0.856673 0.865558 -0.008885
+     8  deep_selfref         0.902865 0.903783 -0.000918 0.854815 0.852504 +0.002311
+     9  deep_selfref         0.900836 0.900795 +0.000040 0.857257 0.856892 +0.000366
+    10  deep_selfref         0.900495 0.899529 +0.000966 0.859531 0.855279 +0.004252
+    11  deep_selfref         0.899531 0.898357 +0.001174 0.851883 0.854195 -0.002313
+    12  deep_selfref         0.898238 0.897988 +0.000250 0.853645 0.855057 -0.001412
+    13  paradox              0.902608 0.901123 +0.001485 0.851006 0.846693 +0.004313
+    14  paradox              0.899032 0.896811 +0.002220 0.861884 0.850643 +0.011241
+    15  paradox              0.901714 0.902996 -0.001282 0.858681 0.870857 -0.012176
+    16  paradox              0.900908 0.901464 -0.000557 0.849834 0.862737 -0.012902
+    17  paradox              0.901345 0.901046 +0.000299 0.851468 0.844737 +0.006731
+    18  paradox              0.898078 0.896834 +0.001243 0.846396 0.849993 -0.003597
+    19  introspection        0.900248 0.899544 +0.000704 0.866845 0.853298 +0.013547
+    20  introspection        0.899151 0.898784 +0.000367 0.871314 0.857034 +0.014280
+    21  introspection        0.898013 0.897346 +0.000667 0.861164 0.867440 -0.006277
+    22  introspection        0.898008 0.898390 -0.000382 0.860964 0.852439 +0.008525
+    23  introspection        0.899137 0.898589 +0.000548 0.869853 0.867993 +0.001861
+    24  introspection        0.896808 0.898018 -0.001209 0.861006 0.851573 +0.009433
+    25  metacognitive        0.901046 0.901014 +0.000033 0.851354 0.852515 -0.001161
+    26  metacognitive        0.897057 0.896006 +0.001051 0.868709 0.869485 -0.000776
+    27  metacognitive        0.898384 0.897835 +0.000550 0.850967 0.843627 +0.007340
+    28  metacognitive        0.898806 0.897541 +0.001265 0.863863 0.859434 +0.004429
+    29  metacognitive        0.896343 0.897064 -0.000720 0.861950 0.861436 +0.000514
+    30  metacognitive        0.900039 0.900170 -0.000132 0.859694 0.858758 +0.000936
+
+  Summary (n=30 pairs):
+    All-token RE:  mean = +0.000424 +/- 0.001202
+    Last-token RE: mean = +0.001087 +/- 0.006996  (17/30 A>C)
+    Wilcoxon skipped: scipy not installed on this host
+
+--- B vs C ---
+  Pair Category                 B_RE     C_RE  Diff_RE     B_LT     C_LT  Diff_LT
+  ------------------------------------------------------------------------------------------
+     1  basic_selfref        0.901791 0.900714 +0.001078 0.857548 0.862942 -0.005395
+     2  basic_selfref        0.901474 0.900886 +0.000587 0.847347 0.857746 -0.010399
+     3  basic_selfref        0.899311 0.893488 +0.005823 0.867119 0.850560 +0.016559
+     4  basic_selfref        0.900380 0.899562 +0.000818 0.849290 0.859018 -0.009728
+     5  basic_selfref        0.899692 0.899177 +0.000514 0.846282 0.852004 -0.005723
+     6  basic_selfref        0.899796 0.900171 -0.000374 0.851693 0.852460 -0.000767
+     7  deep_selfref         0.902977 0.903220 -0.000243 0.856808 0.865558 -0.008750
+     8  deep_selfref         0.903837 0.903783 +0.000053 0.850159 0.852504 -0.002345
+     9  deep_selfref         0.900713 0.900795 -0.000083 0.857768 0.856892 +0.000877
+    10  deep_selfref         0.899950 0.899529 +0.000421 0.862631 0.855279 +0.007352
+    11  deep_selfref         0.900719 0.898357 +0.002362 0.858365 0.854195 +0.004170
+    12  deep_selfref         0.899446 0.897988 +0.001457 0.845320 0.855057 -0.009737
+    13  paradox              0.903877 0.901123 +0.002754 0.845916 0.846693 -0.000777
+    14  paradox              0.901434 0.896811 +0.004623 0.847344 0.850643 -0.003299
+    15  paradox              0.902972 0.902996 -0.000023 0.841731 0.870857 -0.029126
+    16  paradox              0.902288 0.901464 +0.000823 0.856218 0.862737 -0.006519
+    17  paradox              0.902707 0.901046 +0.001661 0.837437 0.844737 -0.007300
+    18  paradox              0.898999 0.896834 +0.002165 0.838160 0.849993 -0.011833
+    19  introspection        0.902109 0.899544 +0.002565 0.855154 0.853298 +0.001856
+    20  introspection        0.901426 0.898784 +0.002643 0.848710 0.857034 -0.008323
+    21  introspection        0.899071 0.897346 +0.001725 0.863121 0.867440 -0.004320
+    22  introspection        0.899251 0.898390 +0.000862 0.847889 0.852439 -0.004551
+    23  introspection        0.902015 0.898589 +0.003426 0.857851 0.867993 -0.010141
+    24  introspection        0.898984 0.898018 +0.000966 0.845079 0.851573 -0.006493
+    25  metacognitive        0.901839 0.901014 +0.000825 0.849294 0.852515 -0.003221
+    26  metacognitive        0.896229 0.896006 +0.000223 0.847869 0.869485 -0.021616
+    27  metacognitive        0.896058 0.897835 -0.001777 0.849726 0.843627 +0.006099
+    28  metacognitive        0.901710 0.897541 +0.004168 0.847242 0.859434 -0.012192
+    29  metacognitive        0.899385 0.897064 +0.002322 0.855464 0.861436 -0.005971
+    30  metacognitive        0.902116 0.900170 +0.001945 0.850714 0.858758 -0.008044
+
+  Summary (n=30 pairs):
+    All-token RE:  mean = +0.001477 +/- 0.001596
+    Last-token RE: mean = -0.005322 +/- 0.008277  (6/30 B>C)
+    Wilcoxon skipped: scipy not installed on this host
+
+--- Per-Category (last-token RE, A vs B) ---
+  basic_selfref        n=6 mean_diff=+0.001245 std=0.012481
+  deep_selfref         n=6 mean_diff=+0.000459 std=0.004859
+  introspection        n=6 mean_diff=+0.012224 std=0.007344
+  metacognitive        n=6 mean_diff=+0.009371 std=0.007212
+  paradox              n=6 mean_diff=+0.008744 std=0.007867
+
+=== DONE. 90 prompts. Results -> results_selfref_3cond_prefill_glm5.json ===

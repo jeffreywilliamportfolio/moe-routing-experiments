@@ -76,29 +76,35 @@ Key findings (all 10 pairwise Wilcoxon tests):
 │   ├── fig6_three_condition_r1.png
 │   ├── fig7_architecture_pattern.png
 │   └── fig8_positional_confound.png
-├── code/                       # All code used
-│   ├── capture_activations.cpp          # C++ binary source (llama.cpp b8123 fork)
-│   ├── generate_figures.py              # Generates all 8 figures from data/
-│   ├── generate_suite_5cond.py          # Derives 5-cond suite from 3-cond
-│   ├── generate_tsv_selfref.py          # DS31 prompt formatting
-│   ├── generate_tsv_glm5.py             # GLM-5 prompt formatting
-│   ├── generate_tsv_gptoss.py           # gpt-oss prompt formatting
-│   ├── generate_tsv_qwen_3cond.py       # Qwen 3-condition prompt formatting
-│   ├── generate_tsv_qwen_5cond.py       # Qwen 5-condition prompt formatting
-│   ├── run_experiment_168q.py           # 168-prompt hierarchy
-│   ├── run_experiment_ds31.py           # DeepSeek V3.1 paired
-│   ├── run_experiment_glm5.py           # GLM-5
-│   ├── run_experiment_gptoss.py         # gpt-oss-120b
-│   ├── run_experiment_qwen.py           # Qwen paired (original)
-│   ├── run_experiment_qwen_3cond.py     # Qwen 3-condition
-│   ├── run_experiment_qwen_5cond.py     # Qwen 5-condition
-│   ├── run_experiment_qwen_strangeloop.py # Qwen strange loop control
-│   ├── run_experiment_r1.py             # DeepSeek R1
-│   ├── run_experiment_strangeloop.py    # DS31 strange loop control
-│   ├── compare_r1_r2_5cond.py           # Bit-exact replication verifier
-│   ├── token_corrections_glm5.json
-│   ├── token_corrections_gptoss.json
-│   └── token_corrections_r1.json
+├── code/                       # All code, organized by model
+│   ├── shared/
+│   │   ├── capture_activations.cpp      # C++ binary source (llama.cpp b8123 fork)
+│   │   └── generate_figures.py          # Generates all 8 figures from data/
+│   ├── qwen-397b/
+│   │   ├── run_paired.py                # 2-condition (this/a)
+│   │   ├── run_3cond.py                 # 3-condition (this/a/your)
+│   │   ├── run_5cond.py                 # 5-condition (this/a/your/the/their)
+│   │   ├── run_strangeloop.py           # Strange loop control
+│   │   ├── generate_tsv_3cond.py
+│   │   ├── generate_tsv_5cond.py
+│   │   ├── generate_suite_5cond.py      # Derives 5-cond from 3-cond suite
+│   │   └── compare_r1_r2.py            # Bit-exact replication verifier
+│   ├── deepseek-v31/
+│   │   ├── run_paired.py
+│   │   ├── run_strangeloop.py
+│   │   ├── run_168q_hierarchy.py        # 168-prompt complexity hierarchy
+│   │   └── generate_tsv.py
+│   ├── deepseek-r1/
+│   │   ├── run_paired.py
+│   │   └── token_corrections.json
+│   ├── glm5/
+│   │   ├── run_experiment.py
+│   │   ├── generate_tsv.py
+│   │   └── token_corrections.json
+│   └── gptoss-120b/
+│       ├── run_experiment.py
+│       ├── generate_tsv.py
+│       └── token_corrections.json
 └── logs/                       # Raw experiment logs (ground truth)
     ├── qwen-397b/
     │   ├── selfref_3cond.log            # 90-prompt 3-condition

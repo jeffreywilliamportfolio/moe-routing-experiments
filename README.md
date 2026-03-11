@@ -170,6 +170,24 @@ All models used `-ngl 30 -c 4096 -t 16 --routing-only`.
 
 Dependencies: Python 3.10+, numpy, scipy, matplotlib, seaborn.
 
+## Verification
+
+All results were verified against raw experiment logs (ground truth) using automated cross-referencing:
+
+| Experiment | Prompts | Checks | Failures |
+|-----------|---------|--------|----------|
+| Qwen 3-condition | 90 | 307 | 0 |
+| Qwen strangeloop | 60 | 382 | 0 |
+| Qwen 5-condition | 150 | 556 | 0 |
+| Cross-experiment (3-cond vs 5-cond) | 90 | 90 | 0 |
+| **Total** | | **1,335** | **0** |
+
+Checks include: per-prompt RE and last-token RE against log values, token counts, all Wilcoxon W and p-values recomputed from raw data, per-category breakdowns, condition means, per-layer detail spot checks (deltas at 1e-16 floating point floor), and cross-experiment identity verification (90 shared prompts between 3-cond and 5-cond are bit-identical).
+
+Determinism confirmed: 5-condition r2 rerun matches r1 on 135/135 overlapping prompts (bit-exact, greedy argmax).
+
+Binary provenance: single `capture_activations.cpp` source (md5: `490ce890ecdef148c4a92031df6df0f2`) compiled to one binary (md5: `59a5f9952194536747229e033fc93ca5`) used across all experiments. Built against llama.cpp commit `f75c4e8` (b8123).
+
 ## Data Format
 
 Each results JSON contains a `per_prompt` array where each entry has:

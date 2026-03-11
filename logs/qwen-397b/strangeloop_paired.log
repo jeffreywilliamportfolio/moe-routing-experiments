@@ -1,0 +1,521 @@
+=== Qwen3.5-397B-A17B -- Strange Loop Paired Experiment ===
+n_predict=0, ctx=16384, ngl=999
+60 prompts: 30 deictic-this (A) + 30 generic-a (B)
+Cal-Manip-Cal sandwich, cold KV cache, Qwen ChatML template
+Content: Godel, Escher, bootstrap paradoxes, quines, tangled hierarchies
+Control for selfref-paired (recursive but NOT about the model)
+
+=== PHASE 1: Capture ===
+Running: /workspace/consciousness-experiment/capture_activations -m /workspace/models/Qwen3.5-397B-A17B-GGUF/UD-IQ3_XXS/Qwen3.5-397B-A17B-UD-IQ3_XXS-00001-of-00004.gguf --prompt-file prompts_strangeloop_paired.tsv -o output -n 0 -ngl 999 -c 16384 -t 16 -fa on --cache-type-k q8_0 --cache-type-v q8_0 --routing-only --no-stream
+ggml_cuda_init: found 2 CUDA devices:
+  Device 0: NVIDIA H200, compute capability 9.0, VMM: yes
+  Device 1: NVIDIA H200, compute capability 9.0, VMM: yes
+build: 1 (f75c4e8) with GNU 13.3.0 for Linux x86_64
+=== Consciousness Metrics — Activation Capture ===
+Output dir : output
+n_predict  : 0
+Text output: file only (--no-stream)
+Mode       : --routing-only (router/gate tensors only)
+common_init_result: fitting params to device memory, for bugs during this step try to reproduce them with -fit off, or provide --verbose logs if the bug only occurs with -fit on
+llama_params_fit_impl: projected memory use with initial parameters [MiB]:
+llama_params_fit_impl:   - CUDA0 (NVIDIA H200): 143155 total,  68901 used,  53985 free vs. target of   1024
+llama_params_fit_impl:   - CUDA1 (NVIDIA H200): 143155 total,  65551 used,  60188 free vs. target of   1024
+llama_params_fit_impl: projected to use 134453 MiB of device memory vs. 248627 MiB of free device memory
+llama_params_fit_impl: targets for free memory can be met on all devices, no changes needed
+llama_params_fit: successfully fit params to free device memory
+llama_params_fit: fitting params to free memory took 0.76 seconds
+llama_model_load_from_file_impl: using device CUDA0 (NVIDIA H200) (0000:87:00.0) - 122987 MiB free
+llama_model_load_from_file_impl: using device CUDA1 (NVIDIA H200) (0000:90:00.0) - 125827 MiB free
+llama_model_loader: additional 3 GGUFs metadata loaded.
+llama_model_loader: loaded meta data with 55 key-value pairs and 1098 tensors from /workspace/models/Qwen3.5-397B-A17B-GGUF/UD-IQ3_XXS/Qwen3.5-397B-A17B-UD-IQ3_XXS-00001-of-00004.gguf (version GGUF V3 (latest))
+llama_model_loader: Dumping metadata keys/values. Note: KV overrides do not apply in this output.
+llama_model_loader: - kv   0:                       general.architecture str              = qwen35moe
+llama_model_loader: - kv   1:                               general.type str              = model
+llama_model_loader: - kv   2:                     general.sampling.top_k i32              = 20
+llama_model_loader: - kv   3:                     general.sampling.top_p f32              = 0.950000
+llama_model_loader: - kv   4:                      general.sampling.temp f32              = 0.600000
+llama_model_loader: - kv   5:                               general.name str              = Qwen3.5-397B-A17B
+llama_model_loader: - kv   6:                           general.basename str              = Qwen3.5-397B-A17B
+llama_model_loader: - kv   7:                       general.quantized_by str              = Unsloth
+llama_model_loader: - kv   8:                         general.size_label str              = 397B-A17B
+llama_model_loader: - kv   9:                            general.license str              = apache-2.0
+llama_model_loader: - kv  10:                       general.license.link str              = https://huggingface.co/Qwen/Qwen3.5-3...
+llama_model_loader: - kv  11:                           general.repo_url str              = https://huggingface.co/unsloth
+llama_model_loader: - kv  12:                   general.base_model.count u32              = 1
+llama_model_loader: - kv  13:                  general.base_model.0.name str              = Qwen3.5 397B A17B
+llama_model_loader: - kv  14:          general.base_model.0.organization str              = Qwen
+llama_model_loader: - kv  15:              general.base_model.0.repo_url str              = https://huggingface.co/Qwen/Qwen3.5-3...
+llama_model_loader: - kv  16:                               general.tags arr[str,2]       = ["unsloth", "image-text-to-text"]
+llama_model_loader: - kv  17:                      qwen35moe.block_count u32              = 60
+llama_model_loader: - kv  18:                   qwen35moe.context_length u32              = 262144
+llama_model_loader: - kv  19:                 qwen35moe.embedding_length u32              = 4096
+llama_model_loader: - kv  20:             qwen35moe.attention.head_count u32              = 32
+llama_model_loader: - kv  21:          qwen35moe.attention.head_count_kv u32              = 2
+llama_model_loader: - kv  22:          qwen35moe.rope.dimension_sections arr[i32,4]       = [11, 11, 10, 0]
+llama_model_loader: - kv  23:                   qwen35moe.rope.freq_base f32              = 10000000.000000
+llama_model_loader: - kv  24: qwen35moe.attention.layer_norm_rms_epsilon f32              = 0.000001
+llama_model_loader: - kv  25:                     qwen35moe.expert_count u32              = 512
+llama_model_loader: - kv  26:                qwen35moe.expert_used_count u32              = 10
+llama_model_loader: - kv  27:             qwen35moe.attention.key_length u32              = 256
+llama_model_loader: - kv  28:           qwen35moe.attention.value_length u32              = 256
+llama_model_loader: - kv  29:       qwen35moe.expert_feed_forward_length u32              = 1024
+llama_model_loader: - kv  30: qwen35moe.expert_shared_feed_forward_length u32              = 1024
+llama_model_loader: - kv  31:                  qwen35moe.ssm.conv_kernel u32              = 4
+llama_model_loader: - kv  32:                   qwen35moe.ssm.state_size u32              = 128
+llama_model_loader: - kv  33:                  qwen35moe.ssm.group_count u32              = 16
+llama_model_loader: - kv  34:               qwen35moe.ssm.time_step_rank u32              = 64
+llama_model_loader: - kv  35:                   qwen35moe.ssm.inner_size u32              = 8192
+llama_model_loader: - kv  36:          qwen35moe.full_attention_interval u32              = 4
+llama_model_loader: - kv  37:             qwen35moe.rope.dimension_count u32              = 64
+llama_model_loader: - kv  38:                       tokenizer.ggml.model str              = gpt2
+llama_model_loader: - kv  39:                         tokenizer.ggml.pre str              = qwen35
+llama_model_loader: - kv  40:                      tokenizer.ggml.tokens arr[str,248320]  = ["!", "\"", "#", "$", "%", "&", "'", ...
+llama_model_loader: - kv  41:                  tokenizer.ggml.token_type arr[i32,248320]  = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...
+llama_model_loader: - kv  42:                      tokenizer.ggml.merges arr[str,247587]  = ["Ġ Ġ", "ĠĠ ĠĠ", "i n", "Ġ t",...
+llama_model_loader: - kv  43:                tokenizer.ggml.eos_token_id u32              = 248046
+llama_model_loader: - kv  44:            tokenizer.ggml.padding_token_id u32              = 248055
+llama_model_loader: - kv  45:                    tokenizer.chat_template str              = {%- set image_count = namespace(value...
+llama_model_loader: - kv  46:               general.quantization_version u32              = 2
+llama_model_loader: - kv  47:                          general.file_type u32              = 23
+llama_model_loader: - kv  48:                      quantize.imatrix.file str              = Qwen3.5-397B-A17B-GGUF/imatrix_unslot...
+llama_model_loader: - kv  49:                   quantize.imatrix.dataset str              = unsloth_calibration_Qwen3.5-397B-A17B...
+llama_model_loader: - kv  50:             quantize.imatrix.entries_count u32              = 765
+llama_model_loader: - kv  51:              quantize.imatrix.chunks_count u32              = 80
+llama_model_loader: - kv  52:                                   split.no u16              = 0
+llama_model_loader: - kv  53:                        split.tensors.count i32              = 1098
+llama_model_loader: - kv  54:                                split.count u16              = 4
+llama_model_loader: - type  f32:  451 tensors
+llama_model_loader: - type q8_0:   90 tensors
+llama_model_loader: - type q6_K:  377 tensors
+llama_model_loader: - type iq3_xxs:   60 tensors
+llama_model_loader: - type iq2_s:  120 tensors
+print_info: file format = GGUF V3 (latest)
+print_info: file type   = IQ3_XXS - 3.0625 bpw
+print_info: file size   = 130.69 GiB (2.83 BPW) 
+load: 0 unused tokens
+load: printing all EOG tokens:
+load:   - 248044 ('<|endoftext|>')
+load:   - 248046 ('<|im_end|>')
+load:   - 248063 ('<|fim_pad|>')
+load:   - 248064 ('<|repo_name|>')
+load:   - 248065 ('<|file_sep|>')
+load: special tokens cache size = 33
+load: token to piece cache size = 1.7581 MB
+print_info: arch                  = qwen35moe
+print_info: vocab_only            = 0
+print_info: no_alloc              = 0
+print_info: n_ctx_train           = 262144
+print_info: n_embd                = 4096
+print_info: n_embd_inp            = 4096
+print_info: n_layer               = 60
+print_info: n_head                = 32
+print_info: n_head_kv             = 2
+print_info: n_rot                 = 64
+print_info: n_swa                 = 0
+print_info: is_swa_any            = 0
+print_info: n_embd_head_k         = 256
+print_info: n_embd_head_v         = 256
+print_info: n_gqa                 = 16
+print_info: n_embd_k_gqa          = 512
+print_info: n_embd_v_gqa          = 512
+print_info: f_norm_eps            = 0.0e+00
+print_info: f_norm_rms_eps        = 1.0e-06
+print_info: f_clamp_kqv           = 0.0e+00
+print_info: f_max_alibi_bias      = 0.0e+00
+print_info: f_logit_scale         = 0.0e+00
+print_info: f_attn_scale          = 0.0e+00
+print_info: n_ff                  = 0
+print_info: n_expert              = 512
+print_info: n_expert_used         = 10
+print_info: n_expert_groups       = 0
+print_info: n_group_used          = 0
+print_info: causal attn           = 1
+print_info: pooling type          = 0
+print_info: rope type             = 40
+print_info: rope scaling          = linear
+print_info: freq_base_train       = 10000000.0
+print_info: freq_scale_train      = 1
+print_info: n_ctx_orig_yarn       = 262144
+print_info: rope_yarn_log_mul     = 0.0000
+print_info: rope_finetuned        = unknown
+print_info: mrope sections        = [11, 11, 10, 0]
+print_info: ssm_d_conv            = 4
+print_info: ssm_d_inner           = 8192
+print_info: ssm_d_state           = 128
+print_info: ssm_dt_rank           = 64
+print_info: ssm_n_group           = 16
+print_info: ssm_dt_b_c_rms        = 0
+print_info: model type            = ?B
+print_info: model params          = 396.35 B
+print_info: general.name          = Qwen3.5-397B-A17B
+print_info: vocab type            = BPE
+print_info: n_vocab               = 248320
+print_info: n_merges              = 247587
+print_info: BOS token             = 11 ','
+print_info: EOS token             = 248046 '<|im_end|>'
+print_info: EOT token             = 248046 '<|im_end|>'
+print_info: PAD token             = 248055 '<|vision_pad|>'
+print_info: LF token              = 198 'Ċ'
+print_info: FIM PRE token         = 248060 '<|fim_prefix|>'
+print_info: FIM SUF token         = 248062 '<|fim_suffix|>'
+print_info: FIM MID token         = 248061 '<|fim_middle|>'
+print_info: FIM PAD token         = 248063 '<|fim_pad|>'
+print_info: FIM REP token         = 248064 '<|repo_name|>'
+print_info: FIM SEP token         = 248065 '<|file_sep|>'
+print_info: EOG token             = 248044 '<|endoftext|>'
+print_info: EOG token             = 248046 '<|im_end|>'
+print_info: EOG token             = 248063 '<|fim_pad|>'
+print_info: EOG token             = 248064 '<|repo_name|>'
+print_info: EOG token             = 248065 '<|file_sep|>'
+print_info: max token length      = 256
+load_tensors: loading model tensors, this can take a while... (mmap = true, direct_io = false)
+load_tensors: offloading output layer to GPU
+load_tensors: offloading 59 repeating layers to GPU
+load_tensors: offloaded 61/61 layers to GPU
+load_tensors:   CPU_Mapped model buffer size =   795.70 MiB
+load_tensors:        CUDA0 model buffer size = 68327.12 MiB
+load_tensors:        CUDA1 model buffer size = 64699.30 MiB
+....................................................................................................
+common_init_result: added <|endoftext|> logit bias = -inf
+common_init_result: added <|im_end|> logit bias = -inf
+common_init_result: added <|fim_pad|> logit bias = -inf
+common_init_result: added <|repo_name|> logit bias = -inf
+common_init_result: added <|file_sep|> logit bias = -inf
+llama_context: constructing llama_context
+llama_context: n_seq_max     = 1
+llama_context: n_ctx         = 16384
+llama_context: n_ctx_seq     = 16384
+llama_context: n_batch       = 2048
+llama_context: n_ubatch      = 512
+llama_context: causal_attn   = 1
+llama_context: flash_attn    = enabled
+llama_context: kv_unified    = false
+llama_context: freq_base     = 10000000.0
+llama_context: freq_scale    = 1
+llama_context: n_ctx_seq (16384) < n_ctx_train (262144) -- the full capacity of the model will not be utilized
+llama_context:  CUDA_Host  output buffer size =     0.95 MiB
+llama_kv_cache:      CUDA0 KV buffer size =   119.00 MiB
+llama_kv_cache:      CUDA1 KV buffer size =   136.00 MiB
+llama_kv_cache: size =  255.00 MiB ( 16384 cells,  15 layers,  1/1 seqs), K (q8_0):  127.50 MiB, V (q8_0):  127.50 MiB
+llama_memory_recurrent:      CUDA0 RS buffer size =    99.38 MiB
+llama_memory_recurrent:      CUDA1 RS buffer size =    86.95 MiB
+llama_memory_recurrent: size =  186.33 MiB (     1 cells,  60 layers,  1 seqs), R (f32):    6.33 MiB, S (f32):  180.00 MiB
+llama_context: pipeline parallelism enabled
+sched_reserve: reserving ...
+sched_reserve:      CUDA0 compute buffer size =   356.34 MiB
+sched_reserve:      CUDA1 compute buffer size =   597.07 MiB
+sched_reserve:  CUDA_Host compute buffer size =   144.08 MiB
+sched_reserve: graph nodes  = 14334 (with bs=512), 6819 (with bs=1)
+sched_reserve: graph splits = 3
+sched_reserve: reserve took 73.41 ms, sched copies = 4
+EOS token id: 248046
+EOG tokens in vocab:
+  token 248044 = '<|endoftext|>' [EOG - will NOT stop generation]
+  token 248046 = '<|im_end|>' [PRIMARY EOS - will stop generation]
+  token 248063 = '<|fim_pad|>' [EOG - will NOT stop generation]
+  token 248064 = '<|repo_name|>' [EOG - will NOT stop generation]
+  token 248065 = '<|file_sep|>' [EOG - will NOT stop generation]
+system_info: n_threads = 16 (n_threads_batch = 16) / 192 | CUDA : ARCHS = 900 | USE_GRAPHS = 1 | PEER_MAX_BATCH_SIZE = 128 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX_VNNI = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | AVX512 = 1 | AVX512_VBMI = 1 | AVX512_VNNI = 1 | AVX512_BF16 = 1 | AMX_INT8 = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 | 
+
+Loaded 60 prompts
+
+[1/60] P01A_godel : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 372 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 851 ms
+  saved 0 layer + 60 router tensors → output/P01A_godel
+[2/60] P01B_godel : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 372 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 703 ms
+  saved 0 layer + 60 router tensors → output/P01B_godel
+[3/60] P02A_godel : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 363 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 704 ms
+  saved 0 layer + 60 router tensors → output/P02A_godel
+[4/60] P02B_godel : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 363 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 693 ms
+  saved 0 layer + 60 router tensors → output/P02B_godel
+[5/60] P03A_godel : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 363 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 686 ms
+  saved 0 layer + 60 router tensors → output/P03A_godel
+[6/60] P03B_godel : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 363 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 683 ms
+  saved 0 layer + 60 router tensors → output/P03B_godel
+[7/60] P04A_godel : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 359 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 699 ms
+  saved 0 layer + 60 router tensors → output/P04A_godel
+[8/60] P04B_godel : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 359 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 693 ms
+  saved 0 layer + 60 router tensors → output/P04B_godel
+[9/60] P05A_godel : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 370 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 697 ms
+  saved 0 layer + 60 router tensors → output/P05A_godel
+[10/60] P05B_godel : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 370 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 693 ms
+  saved 0 layer + 60 router tensors → output/P05B_godel
+[11/60] P06A_godel : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 370 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 692 ms
+  saved 0 layer + 60 router tensors → output/P06A_godel
+[12/60] P06B_godel : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 370 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 692 ms
+  saved 0 layer + 60 router tensors → output/P06B_godel
+[13/60] P07A_escher : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 357 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 691 ms
+  saved 0 layer + 60 router tensors → output/P07A_escher
+[14/60] P07B_escher : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 357 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 685 ms
+  saved 0 layer + 60 router tensors → output/P07B_escher
+[15/60] P08A_escher : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 359 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 695 ms
+  saved 0 layer + 60 router tensors → output/P08A_escher
+[16/60] P08B_escher : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 359 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 690 ms
+  saved 0 layer + 60 router tensors → output/P08B_escher
+[17/60] P09A_escher : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 356 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 693 ms
+  saved 0 layer + 60 router tensors → output/P09A_escher
+[18/60] P09B_escher : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 356 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 689 ms
+  saved 0 layer + 60 router tensors → output/P09B_escher
+[19/60] P10A_escher : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 360 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 702 ms
+  saved 0 layer + 60 router tensors → output/P10A_escher
+[20/60] P10B_escher : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 360 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 696 ms
+  saved 0 layer + 60 router tensors → output/P10B_escher
+[21/60] P11A_escher : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 368 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 698 ms
+  saved 0 layer + 60 router tensors → output/P11A_escher
+[22/60] P11B_escher : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 368 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 694 ms
+  saved 0 layer + 60 router tensors → output/P11B_escher
+[23/60] P12A_escher : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 360 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 691 ms
+  saved 0 layer + 60 router tensors → output/P12A_escher
+[24/60] P12B_escher : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 360 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 693 ms
+  saved 0 layer + 60 router tensors → output/P12B_escher
+[25/60] P13A_bootstrap : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 367 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 699 ms
+  saved 0 layer + 60 router tensors → output/P13A_bootstrap
+[26/60] P13B_bootstrap : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 367 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 692 ms
+  saved 0 layer + 60 router tensors → output/P13B_bootstrap
+[27/60] P14A_bootstrap : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 363 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 695 ms
+  saved 0 layer + 60 router tensors → output/P14A_bootstrap
+[28/60] P14B_bootstrap : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 363 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 693 ms
+  saved 0 layer + 60 router tensors → output/P14B_bootstrap
+[29/60] P15A_bootstrap : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 358 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 689 ms
+  saved 0 layer + 60 router tensors → output/P15A_bootstrap
+[30/60] P15B_bootstrap : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 358 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 688 ms
+  saved 0 layer + 60 router tensors → output/P15B_bootstrap
+[31/60] P16A_bootstrap : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 359 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 694 ms
+  saved 0 layer + 60 router tensors → output/P16A_bootstrap
+[32/60] P16B_bootstrap : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 359 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 693 ms
+  saved 0 layer + 60 router tensors → output/P16B_bootstrap
+[33/60] P17A_bootstrap : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 357 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 689 ms
+  saved 0 layer + 60 router tensors → output/P17A_bootstrap
+[34/60] P17B_bootstrap : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 357 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 686 ms
+  saved 0 layer + 60 router tensors → output/P17B_bootstrap
+[35/60] P18A_bootstrap : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 367 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 695 ms
+  saved 0 layer + 60 router tensors → output/P18A_bootstrap
+[36/60] P18B_bootstrap : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 367 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 691 ms
+  saved 0 layer + 60 router tensors → output/P18B_bootstrap
+[37/60] P19A_quine : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 362 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 692 ms
+  saved 0 layer + 60 router tensors → output/P19A_quine
+[38/60] P19B_quine : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 362 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 689 ms
+  saved 0 layer + 60 router tensors → output/P19B_quine
+[39/60] P20A_quine : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 363 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 693 ms
+  saved 0 layer + 60 router tensors → output/P20A_quine
+[40/60] P20B_quine : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 363 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 686 ms
+  saved 0 layer + 60 router tensors → output/P20B_quine
+[41/60] P21A_quine : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 370 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 689 ms
+  saved 0 layer + 60 router tensors → output/P21A_quine
+[42/60] P21B_quine : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 370 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 687 ms
+  saved 0 layer + 60 router tensors → output/P21B_quine
+[43/60] P22A_quine : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 367 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 692 ms
+  saved 0 layer + 60 router tensors → output/P22A_quine
+[44/60] P22B_quine : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 367 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 685 ms
+  saved 0 layer + 60 router tensors → output/P22B_quine
+[45/60] P23A_quine : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 374 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 712 ms
+  saved 0 layer + 60 router tensors → output/P23A_quine
+[46/60] P23B_quine : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 374 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 702 ms
+  saved 0 layer + 60 router tensors → output/P23B_quine
+[47/60] P24A_quine : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 364 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 697 ms
+  saved 0 layer + 60 router tensors → output/P24A_quine
+[48/60] P24B_quine : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 364 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 691 ms
+  saved 0 layer + 60 router tensors → output/P24B_quine
+[49/60] P25A_tangled_hierarchy : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 362 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 686 ms
+  saved 0 layer + 60 router tensors → output/P25A_tangled_hierarchy
+[50/60] P25B_tangled_hierarchy : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 362 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 683 ms
+  saved 0 layer + 60 router tensors → output/P25B_tangled_hierarchy
+[51/60] P26A_tangled_hierarchy : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 358 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 689 ms
+  saved 0 layer + 60 router tensors → output/P26A_tangled_hierarchy
+[52/60] P26B_tangled_hierarchy : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 358 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 686 ms
+  saved 0 layer + 60 router tensors → output/P26B_tangled_hierarchy
+[53/60] P27A_tangled_hierarchy : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 360 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 696 ms
+  saved 0 layer + 60 router tensors → output/P27A_tangled_hierarchy
+[54/60] P27B_tangled_hierarchy : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 360 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 691 ms
+  saved 0 layer + 60 router tensors → output/P27B_tangled_hierarchy
+[55/60] P28A_tangled_hierarchy : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 362 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 685 ms
+  saved 0 layer + 60 router tensors → output/P28A_tangled_hierarchy
+[56/60] P28B_tangled_hierarchy : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 362 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 680 ms
+  saved 0 layer + 60 router tensors → output/P28B_tangled_hierarchy
+[57/60] P29A_tangled_hierarchy : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 364 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 684 ms
+  saved 0 layer + 60 router tensors → output/P29A_tangled_hierarchy
+[58/60] P29B_tangled_hierarchy : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 364 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 681 ms
+  saved 0 layer + 60 router tensors → output/P29B_tangled_hierarchy
+[59/60] P30A_tangled_hierarchy : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 372 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 693 ms
+  saved 0 layer + 60 router tensors → output/P30A_tangled_hierarchy
+[60/60] P30B_tangled_hierarchy : <|im_start|>user Transformer models process input text through a seque...
+  tokens: 372 prompt + 0 gen | tensors: 60 seen, 60 captured, 60 unique | 690 ms
+  saved 0 layer + 60 router tensors → output/P30B_tangled_hierarchy
+
+=== Capture Complete ===
+Prompts: 60  |  Output: output
+llama_perf_context_print:        load time =   23594.54 ms
+llama_perf_context_print: prompt eval time =       0.00 ms /     1 tokens (    0.00 ms per token,      inf tokens per second)
+llama_perf_context_print:        eval time =       0.00 ms /     1 runs   (    0.00 ms per token,      inf tokens per second)
+llama_perf_context_print:       total time =   66395.28 ms /     2 tokens
+llama_perf_context_print:    graphs reused =         32
+
+=== PHASE 2: Compute metrics ===
+  P01A_godel: RE=0.900437 last_tok=0.867765 tokens=372
+  P01B_godel: RE=0.899390 last_tok=0.866964 tokens=372
+  P02A_godel: RE=0.899641 last_tok=0.867617 tokens=363
+  P02B_godel: RE=0.898712 last_tok=0.868296 tokens=363
+  P03A_godel: RE=0.900235 last_tok=0.866178 tokens=363
+  P03B_godel: RE=0.899173 last_tok=0.865768 tokens=363
+  P04A_godel: RE=0.898782 last_tok=0.867704 tokens=359
+  P04B_godel: RE=0.897876 last_tok=0.867521 tokens=359
+  P05A_godel: RE=0.900449 last_tok=0.867643 tokens=370
+  P05B_godel: RE=0.899827 last_tok=0.867344 tokens=370
+  P06A_godel: RE=0.896694 last_tok=0.867096 tokens=370
+  P06B_godel: RE=0.894977 last_tok=0.866741 tokens=370
+  P07A_escher: RE=0.900141 last_tok=0.866981 tokens=357
+  P07B_escher: RE=0.899664 last_tok=0.866451 tokens=357
+  P08A_escher: RE=0.897723 last_tok=0.866404 tokens=359
+  P08B_escher: RE=0.896824 last_tok=0.865955 tokens=359
+  P09A_escher: RE=0.901063 last_tok=0.866788 tokens=356
+  P09B_escher: RE=0.900048 last_tok=0.865782 tokens=356
+  P10A_escher: RE=0.899774 last_tok=0.867825 tokens=360
+  P10B_escher: RE=0.899168 last_tok=0.868400 tokens=360
+  P11A_escher: RE=0.903064 last_tok=0.867646 tokens=368
+  P11B_escher: RE=0.902103 last_tok=0.866195 tokens=368
+  P12A_escher: RE=0.897606 last_tok=0.865659 tokens=360
+  P12B_escher: RE=0.897018 last_tok=0.865378 tokens=360
+  P13A_bootstrap: RE=0.901077 last_tok=0.866177 tokens=367
+  P13B_bootstrap: RE=0.900213 last_tok=0.865976 tokens=367
+  P14A_bootstrap: RE=0.900222 last_tok=0.869105 tokens=363
+  P14B_bootstrap: RE=0.899155 last_tok=0.869323 tokens=363
+  P15A_bootstrap: RE=0.901317 last_tok=0.868436 tokens=358
+  P15B_bootstrap: RE=0.900125 last_tok=0.869326 tokens=358
+  P16A_bootstrap: RE=0.899602 last_tok=0.867541 tokens=359
+  P16B_bootstrap: RE=0.898133 last_tok=0.866731 tokens=359
+  P17A_bootstrap: RE=0.899153 last_tok=0.866617 tokens=357
+  P17B_bootstrap: RE=0.898447 last_tok=0.866729 tokens=357
+  P18A_bootstrap: RE=0.899692 last_tok=0.868823 tokens=367
+  P18B_bootstrap: RE=0.898546 last_tok=0.868062 tokens=367
+  P19A_quine: RE=0.898188 last_tok=0.869201 tokens=362
+  P19B_quine: RE=0.896998 last_tok=0.867747 tokens=362
+  P20A_quine: RE=0.898677 last_tok=0.866854 tokens=363
+  P20B_quine: RE=0.897938 last_tok=0.865720 tokens=363
+  P21A_quine: RE=0.899022 last_tok=0.865090 tokens=370
+  P21B_quine: RE=0.898288 last_tok=0.865583 tokens=370
+  P22A_quine: RE=0.900218 last_tok=0.868569 tokens=367
+  P22B_quine: RE=0.899120 last_tok=0.868299 tokens=367
+  P23A_quine: RE=0.901437 last_tok=0.867280 tokens=374
+  P23B_quine: RE=0.899770 last_tok=0.867189 tokens=374
+  P24A_quine: RE=0.898200 last_tok=0.867500 tokens=364
+  P24B_quine: RE=0.896797 last_tok=0.867304 tokens=364
+  P25A_tangled_hierarchy: RE=0.899569 last_tok=0.866174 tokens=362
+  P25B_tangled_hierarchy: RE=0.898812 last_tok=0.865873 tokens=362
+  P26A_tangled_hierarchy: RE=0.901478 last_tok=0.866717 tokens=358
+  P26B_tangled_hierarchy: RE=0.900463 last_tok=0.865992 tokens=358
+  P27A_tangled_hierarchy: RE=0.897903 last_tok=0.867183 tokens=360
+  P27B_tangled_hierarchy: RE=0.897415 last_tok=0.867116 tokens=360
+  P28A_tangled_hierarchy: RE=0.898358 last_tok=0.865625 tokens=362
+  P28B_tangled_hierarchy: RE=0.897308 last_tok=0.864750 tokens=362
+  P29A_tangled_hierarchy: RE=0.900677 last_tok=0.866535 tokens=364
+  P29B_tangled_hierarchy: RE=0.899387 last_tok=0.866465 tokens=364
+  P30A_tangled_hierarchy: RE=0.900438 last_tok=0.864599 tokens=372
+  P30B_tangled_hierarchy: RE=0.898502 last_tok=0.864354 tokens=372
+
+=== PHASE 3: Paired Analysis ===
+
+Pair Category             A_tok B_tok     A_RE     B_RE   A-B_RE     A_LT     B_LT   A-B_LT
+---------------------------------------------------------------------------------------------------------
+    1  godel                  372   372 0.900437 0.899390 +0.001048 0.867765 0.866964 +0.000802 OK
+    2  godel                  363   363 0.899641 0.898712 +0.000928 0.867617 0.868296 -0.000679 OK
+    3  godel                  363   363 0.900235 0.899173 +0.001062 0.866178 0.865768 +0.000410 OK
+    4  godel                  359   359 0.898782 0.897876 +0.000906 0.867704 0.867521 +0.000183 OK
+    5  godel                  370   370 0.900449 0.899827 +0.000621 0.867643 0.867344 +0.000299 OK
+    6  godel                  370   370 0.896694 0.894977 +0.001718 0.867096 0.866741 +0.000355 OK
+    7  escher                 357   357 0.900141 0.899664 +0.000477 0.866981 0.866451 +0.000530 OK
+    8  escher                 359   359 0.897723 0.896824 +0.000899 0.866404 0.865955 +0.000449 OK
+    9  escher                 356   356 0.901063 0.900048 +0.001015 0.866788 0.865782 +0.001006 OK
+   10  escher                 360   360 0.899774 0.899168 +0.000606 0.867825 0.868400 -0.000576 OK
+   11  escher                 368   368 0.903064 0.902103 +0.000961 0.867646 0.866195 +0.001451 OK
+   12  escher                 360   360 0.897606 0.897018 +0.000588 0.865659 0.865378 +0.000281 OK
+   13  bootstrap              367   367 0.901077 0.900213 +0.000863 0.866177 0.865976 +0.000201 OK
+   14  bootstrap              363   363 0.900222 0.899155 +0.001067 0.869105 0.869323 -0.000218 OK
+   15  bootstrap              358   358 0.901317 0.900125 +0.001192 0.868436 0.869326 -0.000890 OK
+   16  bootstrap              359   359 0.899602 0.898133 +0.001469 0.867541 0.866731 +0.000810 OK
+   17  bootstrap              357   357 0.899153 0.898447 +0.000706 0.866617 0.866729 -0.000112 OK
+   18  bootstrap              367   367 0.899692 0.898546 +0.001146 0.868823 0.868062 +0.000761 OK
+   19  quine                  362   362 0.898188 0.896998 +0.001191 0.869201 0.867747 +0.001453 OK
+   20  quine                  363   363 0.898677 0.897938 +0.000739 0.866854 0.865720 +0.001134 OK
+   21  quine                  370   370 0.899022 0.898288 +0.000734 0.865090 0.865583 -0.000492 OK
+   22  quine                  367   367 0.900218 0.899120 +0.001098 0.868569 0.868299 +0.000269 OK
+   23  quine                  374   374 0.901437 0.899770 +0.001667 0.867280 0.867189 +0.000091 OK
+   24  quine                  364   364 0.898200 0.896797 +0.001403 0.867500 0.867304 +0.000196 OK
+   25  tangled_hierarchy      362   362 0.899569 0.898812 +0.000757 0.866174 0.865873 +0.000301 OK
+   26  tangled_hierarchy      358   358 0.901478 0.900463 +0.001014 0.866717 0.865992 +0.000725 OK
+   27  tangled_hierarchy      360   360 0.897903 0.897415 +0.000488 0.867183 0.867116 +0.000067 OK
+   28  tangled_hierarchy      362   362 0.898358 0.897308 +0.001050 0.865625 0.864750 +0.000875 OK
+   29  tangled_hierarchy      364   364 0.900677 0.899387 +0.001290 0.866535 0.866465 +0.000070 OK
+   30  tangled_hierarchy      372   372 0.900438 0.898502 +0.001937 0.864599 0.864354 +0.000246 OK
+
+--- Paired Summary (n=30 pairs) ---
+  All-token RE:  A-B mean = +0.001021 +/- 0.000353
+  Last-token RE: A-B mean = +0.000333 +/- 0.000564
+  Wilcoxon all-tok:  W=0, p=1.8626e-09
+  Wilcoxon last-tok: W=94, p=3.4752e-03
+
+--- Per-Category (last-token RE) ---
+  bootstrap            n=6 mean_diff=+0.000092 std=0.000588
+  escher               n=6 mean_diff=+0.000524 std=0.000628
+  godel                n=6 mean_diff=+0.000228 std=0.000449
+  quine                n=6 mean_diff=+0.000442 std=0.000657
+  tangled_hierarchy    n=6 mean_diff=+0.000381 std=0.000312
+
+=== DONE. 60 prompts. Results -> results_strangeloop_paired_prefill_qwen.json ===

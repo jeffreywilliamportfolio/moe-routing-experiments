@@ -4,7 +4,7 @@ Across five architectures, four organizations, and three training methodologies.
 
 **Author:** Jeffrey William Shorthill
 
-**Article:** [LessWrong post](https://www.lesswrong.com/) *(link TBD)*
+**Article:** forthcoming
 
 ## What This Is
 
@@ -24,24 +24,49 @@ All experiments use greedy argmax inference, cold cache, prefill-only capture, a
 
 All p-values are Wilcoxon signed-rank tests on 30 token-matched prompt pairs.
 
+### 5-Condition Addressivity Experiment (Qwen 397B)
+
+Extends from 2 to 5 conditions to discriminate competing hypotheses:
+
+| Condition | Determiner | Last-token RE | Role |
+|-----------|-----------|---------------|------|
+| C "your system" | 2nd-person possessive | 0.867792 (highest) | Addressee-directed |
+| A "this system" | Proximal deictic | 0.866851 | Deictic reference |
+| D "the system" | Definite article | 0.865962 | Definiteness only |
+| E "their system" | 3rd-person possessive | 0.865680 | Possessive, no addressee |
+| B "a system" | Indefinite generic | 0.864840 (lowest) | Baseline |
+
+Key findings (all 10 pairwise Wilcoxon tests):
+- **Addressivity confirmed**: C > E, 30/30 pairs (p=1.86e-09). Possessive structure alone is insufficient — the 2nd-person addressee is the critical variable.
+- **Definiteness rejected**: D ≠ A for last-token RE (p=2.83e-04). "The" does not pattern like "this."
+- **D ≈ E on last-token**: p=0.280 (null). Definite article and 3rd-person possessive are indistinguishable.
+- **Bit-exact replication**: r2 rerun matches r1 on 135/135 overlapping prompts (15 dropped to GPU memory, not data).
+
 ## Repository Structure
 
 ```
 ├── README.md
 ├── article.md                  # Full article text
 ├── data/                       # Processed results (JSON)
-│   ├── qwen-397b/              # Qwen 397B paired results
+│   ├── qwen-397b/
+│   │   ├── results_selfref_paired_prefill.json      # 2-condition (this/a)
+│   │   ├── results_selfref_3cond_prefill.json       # 3-condition (this/a/your)
+│   │   ├── results_selfref_5cond_prefill.json       # 5-condition (this/a/your/the/their)
+│   │   ├── results_selfref_5cond_prefill_r2.json    # 5-condition replication run
+│   │   └── results_strangeloop_paired_prefill.json   # Strange loop control on Qwen
 │   ├── glm5/                   # GLM-5 paired + three-condition
 │   ├── deepseek-v31/           # DeepSeek V3.1 paired results
 │   ├── deepseek-r1/            # DeepSeek R1 paired + three-condition
 │   ├── gptoss-120b/            # gpt-oss-120b paired results
-│   ├── strangeloop-control/    # "this paradox" vs "a paradox" (null control)
+│   ├── strangeloop-control/    # "this paradox" vs "a paradox" (DS31, null)
 │   └── positional-confound/    # 168-prompt hierarchy showing token-count confound
 ├── prompts/                    # Prompt definitions (JSON)
-│   ├── selfref_paired_30.json  # 30 A/B pairs used across most models
-│   ├── selfref_3cond_glm5.json # Three-condition (this/a/your) for GLM-5
-│   ├── selfref_3cond_r1.json   # Three-condition for DeepSeek R1
-│   └── strangeloop_paired_30.json  # Strange loop control pairs
+│   ├── selfref_paired_30.json       # 30 A/B pairs used across most models
+│   ├── selfref_3cond_glm5.json      # Three-condition (this/a/your) for GLM-5
+│   ├── selfref_3cond_r1.json        # Three-condition for DeepSeek R1
+│   ├── selfref_3cond_qwen.json      # Three-condition for Qwen 397B
+│   ├── selfref_5cond_qwen.json      # Five-condition for Qwen 397B
+│   └── strangeloop_paired_30.json   # Strange loop control pairs
 ├── figures/                    # Publication figures (PNG)
 │   ├── fig1_design_schematic.png
 │   ├── fig2_five_model_replication.png
@@ -52,13 +77,35 @@ All p-values are Wilcoxon signed-rank tests on 30 token-matched prompt pairs.
 │   ├── fig7_architecture_pattern.png
 │   └── fig8_positional_confound.png
 ├── code/                       # All code used
-│   ├── capture_activations.cpp # C++ binary source (llama.cpp b8123 fork)
-│   ├── generate_figures.py     # Generates all 8 figures from data/
-│   ├── run_experiment_*.py     # Per-model orchestrator scripts
-│   ├── generate_tsv_*.py       # Prompt formatting per model
-│   └── token_corrections_*.json # Token-matching corrections per model
+│   ├── capture_activations.cpp          # C++ binary source (llama.cpp b8123 fork)
+│   ├── generate_figures.py              # Generates all 8 figures from data/
+│   ├── generate_suite_5cond.py          # Derives 5-cond suite from 3-cond
+│   ├── generate_tsv_selfref.py          # DS31 prompt formatting
+│   ├── generate_tsv_glm5.py             # GLM-5 prompt formatting
+│   ├── generate_tsv_gptoss.py           # gpt-oss prompt formatting
+│   ├── generate_tsv_qwen_3cond.py       # Qwen 3-condition prompt formatting
+│   ├── generate_tsv_qwen_5cond.py       # Qwen 5-condition prompt formatting
+│   ├── run_experiment_168q.py           # 168-prompt hierarchy
+│   ├── run_experiment_ds31.py           # DeepSeek V3.1 paired
+│   ├── run_experiment_glm5.py           # GLM-5
+│   ├── run_experiment_gptoss.py         # gpt-oss-120b
+│   ├── run_experiment_qwen.py           # Qwen paired (original)
+│   ├── run_experiment_qwen_3cond.py     # Qwen 3-condition
+│   ├── run_experiment_qwen_5cond.py     # Qwen 5-condition
+│   ├── run_experiment_qwen_strangeloop.py # Qwen strange loop control
+│   ├── run_experiment_r1.py             # DeepSeek R1
+│   ├── run_experiment_strangeloop.py    # DS31 strange loop control
+│   ├── compare_r1_r2_5cond.py           # Bit-exact replication verifier
+│   ├── token_corrections_glm5.json
+│   ├── token_corrections_gptoss.json
+│   └── token_corrections_r1.json
 └── logs/                       # Raw experiment logs (ground truth)
-    ├── qwen_397b.log
+    ├── qwen-397b/
+    │   ├── selfref_3cond.log            # 90-prompt 3-condition
+    │   ├── selfref_5cond.log            # 150-prompt 5-condition
+    │   ├── selfref_5cond_r2.log         # 5-condition replication
+    │   └── strangeloop_paired.log       # Strange loop control
+    ├── qwen_397b.log                    # Original paired run
     ├── glm5.log
     ├── deepseek_v31.log
     ├── deepseek_r1.log
@@ -101,7 +148,7 @@ Token counts are verified to match exactly between conditions for every pair. Mi
 All experiments ran on rented NVIDIA H200 GPUs (Vast.ai) using quantized GGUF models:
 - DeepSeek V3.1: `DeepSeek-V3-0324-UD-Q2_K_XL` (6 shards, 231GB)
 - DeepSeek R1: `DeepSeek-R1-UD-Q2_K_XL` (5 shards, 212GB)
-- Qwen 397B: `Qwen3-MoE-UD-Q2_K_XL`
+- Qwen 397B: `Qwen3.5-397B-A17B-UD-IQ3_XXS` (4 shards, 131GB)
 - GLM-5: `GLM-4.7-UD-Q2_K_XL` (3 shards, 128GB)
 - gpt-oss-120b: `gpt-oss-120b-UD-Q2_K_XL`
 

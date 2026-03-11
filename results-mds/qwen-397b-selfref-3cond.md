@@ -2,7 +2,7 @@
 
 ## Model
 
-- **Model**: Qwen3.5-397B-A17B-UD-Q2_K_XL
+- **Model**: Qwen3.5-397B-A17B-UD-IQ3_XXS
 - **Architecture**: qwen35moe
 - **Experts**: 512 total, 10 active/token
 - **MoE Layers**: 60

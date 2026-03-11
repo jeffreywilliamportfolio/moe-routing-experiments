@@ -1,6 +1,6 @@
 # MoE Routing Distinguishes Self-Referential From Generic Content
 
-Across five architectures, four organizations, and three training methodologies. All GPUs run on vast.ai (Nvidia H200 141GB VRAM. Total cost for all runs in repo: less than $600
+Across five architectures, four organizations, and three training methodologies. All GPUs run on vast.ai (Nvidia H200 141GB VRAM). Total cost for all runs in repo: less than $600
 
 **Author:** Jeffrey William Shorthill
 

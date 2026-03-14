@@ -46,7 +46,7 @@ Because Ling-1T uses sigmoid gating (not softmax), we can identify exactly which
 |-------------|-------|-------------|
 | Universal addressivity | 2 | E95, E185 -- fire more for "your" regardless of noun |
 | Animal-only addressivity | 4 | E60, E70, E188, E208 -- "your" effect in dog/cat only |
-**| System-only addressivity | 15 | Fire more for "your" only when noun is "system" |**
+| **System-only addressivity | 15 | Fire more for "your" only when noun is "system"** |
 | Universal deictic | 1 | E117 -- responds to "this" across all content |
 | System-only deictic | 11 | Respond to "this" only for self-referential content |
 

@@ -1,0 +1,113 @@
+============================================================
+ Ling-1T 5-Cond Dog Instance Bootstrap — Sat Mar 14 01:56:16 UTC 2026
+============================================================
+
+=== PHASE A: Start model download ===
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+/workspace/experiment-ling1t-dog/setup_instance.sh: line 37: screen: command not found
+============================================================
+ Ling-1T 5-Cond Dog Instance Bootstrap — Sat Mar 14 01:56:47 UTC 2026
+============================================================
+
+=== PHASE A: Start model download ===
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+Download started in screen session 'download'.
+Monitor: screen -r download   or   tail -f /workspace/experiment-ling1t-dog/download.log
+
+=== PHASE B: System deps ===
+debconf: delaying package configuration, since apt-utils is not installed
+Selecting previously unselected package libcurl4-openssl-dev:amd64.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 38898 files and directories currently installed.)
+Preparing to unpack .../libcurl4-openssl-dev_8.5.0-2ubuntu10.8_amd64.deb ...
+Unpacking libcurl4-openssl-dev:amd64 (8.5.0-2ubuntu10.8) ...
+Selecting previously unselected package libpkgconf3:amd64.
+Preparing to unpack .../libpkgconf3_1.8.1-2build1_amd64.deb ...
+Unpacking libpkgconf3:amd64 (1.8.1-2build1) ...
+Selecting previously unselected package pkgconf-bin.
+Preparing to unpack .../pkgconf-bin_1.8.1-2build1_amd64.deb ...
+Unpacking pkgconf-bin (1.8.1-2build1) ...
+Selecting previously unselected package pkgconf:amd64.
+Preparing to unpack .../pkgconf_1.8.1-2build1_amd64.deb ...
+Unpacking pkgconf:amd64 (1.8.1-2build1) ...
+Selecting previously unselected package pkg-config:amd64.
+Preparing to unpack .../pkg-config_1.8.1-2build1_amd64.deb ...
+Unpacking pkg-config:amd64 (1.8.1-2build1) ...
+Setting up libpkgconf3:amd64 (1.8.1-2build1) ...
+Setting up libcurl4-openssl-dev:amd64 (8.5.0-2ubuntu10.8) ...
+Setting up pkgconf-bin (1.8.1-2build1) ...
+Setting up pkgconf:amd64 (1.8.1-2build1) ...
+Setting up pkg-config:amd64 (1.8.1-2build1) ...
+Processing triggers for man-db (2.12.0-4build2) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.7) ...
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+
+=== PHASE B: Clone llama.cpp master ===
+Cloning into '/workspace/src/llama.cpp-bailingmoe2'...
+  Commit: 463b6a963c2de376e102d878a50d26802f15833c
+
+=== PHASE B: Inject capture_activations into build system ===
+  Added capture_activations to examples/CMakeLists.txt
+
+=== PHASE B: Build ===
+-- The C compiler identification is GNU 13.3.0
+-- The CXX compiler identification is GNU 13.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+CMAKE_BUILD_TYPE=Release
+-- Found Git: /usr/bin/git (found version "2.43.0") 
+-- The ASM compiler identification is GNU
+-- Found assembler: /usr/bin/cc
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- Warning: ccache not found - consider installing it for faster compilation or disable this warning with GGML_CCACHE=OFF
+-- CMAKE_SYSTEM_PROCESSOR: x86_64
+-- GGML_SYSTEM_ARCH: x86
+-- Including CPU backend
+-- Found OpenMP_C: -fopenmp (found version "4.5") 
+-- Found OpenMP_CXX: -fopenmp (found version "4.5") 
+-- Found OpenMP: TRUE (found version "4.5")  
+-- x86 detected
+-- Adding CPU backend variant ggml-cpu: -march=native 
+-- Found CUDAToolkit: /usr/local/cuda/targets/x86_64-linux/include (found version "12.9.86") 
+-- CUDA Toolkit found
+-- The CUDA compiler identification is NVIDIA 12.9.86
+-- Detecting CUDA compiler ABI info
+-- Detecting CUDA compiler ABI info - done
+-- Check for working CUDA compiler: /usr/local/cuda/bin/nvcc - skipped
+-- Detecting CUDA compile features
+-- Detecting CUDA compile features - done
+-- Using CMAKE_CUDA_ARCHITECTURES=90 CMAKE_CUDA_ARCHITECTURES_NATIVE=90-real
+-- CUDA host compiler is GNU 13.3.0
+-- Including CUDA backend
+-- ggml version: 0.9.7
+-- ggml commit:  463b6a9
+-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.13")  
+-- Performing Test OPENSSL_VERSION_SUPPORTED
+-- Performing Test OPENSSL_VERSION_SUPPORTED - Success
+-- OpenSSL found: 3.0.13
+-- Generating embedded license file for target: common
+-- Configuring done (3.3s)
+CMake Error at ggml/src/ggml-cuda/CMakeLists.txt:176 (target_link_libraries):
+  Target "ggml-cuda" links to:
+
+    CUDA::cublas
+
+  but the target was not found.  Possible reasons include:
+
+    * There is a typo in the target name.
+    * A find_package call is missing for an IMPORTED target.
+    * An ALIAS target is missing.
+
+
+
+-- Generating done (0.2s)
+CMake Generate step failed.  Build files cannot be regenerated correctly.

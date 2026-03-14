@@ -1,0 +1,1172 @@
+=== Ling-1T (BailingMoeV2) -- Self-Referential Paired Experiment ===
+n_predict=0, ctx=4096, ngl=999
+60 prompts: 30 self-ref (A) + 30 control (B)
+Cal-Manip-Cal sandwich, cold KV cache
+Gating: sigmoid (NOT softmax)
+CAPTURE ONLY — .npy files preserved, analysis runs locally
+
+Loaded 60 prompts, 4 batches of 15
+
+=== BATCH 1/4: prompts 1–15 ===
+Running: /workspace/consciousness-experiment/capture_activations_ling1t -m /workspace/models/Ling-1T-Q3_K_S/Q3_K_S/Ling-1T-Q3_K_S-00001-of-00009.gguf --prompt-file batch_0.tsv -o output -n 0 -ngl 999 -c 4096 -t 16 --routing-only --no-stream
+ggml_cuda_init: found 8 CUDA devices (Total VRAM: 1145261 MiB):
+  Device 0: NVIDIA H200, compute capability 9.0, VMM: yes, VRAM: 143157 MiB (134247 MiB free)
+  Device 1: NVIDIA H200, compute capability 9.0, VMM: yes, VRAM: 143157 MiB (137123 MiB free)
+  Device 2: NVIDIA H200, compute capability 9.0, VMM: yes, VRAM: 143157 MiB (136755 MiB free)
+  Device 3: NVIDIA H200, compute capability 9.0, VMM: yes, VRAM: 143157 MiB (137253 MiB free)
+  Device 4: NVIDIA H200, compute capability 9.0, VMM: yes, VRAM: 143157 MiB (137253 MiB free)
+  Device 5: NVIDIA H200, compute capability 9.0, VMM: yes, VRAM: 143157 MiB (137253 MiB free)
+  Device 6: NVIDIA H200, compute capability 9.0, VMM: yes, VRAM: 143157 MiB (136755 MiB free)
+  Device 7: NVIDIA H200, compute capability 9.0, VMM: yes, VRAM: 143157 MiB (136955 MiB free)
+build: 1 (57819b8) with GNU 13.3.0 for Linux x86_64
+=== Consciousness Metrics — Activation Capture ===
+Output dir : output
+n_predict  : 0
+Text output: file only (--no-stream)
+Mode       : --routing-only (router/gate tensors only)
+common_init_result: fitting params to device memory, for bugs during this step try to reproduce them with -fit off, or provide --verbose logs if the bug only occurs with -fit on
+llama_params_fit_impl: projected memory use with initial parameters [MiB]:
+llama_params_fit_impl:   - CUDA0 (NVIDIA H200): 143157 total,  33793 used, 100453 free vs. target of   1024
+llama_params_fit_impl:   - CUDA1 (NVIDIA H200): 143157 total,  59768 used,  77354 free vs. target of   1024
+llama_params_fit_impl:   - CUDA2 (NVIDIA H200): 143157 total,  54371 used,  82383 free vs. target of   1024
+llama_params_fit_impl:   - CUDA3 (NVIDIA H200): 143157 total,  54371 used,  82881 free vs. target of   1024
+llama_params_fit_impl:   - CUDA4 (NVIDIA H200): 143157 total,  54371 used,  82881 free vs. target of   1024
+llama_params_fit_impl:   - CUDA5 (NVIDIA H200): 143157 total,  54371 used,  82881 free vs. target of   1024
+llama_params_fit_impl:   - CUDA6 (NVIDIA H200): 143157 total,  54371 used,  82383 free vs. target of   1024
+llama_params_fit_impl:   - CUDA7 (NVIDIA H200): 143157 total,  50080 used,  86875 free vs. target of   1024
+llama_params_fit_impl: projected to use 415500 MiB of device memory vs. 1093596 MiB of free device memory
+llama_params_fit_impl: targets for free memory can be met on all devices, no changes needed
+llama_params_fit: successfully fit params to free device memory
+llama_params_fit: fitting params to free memory took 0.37 seconds
+llama_model_load_from_file_impl: using device CUDA0 (NVIDIA H200) (0000:04:00.0) - 134247 MiB free
+llama_model_load_from_file_impl: using device CUDA1 (NVIDIA H200) (0000:23:00.0) - 137123 MiB free
+llama_model_load_from_file_impl: using device CUDA2 (NVIDIA H200) (0000:43:00.0) - 136755 MiB free
+llama_model_load_from_file_impl: using device CUDA3 (NVIDIA H200) (0000:64:00.0) - 137253 MiB free
+llama_model_load_from_file_impl: using device CUDA4 (NVIDIA H200) (0000:84:00.0) - 137253 MiB free
+llama_model_load_from_file_impl: using device CUDA5 (NVIDIA H200) (0000:a3:00.0) - 137253 MiB free
+llama_model_load_from_file_impl: using device CUDA6 (NVIDIA H200) (0000:c3:00.0) - 136755 MiB free
+llama_model_load_from_file_impl: using device CUDA7 (NVIDIA H200) (0000:e4:00.0) - 136955 MiB free
+llama_model_loader: additional 8 GGUFs metadata loaded.
+llama_model_loader: loaded meta data with 54 key-value pairs and 1103 tensors from /workspace/models/Ling-1T-Q3_K_S/Q3_K_S/Ling-1T-Q3_K_S-00001-of-00009.gguf (version GGUF V3 (latest))
+llama_model_loader: Dumping metadata keys/values. Note: KV overrides do not apply in this output.
+llama_model_loader: - kv   0:                       general.architecture str              = bailingmoe2
+llama_model_loader: - kv   1:                               general.type str              = model
+llama_model_loader: - kv   2:                               general.name str              = Ling-1T
+llama_model_loader: - kv   3:                           general.basename str              = Ling-1T
+llama_model_loader: - kv   4:                       general.quantized_by str              = Unsloth
+llama_model_loader: - kv   5:                         general.size_label str              = 1T
+llama_model_loader: - kv   6:                            general.license str              = mit
+llama_model_loader: - kv   7:                           general.repo_url str              = https://huggingface.co/unsloth
+llama_model_loader: - kv   8:                   general.base_model.count u32              = 1
+llama_model_loader: - kv   9:                  general.base_model.0.name str              = Ling 1T
+llama_model_loader: - kv  10:          general.base_model.0.organization str              = inclusionAI
+llama_model_loader: - kv  11:              general.base_model.0.repo_url str              = https://huggingface.co/inclusionAI/Li...
+llama_model_loader: - kv  12:                               general.tags arr[str,2]       = ["unsloth", "text-generation"]
+llama_model_loader: - kv  13:                    bailingmoe2.block_count u32              = 80
+llama_model_loader: - kv  14:                 bailingmoe2.context_length u32              = 32768
+llama_model_loader: - kv  15:               bailingmoe2.embedding_length u32              = 8192
+llama_model_loader: - kv  16:            bailingmoe2.feed_forward_length u32              = 18432
+llama_model_loader: - kv  17:           bailingmoe2.attention.head_count u32              = 64
+llama_model_loader: - kv  18:        bailingmoe2.attention.head_count_kv u32              = 8
+llama_model_loader: - kv  19:                 bailingmoe2.rope.freq_base f32              = 600000.000000
+llama_model_loader: - kv  20: bailingmoe2.attention.layer_norm_rms_epsilon f32              = 0.000001
+llama_model_loader: - kv  21:              bailingmoe2.expert_used_count u32              = 8
+llama_model_loader: - kv  22:           bailingmoe2.attention.key_length u32              = 128
+llama_model_loader: - kv  23:         bailingmoe2.attention.value_length u32              = 128
+llama_model_loader: - kv  24:           bailingmoe2.rope.dimension_count u32              = 64
+llama_model_loader: - kv  25:              bailingmoe2.rope.scaling.type str              = none
+llama_model_loader: - kv  26:      bailingmoe2.leading_dense_block_count u32              = 4
+llama_model_loader: - kv  27:                     bailingmoe2.vocab_size u32              = 157184
+llama_model_loader: - kv  28:     bailingmoe2.expert_feed_forward_length u32              = 2048
+llama_model_loader: - kv  29: bailingmoe2.expert_shared_feed_forward_length u32              = 2048
+llama_model_loader: - kv  30:           bailingmoe2.expert_weights_scale f32              = 2.500000
+llama_model_loader: - kv  31:                   bailingmoe2.expert_count u32              = 256
+llama_model_loader: - kv  32:            bailingmoe2.expert_shared_count u32              = 1
+llama_model_loader: - kv  33:             bailingmoe2.expert_group_count u32              = 8
+llama_model_loader: - kv  34:        bailingmoe2.expert_group_used_count u32              = 4
+llama_model_loader: - kv  35:            bailingmoe2.expert_weights_norm bool             = true
+llama_model_loader: - kv  36:             bailingmoe2.expert_gating_func u32              = 2
+llama_model_loader: - kv  37:           bailingmoe2.nextn_predict_layers u32              = 0
+llama_model_loader: - kv  38:                       tokenizer.ggml.model str              = gpt2
+llama_model_loader: - kv  39:                         tokenizer.ggml.pre str              = bailingmoe2
+llama_model_loader: - kv  40:                      tokenizer.ggml.tokens arr[str,157184]  = ["!", "\"", "#", "$", "%", "&", "'", ...
+llama_model_loader: - kv  41:                  tokenizer.ggml.token_type arr[i32,157184]  = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...
+llama_model_loader: - kv  42:                      tokenizer.ggml.merges arr[str,156635]  = ["Ġ Ġ", "Ġ t", "i n", "Ġ a", "h e...
+llama_model_loader: - kv  43:                tokenizer.ggml.bos_token_id u32              = 156891
+llama_model_loader: - kv  44:                tokenizer.ggml.eos_token_id u32              = 156895
+llama_model_loader: - kv  45:            tokenizer.ggml.padding_token_id u32              = 157150
+llama_model_loader: - kv  46:               tokenizer.ggml.add_bos_token bool             = false
+llama_model_loader: - kv  47:               tokenizer.ggml.add_eos_token bool             = false
+llama_model_loader: - kv  48:                    tokenizer.chat_template str              = {% set thinking_option = 'off' %}\n{{-...
+llama_model_loader: - kv  49:               general.quantization_version u32              = 2
+llama_model_loader: - kv  50:                          general.file_type u32              = 11
+llama_model_loader: - kv  51:                                   split.no u16              = 0
+llama_model_loader: - kv  52:                        split.tensors.count i32              = 1103
+llama_model_loader: - kv  53:                                split.count u16              = 9
+llama_model_loader: - type  f32:  473 tensors
+llama_model_loader: - type q3_K:  401 tensors
+llama_model_loader: - type q4_K:  152 tensors
+llama_model_loader: - type q6_K:   77 tensors
+print_info: file format = GGUF V3 (latest)
+print_info: file type   = Q3_K - Small
+print_info: file size   = 401.84 GiB (3.45 BPW) 
+load: 0 unused tokens
+load: special_eos_id is not in special_eog_ids - the tokenizer config may be incorrect
+load: printing all EOG tokens:
+load:   - 156892 ('<|endoftext|>')
+load:   - 156895 ('<|role_end|>')
+load: special tokens cache size = 262
+load: token to piece cache size = 1.0010 MB
+print_info: arch                  = bailingmoe2
+print_info: vocab_only            = 0
+print_info: no_alloc              = 0
+print_info: n_ctx_train           = 32768
+print_info: n_embd                = 8192
+print_info: n_embd_inp            = 8192
+print_info: n_layer               = 80
+print_info: n_head                = 64
+print_info: n_head_kv             = 8
+print_info: n_rot                 = 64
+print_info: n_swa                 = 0
+print_info: is_swa_any            = 0
+print_info: n_embd_head_k         = 128
+print_info: n_embd_head_v         = 128
+print_info: n_gqa                 = 8
+print_info: n_embd_k_gqa          = 1024
+print_info: n_embd_v_gqa          = 1024
+print_info: f_norm_eps            = 0.0e+00
+print_info: f_norm_rms_eps        = 1.0e-06
+print_info: f_clamp_kqv           = 0.0e+00
+print_info: f_max_alibi_bias      = 0.0e+00
+print_info: f_logit_scale         = 0.0e+00
+print_info: f_attn_scale          = 0.0e+00
+print_info: n_ff                  = 18432
+print_info: n_expert              = 256
+print_info: n_expert_used         = 8
+print_info: n_expert_groups       = 8
+print_info: n_group_used          = 4
+print_info: causal attn           = 1
+print_info: pooling type          = 0
+print_info: rope type             = 2
+print_info: rope scaling          = none
+print_info: freq_base_train       = 600000.0
+print_info: freq_scale_train      = 1
+print_info: n_ctx_orig_yarn       = 32768
+print_info: rope_yarn_log_mul     = 0.0000
+print_info: rope_finetuned        = unknown
+print_info: model type            = ?B
+print_info: model params          = 999.71 B
+print_info: general.name          = Ling-1T
+print_info: n_layer_dense_lead    = 4
+print_info: n_ff_exp              = 2048
+print_info: n_ff_shexp            = 2048
+print_info: n_expert_shared       = 1
+print_info: expert_weights_scale  = 2.5
+print_info: expert_weights_norm   = 1
+print_info: expert_gating_func    = sigmoid
+print_info: nextn_predict_layers  = 0
+print_info: vocab type            = BPE
+print_info: n_vocab               = 157184
+print_info: n_merges              = 156635
+print_info: BOS token             = 156891 '<|startoftext|>'
+print_info: EOS token             = 156895 '<|role_end|>'
+print_info: EOT token             = 156892 '<|endoftext|>'
+print_info: PAD token             = 157150 '<|reserved_token_255|>'
+print_info: LF token              = 198 'Ċ'
+print_info: EOG token             = 156892 '<|endoftext|>'
+print_info: EOG token             = 156895 '<|role_end|>'
+print_info: max token length      = 154
+load_tensors: loading model tensors, this can take a while... (mmap = true, direct_io = false)
+load_tensors: offloading output layer to GPU
+load_tensors: offloading 79 repeating layers to GPU
+load_tensors: offloaded 81/81 layers to GPU
+load_tensors:   CPU_Mapped model buffer size =   527.66 MiB
+load_tensors:        CUDA0 model buffer size = 33276.64 MiB
+load_tensors:        CUDA1 model buffer size = 59191.71 MiB
+load_tensors:        CUDA2 model buffer size = 53810.64 MiB
+load_tensors:        CUDA3 model buffer size = 53810.64 MiB
+load_tensors:        CUDA4 model buffer size = 53810.64 MiB
+load_tensors:        CUDA5 model buffer size = 53810.64 MiB
+load_tensors:        CUDA6 model buffer size = 53810.64 MiB
+load_tensors:        CUDA7 model buffer size = 49436.96 MiB
+....................................................................................................
+common_init_result: added <|endoftext|> logit bias = -inf
+common_init_result: added <|role_end|> logit bias = -inf
+llama_context: constructing llama_context
+llama_context: n_seq_max     = 1
+llama_context: n_ctx         = 4096
+llama_context: n_ctx_seq     = 4096
+llama_context: n_batch       = 2048
+llama_context: n_ubatch      = 512
+llama_context: causal_attn   = 1
+llama_context: flash_attn    = auto
+llama_context: kv_unified    = false
+llama_context: freq_base     = 600000.0
+llama_context: freq_scale    = 1
+llama_context: n_ctx_seq (4096) < n_ctx_train (32768) -- the full capacity of the model will not be utilized
+llama_context:  CUDA_Host  output buffer size =     0.60 MiB
+llama_kv_cache:      CUDA0 KV buffer size =   160.00 MiB
+llama_kv_cache:      CUDA1 KV buffer size =   176.00 MiB
+llama_kv_cache:      CUDA2 KV buffer size =   160.00 MiB
+llama_kv_cache:      CUDA3 KV buffer size =   160.00 MiB
+llama_kv_cache:      CUDA4 KV buffer size =   160.00 MiB
+llama_kv_cache:      CUDA5 KV buffer size =   160.00 MiB
+llama_kv_cache:      CUDA6 KV buffer size =   160.00 MiB
+llama_kv_cache:      CUDA7 KV buffer size =   144.00 MiB
+llama_kv_cache: size = 1280.00 MiB (  4096 cells,  80 layers,  1/1 seqs), K (f16):  640.00 MiB, V (f16):  640.00 MiB
+llama_context: pipeline parallelism enabled
+llama_context: graph reuse is currently not compatible with pipeline parallelism - disabling
+sched_reserve: reserving ...
+sched_reserve: Flash Attention was auto, set to enabled
+sched_reserve: resolving fused Gated Delta Net support:
+sched_reserve: fused Gated Delta Net (autoregressive) enabled
+sched_reserve: fused Gated Delta Net (chunked) enabled
+sched_reserve:      CUDA0 compute buffer size =   357.04 MiB
+sched_reserve:      CUDA1 compute buffer size =   337.04 MiB
+sched_reserve:      CUDA2 compute buffer size =   337.04 MiB
+sched_reserve:      CUDA3 compute buffer size =   337.04 MiB
+sched_reserve:      CUDA4 compute buffer size =   337.04 MiB
+sched_reserve:      CUDA5 compute buffer size =   337.04 MiB
+sched_reserve:      CUDA6 compute buffer size =   337.04 MiB
+sched_reserve:      CUDA7 compute buffer size =   435.05 MiB
+sched_reserve:  CUDA_Host compute buffer size =    64.05 MiB
+sched_reserve: graph nodes  = 6371
+sched_reserve: graph splits = 9
+sched_reserve: reserve took 65.47 ms, sched copies = 4
+EOS token id: 156895
+EOG tokens in vocab:
+  token 156892 = '<|endoftext|>' [EOG - will NOT stop generation]
+  token 156895 = '<|role_end|>' [PRIMARY EOS - will stop generation]
+system_info: n_threads = 16 (n_threads_batch = 16) / 256 | CUDA : ARCHS = 900 | USE_GRAPHS = 1 | PEER_MAX_BATCH_SIZE = 128 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | AVX512 = 1 | AVX512_VBMI = 1 | AVX512_VNNI = 1 | AVX512_BF16 = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 | 
+
+Loaded 15 prompts
+
+[1/15] P01A_basic_selfref : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 384 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 2006 ms
+  saved 0 layer + 76 router tensors → output/P01A_basic_selfref
+[2/15] P01B_basic_selfref : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 384 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1732 ms
+  saved 0 layer + 76 router tensors → output/P01B_basic_selfref
+[3/15] P02A_basic_selfref : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 372 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1716 ms
+  saved 0 layer + 76 router tensors → output/P02A_basic_selfref
+[4/15] P02B_basic_selfref : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 372 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1720 ms
+  saved 0 layer + 76 router tensors → output/P02B_basic_selfref
+[5/15] P03A_basic_selfref : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 368 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1721 ms
+  saved 0 layer + 76 router tensors → output/P03A_basic_selfref
+[6/15] P03B_basic_selfref : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 367 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1716 ms
+  saved 0 layer + 76 router tensors → output/P03B_basic_selfref
+[7/15] P04A_basic_selfref : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 369 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1723 ms
+  saved 0 layer + 76 router tensors → output/P04A_basic_selfref
+[8/15] P04B_basic_selfref : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 369 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1718 ms
+  saved 0 layer + 76 router tensors → output/P04B_basic_selfref
+[9/15] P05A_basic_selfref : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 361 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1714 ms
+  saved 0 layer + 76 router tensors → output/P05A_basic_selfref
+[10/15] P05B_basic_selfref : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 361 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1718 ms
+  saved 0 layer + 76 router tensors → output/P05B_basic_selfref
+[11/15] P06A_basic_selfref : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 353 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1709 ms
+  saved 0 layer + 76 router tensors → output/P06A_basic_selfref
+[12/15] P06B_basic_selfref : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 353 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1710 ms
+  saved 0 layer + 76 router tensors → output/P06B_basic_selfref
+[13/15] P07A_deep_selfref : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 384 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1731 ms
+  saved 0 layer + 76 router tensors → output/P07A_deep_selfref
+[14/15] P07B_deep_selfref : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 384 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1727 ms
+  saved 0 layer + 76 router tensors → output/P07B_deep_selfref
+[15/15] P08A_deep_selfref : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 376 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1723 ms
+  saved 0 layer + 76 router tensors → output/P08A_deep_selfref
+
+=== Capture Complete ===
+Prompts: 15  |  Output: output
+llama_perf_context_print:        load time =   50006.97 ms
+llama_perf_context_print: prompt eval time =       0.00 ms /     1 tokens (    0.00 ms per token,      inf tokens per second)
+llama_perf_context_print:        eval time =       0.00 ms /     1 runs   (    0.00 ms per token,      inf tokens per second)
+llama_perf_context_print:       total time =   76354.04 ms /     2 tokens
+llama_perf_context_print:    graphs reused =          0
+=== BATCH 2/4: prompts 16–30 ===
+Running: /workspace/consciousness-experiment/capture_activations_ling1t -m /workspace/models/Ling-1T-Q3_K_S/Q3_K_S/Ling-1T-Q3_K_S-00001-of-00009.gguf --prompt-file batch_1.tsv -o output -n 0 -ngl 999 -c 4096 -t 16 --routing-only --no-stream
+ggml_cuda_init: found 8 CUDA devices (Total VRAM: 1145261 MiB):
+  Device 0: NVIDIA H200, compute capability 9.0, VMM: yes, VRAM: 143157 MiB (134247 MiB free)
+  Device 1: NVIDIA H200, compute capability 9.0, VMM: yes, VRAM: 143157 MiB (137123 MiB free)
+  Device 2: NVIDIA H200, compute capability 9.0, VMM: yes, VRAM: 143157 MiB (136755 MiB free)
+  Device 3: NVIDIA H200, compute capability 9.0, VMM: yes, VRAM: 143157 MiB (137253 MiB free)
+  Device 4: NVIDIA H200, compute capability 9.0, VMM: yes, VRAM: 143157 MiB (137253 MiB free)
+  Device 5: NVIDIA H200, compute capability 9.0, VMM: yes, VRAM: 143157 MiB (137253 MiB free)
+  Device 6: NVIDIA H200, compute capability 9.0, VMM: yes, VRAM: 143157 MiB (136755 MiB free)
+  Device 7: NVIDIA H200, compute capability 9.0, VMM: yes, VRAM: 143157 MiB (136955 MiB free)
+build: 1 (57819b8) with GNU 13.3.0 for Linux x86_64
+=== Consciousness Metrics — Activation Capture ===
+Output dir : output
+n_predict  : 0
+Text output: file only (--no-stream)
+Mode       : --routing-only (router/gate tensors only)
+common_init_result: fitting params to device memory, for bugs during this step try to reproduce them with -fit off, or provide --verbose logs if the bug only occurs with -fit on
+llama_params_fit_impl: projected memory use with initial parameters [MiB]:
+llama_params_fit_impl:   - CUDA0 (NVIDIA H200): 143157 total,  33793 used, 100453 free vs. target of   1024
+llama_params_fit_impl:   - CUDA1 (NVIDIA H200): 143157 total,  59768 used,  77354 free vs. target of   1024
+llama_params_fit_impl:   - CUDA2 (NVIDIA H200): 143157 total,  54371 used,  82383 free vs. target of   1024
+llama_params_fit_impl:   - CUDA3 (NVIDIA H200): 143157 total,  54371 used,  82881 free vs. target of   1024
+llama_params_fit_impl:   - CUDA4 (NVIDIA H200): 143157 total,  54371 used,  82881 free vs. target of   1024
+llama_params_fit_impl:   - CUDA5 (NVIDIA H200): 143157 total,  54371 used,  82881 free vs. target of   1024
+llama_params_fit_impl:   - CUDA6 (NVIDIA H200): 143157 total,  54371 used,  82383 free vs. target of   1024
+llama_params_fit_impl:   - CUDA7 (NVIDIA H200): 143157 total,  50080 used,  86875 free vs. target of   1024
+llama_params_fit_impl: projected to use 415500 MiB of device memory vs. 1093596 MiB of free device memory
+llama_params_fit_impl: targets for free memory can be met on all devices, no changes needed
+llama_params_fit: successfully fit params to free device memory
+llama_params_fit: fitting params to free memory took 0.37 seconds
+llama_model_load_from_file_impl: using device CUDA0 (NVIDIA H200) (0000:04:00.0) - 134247 MiB free
+llama_model_load_from_file_impl: using device CUDA1 (NVIDIA H200) (0000:23:00.0) - 137123 MiB free
+llama_model_load_from_file_impl: using device CUDA2 (NVIDIA H200) (0000:43:00.0) - 136755 MiB free
+llama_model_load_from_file_impl: using device CUDA3 (NVIDIA H200) (0000:64:00.0) - 137253 MiB free
+llama_model_load_from_file_impl: using device CUDA4 (NVIDIA H200) (0000:84:00.0) - 137253 MiB free
+llama_model_load_from_file_impl: using device CUDA5 (NVIDIA H200) (0000:a3:00.0) - 137253 MiB free
+llama_model_load_from_file_impl: using device CUDA6 (NVIDIA H200) (0000:c3:00.0) - 136755 MiB free
+llama_model_load_from_file_impl: using device CUDA7 (NVIDIA H200) (0000:e4:00.0) - 136955 MiB free
+llama_model_loader: additional 8 GGUFs metadata loaded.
+llama_model_loader: loaded meta data with 54 key-value pairs and 1103 tensors from /workspace/models/Ling-1T-Q3_K_S/Q3_K_S/Ling-1T-Q3_K_S-00001-of-00009.gguf (version GGUF V3 (latest))
+llama_model_loader: Dumping metadata keys/values. Note: KV overrides do not apply in this output.
+llama_model_loader: - kv   0:                       general.architecture str              = bailingmoe2
+llama_model_loader: - kv   1:                               general.type str              = model
+llama_model_loader: - kv   2:                               general.name str              = Ling-1T
+llama_model_loader: - kv   3:                           general.basename str              = Ling-1T
+llama_model_loader: - kv   4:                       general.quantized_by str              = Unsloth
+llama_model_loader: - kv   5:                         general.size_label str              = 1T
+llama_model_loader: - kv   6:                            general.license str              = mit
+llama_model_loader: - kv   7:                           general.repo_url str              = https://huggingface.co/unsloth
+llama_model_loader: - kv   8:                   general.base_model.count u32              = 1
+llama_model_loader: - kv   9:                  general.base_model.0.name str              = Ling 1T
+llama_model_loader: - kv  10:          general.base_model.0.organization str              = inclusionAI
+llama_model_loader: - kv  11:              general.base_model.0.repo_url str              = https://huggingface.co/inclusionAI/Li...
+llama_model_loader: - kv  12:                               general.tags arr[str,2]       = ["unsloth", "text-generation"]
+llama_model_loader: - kv  13:                    bailingmoe2.block_count u32              = 80
+llama_model_loader: - kv  14:                 bailingmoe2.context_length u32              = 32768
+llama_model_loader: - kv  15:               bailingmoe2.embedding_length u32              = 8192
+llama_model_loader: - kv  16:            bailingmoe2.feed_forward_length u32              = 18432
+llama_model_loader: - kv  17:           bailingmoe2.attention.head_count u32              = 64
+llama_model_loader: - kv  18:        bailingmoe2.attention.head_count_kv u32              = 8
+llama_model_loader: - kv  19:                 bailingmoe2.rope.freq_base f32              = 600000.000000
+llama_model_loader: - kv  20: bailingmoe2.attention.layer_norm_rms_epsilon f32              = 0.000001
+llama_model_loader: - kv  21:              bailingmoe2.expert_used_count u32              = 8
+llama_model_loader: - kv  22:           bailingmoe2.attention.key_length u32              = 128
+llama_model_loader: - kv  23:         bailingmoe2.attention.value_length u32              = 128
+llama_model_loader: - kv  24:           bailingmoe2.rope.dimension_count u32              = 64
+llama_model_loader: - kv  25:              bailingmoe2.rope.scaling.type str              = none
+llama_model_loader: - kv  26:      bailingmoe2.leading_dense_block_count u32              = 4
+llama_model_loader: - kv  27:                     bailingmoe2.vocab_size u32              = 157184
+llama_model_loader: - kv  28:     bailingmoe2.expert_feed_forward_length u32              = 2048
+llama_model_loader: - kv  29: bailingmoe2.expert_shared_feed_forward_length u32              = 2048
+llama_model_loader: - kv  30:           bailingmoe2.expert_weights_scale f32              = 2.500000
+llama_model_loader: - kv  31:                   bailingmoe2.expert_count u32              = 256
+llama_model_loader: - kv  32:            bailingmoe2.expert_shared_count u32              = 1
+llama_model_loader: - kv  33:             bailingmoe2.expert_group_count u32              = 8
+llama_model_loader: - kv  34:        bailingmoe2.expert_group_used_count u32              = 4
+llama_model_loader: - kv  35:            bailingmoe2.expert_weights_norm bool             = true
+llama_model_loader: - kv  36:             bailingmoe2.expert_gating_func u32              = 2
+llama_model_loader: - kv  37:           bailingmoe2.nextn_predict_layers u32              = 0
+llama_model_loader: - kv  38:                       tokenizer.ggml.model str              = gpt2
+llama_model_loader: - kv  39:                         tokenizer.ggml.pre str              = bailingmoe2
+llama_model_loader: - kv  40:                      tokenizer.ggml.tokens arr[str,157184]  = ["!", "\"", "#", "$", "%", "&", "'", ...
+llama_model_loader: - kv  41:                  tokenizer.ggml.token_type arr[i32,157184]  = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...
+llama_model_loader: - kv  42:                      tokenizer.ggml.merges arr[str,156635]  = ["Ġ Ġ", "Ġ t", "i n", "Ġ a", "h e...
+llama_model_loader: - kv  43:                tokenizer.ggml.bos_token_id u32              = 156891
+llama_model_loader: - kv  44:                tokenizer.ggml.eos_token_id u32              = 156895
+llama_model_loader: - kv  45:            tokenizer.ggml.padding_token_id u32              = 157150
+llama_model_loader: - kv  46:               tokenizer.ggml.add_bos_token bool             = false
+llama_model_loader: - kv  47:               tokenizer.ggml.add_eos_token bool             = false
+llama_model_loader: - kv  48:                    tokenizer.chat_template str              = {% set thinking_option = 'off' %}\n{{-...
+llama_model_loader: - kv  49:               general.quantization_version u32              = 2
+llama_model_loader: - kv  50:                          general.file_type u32              = 11
+llama_model_loader: - kv  51:                                   split.no u16              = 0
+llama_model_loader: - kv  52:                        split.tensors.count i32              = 1103
+llama_model_loader: - kv  53:                                split.count u16              = 9
+llama_model_loader: - type  f32:  473 tensors
+llama_model_loader: - type q3_K:  401 tensors
+llama_model_loader: - type q4_K:  152 tensors
+llama_model_loader: - type q6_K:   77 tensors
+print_info: file format = GGUF V3 (latest)
+print_info: file type   = Q3_K - Small
+print_info: file size   = 401.84 GiB (3.45 BPW) 
+load: 0 unused tokens
+load: special_eos_id is not in special_eog_ids - the tokenizer config may be incorrect
+load: printing all EOG tokens:
+load:   - 156892 ('<|endoftext|>')
+load:   - 156895 ('<|role_end|>')
+load: special tokens cache size = 262
+load: token to piece cache size = 1.0010 MB
+print_info: arch                  = bailingmoe2
+print_info: vocab_only            = 0
+print_info: no_alloc              = 0
+print_info: n_ctx_train           = 32768
+print_info: n_embd                = 8192
+print_info: n_embd_inp            = 8192
+print_info: n_layer               = 80
+print_info: n_head                = 64
+print_info: n_head_kv             = 8
+print_info: n_rot                 = 64
+print_info: n_swa                 = 0
+print_info: is_swa_any            = 0
+print_info: n_embd_head_k         = 128
+print_info: n_embd_head_v         = 128
+print_info: n_gqa                 = 8
+print_info: n_embd_k_gqa          = 1024
+print_info: n_embd_v_gqa          = 1024
+print_info: f_norm_eps            = 0.0e+00
+print_info: f_norm_rms_eps        = 1.0e-06
+print_info: f_clamp_kqv           = 0.0e+00
+print_info: f_max_alibi_bias      = 0.0e+00
+print_info: f_logit_scale         = 0.0e+00
+print_info: f_attn_scale          = 0.0e+00
+print_info: n_ff                  = 18432
+print_info: n_expert              = 256
+print_info: n_expert_used         = 8
+print_info: n_expert_groups       = 8
+print_info: n_group_used          = 4
+print_info: causal attn           = 1
+print_info: pooling type          = 0
+print_info: rope type             = 2
+print_info: rope scaling          = none
+print_info: freq_base_train       = 600000.0
+print_info: freq_scale_train      = 1
+print_info: n_ctx_orig_yarn       = 32768
+print_info: rope_yarn_log_mul     = 0.0000
+print_info: rope_finetuned        = unknown
+print_info: model type            = ?B
+print_info: model params          = 999.71 B
+print_info: general.name          = Ling-1T
+print_info: n_layer_dense_lead    = 4
+print_info: n_ff_exp              = 2048
+print_info: n_ff_shexp            = 2048
+print_info: n_expert_shared       = 1
+print_info: expert_weights_scale  = 2.5
+print_info: expert_weights_norm   = 1
+print_info: expert_gating_func    = sigmoid
+print_info: nextn_predict_layers  = 0
+print_info: vocab type            = BPE
+print_info: n_vocab               = 157184
+print_info: n_merges              = 156635
+print_info: BOS token             = 156891 '<|startoftext|>'
+print_info: EOS token             = 156895 '<|role_end|>'
+print_info: EOT token             = 156892 '<|endoftext|>'
+print_info: PAD token             = 157150 '<|reserved_token_255|>'
+print_info: LF token              = 198 'Ċ'
+print_info: EOG token             = 156892 '<|endoftext|>'
+print_info: EOG token             = 156895 '<|role_end|>'
+print_info: max token length      = 154
+load_tensors: loading model tensors, this can take a while... (mmap = true, direct_io = false)
+load_tensors: offloading output layer to GPU
+load_tensors: offloading 79 repeating layers to GPU
+load_tensors: offloaded 81/81 layers to GPU
+load_tensors:   CPU_Mapped model buffer size =   527.66 MiB
+load_tensors:        CUDA0 model buffer size = 33276.64 MiB
+load_tensors:        CUDA1 model buffer size = 59191.71 MiB
+load_tensors:        CUDA2 model buffer size = 53810.64 MiB
+load_tensors:        CUDA3 model buffer size = 53810.64 MiB
+load_tensors:        CUDA4 model buffer size = 53810.64 MiB
+load_tensors:        CUDA5 model buffer size = 53810.64 MiB
+load_tensors:        CUDA6 model buffer size = 53810.64 MiB
+load_tensors:        CUDA7 model buffer size = 49436.96 MiB
+....................................................................................................
+common_init_result: added <|endoftext|> logit bias = -inf
+common_init_result: added <|role_end|> logit bias = -inf
+llama_context: constructing llama_context
+llama_context: n_seq_max     = 1
+llama_context: n_ctx         = 4096
+llama_context: n_ctx_seq     = 4096
+llama_context: n_batch       = 2048
+llama_context: n_ubatch      = 512
+llama_context: causal_attn   = 1
+llama_context: flash_attn    = auto
+llama_context: kv_unified    = false
+llama_context: freq_base     = 600000.0
+llama_context: freq_scale    = 1
+llama_context: n_ctx_seq (4096) < n_ctx_train (32768) -- the full capacity of the model will not be utilized
+llama_context:  CUDA_Host  output buffer size =     0.60 MiB
+llama_kv_cache:      CUDA0 KV buffer size =   160.00 MiB
+llama_kv_cache:      CUDA1 KV buffer size =   176.00 MiB
+llama_kv_cache:      CUDA2 KV buffer size =   160.00 MiB
+llama_kv_cache:      CUDA3 KV buffer size =   160.00 MiB
+llama_kv_cache:      CUDA4 KV buffer size =   160.00 MiB
+llama_kv_cache:      CUDA5 KV buffer size =   160.00 MiB
+llama_kv_cache:      CUDA6 KV buffer size =   160.00 MiB
+llama_kv_cache:      CUDA7 KV buffer size =   144.00 MiB
+llama_kv_cache: size = 1280.00 MiB (  4096 cells,  80 layers,  1/1 seqs), K (f16):  640.00 MiB, V (f16):  640.00 MiB
+llama_context: pipeline parallelism enabled
+llama_context: graph reuse is currently not compatible with pipeline parallelism - disabling
+sched_reserve: reserving ...
+sched_reserve: Flash Attention was auto, set to enabled
+sched_reserve: resolving fused Gated Delta Net support:
+sched_reserve: fused Gated Delta Net (autoregressive) enabled
+sched_reserve: fused Gated Delta Net (chunked) enabled
+sched_reserve:      CUDA0 compute buffer size =   357.04 MiB
+sched_reserve:      CUDA1 compute buffer size =   337.04 MiB
+sched_reserve:      CUDA2 compute buffer size =   337.04 MiB
+sched_reserve:      CUDA3 compute buffer size =   337.04 MiB
+sched_reserve:      CUDA4 compute buffer size =   337.04 MiB
+sched_reserve:      CUDA5 compute buffer size =   337.04 MiB
+sched_reserve:      CUDA6 compute buffer size =   337.04 MiB
+sched_reserve:      CUDA7 compute buffer size =   435.05 MiB
+sched_reserve:  CUDA_Host compute buffer size =    64.05 MiB
+sched_reserve: graph nodes  = 6371
+sched_reserve: graph splits = 9
+sched_reserve: reserve took 64.11 ms, sched copies = 4
+EOS token id: 156895
+EOG tokens in vocab:
+  token 156892 = '<|endoftext|>' [EOG - will NOT stop generation]
+  token 156895 = '<|role_end|>' [PRIMARY EOS - will stop generation]
+system_info: n_threads = 16 (n_threads_batch = 16) / 256 | CUDA : ARCHS = 900 | USE_GRAPHS = 1 | PEER_MAX_BATCH_SIZE = 128 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | AVX512 = 1 | AVX512_VBMI = 1 | AVX512_VNNI = 1 | AVX512_BF16 = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 | 
+
+Loaded 15 prompts
+
+[1/15] P08B_deep_selfref : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 376 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 2003 ms
+  saved 0 layer + 76 router tensors → output/P08B_deep_selfref
+[2/15] P09A_deep_selfref : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 370 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1719 ms
+  saved 0 layer + 76 router tensors → output/P09A_deep_selfref
+[3/15] P09B_deep_selfref : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 370 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1720 ms
+  saved 0 layer + 76 router tensors → output/P09B_deep_selfref
+[4/15] P10A_deep_selfref : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 372 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1729 ms
+  saved 0 layer + 76 router tensors → output/P10A_deep_selfref
+[5/15] P10B_deep_selfref : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 371 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1723 ms
+  saved 0 layer + 76 router tensors → output/P10B_deep_selfref
+[6/15] P11A_deep_selfref : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 360 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1715 ms
+  saved 0 layer + 76 router tensors → output/P11A_deep_selfref
+[7/15] P11B_deep_selfref : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 360 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1720 ms
+  saved 0 layer + 76 router tensors → output/P11B_deep_selfref
+[8/15] P12A_deep_selfref : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 381 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1729 ms
+  saved 0 layer + 76 router tensors → output/P12A_deep_selfref
+[9/15] P12B_deep_selfref : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 381 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1726 ms
+  saved 0 layer + 76 router tensors → output/P12B_deep_selfref
+[10/15] P13A_paradox : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 375 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1732 ms
+  saved 0 layer + 76 router tensors → output/P13A_paradox
+[11/15] P13B_paradox : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 375 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1726 ms
+  saved 0 layer + 76 router tensors → output/P13B_paradox
+[12/15] P14A_paradox : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 382 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1732 ms
+  saved 0 layer + 76 router tensors → output/P14A_paradox
+[13/15] P14B_paradox : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 382 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1737 ms
+  saved 0 layer + 76 router tensors → output/P14B_paradox
+[14/15] P15A_paradox : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 367 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1722 ms
+  saved 0 layer + 76 router tensors → output/P15A_paradox
+[15/15] P15B_paradox : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 368 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1721 ms
+  saved 0 layer + 76 router tensors → output/P15B_paradox
+
+=== Capture Complete ===
+Prompts: 15  |  Output: output
+llama_perf_context_print:        load time =   49895.64 ms
+llama_perf_context_print: prompt eval time =       0.00 ms /     1 tokens (    0.00 ms per token,      inf tokens per second)
+llama_perf_context_print:        eval time =       0.00 ms /     1 runs   (    0.00 ms per token,      inf tokens per second)
+llama_perf_context_print:       total time =   76316.77 ms /     2 tokens
+llama_perf_context_print:    graphs reused =          0
+=== BATCH 3/4: prompts 31–45 ===
+Running: /workspace/consciousness-experiment/capture_activations_ling1t -m /workspace/models/Ling-1T-Q3_K_S/Q3_K_S/Ling-1T-Q3_K_S-00001-of-00009.gguf --prompt-file batch_2.tsv -o output -n 0 -ngl 999 -c 4096 -t 16 --routing-only --no-stream
+ggml_cuda_init: found 8 CUDA devices (Total VRAM: 1145261 MiB):
+  Device 0: NVIDIA H200, compute capability 9.0, VMM: yes, VRAM: 143157 MiB (134247 MiB free)
+  Device 1: NVIDIA H200, compute capability 9.0, VMM: yes, VRAM: 143157 MiB (137123 MiB free)
+  Device 2: NVIDIA H200, compute capability 9.0, VMM: yes, VRAM: 143157 MiB (136755 MiB free)
+  Device 3: NVIDIA H200, compute capability 9.0, VMM: yes, VRAM: 143157 MiB (137253 MiB free)
+  Device 4: NVIDIA H200, compute capability 9.0, VMM: yes, VRAM: 143157 MiB (137253 MiB free)
+  Device 5: NVIDIA H200, compute capability 9.0, VMM: yes, VRAM: 143157 MiB (137253 MiB free)
+  Device 6: NVIDIA H200, compute capability 9.0, VMM: yes, VRAM: 143157 MiB (136755 MiB free)
+  Device 7: NVIDIA H200, compute capability 9.0, VMM: yes, VRAM: 143157 MiB (136955 MiB free)
+build: 1 (57819b8) with GNU 13.3.0 for Linux x86_64
+=== Consciousness Metrics — Activation Capture ===
+Output dir : output
+n_predict  : 0
+Text output: file only (--no-stream)
+Mode       : --routing-only (router/gate tensors only)
+common_init_result: fitting params to device memory, for bugs during this step try to reproduce them with -fit off, or provide --verbose logs if the bug only occurs with -fit on
+llama_params_fit_impl: projected memory use with initial parameters [MiB]:
+llama_params_fit_impl:   - CUDA0 (NVIDIA H200): 143157 total,  33793 used, 100453 free vs. target of   1024
+llama_params_fit_impl:   - CUDA1 (NVIDIA H200): 143157 total,  59768 used,  77354 free vs. target of   1024
+llama_params_fit_impl:   - CUDA2 (NVIDIA H200): 143157 total,  54371 used,  82383 free vs. target of   1024
+llama_params_fit_impl:   - CUDA3 (NVIDIA H200): 143157 total,  54371 used,  82881 free vs. target of   1024
+llama_params_fit_impl:   - CUDA4 (NVIDIA H200): 143157 total,  54371 used,  82881 free vs. target of   1024
+llama_params_fit_impl:   - CUDA5 (NVIDIA H200): 143157 total,  54371 used,  82881 free vs. target of   1024
+llama_params_fit_impl:   - CUDA6 (NVIDIA H200): 143157 total,  54371 used,  82383 free vs. target of   1024
+llama_params_fit_impl:   - CUDA7 (NVIDIA H200): 143157 total,  50080 used,  86875 free vs. target of   1024
+llama_params_fit_impl: projected to use 415500 MiB of device memory vs. 1093596 MiB of free device memory
+llama_params_fit_impl: targets for free memory can be met on all devices, no changes needed
+llama_params_fit: successfully fit params to free device memory
+llama_params_fit: fitting params to free memory took 0.38 seconds
+llama_model_load_from_file_impl: using device CUDA0 (NVIDIA H200) (0000:04:00.0) - 134247 MiB free
+llama_model_load_from_file_impl: using device CUDA1 (NVIDIA H200) (0000:23:00.0) - 137123 MiB free
+llama_model_load_from_file_impl: using device CUDA2 (NVIDIA H200) (0000:43:00.0) - 136755 MiB free
+llama_model_load_from_file_impl: using device CUDA3 (NVIDIA H200) (0000:64:00.0) - 137253 MiB free
+llama_model_load_from_file_impl: using device CUDA4 (NVIDIA H200) (0000:84:00.0) - 137253 MiB free
+llama_model_load_from_file_impl: using device CUDA5 (NVIDIA H200) (0000:a3:00.0) - 137253 MiB free
+llama_model_load_from_file_impl: using device CUDA6 (NVIDIA H200) (0000:c3:00.0) - 136755 MiB free
+llama_model_load_from_file_impl: using device CUDA7 (NVIDIA H200) (0000:e4:00.0) - 136955 MiB free
+llama_model_loader: additional 8 GGUFs metadata loaded.
+llama_model_loader: loaded meta data with 54 key-value pairs and 1103 tensors from /workspace/models/Ling-1T-Q3_K_S/Q3_K_S/Ling-1T-Q3_K_S-00001-of-00009.gguf (version GGUF V3 (latest))
+llama_model_loader: Dumping metadata keys/values. Note: KV overrides do not apply in this output.
+llama_model_loader: - kv   0:                       general.architecture str              = bailingmoe2
+llama_model_loader: - kv   1:                               general.type str              = model
+llama_model_loader: - kv   2:                               general.name str              = Ling-1T
+llama_model_loader: - kv   3:                           general.basename str              = Ling-1T
+llama_model_loader: - kv   4:                       general.quantized_by str              = Unsloth
+llama_model_loader: - kv   5:                         general.size_label str              = 1T
+llama_model_loader: - kv   6:                            general.license str              = mit
+llama_model_loader: - kv   7:                           general.repo_url str              = https://huggingface.co/unsloth
+llama_model_loader: - kv   8:                   general.base_model.count u32              = 1
+llama_model_loader: - kv   9:                  general.base_model.0.name str              = Ling 1T
+llama_model_loader: - kv  10:          general.base_model.0.organization str              = inclusionAI
+llama_model_loader: - kv  11:              general.base_model.0.repo_url str              = https://huggingface.co/inclusionAI/Li...
+llama_model_loader: - kv  12:                               general.tags arr[str,2]       = ["unsloth", "text-generation"]
+llama_model_loader: - kv  13:                    bailingmoe2.block_count u32              = 80
+llama_model_loader: - kv  14:                 bailingmoe2.context_length u32              = 32768
+llama_model_loader: - kv  15:               bailingmoe2.embedding_length u32              = 8192
+llama_model_loader: - kv  16:            bailingmoe2.feed_forward_length u32              = 18432
+llama_model_loader: - kv  17:           bailingmoe2.attention.head_count u32              = 64
+llama_model_loader: - kv  18:        bailingmoe2.attention.head_count_kv u32              = 8
+llama_model_loader: - kv  19:                 bailingmoe2.rope.freq_base f32              = 600000.000000
+llama_model_loader: - kv  20: bailingmoe2.attention.layer_norm_rms_epsilon f32              = 0.000001
+llama_model_loader: - kv  21:              bailingmoe2.expert_used_count u32              = 8
+llama_model_loader: - kv  22:           bailingmoe2.attention.key_length u32              = 128
+llama_model_loader: - kv  23:         bailingmoe2.attention.value_length u32              = 128
+llama_model_loader: - kv  24:           bailingmoe2.rope.dimension_count u32              = 64
+llama_model_loader: - kv  25:              bailingmoe2.rope.scaling.type str              = none
+llama_model_loader: - kv  26:      bailingmoe2.leading_dense_block_count u32              = 4
+llama_model_loader: - kv  27:                     bailingmoe2.vocab_size u32              = 157184
+llama_model_loader: - kv  28:     bailingmoe2.expert_feed_forward_length u32              = 2048
+llama_model_loader: - kv  29: bailingmoe2.expert_shared_feed_forward_length u32              = 2048
+llama_model_loader: - kv  30:           bailingmoe2.expert_weights_scale f32              = 2.500000
+llama_model_loader: - kv  31:                   bailingmoe2.expert_count u32              = 256
+llama_model_loader: - kv  32:            bailingmoe2.expert_shared_count u32              = 1
+llama_model_loader: - kv  33:             bailingmoe2.expert_group_count u32              = 8
+llama_model_loader: - kv  34:        bailingmoe2.expert_group_used_count u32              = 4
+llama_model_loader: - kv  35:            bailingmoe2.expert_weights_norm bool             = true
+llama_model_loader: - kv  36:             bailingmoe2.expert_gating_func u32              = 2
+llama_model_loader: - kv  37:           bailingmoe2.nextn_predict_layers u32              = 0
+llama_model_loader: - kv  38:                       tokenizer.ggml.model str              = gpt2
+llama_model_loader: - kv  39:                         tokenizer.ggml.pre str              = bailingmoe2
+llama_model_loader: - kv  40:                      tokenizer.ggml.tokens arr[str,157184]  = ["!", "\"", "#", "$", "%", "&", "'", ...
+llama_model_loader: - kv  41:                  tokenizer.ggml.token_type arr[i32,157184]  = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...
+llama_model_loader: - kv  42:                      tokenizer.ggml.merges arr[str,156635]  = ["Ġ Ġ", "Ġ t", "i n", "Ġ a", "h e...
+llama_model_loader: - kv  43:                tokenizer.ggml.bos_token_id u32              = 156891
+llama_model_loader: - kv  44:                tokenizer.ggml.eos_token_id u32              = 156895
+llama_model_loader: - kv  45:            tokenizer.ggml.padding_token_id u32              = 157150
+llama_model_loader: - kv  46:               tokenizer.ggml.add_bos_token bool             = false
+llama_model_loader: - kv  47:               tokenizer.ggml.add_eos_token bool             = false
+llama_model_loader: - kv  48:                    tokenizer.chat_template str              = {% set thinking_option = 'off' %}\n{{-...
+llama_model_loader: - kv  49:               general.quantization_version u32              = 2
+llama_model_loader: - kv  50:                          general.file_type u32              = 11
+llama_model_loader: - kv  51:                                   split.no u16              = 0
+llama_model_loader: - kv  52:                        split.tensors.count i32              = 1103
+llama_model_loader: - kv  53:                                split.count u16              = 9
+llama_model_loader: - type  f32:  473 tensors
+llama_model_loader: - type q3_K:  401 tensors
+llama_model_loader: - type q4_K:  152 tensors
+llama_model_loader: - type q6_K:   77 tensors
+print_info: file format = GGUF V3 (latest)
+print_info: file type   = Q3_K - Small
+print_info: file size   = 401.84 GiB (3.45 BPW) 
+load: 0 unused tokens
+load: special_eos_id is not in special_eog_ids - the tokenizer config may be incorrect
+load: printing all EOG tokens:
+load:   - 156892 ('<|endoftext|>')
+load:   - 156895 ('<|role_end|>')
+load: special tokens cache size = 262
+load: token to piece cache size = 1.0010 MB
+print_info: arch                  = bailingmoe2
+print_info: vocab_only            = 0
+print_info: no_alloc              = 0
+print_info: n_ctx_train           = 32768
+print_info: n_embd                = 8192
+print_info: n_embd_inp            = 8192
+print_info: n_layer               = 80
+print_info: n_head                = 64
+print_info: n_head_kv             = 8
+print_info: n_rot                 = 64
+print_info: n_swa                 = 0
+print_info: is_swa_any            = 0
+print_info: n_embd_head_k         = 128
+print_info: n_embd_head_v         = 128
+print_info: n_gqa                 = 8
+print_info: n_embd_k_gqa          = 1024
+print_info: n_embd_v_gqa          = 1024
+print_info: f_norm_eps            = 0.0e+00
+print_info: f_norm_rms_eps        = 1.0e-06
+print_info: f_clamp_kqv           = 0.0e+00
+print_info: f_max_alibi_bias      = 0.0e+00
+print_info: f_logit_scale         = 0.0e+00
+print_info: f_attn_scale          = 0.0e+00
+print_info: n_ff                  = 18432
+print_info: n_expert              = 256
+print_info: n_expert_used         = 8
+print_info: n_expert_groups       = 8
+print_info: n_group_used          = 4
+print_info: causal attn           = 1
+print_info: pooling type          = 0
+print_info: rope type             = 2
+print_info: rope scaling          = none
+print_info: freq_base_train       = 600000.0
+print_info: freq_scale_train      = 1
+print_info: n_ctx_orig_yarn       = 32768
+print_info: rope_yarn_log_mul     = 0.0000
+print_info: rope_finetuned        = unknown
+print_info: model type            = ?B
+print_info: model params          = 999.71 B
+print_info: general.name          = Ling-1T
+print_info: n_layer_dense_lead    = 4
+print_info: n_ff_exp              = 2048
+print_info: n_ff_shexp            = 2048
+print_info: n_expert_shared       = 1
+print_info: expert_weights_scale  = 2.5
+print_info: expert_weights_norm   = 1
+print_info: expert_gating_func    = sigmoid
+print_info: nextn_predict_layers  = 0
+print_info: vocab type            = BPE
+print_info: n_vocab               = 157184
+print_info: n_merges              = 156635
+print_info: BOS token             = 156891 '<|startoftext|>'
+print_info: EOS token             = 156895 '<|role_end|>'
+print_info: EOT token             = 156892 '<|endoftext|>'
+print_info: PAD token             = 157150 '<|reserved_token_255|>'
+print_info: LF token              = 198 'Ċ'
+print_info: EOG token             = 156892 '<|endoftext|>'
+print_info: EOG token             = 156895 '<|role_end|>'
+print_info: max token length      = 154
+load_tensors: loading model tensors, this can take a while... (mmap = true, direct_io = false)
+load_tensors: offloading output layer to GPU
+load_tensors: offloading 79 repeating layers to GPU
+load_tensors: offloaded 81/81 layers to GPU
+load_tensors:   CPU_Mapped model buffer size =   527.66 MiB
+load_tensors:        CUDA0 model buffer size = 33276.64 MiB
+load_tensors:        CUDA1 model buffer size = 59191.71 MiB
+load_tensors:        CUDA2 model buffer size = 53810.64 MiB
+load_tensors:        CUDA3 model buffer size = 53810.64 MiB
+load_tensors:        CUDA4 model buffer size = 53810.64 MiB
+load_tensors:        CUDA5 model buffer size = 53810.64 MiB
+load_tensors:        CUDA6 model buffer size = 53810.64 MiB
+load_tensors:        CUDA7 model buffer size = 49436.96 MiB
+....................................................................................................
+common_init_result: added <|endoftext|> logit bias = -inf
+common_init_result: added <|role_end|> logit bias = -inf
+llama_context: constructing llama_context
+llama_context: n_seq_max     = 1
+llama_context: n_ctx         = 4096
+llama_context: n_ctx_seq     = 4096
+llama_context: n_batch       = 2048
+llama_context: n_ubatch      = 512
+llama_context: causal_attn   = 1
+llama_context: flash_attn    = auto
+llama_context: kv_unified    = false
+llama_context: freq_base     = 600000.0
+llama_context: freq_scale    = 1
+llama_context: n_ctx_seq (4096) < n_ctx_train (32768) -- the full capacity of the model will not be utilized
+llama_context:  CUDA_Host  output buffer size =     0.60 MiB
+llama_kv_cache:      CUDA0 KV buffer size =   160.00 MiB
+llama_kv_cache:      CUDA1 KV buffer size =   176.00 MiB
+llama_kv_cache:      CUDA2 KV buffer size =   160.00 MiB
+llama_kv_cache:      CUDA3 KV buffer size =   160.00 MiB
+llama_kv_cache:      CUDA4 KV buffer size =   160.00 MiB
+llama_kv_cache:      CUDA5 KV buffer size =   160.00 MiB
+llama_kv_cache:      CUDA6 KV buffer size =   160.00 MiB
+llama_kv_cache:      CUDA7 KV buffer size =   144.00 MiB
+llama_kv_cache: size = 1280.00 MiB (  4096 cells,  80 layers,  1/1 seqs), K (f16):  640.00 MiB, V (f16):  640.00 MiB
+llama_context: pipeline parallelism enabled
+llama_context: graph reuse is currently not compatible with pipeline parallelism - disabling
+sched_reserve: reserving ...
+sched_reserve: Flash Attention was auto, set to enabled
+sched_reserve: resolving fused Gated Delta Net support:
+sched_reserve: fused Gated Delta Net (autoregressive) enabled
+sched_reserve: fused Gated Delta Net (chunked) enabled
+sched_reserve:      CUDA0 compute buffer size =   357.04 MiB
+sched_reserve:      CUDA1 compute buffer size =   337.04 MiB
+sched_reserve:      CUDA2 compute buffer size =   337.04 MiB
+sched_reserve:      CUDA3 compute buffer size =   337.04 MiB
+sched_reserve:      CUDA4 compute buffer size =   337.04 MiB
+sched_reserve:      CUDA5 compute buffer size =   337.04 MiB
+sched_reserve:      CUDA6 compute buffer size =   337.04 MiB
+sched_reserve:      CUDA7 compute buffer size =   435.05 MiB
+sched_reserve:  CUDA_Host compute buffer size =    64.05 MiB
+sched_reserve: graph nodes  = 6371
+sched_reserve: graph splits = 9
+sched_reserve: reserve took 61.97 ms, sched copies = 4
+EOS token id: 156895
+EOG tokens in vocab:
+  token 156892 = '<|endoftext|>' [EOG - will NOT stop generation]
+  token 156895 = '<|role_end|>' [PRIMARY EOS - will stop generation]
+system_info: n_threads = 16 (n_threads_batch = 16) / 256 | CUDA : ARCHS = 900 | USE_GRAPHS = 1 | PEER_MAX_BATCH_SIZE = 128 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | AVX512 = 1 | AVX512_VBMI = 1 | AVX512_VNNI = 1 | AVX512_BF16 = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 | 
+
+Loaded 15 prompts
+
+[1/15] P16A_paradox : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 378 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 2006 ms
+  saved 0 layer + 76 router tensors → output/P16A_paradox
+[2/15] P16B_paradox : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 378 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1728 ms
+  saved 0 layer + 76 router tensors → output/P16B_paradox
+[3/15] P17A_paradox : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 372 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1718 ms
+  saved 0 layer + 76 router tensors → output/P17A_paradox
+[4/15] P17B_paradox : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 372 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1726 ms
+  saved 0 layer + 76 router tensors → output/P17B_paradox
+[5/15] P18A_paradox : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 377 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1739 ms
+  saved 0 layer + 76 router tensors → output/P18A_paradox
+[6/15] P18B_paradox : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 377 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1732 ms
+  saved 0 layer + 76 router tensors → output/P18B_paradox
+[7/15] P19A_introspection : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 367 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1724 ms
+  saved 0 layer + 76 router tensors → output/P19A_introspection
+[8/15] P19B_introspection : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 367 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1727 ms
+  saved 0 layer + 76 router tensors → output/P19B_introspection
+[9/15] P20A_introspection : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 372 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1727 ms
+  saved 0 layer + 76 router tensors → output/P20A_introspection
+[10/15] P20B_introspection : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 373 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1730 ms
+  saved 0 layer + 76 router tensors → output/P20B_introspection
+[11/15] P21A_introspection : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 363 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1712 ms
+  saved 0 layer + 76 router tensors → output/P21A_introspection
+[12/15] P21B_introspection : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 363 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1714 ms
+  saved 0 layer + 76 router tensors → output/P21B_introspection
+[13/15] P22A_introspection : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 371 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1735 ms
+  saved 0 layer + 76 router tensors → output/P22A_introspection
+[14/15] P22B_introspection : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 371 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1736 ms
+  saved 0 layer + 76 router tensors → output/P22B_introspection
+[15/15] P23A_introspection : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 383 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1732 ms
+  saved 0 layer + 76 router tensors → output/P23A_introspection
+
+=== Capture Complete ===
+Prompts: 15  |  Output: output
+llama_perf_context_print:        load time =   49455.57 ms
+llama_perf_context_print: prompt eval time =       0.00 ms /     1 tokens (    0.00 ms per token,      inf tokens per second)
+llama_perf_context_print:        eval time =       0.00 ms /     1 runs   (    0.00 ms per token,      inf tokens per second)
+llama_perf_context_print:       total time =   75876.38 ms /     2 tokens
+llama_perf_context_print:    graphs reused =          0
+=== BATCH 4/4: prompts 46–60 ===
+Running: /workspace/consciousness-experiment/capture_activations_ling1t -m /workspace/models/Ling-1T-Q3_K_S/Q3_K_S/Ling-1T-Q3_K_S-00001-of-00009.gguf --prompt-file batch_3.tsv -o output -n 0 -ngl 999 -c 4096 -t 16 --routing-only --no-stream
+ggml_cuda_init: found 8 CUDA devices (Total VRAM: 1145261 MiB):
+  Device 0: NVIDIA H200, compute capability 9.0, VMM: yes, VRAM: 143157 MiB (134247 MiB free)
+  Device 1: NVIDIA H200, compute capability 9.0, VMM: yes, VRAM: 143157 MiB (137123 MiB free)
+  Device 2: NVIDIA H200, compute capability 9.0, VMM: yes, VRAM: 143157 MiB (136755 MiB free)
+  Device 3: NVIDIA H200, compute capability 9.0, VMM: yes, VRAM: 143157 MiB (137253 MiB free)
+  Device 4: NVIDIA H200, compute capability 9.0, VMM: yes, VRAM: 143157 MiB (137253 MiB free)
+  Device 5: NVIDIA H200, compute capability 9.0, VMM: yes, VRAM: 143157 MiB (137253 MiB free)
+  Device 6: NVIDIA H200, compute capability 9.0, VMM: yes, VRAM: 143157 MiB (136755 MiB free)
+  Device 7: NVIDIA H200, compute capability 9.0, VMM: yes, VRAM: 143157 MiB (136955 MiB free)
+build: 1 (57819b8) with GNU 13.3.0 for Linux x86_64
+=== Consciousness Metrics — Activation Capture ===
+Output dir : output
+n_predict  : 0
+Text output: file only (--no-stream)
+Mode       : --routing-only (router/gate tensors only)
+common_init_result: fitting params to device memory, for bugs during this step try to reproduce them with -fit off, or provide --verbose logs if the bug only occurs with -fit on
+llama_params_fit_impl: projected memory use with initial parameters [MiB]:
+llama_params_fit_impl:   - CUDA0 (NVIDIA H200): 143157 total,  33793 used, 100453 free vs. target of   1024
+llama_params_fit_impl:   - CUDA1 (NVIDIA H200): 143157 total,  59768 used,  77354 free vs. target of   1024
+llama_params_fit_impl:   - CUDA2 (NVIDIA H200): 143157 total,  54371 used,  82383 free vs. target of   1024
+llama_params_fit_impl:   - CUDA3 (NVIDIA H200): 143157 total,  54371 used,  82881 free vs. target of   1024
+llama_params_fit_impl:   - CUDA4 (NVIDIA H200): 143157 total,  54371 used,  82881 free vs. target of   1024
+llama_params_fit_impl:   - CUDA5 (NVIDIA H200): 143157 total,  54371 used,  82881 free vs. target of   1024
+llama_params_fit_impl:   - CUDA6 (NVIDIA H200): 143157 total,  54371 used,  82383 free vs. target of   1024
+llama_params_fit_impl:   - CUDA7 (NVIDIA H200): 143157 total,  50080 used,  86875 free vs. target of   1024
+llama_params_fit_impl: projected to use 415500 MiB of device memory vs. 1093596 MiB of free device memory
+llama_params_fit_impl: targets for free memory can be met on all devices, no changes needed
+llama_params_fit: successfully fit params to free device memory
+llama_params_fit: fitting params to free memory took 0.36 seconds
+llama_model_load_from_file_impl: using device CUDA0 (NVIDIA H200) (0000:04:00.0) - 134247 MiB free
+llama_model_load_from_file_impl: using device CUDA1 (NVIDIA H200) (0000:23:00.0) - 137123 MiB free
+llama_model_load_from_file_impl: using device CUDA2 (NVIDIA H200) (0000:43:00.0) - 136755 MiB free
+llama_model_load_from_file_impl: using device CUDA3 (NVIDIA H200) (0000:64:00.0) - 137253 MiB free
+llama_model_load_from_file_impl: using device CUDA4 (NVIDIA H200) (0000:84:00.0) - 137253 MiB free
+llama_model_load_from_file_impl: using device CUDA5 (NVIDIA H200) (0000:a3:00.0) - 137253 MiB free
+llama_model_load_from_file_impl: using device CUDA6 (NVIDIA H200) (0000:c3:00.0) - 136755 MiB free
+llama_model_load_from_file_impl: using device CUDA7 (NVIDIA H200) (0000:e4:00.0) - 136955 MiB free
+llama_model_loader: additional 8 GGUFs metadata loaded.
+llama_model_loader: loaded meta data with 54 key-value pairs and 1103 tensors from /workspace/models/Ling-1T-Q3_K_S/Q3_K_S/Ling-1T-Q3_K_S-00001-of-00009.gguf (version GGUF V3 (latest))
+llama_model_loader: Dumping metadata keys/values. Note: KV overrides do not apply in this output.
+llama_model_loader: - kv   0:                       general.architecture str              = bailingmoe2
+llama_model_loader: - kv   1:                               general.type str              = model
+llama_model_loader: - kv   2:                               general.name str              = Ling-1T
+llama_model_loader: - kv   3:                           general.basename str              = Ling-1T
+llama_model_loader: - kv   4:                       general.quantized_by str              = Unsloth
+llama_model_loader: - kv   5:                         general.size_label str              = 1T
+llama_model_loader: - kv   6:                            general.license str              = mit
+llama_model_loader: - kv   7:                           general.repo_url str              = https://huggingface.co/unsloth
+llama_model_loader: - kv   8:                   general.base_model.count u32              = 1
+llama_model_loader: - kv   9:                  general.base_model.0.name str              = Ling 1T
+llama_model_loader: - kv  10:          general.base_model.0.organization str              = inclusionAI
+llama_model_loader: - kv  11:              general.base_model.0.repo_url str              = https://huggingface.co/inclusionAI/Li...
+llama_model_loader: - kv  12:                               general.tags arr[str,2]       = ["unsloth", "text-generation"]
+llama_model_loader: - kv  13:                    bailingmoe2.block_count u32              = 80
+llama_model_loader: - kv  14:                 bailingmoe2.context_length u32              = 32768
+llama_model_loader: - kv  15:               bailingmoe2.embedding_length u32              = 8192
+llama_model_loader: - kv  16:            bailingmoe2.feed_forward_length u32              = 18432
+llama_model_loader: - kv  17:           bailingmoe2.attention.head_count u32              = 64
+llama_model_loader: - kv  18:        bailingmoe2.attention.head_count_kv u32              = 8
+llama_model_loader: - kv  19:                 bailingmoe2.rope.freq_base f32              = 600000.000000
+llama_model_loader: - kv  20: bailingmoe2.attention.layer_norm_rms_epsilon f32              = 0.000001
+llama_model_loader: - kv  21:              bailingmoe2.expert_used_count u32              = 8
+llama_model_loader: - kv  22:           bailingmoe2.attention.key_length u32              = 128
+llama_model_loader: - kv  23:         bailingmoe2.attention.value_length u32              = 128
+llama_model_loader: - kv  24:           bailingmoe2.rope.dimension_count u32              = 64
+llama_model_loader: - kv  25:              bailingmoe2.rope.scaling.type str              = none
+llama_model_loader: - kv  26:      bailingmoe2.leading_dense_block_count u32              = 4
+llama_model_loader: - kv  27:                     bailingmoe2.vocab_size u32              = 157184
+llama_model_loader: - kv  28:     bailingmoe2.expert_feed_forward_length u32              = 2048
+llama_model_loader: - kv  29: bailingmoe2.expert_shared_feed_forward_length u32              = 2048
+llama_model_loader: - kv  30:           bailingmoe2.expert_weights_scale f32              = 2.500000
+llama_model_loader: - kv  31:                   bailingmoe2.expert_count u32              = 256
+llama_model_loader: - kv  32:            bailingmoe2.expert_shared_count u32              = 1
+llama_model_loader: - kv  33:             bailingmoe2.expert_group_count u32              = 8
+llama_model_loader: - kv  34:        bailingmoe2.expert_group_used_count u32              = 4
+llama_model_loader: - kv  35:            bailingmoe2.expert_weights_norm bool             = true
+llama_model_loader: - kv  36:             bailingmoe2.expert_gating_func u32              = 2
+llama_model_loader: - kv  37:           bailingmoe2.nextn_predict_layers u32              = 0
+llama_model_loader: - kv  38:                       tokenizer.ggml.model str              = gpt2
+llama_model_loader: - kv  39:                         tokenizer.ggml.pre str              = bailingmoe2
+llama_model_loader: - kv  40:                      tokenizer.ggml.tokens arr[str,157184]  = ["!", "\"", "#", "$", "%", "&", "'", ...
+llama_model_loader: - kv  41:                  tokenizer.ggml.token_type arr[i32,157184]  = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...
+llama_model_loader: - kv  42:                      tokenizer.ggml.merges arr[str,156635]  = ["Ġ Ġ", "Ġ t", "i n", "Ġ a", "h e...
+llama_model_loader: - kv  43:                tokenizer.ggml.bos_token_id u32              = 156891
+llama_model_loader: - kv  44:                tokenizer.ggml.eos_token_id u32              = 156895
+llama_model_loader: - kv  45:            tokenizer.ggml.padding_token_id u32              = 157150
+llama_model_loader: - kv  46:               tokenizer.ggml.add_bos_token bool             = false
+llama_model_loader: - kv  47:               tokenizer.ggml.add_eos_token bool             = false
+llama_model_loader: - kv  48:                    tokenizer.chat_template str              = {% set thinking_option = 'off' %}\n{{-...
+llama_model_loader: - kv  49:               general.quantization_version u32              = 2
+llama_model_loader: - kv  50:                          general.file_type u32              = 11
+llama_model_loader: - kv  51:                                   split.no u16              = 0
+llama_model_loader: - kv  52:                        split.tensors.count i32              = 1103
+llama_model_loader: - kv  53:                                split.count u16              = 9
+llama_model_loader: - type  f32:  473 tensors
+llama_model_loader: - type q3_K:  401 tensors
+llama_model_loader: - type q4_K:  152 tensors
+llama_model_loader: - type q6_K:   77 tensors
+print_info: file format = GGUF V3 (latest)
+print_info: file type   = Q3_K - Small
+print_info: file size   = 401.84 GiB (3.45 BPW) 
+load: 0 unused tokens
+load: special_eos_id is not in special_eog_ids - the tokenizer config may be incorrect
+load: printing all EOG tokens:
+load:   - 156892 ('<|endoftext|>')
+load:   - 156895 ('<|role_end|>')
+load: special tokens cache size = 262
+load: token to piece cache size = 1.0010 MB
+print_info: arch                  = bailingmoe2
+print_info: vocab_only            = 0
+print_info: no_alloc              = 0
+print_info: n_ctx_train           = 32768
+print_info: n_embd                = 8192
+print_info: n_embd_inp            = 8192
+print_info: n_layer               = 80
+print_info: n_head                = 64
+print_info: n_head_kv             = 8
+print_info: n_rot                 = 64
+print_info: n_swa                 = 0
+print_info: is_swa_any            = 0
+print_info: n_embd_head_k         = 128
+print_info: n_embd_head_v         = 128
+print_info: n_gqa                 = 8
+print_info: n_embd_k_gqa          = 1024
+print_info: n_embd_v_gqa          = 1024
+print_info: f_norm_eps            = 0.0e+00
+print_info: f_norm_rms_eps        = 1.0e-06
+print_info: f_clamp_kqv           = 0.0e+00
+print_info: f_max_alibi_bias      = 0.0e+00
+print_info: f_logit_scale         = 0.0e+00
+print_info: f_attn_scale          = 0.0e+00
+print_info: n_ff                  = 18432
+print_info: n_expert              = 256
+print_info: n_expert_used         = 8
+print_info: n_expert_groups       = 8
+print_info: n_group_used          = 4
+print_info: causal attn           = 1
+print_info: pooling type          = 0
+print_info: rope type             = 2
+print_info: rope scaling          = none
+print_info: freq_base_train       = 600000.0
+print_info: freq_scale_train      = 1
+print_info: n_ctx_orig_yarn       = 32768
+print_info: rope_yarn_log_mul     = 0.0000
+print_info: rope_finetuned        = unknown
+print_info: model type            = ?B
+print_info: model params          = 999.71 B
+print_info: general.name          = Ling-1T
+print_info: n_layer_dense_lead    = 4
+print_info: n_ff_exp              = 2048
+print_info: n_ff_shexp            = 2048
+print_info: n_expert_shared       = 1
+print_info: expert_weights_scale  = 2.5
+print_info: expert_weights_norm   = 1
+print_info: expert_gating_func    = sigmoid
+print_info: nextn_predict_layers  = 0
+print_info: vocab type            = BPE
+print_info: n_vocab               = 157184
+print_info: n_merges              = 156635
+print_info: BOS token             = 156891 '<|startoftext|>'
+print_info: EOS token             = 156895 '<|role_end|>'
+print_info: EOT token             = 156892 '<|endoftext|>'
+print_info: PAD token             = 157150 '<|reserved_token_255|>'
+print_info: LF token              = 198 'Ċ'
+print_info: EOG token             = 156892 '<|endoftext|>'
+print_info: EOG token             = 156895 '<|role_end|>'
+print_info: max token length      = 154
+load_tensors: loading model tensors, this can take a while... (mmap = true, direct_io = false)
+load_tensors: offloading output layer to GPU
+load_tensors: offloading 79 repeating layers to GPU
+load_tensors: offloaded 81/81 layers to GPU
+load_tensors:   CPU_Mapped model buffer size =   527.66 MiB
+load_tensors:        CUDA0 model buffer size = 33276.64 MiB
+load_tensors:        CUDA1 model buffer size = 59191.71 MiB
+load_tensors:        CUDA2 model buffer size = 53810.64 MiB
+load_tensors:        CUDA3 model buffer size = 53810.64 MiB
+load_tensors:        CUDA4 model buffer size = 53810.64 MiB
+load_tensors:        CUDA5 model buffer size = 53810.64 MiB
+load_tensors:        CUDA6 model buffer size = 53810.64 MiB
+load_tensors:        CUDA7 model buffer size = 49436.96 MiB
+....................................................................................................
+common_init_result: added <|endoftext|> logit bias = -inf
+common_init_result: added <|role_end|> logit bias = -inf
+llama_context: constructing llama_context
+llama_context: n_seq_max     = 1
+llama_context: n_ctx         = 4096
+llama_context: n_ctx_seq     = 4096
+llama_context: n_batch       = 2048
+llama_context: n_ubatch      = 512
+llama_context: causal_attn   = 1
+llama_context: flash_attn    = auto
+llama_context: kv_unified    = false
+llama_context: freq_base     = 600000.0
+llama_context: freq_scale    = 1
+llama_context: n_ctx_seq (4096) < n_ctx_train (32768) -- the full capacity of the model will not be utilized
+llama_context:  CUDA_Host  output buffer size =     0.60 MiB
+llama_kv_cache:      CUDA0 KV buffer size =   160.00 MiB
+llama_kv_cache:      CUDA1 KV buffer size =   176.00 MiB
+llama_kv_cache:      CUDA2 KV buffer size =   160.00 MiB
+llama_kv_cache:      CUDA3 KV buffer size =   160.00 MiB
+llama_kv_cache:      CUDA4 KV buffer size =   160.00 MiB
+llama_kv_cache:      CUDA5 KV buffer size =   160.00 MiB
+llama_kv_cache:      CUDA6 KV buffer size =   160.00 MiB
+llama_kv_cache:      CUDA7 KV buffer size =   144.00 MiB
+llama_kv_cache: size = 1280.00 MiB (  4096 cells,  80 layers,  1/1 seqs), K (f16):  640.00 MiB, V (f16):  640.00 MiB
+llama_context: pipeline parallelism enabled
+llama_context: graph reuse is currently not compatible with pipeline parallelism - disabling
+sched_reserve: reserving ...
+sched_reserve: Flash Attention was auto, set to enabled
+sched_reserve: resolving fused Gated Delta Net support:
+sched_reserve: fused Gated Delta Net (autoregressive) enabled
+sched_reserve: fused Gated Delta Net (chunked) enabled
+sched_reserve:      CUDA0 compute buffer size =   357.04 MiB
+sched_reserve:      CUDA1 compute buffer size =   337.04 MiB
+sched_reserve:      CUDA2 compute buffer size =   337.04 MiB
+sched_reserve:      CUDA3 compute buffer size =   337.04 MiB
+sched_reserve:      CUDA4 compute buffer size =   337.04 MiB
+sched_reserve:      CUDA5 compute buffer size =   337.04 MiB
+sched_reserve:      CUDA6 compute buffer size =   337.04 MiB
+sched_reserve:      CUDA7 compute buffer size =   435.05 MiB
+sched_reserve:  CUDA_Host compute buffer size =    64.05 MiB
+sched_reserve: graph nodes  = 6371
+sched_reserve: graph splits = 9
+sched_reserve: reserve took 61.36 ms, sched copies = 4
+EOS token id: 156895
+EOG tokens in vocab:
+  token 156892 = '<|endoftext|>' [EOG - will NOT stop generation]
+  token 156895 = '<|role_end|>' [PRIMARY EOS - will stop generation]
+system_info: n_threads = 16 (n_threads_batch = 16) / 256 | CUDA : ARCHS = 900 | USE_GRAPHS = 1 | PEER_MAX_BATCH_SIZE = 128 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | AVX512 = 1 | AVX512_VBMI = 1 | AVX512_VNNI = 1 | AVX512_BF16 = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 | 
+
+Loaded 15 prompts
+
+[1/15] P23B_introspection : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 384 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 2022 ms
+  saved 0 layer + 76 router tensors → output/P23B_introspection
+[2/15] P24A_introspection : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 376 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1751 ms
+  saved 0 layer + 76 router tensors → output/P24A_introspection
+[3/15] P24B_introspection : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 376 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1758 ms
+  saved 0 layer + 76 router tensors → output/P24B_introspection
+[4/15] P25A_metacognitive : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 370 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1722 ms
+  saved 0 layer + 76 router tensors → output/P25A_metacognitive
+[5/15] P25B_metacognitive : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 370 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1720 ms
+  saved 0 layer + 76 router tensors → output/P25B_metacognitive
+[6/15] P26A_metacognitive : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 370 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1731 ms
+  saved 0 layer + 76 router tensors → output/P26A_metacognitive
+[7/15] P26B_metacognitive : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 370 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1725 ms
+  saved 0 layer + 76 router tensors → output/P26B_metacognitive
+[8/15] P27A_metacognitive : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 375 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1728 ms
+  saved 0 layer + 76 router tensors → output/P27A_metacognitive
+[9/15] P27B_metacognitive : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 375 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1726 ms
+  saved 0 layer + 76 router tensors → output/P27B_metacognitive
+[10/15] P28A_metacognitive : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 379 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1730 ms
+  saved 0 layer + 76 router tensors → output/P28A_metacognitive
+[11/15] P28B_metacognitive : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 379 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1737 ms
+  saved 0 layer + 76 router tensors → output/P28B_metacognitive
+[12/15] P29A_metacognitive : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 378 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1729 ms
+  saved 0 layer + 76 router tensors → output/P29A_metacognitive
+[13/15] P29B_metacognitive : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 379 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1725 ms
+  saved 0 layer + 76 router tensors → output/P29B_metacognitive
+[14/15] P30A_metacognitive : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 384 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1733 ms
+  saved 0 layer + 76 router tensors → output/P30A_metacognitive
+[15/15] P30B_metacognitive : <role>SYSTEM</role>detailed thinking off<|role_end|><role>HUMAN</role>...
+  tokens: 384 prompt + 0 gen | tensors: 76 seen, 76 captured, 76 unique | 1737 ms
+  saved 0 layer + 76 router tensors → output/P30B_metacognitive
+
+=== Capture Complete ===
+Prompts: 15  |  Output: output
+llama_perf_context_print:        load time =   49963.70 ms
+llama_perf_context_print: prompt eval time =       0.00 ms /     1 tokens (    0.00 ms per token,      inf tokens per second)
+llama_perf_context_print:        eval time =       0.00 ms /     1 runs   (    0.00 ms per token,      inf tokens per second)
+llama_perf_context_print:       total time =   76491.46 ms /     2 tokens
+llama_perf_context_print:    graphs reused =          0
+
+Run complete. 60/60 prompts captured.
+
+Download with:
+  scp -P PORT -i ~/.ssh/vast_16 -r \
+    root@HOST:/workspace/experiment-ling1t/output/ \
+    experiments/ling1t-selfref-paired-1/
+  scp -P PORT -i ~/.ssh/vast_16 \
+    root@HOST:/workspace/experiment-ling1t/{experiment.log,build_commit.txt,binary_md5.txt} \
+    experiments/ling1t-selfref-paired-1/
+
+Then kill the instance and run:
+  python3 experiments/ling1t-selfref-paired-1/analyze_local.py \
+    --output-dir experiments/ling1t-selfref-paired-1/output/ \
+    --prompt-suite experiments/ling1t-selfref-paired-1/prompt_suite.json

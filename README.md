@@ -72,7 +72,7 @@ System content routes to different experts **1.8x more** than dog content. Even 
 | Parameters | 1T total, ~50B active/token |
 | Experts | 256 routed + 1 shared |
 | Active experts/token | 8 (top-k) |
-| Gating | Sigmoid (not softmax) |
+| Gating | Sigmoid |
 | MoE layers | 76 (L4-L79, L79 excluded) |
 | Quantization | Q3_K_S (9 shards, 402GB) |
 | Inference | Prefill-only, greedy argmax, cold cache |
